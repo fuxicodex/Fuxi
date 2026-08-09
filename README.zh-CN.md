@@ -259,6 +259,7 @@ fuxi update 2.203.0    # 指定版本
 | `ANTHROPIC_MODEL` | Anthropic 提供商使用的模型名 |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
 | `FUXI_CONFIG_DIR` | 覆盖配置目录（默认 `~/.fuxi`） |
+| `NO_UPDATE_NOTIFIER` | 设为 `1` 时关闭后台更新检查提示（等同 `--no-update-notifier`） |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | 采样控制参数 |
 
 完整的环境变量参考（包括 bridge/remote-control、沙箱限制、MCP 资源上限

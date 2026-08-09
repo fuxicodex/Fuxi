@@ -267,6 +267,7 @@ Key environment variables:
 | `ANTHROPIC_MODEL` | Model name for the Anthropic provider |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
 | `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
+| `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice (same as `--no-update-notifier`) |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | Sampling controls |
 
 Run `fuxi --help` for the full environment-variable reference, including bridge/
