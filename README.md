@@ -280,6 +280,11 @@ FuXi is a single Go module. The entry point is `cmd/fuxi`; the bulk of the syste
 lives under `internal/` — the agent engine, TUI, tools, providers, MCP, session
 and memory services, the intelligence router, and the permission system.
 
+Note: the Go source is proprietary and is not published in this repository
+(see License). This repo hosts the documentation and release installers; the
+layout above describes the shipped binary's architecture for orientation, not
+browsable source.
+
 ---
 
 ## License
