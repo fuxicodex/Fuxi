@@ -15,6 +15,15 @@ Homepage: **https://www.fuxicode.com**
 
 ---
 
+## Contents
+
+- [Highlights](#highlights)
+- [Install](#install)
+- [Getting started](#getting-started)
+- [Usage guide](#usage-guide)
+- [Project layout](#project-layout)
+- [License](#license)
+
 ## Highlights
 
 - **Multi-LLM routing** — one agent, many providers. First-class support for:
