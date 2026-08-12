@@ -1,13 +1,12 @@
-# Funding platforms for FuXi.
-# Place this file at the repo root: FUNDING.yml
-# Supported: github, patreon, open_collective, ko_fi, tidelift,
-#            community_bridge, liberapay, issuehunt, otechie,
-#            lfx_crowdfunding, polar, buy_me_a_coffee, custom
-
-# GitHub Sponsors profile usernames (up to 4). Leave empty until a
-# GitHub Sponsors profile exists.
-github: []
-
-# FuXi is a commercial product. Point the button to the company page.
-custom:
-  - https://www.fuxicode.com/sponsor
+ 1   # Funding platforms for FuXi.
+       2   # Place this file at the repo root: FUNDING.yml
+       3   # Supported: github, patreon, open_collective, ko_fi, tidelift,
+       4   #            community_bridge, liberapay, issuehunt, otechie,
+       5   #            lfx_crowdfunding, polar, buy_me_a_coffee, custom
+       6
+       7   # No GitHub Sponsors account is used.
+       8   github: []
+       9
+      10   # No sponsorship is offered; the button links to the company homepage.
+      11   custom:
+      12     - https://www.fuxicode.com
