@@ -121,7 +121,7 @@ curl -fsSL https://releases.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd
 再次运行同一条命令即可原地升级已有安装 —— 安装和升级是同一条命令。
 
 默认安装最新版本；也可以带参数指定具体版本，例如
-`./bootstrap.sh 2.202.194` 或 `./bootstrap.ps1 2.202.194`。
+`./bootstrap.sh 0.1.2` 或 `./bootstrap.ps1 0.1.2`。
 
 ### 验证安装
 
@@ -284,7 +284,7 @@ FuXi 会在后台检查新版本，一旦有可用更新会打印一行提示。
 
 ```bash
 fuxi update            # 最新版本
-fuxi update 2.203.0    # 指定版本
+fuxi update 0.1.2      # 指定版本
 ```
 
 `fuxi update` 会下载目标版本，对照已发布的 manifest 校验 SHA-256，

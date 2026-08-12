@@ -130,7 +130,7 @@ later upgrades an existing install in place — it's the same command for instal
 upgrade.
 
 By default they install the latest version; pin a specific one with an argument, e.g.
-`./bootstrap.sh 2.202.194` or `./bootstrap.ps1 2.202.194`.
+`./bootstrap.sh 0.1.2` or `./bootstrap.ps1 0.1.2`.
 
 ### Verify the install
 
@@ -297,7 +297,7 @@ one is available. Update in place with:
 
 ```bash
 fuxi update            # latest
-fuxi update 2.203.0    # a specific version
+fuxi update 0.1.2      # a specific version
 ```
 
 `fuxi update` downloads the target build, verifies its SHA-256 against the
