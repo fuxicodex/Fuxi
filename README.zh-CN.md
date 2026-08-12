@@ -204,13 +204,11 @@ fuxi
        api_key: <your-key>
        models:
          - id: your-model-id
-           model_canonical_name: your-model   # 可选：用于能力查询
    model:
      active: { provider: custom, id: your-model-id }
    ```
 
-   完整的分层 schema（多提供商、按模型的能力覆盖、路由角色）请参见本仓库
-   的 `config.full.example.yaml`。
+   分层 schema 支持多个提供商与按模型的设置。
 
    或者运行 `fuxi wizard` 进入交互式配置流程（选择提供商、输入
    base URL/密钥、选择模型、测试连接）。
@@ -270,7 +268,6 @@ swarm/agent 相关参数。
 | `fuxi info` | 显示提供商与模型信息 |
 | `fuxi update [version]` | 下载并安装版本（校验和验证、原子替换） |
 | `fuxi agents` | 按来源列出已配置的 agent |
-| `fuxi auto-mode <sub>` | 查看 auto-mode 分类器规则（`defaults` \| `config` \| `critique`） |
 | `fuxi proxy` | 启动智能路由代理（提供商转换） |
 | `fuxi launch [args]` | 通过代理启动被代理的二进制，使用你的 FuXi 配置 |
 | `fuxi mcp serve` | 将 FuXi 自身作为 MCP stdio 服务器运行 |
@@ -323,8 +320,8 @@ fuxi update 2.203.0    # 指定版本
 
 - **配置目录：** `~/.fuxi/`（可用 `FUXI_CONFIG_DIR` 覆盖）。
 - **配置文件：** `~/.fuxi/config.yaml` —— 提供商、模型、
-  thinking/effort、智能路由、脱敏，以及按端点的能力覆盖。FuXi 运行期间
-  修改会热加载。每个字段的完整说明见本仓库的 `config.full.example.yaml`。
+  thinking/effort、路由偏好，以及按端点的覆盖。FuXi 运行期间修改会热加载。
+  `fuxi init` 会生成初始模板，`/config` 可在 TUI 内管理设置。
 - **优先级：** 环境变量 > `config.yaml` > 内置默认值。
 - **项目设置：** 项目内提交的项目设置文件（权限、hooks）会按项目生效。
 - **插件：** 官方插件市场位于 `fuxicode.com/plugins`。
@@ -335,7 +332,6 @@ fuxi update 2.203.0    # 指定版本
 |---|---|
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI 兼容提供商配置 |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
-| `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | 覆盖配置目录（默认 `~/.fuxi`） |
 | `FUXI_DEBUG` | 设为 `1` 开启调试日志 |
 | `NO_UPDATE_NOTIFIER` | 设为 `1` 时关闭后台更新检查提示 |

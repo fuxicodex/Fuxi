@@ -213,13 +213,11 @@ via one of two paths:
        api_key: <your-key>
        models:
          - id: your-model-id
-           model_canonical_name: your-model   # optional: for capability lookup
    model:
      active: { provider: custom, id: your-model-id }
    ```
 
-   See `config.full.example.yaml` for the full layered schema (multiple providers,
-   per-model capability overrides, routing roles).
+   The layered schema supports multiple providers and per-model settings.
 
    Or run `fuxi wizard` for an interactive setup flow (pick a provider, enter the
    base URL/key, choose a model, test the connection).
@@ -281,7 +279,6 @@ controls, and swarm/agent flags.
 | `fuxi info` | Show provider and model information |
 | `fuxi update [version]` | Download and install a release (checksum-verified, atomic) |
 | `fuxi agents` | List configured agents grouped by source |
-| `fuxi auto-mode <sub>` | Inspect auto-mode classifier rules (`defaults` \| `config` \| `critique`) |
 | `fuxi proxy` | Start the smart routing proxy (protocol bridging between providers) |
 | `fuxi launch [args]` | Launch a proxied binary via the proxy, using your FuXi config |
 | `fuxi mcp serve` | Run FuXi itself as an MCP stdio server |
@@ -337,9 +334,9 @@ you with a partially-installed version. Suppress the background check with
 
 - **Config directory:** `~/.fuxi/` (override with `FUXI_CONFIG_DIR`).
 - **Config file:** `~/.fuxi/config.yaml` — provider, model, thinking/effort,
-  intelligence routing, redaction, and per-endpoint capability overrides. Changes
-  hot-reload while FuXi is running. See `config.full.example.yaml` in this repo
-  for every available field with inline documentation.
+  routing preferences, and per-endpoint overrides. Changes hot-reload while
+  FuXi is running. `fuxi init` generates a starter template, and `/config`
+  manages settings from inside the TUI.
 - **Precedence:** environment variables > `config.yaml` > built-in defaults.
 - **Project settings:** a checked-in project settings file (permissions, hooks)
   is honored per-project.
@@ -351,7 +348,6 @@ Key environment variables:
 |---|---|
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI-compatible provider config |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
-| `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
 | `FUXI_DEBUG` | Set to `1` to enable debug logging |
 | `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice |
