@@ -26,6 +26,10 @@ Homepage: **https://www.fuxicode.com**
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Usage guide](#usage-guide)
+- [Keyboard shortcuts](docs/keybindings.md)
+- [FAQ](docs/faq.md)
+- [Changelog](CHANGELOG.md)
+- [Support](SUPPORT.md)
 - [Project layout](#project-layout)
 - [License](#license)
 
@@ -288,7 +292,8 @@ Type `/` and press Enter (or Tab-autocomplete) to browse all commands:
 **Keyboard & input:** `/` then Enter opens the command browser · `Tab`
 autocompletes a slash command · `Ctrl+R` searches prompt history · `Ctrl+V` or
 terminal paste pastes directly into the input · bracketed paste handles large
-pastes.
+pastes. The full shortcut reference is in
+[docs/keybindings.md](docs/keybindings.md).
 
 ### Updating
 
@@ -338,6 +343,12 @@ sandbox limits and MCP resource caps.
 This repository hosts FuXi's documentation, release installers, and the issue
 tracker. The product source is proprietary and is not published here (see
 License).
+
+- `README.md` / `README.zh-CN.md` — the main documentation (English / 简体中文)
+- `docs/` — demo GIF, comparison graphics, keyboard reference, FAQ
+- `CHANGELOG.md` — release history
+- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
+  community and support guides
 
 ---
 

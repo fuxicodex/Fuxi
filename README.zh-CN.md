@@ -25,6 +25,10 @@ FuXi 是一个快速、自包含的 AI 开发者终端：在丰富的 TUI 中读
 - [安装](#安装)
 - [快速开始](#快速开始)
 - [使用指南](#使用指南)
+- [快捷键速查](docs/keybindings.md)
+- [常见问题](docs/faq.md)
+- [更新日志](CHANGELOG.md)
+- [支持](SUPPORT.md)
 - [项目结构](#项目结构)
 - [License](#license)
 
@@ -276,7 +280,8 @@ swarm/agent 相关参数。
 
 **键盘与输入：** `/` 加回车打开命令浏览器 · `Tab` 补全斜杠命令 ·
 `Ctrl+R` 搜索历史提示词 · `Ctrl+V` 或终端粘贴直接粘贴到输入框 ·
-括号粘贴用于处理大段粘贴内容。
+括号粘贴用于处理大段粘贴内容。完整快捷键速查见
+[docs/keybindings.md](docs/keybindings.md)。
 
 ### 更新
 
@@ -321,6 +326,12 @@ fuxi update 0.1.2      # 指定版本
 
 本仓库承载 FuXi 的文档、安装包与 issue 追踪。产品源码为闭源，未在本仓库
 发布（见 License）。
+
+- `README.md` / `README.zh-CN.md` — 主文档（英文 / 简体中文）
+- `docs/` — 演示 GIF、对比图、快捷键速查、常见问题
+- `CHANGELOG.md` — 版本发布记录
+- `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`、`SUPPORT.md` —
+  社区与支持指南
 
 ---
 
