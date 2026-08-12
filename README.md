@@ -5,11 +5,12 @@
 > **An AI coding agent that lives in your terminal.**
 > Codename **YiHuaKaiTian** — "one stroke opens the heavens."
 
-FuXi is a fast, self-contained AI developer terminal — a coding agent you drive
-from a rich TUI. It reads your codebase, edits files, runs commands, drives tools,
-and routes every request across multiple LLM providers with cost-aware routing and
-automatic failover. It ships as a single static binary with no runtime
+FuXi is a fast, self-contained AI developer terminal: read code, edit files, run
+commands, and drive tools from a rich TUI, with cost-aware routing across many
+LLM providers and automatic failover. One static binary, no runtime
 dependencies.
+
+**Terminal-first** · **Provider-agnostic** · **Bring your own key** · **MCP client** · **Self-updating**
 
 Homepage: **https://www.fuxicode.com**
 
@@ -21,6 +22,7 @@ Homepage: **https://www.fuxicode.com**
 
 - [Highlights](#highlights)
 - [How FuXi compares](#how-fuxi-compares)
+- [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Usage guide](#usage-guide)
@@ -87,6 +89,33 @@ quadrantChart
     "GitHub Copilot CLI": [0.15, 0.7]
     "Cursor": [0.7, 0.12]
 ```
+
+---
+
+## Evaluation & benchmarks
+
+FuXi is built to be measured honestly. It currently ships without a published
+score on third-party benchmarks (e.g. SWE-bench, Terminal-Bench, or the Aider
+polyglot benchmark). We prefer reproducible, self-verifiable evaluation over
+headline numbers — so here is how to evaluate FuXi yourself, on your own work.
+
+**A practical evaluation checklist**
+
+1. **Install & self-check** — after installing, run `fuxi doctor` to verify your
+   environment (config, API key, git, ripgrep) and `fuxi verify` to confirm the
+   provider connection. A clean bill here is the baseline.
+2. **Reproduce a real task** — pick a failing test in one of your own projects
+   and let FuXi fix it; then extend the module and re-run the suite (the demo
+   above shows exactly this flow). Repeat across a handful of daily tasks:
+   code review, commits, PRs, refactors.
+3. **Compare side by side** — run the identical task, model, and context through
+   another tool and compare: correctness, tool coverage, cost, and iteration
+   time. Judging on the same ground keeps the comparison fair.
+
+FuXi exposes everything needed for that comparison — `/cost`, `/usage`,
+`/context`, and `/status` inside the TUI — and ships its own environment
+self-check (`fuxi doctor`). Benchmarks that are published in the future will
+be linked from this section.
 
 ---
 
