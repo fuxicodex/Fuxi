@@ -12,6 +12,8 @@ FuXi 是一个快速、自包含的 AI 开发者终端 —— 一个由丰富的
 
 主页：**https://fuxicode.com**
 
+![FuXi 实际演示](docs/fuxi-demo.gif)
+
 ---
 
 ## 目录

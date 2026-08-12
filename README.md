@@ -13,6 +13,8 @@ runtime dependencies.
 
 Homepage: **https://www.fuxicode.com**
 
+![FuXi in action](docs/fuxi-demo.gif)
+
 ---
 
 ## Contents
