@@ -8,8 +8,8 @@
 FuXi is a fast, self-contained AI developer terminal — a coding agent you drive
 from a rich TUI. It reads your codebase, edits files, runs commands, drives tools,
 and routes every request across multiple LLM providers with cost-aware routing and
-automatic failover. Written in Go, it ships as a single static binary with no
-runtime dependencies.
+automatic failover. It ships as a single static binary with no runtime
+dependencies.
 
 Homepage: **https://www.fuxicode.com**
 
@@ -20,6 +20,7 @@ Homepage: **https://www.fuxicode.com**
 ## Contents
 
 - [Highlights](#highlights)
+- [How FuXi compares](#how-fuxi-compares)
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Usage guide](#usage-guide)
@@ -53,6 +54,42 @@ Homepage: **https://www.fuxicode.com**
 
 ---
 
+## How FuXi compares
+
+FuXi is a terminal-first AI coding agent designed to be provider-agnostic. The
+table below reflects each product's publicly documented positioning and the
+features FuXi ships today; details evolve quickly, so treat it as an orientation
+rather than a specification.
+
+| | FuXi | Claude Code | GitHub Copilot CLI | Cursor | Aider |
+|---|---|---|---|---|---|
+| Terminal-first CLI / TUI | ✓ | ✓ | ✓ | ✗ (IDE-based) | ✓ |
+| Multi-provider support | ✓ | ✗ (Anthropic-only) | ✗ (Copilot plan) | ✓ | ✓ |
+| Bring your own API key | ✓ | ✓ | ✗ (subscription) | ✓ | ✓ |
+| Cost-aware routing & failover | ✓ | ✗ | ✗ | ✗ | ✗ |
+| MCP client | ✓ | ✓ | ✗ | ✓ | ✗ |
+| Parallel sub-agents | ✓ | ✓ | ✗ | ✓ | ✗ |
+| Durable sessions & checkpoints | ✓ | ✓ | ✗ | ✓ | ✗ |
+| Single static binary, no runtime deps | ✓ | ✗ (Node) | ✗ (Node) | ✗ (IDE app) | ✗ (Python) |
+
+```mermaid
+quadrantChart
+    title AI Coding Agents — Positioning
+    x-axis "Single provider" --> "Multi-provider"
+    y-axis "IDE-first" --> "Terminal-first"
+    quadrant-1 "Terminal · Multi-provider"
+    quadrant-2 "Terminal · Single provider"
+    quadrant-3 "IDE · Single provider"
+    quadrant-4 "IDE · Multi-provider"
+    "FuXi": [0.9, 0.92]
+    "Aider": [0.8, 0.75]
+    "Claude Code": [0.25, 0.85]
+    "GitHub Copilot CLI": [0.15, 0.7]
+    "Cursor": [0.7, 0.12]
+```
+
+---
+
 ## Install
 
 ### macOS / Linux
@@ -80,16 +117,6 @@ upgrade.
 
 By default they install the latest version; pin a specific one with an argument, e.g.
 `./bootstrap.sh 2.202.194` or `./bootstrap.ps1 2.202.194`.
-
-### Build from source
-
-Requires **Go 1.26+**:
-
-```bash
-git clone <this-repo>
-cd fuxi
-go build -o fuxi ./cmd/fuxi
-```
 
 ### Verify the install
 
@@ -288,14 +315,9 @@ remote-control, sandbox limits, and MCP resource caps.
 
 ## Project layout
 
-FuXi is a single Go module. The entry point is `cmd/fuxi`; the bulk of the system
-lives under `internal/` — the agent engine, TUI, tools, providers, MCP, session
-and memory services, the intelligence router, and the permission system.
-
-Note: the Go source is proprietary and is not published in this repository
-(see License). This repo hosts the documentation and release installers; the
-layout above describes the shipped binary's architecture for orientation, not
-browsable source.
+This repository hosts FuXi's documentation, release installers, and the issue
+tracker. The product source is proprietary and is not published here (see
+License).
 
 ---
 
