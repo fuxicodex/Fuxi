@@ -67,38 +67,13 @@ codebase, verifying results, and doing it affordably and under your control.
 
 ## How FuXi compares
 
-FuXi is a terminal-first AI coding agent designed to be provider-agnostic. The
-table reflects each product's publicly documented positioning and the features
-FuXi ships today; details evolve quickly, so treat it as an orientation rather
-than a specification. ✓ = yes, △ = partial / not native, ✗ = no.
+FuXi is a terminal-first AI coding agent designed to be provider-agnostic.
+Feature availability reflects each product's publicly documented positioning
+as of mid-2026; details evolve quickly, so treat it as an orientation.
 
-| | FuXi | Claude Code | GitHub Copilot CLI | Cursor | Aider |
-|---|---|---|---|---|---|
-| Terminal-first CLI / TUI | ✓ | ✓ | ✓ | ✗ (IDE-based) | ✓ |
-| Multi-provider support | ✓ | ✗ (Anthropic-only) | ✗ (Copilot plan) | ✓ | ✓ |
-| Cost-aware tiered routing | ✓ | ✗ | ✗ | △ (partial) | ✗ |
-| Failover & primary/fallback racing | ✓ | ✗ | ✗ | ✗ | ✗ |
-| Bring your own API key | ✓ | ✓ | ✗ (subscription) | ✓ | ✓ |
-| MCP client | ✓ | ✓ | ✗ | ✓ | ✗ |
-| Parallel sub-agents | ✓ | ✓ | ✗ | ✓ | ✗ |
-| Durable sessions & checkpoints | ✓ | ✓ | ✗ | ✓ | ✗ |
-| Single static binary, no runtime deps | ✓ | ✗ (Node) | ✗ (Node) | ✗ (IDE app) | ✗ (Python) |
+![FuXi vs. other AI coding agents](docs/comparison.svg)
 
-```mermaid
-quadrantChart
-    title AI Coding Agents — Positioning
-    x-axis "Single provider" --> "Multi-provider"
-    y-axis "IDE-first" --> "Terminal-first"
-    quadrant-1 "Terminal · Multi-provider"
-    quadrant-2 "Terminal · Single provider"
-    quadrant-3 "IDE · Single provider"
-    quadrant-4 "IDE · Multi-provider"
-    "FuXi": [0.9, 0.92]
-    "Aider": [0.8, 0.75]
-    "Claude Code": [0.25, 0.85]
-    "GitHub Copilot CLI": [0.15, 0.7]
-    "Cursor": [0.7, 0.12]
-```
+![Positioning of AI coding agents](docs/positioning.svg)
 
 ---
 
