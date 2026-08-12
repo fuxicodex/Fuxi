@@ -47,9 +47,9 @@ FuXi 是一个快速、自包含的 AI 开发者终端：在丰富的 TUI 中读
   细粒度权限、操作审计和显式的权限模型，让自主执行始终处于你的掌控中。
 - **持久会话与记忆** —— 会话记录持久化到磁盘；检查点支持恢复、回滚或
   分叉；空闲期的"梦境"整理会跨会话整合记忆；长对话自动压缩以节省 token。
-- **自带密钥，或直接登录** —— 使用任意提供商 API Key（Anthropic、
-  OpenAI 兼容、Gemini、Bedrock/Vertex，以及开源/国产模型），或通过
-  FuXi OAuth 登录。数据始终由你掌控。
+- **自带密钥，或直接登录** —— 使用任意提供商 API Key（OpenAI 兼容、
+  Gemini、Bedrock/Vertex，以及开源/国产模型），或通过 FuXi OAuth 登录。
+  数据始终由你掌控。
 - **可扩展** —— MCP 客户端、hooks、skills、plugins 与自定义斜杠命令，
   全部支持热重载。
 - **永久免费** —— 单个静态二进制，无运行时依赖，个人、团队、企业均
@@ -326,17 +326,14 @@ fuxi update 2.203.0    # 指定版本
   thinking/effort、智能路由、脱敏，以及按端点的能力覆盖。FuXi 运行期间
   修改会热加载。每个字段的完整说明见本仓库的 `config.full.example.yaml`。
 - **优先级：** 环境变量 > `config.yaml` > 内置默认值。
-- **项目设置：** 项目内提交的 `.claude/settings.json`（权限、hooks）
-  会按项目生效。
+- **项目设置：** 项目内提交的项目设置文件（权限、hooks）会按项目生效。
 - **插件：** 官方插件市场位于 `fuxicode.com/plugins`。
 
 常用环境变量：
 
 | 变量 | 作用 |
 |---|---|
-| `ANTHROPIC_API_KEY` | Anthropic API Key |
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI 兼容提供商配置 |
-| `ANTHROPIC_MODEL` | Anthropic 提供商使用的模型名（默认 `claude-sonnet-4-6`） |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
 | `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | 覆盖配置目录（默认 `~/.fuxi`） |

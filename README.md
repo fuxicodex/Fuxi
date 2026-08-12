@@ -52,9 +52,9 @@ codebase, verifying results, and doing it affordably and under your control.
 - **Durable sessions & memory** — transcripts persist to disk; checkpoints let
   you resume, roll back, or fork; an idle "dreaming" pass consolidates memory
   across sessions; long conversations auto-compact to save tokens.
-- **Bring your own key, or log in** — use any provider API key (Anthropic,
-  OpenAI-compatible, Gemini, Bedrock/Vertex, and open or China-hosted models),
-  or sign in with FuXi OAuth. Data stays under your control.
+- **Bring your own key, or log in** — use any provider API key (OpenAI-
+  compatible, Gemini, Bedrock/Vertex, and open or China-hosted models), or
+  sign in with FuXi OAuth. Data stays under your control.
 - **Extensible** — MCP client, hooks, skills, plugins, and user-defined slash
   commands, all hot-reloadable.
 - **Free forever** — one static binary, no runtime dependencies, no license
@@ -341,7 +341,7 @@ you with a partially-installed version. Suppress the background check with
   hot-reload while FuXi is running. See `config.full.example.yaml` in this repo
   for every available field with inline documentation.
 - **Precedence:** environment variables > `config.yaml` > built-in defaults.
-- **Project settings:** a checked-in `.claude/settings.json` (permissions, hooks)
+- **Project settings:** a checked-in project settings file (permissions, hooks)
   is honored per-project.
 - **Plugins:** first-party marketplace at `fuxicode.com/plugins`.
 
@@ -349,9 +349,7 @@ Key environment variables:
 
 | Variable | Purpose |
 |---|---|
-| `ANTHROPIC_API_KEY` | Anthropic API key |
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI-compatible provider config |
-| `ANTHROPIC_MODEL` | Model name for the Anthropic provider (default `claude-sonnet-4-6`) |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
 | `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
