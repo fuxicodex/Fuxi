@@ -53,7 +53,7 @@ codebase, verifying results, and doing it affordably and under your control.
   you resume, roll back, or fork; an idle "dreaming" pass consolidates memory
   across sessions; long conversations auto-compact to save tokens.
 - **Bring your own key, or log in** — use any provider API key (OpenAI-
-  compatible, Gemini, Bedrock/Vertex, and open or China-hosted models), or
+  compatible, Gemini, Bedrock/Vertex, or other OpenAI-compatible endpoints), or
   sign in with FuXi OAuth. Data stays under your control.
 - **Extensible** — MCP client, hooks, skills, plugins, and user-defined slash
   commands, all hot-reloadable.
@@ -199,7 +199,7 @@ via one of two paths:
    provider: openapi
    base_url: https://your-endpoint/v1
    api_key: <your-key>       # or export FUXI_API_KEY instead
-   model: glm-4.6
+   model: your-model
    ```
 
    Managing several providers/models instead of one? Use the layered schema — a
@@ -212,10 +212,10 @@ via one of two paths:
        base_url: https://your-endpoint/v1
        api_key: <your-key>
        models:
-         - id: deepseek-v4-pro-260425
-           model_canonical_name: deepseek-v4-pro   # optional: for capability lookup
+         - id: your-model-id
+           model_canonical_name: your-model   # optional: for capability lookup
    model:
-     active: { provider: custom, id: deepseek-v4-pro-260425 }
+     active: { provider: custom, id: your-model-id }
    ```
 
    See `config.full.example.yaml` for the full layered schema (multiple providers,

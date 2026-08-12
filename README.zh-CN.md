@@ -48,8 +48,8 @@ FuXi 是一个快速、自包含的 AI 开发者终端：在丰富的 TUI 中读
 - **持久会话与记忆** —— 会话记录持久化到磁盘；检查点支持恢复、回滚或
   分叉；空闲期的"梦境"整理会跨会话整合记忆；长对话自动压缩以节省 token。
 - **自带密钥，或直接登录** —— 使用任意提供商 API Key（OpenAI 兼容、
-  Gemini、Bedrock/Vertex，以及开源/国产模型），或通过 FuXi OAuth 登录。
-  数据始终由你掌控。
+  Gemini、Bedrock/Vertex，或其他 OpenAI 兼容端点），或通过 FuXi OAuth
+  登录。数据始终由你掌控。
 - **可扩展** —— MCP 客户端、hooks、skills、plugins 与自定义斜杠命令，
   全部支持热重载。
 - **永久免费** —— 单个静态二进制，无运行时依赖，个人、团队、企业均
@@ -190,7 +190,7 @@ fuxi
    provider: openapi
    base_url: https://your-endpoint/v1
    api_key: <your-key>       # 或改用 export FUXI_API_KEY
-   model: glm-4.6
+   model: your-model
    ```
 
    需要同时管理多个提供商/模型？使用分层 schema —— 一份 `providers:`
@@ -203,10 +203,10 @@ fuxi
        base_url: https://your-endpoint/v1
        api_key: <your-key>
        models:
-         - id: deepseek-v4-pro-260425
-           model_canonical_name: deepseek-v4-pro   # 可选：用于能力查询
+         - id: your-model-id
+           model_canonical_name: your-model   # 可选：用于能力查询
    model:
-     active: { provider: custom, id: deepseek-v4-pro-260425 }
+     active: { provider: custom, id: your-model-id }
    ```
 
    完整的分层 schema（多提供商、按模型的能力覆盖、路由角色）请参见本仓库
