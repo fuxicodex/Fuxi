@@ -31,44 +31,54 @@ Homepage: **https://www.fuxicode.com**
 
 ## Highlights
 
-- **Multi-LLM routing** — one agent, many providers. First-class support for:
-  - **Anthropic** (native Messages API) and Anthropic on **AWS Bedrock** / **Google Vertex**
-  - **OpenAI-compatible** endpoints (OpenAI, **Azure OpenAI**, and any OpenAI-style API)
-  - **Google Gemini**
-  - Popular open/China-hosted models via OpenAI-compatible endpoints — **GLM **, **DeepSeek**, **Qwen**, **Hunyuan**, **Doubao**, **Ernie**, **Grok (xAI)**, and more
-- **Intelligence layer** — cost-aware routing, automatic **failover** to a healthy
-  provider, optional **racing** of primary vs. fallback, and role-based model tiers
-  (fast / primary / reasoning) resolved from your config.
-- **A deep tool suite** — file read/edit/write, shell (`bash` / PowerShell) with a
-  safety classifier, web fetch, code search, LSP-backed diagnostics, Jupyter
-  notebooks, computer/browser use via MCP, background tasks, and parallel
-  **sub-agents**.
-- **MCP client** — connect any Model Context Protocol server (stdio, HTTP, or
-  WebSocket) and its tools become available to the agent.
-- **Extensible** — hooks, skills, plugins, and user-defined slash commands.
-- **Durable sessions** — persistent transcripts, checkpoints/resume, an idle
-  "dreaming" memory, and automatic context compaction for long conversations.
-- **Bring your own key, or log in** — use a provider API key, or sign in with FuXi
-  OAuth. Keys are never required for the FuXi-managed path.
-- **Self-updating** — a background version check and a one-command `fuxi update`
-  keep your install current, with checksum verification before it ever replaces
-  the running binary.
+**The model is the engine. FuXi is the vehicle.** A model alone answers
+questions; FuXi turns it into a worker — reasoning, acting on your real
+codebase, verifying results, and doing it affordably and under your control.
+
+- **Think → Act → Verify loop** — FuXi does not just answer. It works in a
+  loop: reason about the task, act with tools (edit files, run commands,
+  search code), inspect the result, and iterate until the work is done and
+  verified — a failing test fixed, a suite green, a PR ready.
+- **Intelligent routing** — every request is scored by complexity and routed
+  to the right model tier: cheap models handle simple tasks, powerful models
+  are reserved for hard ones. Automatic failover and optional primary-vs-
+  fallback racing keep you working when a provider stumbles.
+- **50+ built-in tools** — file read/write/edit, shell (`bash` / PowerShell),
+  ripgrep search, web fetch, LSP-backed diagnostics, Jupyter, browser use via
+  MCP, background tasks, and parallel **sub-agents** — all in one binary.
+- **Safety guardrails** — shell commands pass an AST safety classifier and a
+  rule set before execution; fine-grained permissions, audit logging, and an
+  explicit permission model keep autonomous work under your control.
+- **Durable sessions & memory** — transcripts persist to disk; checkpoints let
+  you resume, roll back, or fork; an idle "dreaming" pass consolidates memory
+  across sessions; long conversations auto-compact to save tokens.
+- **Bring your own key, or log in** — use any provider API key (Anthropic,
+  OpenAI-compatible, Gemini, Bedrock/Vertex, and open or China-hosted models),
+  or sign in with FuXi OAuth. Data stays under your control.
+- **Extensible** — MCP client, hooks, skills, plugins, and user-defined slash
+  commands, all hot-reloadable.
+- **Free forever** — one static binary, no runtime dependencies, no license
+  cost for individuals, teams, or enterprises.
+- **Self-updating** — a background version check and a one-command `fuxi
+  update` keep your install current, with checksum verification before it ever
+  replaces the running binary.
 
 ---
 
 ## How FuXi compares
 
 FuXi is a terminal-first AI coding agent designed to be provider-agnostic. The
-table below reflects each product's publicly documented positioning and the
-features FuXi ships today; details evolve quickly, so treat it as an orientation
-rather than a specification.
+table reflects each product's publicly documented positioning and the features
+FuXi ships today; details evolve quickly, so treat it as an orientation rather
+than a specification. ✓ = yes, △ = partial / not native, ✗ = no.
 
 | | FuXi | Claude Code | GitHub Copilot CLI | Cursor | Aider |
 |---|---|---|---|---|---|
 | Terminal-first CLI / TUI | ✓ | ✓ | ✓ | ✗ (IDE-based) | ✓ |
 | Multi-provider support | ✓ | ✗ (Anthropic-only) | ✗ (Copilot plan) | ✓ | ✓ |
+| Cost-aware tiered routing | ✓ | ✗ | ✗ | △ (partial) | ✗ |
+| Failover & primary/fallback racing | ✓ | ✗ | ✗ | ✗ | ✗ |
 | Bring your own API key | ✓ | ✓ | ✗ (subscription) | ✓ | ✓ |
-| Cost-aware routing & failover | ✓ | ✗ | ✗ | ✗ | ✗ |
 | MCP client | ✓ | ✓ | ✗ | ✓ | ✗ |
 | Parallel sub-agents | ✓ | ✓ | ✗ | ✓ | ✗ |
 | Durable sessions & checkpoints | ✓ | ✓ | ✗ | ✓ | ✗ |
