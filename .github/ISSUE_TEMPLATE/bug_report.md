@@ -10,7 +10,7 @@ assignees: ''
 
 **OS / shell / terminal emulator:**
 
-**Provider** (Anthropic / OpenAI-compatible / Bedrock / Vertex / Gemini / other):
+**Provider** (OpenAI-compatible / Bedrock / Vertex / Gemini / other):
 
 **What happened?** (expected vs. actual)
 
