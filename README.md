@@ -2,6 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+[![GitHub stars](https://img.shields.io/github/stars/fuxicodex/Fuxi?style=flat-square&color=0a6fe7&label=stars)](https://github.com/fuxicodex/Fuxi/stargazers)
+[![Release](https://img.shields.io/github/v/release/fuxicodex/Fuxi?style=flat-square&color=0a6fe7&label=release)](https://github.com/fuxicodex/Fuxi/releases)
+[![Last commit](https://img.shields.io/github/last-commit/fuxicodex/Fuxi?style=flat-square&color=0a6fe7)](https://github.com/fuxicodex/Fuxi/commits/main)
+[![License](https://img.shields.io/badge/license-Proprietary-0a6fe7?style=flat-square)](LICENSE)
+
 > **An AI coding agent that lives in your terminal.**
 > Codename **YiHuaKaiTian** — "one stroke opens the heavens."
 
@@ -13,6 +18,11 @@ dependencies.
 **Terminal-first** · **Provider-agnostic** · **Bring your own key** · **MCP client** · **Self-updating**
 
 Homepage: **https://www.fuxicode.com**
+
+```bash
+curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash   # install
+fuxi                                                        # start
+```
 
 ![FuXi in action](docs/fuxi-demo.gif)
 

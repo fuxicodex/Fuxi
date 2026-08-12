@@ -2,6 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+[![GitHub stars](https://img.shields.io/github/stars/fuxicodex/Fuxi?style=flat-square&color=0a6fe7&label=stars)](https://github.com/fuxicodex/Fuxi/stargazers)
+[![Release](https://img.shields.io/github/v/release/fuxicodex/Fuxi?style=flat-square&color=0a6fe7&label=release)](https://github.com/fuxicodex/Fuxi/releases)
+[![Last commit](https://img.shields.io/github/last-commit/fuxicodex/Fuxi?style=flat-square&color=0a6fe7)](https://github.com/fuxicodex/Fuxi/commits/main)
+[![License](https://img.shields.io/badge/license-Proprietary-0a6fe7?style=flat-square)](LICENSE)
+
 > **一个住在你终端里的 AI 编程智能体。**
 > 代号 **一画开天 (YiHuaKaiTian)**。
 
@@ -12,6 +17,11 @@ FuXi 是一个快速、自包含的 AI 开发者终端：在丰富的 TUI 中读
 **终端优先** · **不绑定提供商** · **自带密钥** · **MCP 客户端** · **自动更新**
 
 主页：**https://fuxicode.com**
+
+```bash
+curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash   # 安装
+fuxi                                                        # 启动
+```
 
 ![FuXi 实际演示](docs/fuxi-demo.gif)
 
