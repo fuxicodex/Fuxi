@@ -224,53 +224,61 @@ fuxi
 
 ### 命令行参数
 
-启动 `fuxi` 时最常用的参数：
+启动 `fuxi` 时常用参数，按用途分组。完整参考见 `fuxi --help`。
 
-| 参数 | 作用 |
-|---|---|
-| `-m, --model <name>` | 本次运行覆盖使用的模型 |
-| `-k, --api-key <key>` | 本次运行覆盖使用的 API Key |
-| `-b, --base-url <url>` | 覆盖 base URL（启用 OpenAPI 提供商） |
-| `-P, --provider <type>` | 提供商类型：`anthropic` \| `openapi` |
-| `-r, --resume <sessionId>` | 恢复某个指定的历史会话 |
-| `-c, --continue` | 继续当前目录下最近一次会话 |
-| `-d, --dir <path>` | 工作目录 |
-| `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
-| `--auto` | 自动批准安全的工具调用（经分类器判定，带熔断机制） |
-| `--dangerously-skip-permissions` | 跳过所有权限检查（请谨慎使用） |
-| `--worktree` | 为本次会话创建一个 git worktree |
-| `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
-| `--mcp-config <configs...>` | 从 JSON 字符串或文件路径加载 MCP 服务器 |
-| `--status` | 打印解析后的提供商状态并退出 |
-| `--config` | 打印解析后的配置并退出 |
-| `--debug [pattern]` | 开启调试日志，可选按标签过滤 |
-| `-v, --version` / `-h, --help` | 版本信息 / 完整的参数与命令参考 |
+| 类别 | 参数 | 作用 |
+|---|---|---|
+| 模型 | `-m, --model <name>` | 本次运行覆盖使用的模型 |
+| | `-P, --provider <type>` | 提供商类型：`anthropic` \| `openapi` |
+| | `-b, --base-url <url>` | 覆盖 base URL（启用 OpenAPI 提供商） |
+| | `-k, --api-key <key>` | 本次运行覆盖使用的 API Key |
+| 会话 | `-r, --resume <sessionId>` | 恢复某个指定的历史会话 |
+| | `-c, --continue` | 继续当前目录下最近一次会话 |
+| | `--session-id <uuid>` | 使用指定的会话 ID（必须是合法 UUID） |
+| | `--fork-session` | 恢复时新建会话 ID，而非复用原会话 |
+| | `--prefill <text>` | 预填充提示输入框（不自动提交） |
+| | `-d, --dir <path>` | 工作目录 |
+| 权限 | `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
+| | `--auto` | 自动批准安全的工具调用（经分类器判定，带熔断机制） |
+| | `--dangerously-skip-permissions` | 跳过所有权限检查（危险） |
+| 思考 | `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
+| | `--effort <level>` | `low` \| `medium` \| `high` \| `max` |
+| | `--max-tokens <n>` | 每次 API 调用的最大输出 token 数 |
+| 工具与 MCP | `--tools <tools...>` | 限制内置工具集（`""` = 无，`default` = 全部，或工具名） |
+| | `--mcp-config <configs...>` | 从 JSON 字符串或文件路径加载 MCP 服务器 |
+| | `--strict-mcp-config` | 仅使用 `--mcp-config` 指定的 MCP 服务器 |
+| 检查 | `--status` | 打印解析后的提供商状态并退出 |
+| | `--config` | 打印解析后的配置并退出 |
+| 调试 | `--debug [pattern]` | 开启调试日志，可选按 pattern 过滤 |
+| | `--verbose` | 开启详细日志 |
+| | `-v, --version` / `-h, --help` | 版本信息 / 完整的参数与命令参考 |
 
-完整列表（还有采样控制、工具限制、系统提示词覆盖、hook 触发器、
-swarm/agent 相关参数等）请运行 `fuxi --help`。
+`fuxi --help` 中还包含系统提示词覆盖、工具限制、采样控制，以及
+swarm/agent 相关参数。
 
 ### 子命令
 
 | 命令 | 作用 |
 |---|---|
-| `fuxi` | 启动交互式 TUI（等同于 `fuxi tui`） |
-| `fuxi login` | 登录 FuXi 账号并配置凭据 |
+| `fuxi`（或 `fuxi tui`） | 启动交互式 TUI |
+| `fuxi login` | 登录 FuXi 账号，然后配置 API 凭据 |
 | `fuxi setup-token` | 登录并打印一个用于 `FUXI_OAUTH_TOKEN` 的 token（无交互/CI 场景） |
-| `fuxi wizard` | 交互式配置向导：提供商、base URL、密钥、模型、连接测试 |
-| `fuxi init [--force]` | 生成一份 `~/.fuxi/config.yaml` 模板 |
-| `fuxi doctor` | 诊断你的环境（配置、密钥、git、ripgrep、环境变量覆盖） |
+| `fuxi wizard` | TUI 配置向导：提供商、base URL、密钥、模型、连接测试 |
+| `fuxi init [--force]` | 生成一份 `~/.fuxi/config.yaml` 模板（从环境变量自动探测提供商） |
+| `fuxi doctor` | 对运行环境进行诊断检查 |
 | `fuxi verify` | 验证与已配置提供商的连通性 |
-| `fuxi info` | 显示解析后的提供商与模型信息 |
-| `fuxi update [version]` | 下载、校验并安装新版本 |
+| `fuxi info` | 显示提供商与模型信息 |
+| `fuxi update [version]` | 下载并安装版本（校验和验证、原子替换） |
 | `fuxi agents` | 按来源列出已配置的 agent |
-| `fuxi proxy` | 启动本地 Anthropic↔OpenAI 智能路由代理 |
-| `fuxi launch [args]` | 使用你的 FuXi 配置，通过代理启动另一个工具 |
+| `fuxi auto-mode <sub>` | 查看 auto-mode 分类器规则（`defaults` \| `config` \| `critique`） |
+| `fuxi proxy` | 启动智能路由代理（提供商转换） |
+| `fuxi launch [args]` | 通过代理启动被代理的二进制，使用你的 FuXi 配置 |
 | `fuxi mcp serve` | 将 FuXi 自身作为 MCP stdio 服务器运行 |
 | `fuxi remote-control` | 作为云端远程控制 worker 运行（`--remote-control` 的别名） |
 
 ### TUI 内斜杠命令
 
-输入 `/` 并回车（或 Tab 补全）浏览全部命令。最常用的：
+输入 `/` 并回车（或 Tab 补全）浏览全部命令：
 
 | 命令 | 作用 |
 |---|---|
@@ -286,15 +294,17 @@ swarm/agent 相关参数等）请运行 `fuxi --help`。
 | `/tools` | 列出可用工具 |
 | `/permissions` | 显示当前权限配置 |
 | `/memory` | 显示项目记忆文件 |
-| `/fork` | 显示子智能体（fork）统计信息 |
+| `/fork` | 显示 fork 子智能体统计信息 |
+| `/away` | 列出或查看已保存的会话 away 摘要 |
 | `/commit` | 创建一次 git 提交 |
-| `/review` | 审查代码 / 打开 PR |
+| `/review` | 审查代码 / 创建 PR |
 | `/doctor` | 运行诊断检查 |
 | `/copy`, `/paste` | 复制上一条回复 / 将剪贴板文本作为下一条提示发送 |
 | `/exit` | 退出 |
 
-**键盘操作：** `/` 加回车打开命令浏览器 · `Tab` 补全斜杠命令 ·
-`Ctrl+R` 搜索历史提示词 · 支持终端粘贴 / 括号粘贴以处理大段粘贴内容。
+**键盘与输入：** `/` 加回车打开命令浏览器 · `Tab` 补全斜杠命令 ·
+`Ctrl+R` 搜索历史提示词 · `Ctrl+V` 或终端粘贴直接粘贴到输入框 ·
+括号粘贴用于处理大段粘贴内容。
 
 ### 更新
 
@@ -326,14 +336,16 @@ fuxi update 2.203.0    # 指定版本
 |---|---|
 | `ANTHROPIC_API_KEY` | Anthropic API Key |
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI 兼容提供商配置 |
-| `ANTHROPIC_MODEL` | Anthropic 提供商使用的模型名 |
+| `ANTHROPIC_MODEL` | Anthropic 提供商使用的模型名（默认 `claude-sonnet-4-6`） |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
+| `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | 覆盖配置目录（默认 `~/.fuxi`） |
-| `NO_UPDATE_NOTIFIER` | 设为 `1` 时关闭后台更新检查提示（等同 `--no-update-notifier`） |
+| `FUXI_DEBUG` | 设为 `1` 开启调试日志 |
+| `NO_UPDATE_NOTIFIER` | 设为 `1` 时关闭后台更新检查提示 |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | 采样控制参数 |
 
-完整的环境变量参考（包括 bridge/remote-control、沙箱限制、MCP 资源上限
-等）请运行 `fuxi --help`。
+完整的环境变量参考（包括沙箱限制、MCP 资源上限等）请运行
+`fuxi --help`。
 
 ---
 

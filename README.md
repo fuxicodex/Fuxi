@@ -234,54 +234,62 @@ driven from inside the TUI via slash commands.
 
 ### Command-line flags
 
-The most commonly used flags when launching `fuxi`:
+Common flags when launching `fuxi`, grouped by purpose. The complete reference
+is in `fuxi --help`.
 
-| Flag | Purpose |
-|---|---|
-| `-m, --model <name>` | Override the model for this run |
-| `-k, --api-key <key>` | Override the API key for this run |
-| `-b, --base-url <url>` | Override the base URL (enables the OpenAPI provider) |
-| `-P, --provider <type>` | Provider type: `anthropic` \| `openapi` |
-| `-r, --resume <sessionId>` | Resume a specific past conversation |
-| `-c, --continue` | Continue the most recent conversation in this directory |
-| `-d, --dir <path>` | Working directory |
-| `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
-| `--auto` | Auto-approve safe tool calls (classifier-gated, with a circuit breaker) |
-| `--dangerously-skip-permissions` | Skip all permission checks (use with care) |
-| `--worktree` | Create a git worktree for this session |
-| `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
-| `--mcp-config <configs...>` | Load MCP servers from JSON strings or file paths |
-| `--status` | Print resolved provider status and exit |
-| `--config` | Print resolved configuration and exit |
-| `--debug [pattern]` | Enable debug logging, optionally filtered by tag |
-| `-v, --version` / `-h, --help` | Version / full flag & command reference |
+| Area | Flag | Purpose |
+|---|---|---|
+| Model | `-m, --model <name>` | Override the model for this run |
+| | `-P, --provider <type>` | Provider type: `anthropic` \| `openapi` |
+| | `-b, --base-url <url>` | Override the base URL (enables the OpenAPI provider) |
+| | `-k, --api-key <key>` | Override the API key for this run |
+| Session | `-r, --resume <sessionId>` | Resume a specific past conversation |
+| | `-c, --continue` | Continue the most recent conversation in this directory |
+| | `--session-id <uuid>` | Use a specific session ID (must be a valid UUID) |
+| | `--fork-session` | When resuming, create a new session ID instead of reusing the original |
+| | `--prefill <text>` | Pre-fill the prompt input with text without submitting it |
+| | `-d, --dir <path>` | Working directory |
+| Permissions | `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
+| | `--auto` | Auto-approve safe tool calls (classifier-gated, with a circuit breaker) |
+| | `--dangerously-skip-permissions` | Skip all permission checks (DANGEROUS) |
+| Thinking | `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
+| | `--effort <level>` | `low` \| `medium` \| `high` \| `max` |
+| | `--max-tokens <n>` | Max output tokens per API call |
+| Tools & MCP | `--tools <tools...>` | Restrict the built-in tool set (`""` = none, `default` = all, or names) |
+| | `--mcp-config <configs...>` | Load MCP servers from JSON strings or file paths |
+| | `--strict-mcp-config` | Only use MCP servers from `--mcp-config` |
+| Inspect | `--status` | Print resolved provider status and exit |
+| | `--config` | Print resolved configuration and exit |
+| Debug | `--debug [pattern]` | Enable debug logging, optionally filtered by pattern |
+| | `--verbose` | Enable verbose logging |
+| | `-v, --version` / `-h, --help` | Version / full flag & command reference |
 
-Run `fuxi --help` for the complete list (there are many more — sampling controls,
-tool restrictions, system-prompt overrides, hook triggers, and swarm/agent flags).
+`fuxi --help` also lists system-prompt overrides, tool restrictions, sampling
+controls, and swarm/agent flags.
 
 ### Subcommands
 
 | Command | What it does |
 |---|---|
-| `fuxi` | Launch the interactive TUI (same as `fuxi tui`) |
-| `fuxi login` | Sign in to a FuXi account and configure credentials |
-| `fuxi setup-token` | Sign in and print a token for `FUXI_OAUTH_TOKEN` (headless/CI) |
-| `fuxi wizard` | Interactive setup wizard: provider, base URL, key, model, connection test |
-| `fuxi init [--force]` | Generate a `~/.fuxi/config.yaml` template |
-| `fuxi doctor` | Diagnose your environment (config, key, git, ripgrep, env overrides) |
-| `fuxi verify` | Verify connectivity to the configured provider |
-| `fuxi info` | Show resolved provider and model information |
-| `fuxi update [version]` | Download, checksum-verify, and install a new version |
+| `fuxi` (or `fuxi tui`) | Launch the interactive TUI |
+| `fuxi login` | Sign in to a FuXi account, then configure API credentials |
+| `fuxi setup-token` | Sign in and print a token to export as `FUXI_OAUTH_TOKEN` (headless/CI) |
+| `fuxi wizard` | TUI setup wizard: provider, base URL, key, model, connection test |
+| `fuxi init [--force]` | Generate a `~/.fuxi/config.yaml` template (auto-detects provider from env) |
+| `fuxi doctor` | Run diagnostic checks on your environment |
+| `fuxi verify` | Verify provider connectivity |
+| `fuxi info` | Show provider and model information |
+| `fuxi update [version]` | Download and install a release (checksum-verified, atomic) |
 | `fuxi agents` | List configured agents grouped by source |
-| `fuxi proxy` | Start the local Anthropic↔OpenAI smart-routing proxy |
-| `fuxi launch [args]` | Launch another tool through the proxy, using your FuXi config |
+| `fuxi auto-mode <sub>` | Inspect auto-mode classifier rules (`defaults` \| `config` \| `critique`) |
+| `fuxi proxy` | Start the smart routing proxy (protocol bridging between providers) |
+| `fuxi launch [args]` | Launch a proxied binary via the proxy, using your FuXi config |
 | `fuxi mcp serve` | Run FuXi itself as an MCP stdio server |
 | `fuxi remote-control` | Run as a cloud remote-control worker (alias for `--remote-control`) |
 
 ### In-TUI slash commands
 
-Type `/` and press Enter (or Tab-autocomplete) to browse all commands. The
-essentials:
+Type `/` and press Enter (or Tab-autocomplete) to browse all commands:
 
 | Command | What it does |
 |---|---|
@@ -297,16 +305,18 @@ essentials:
 | `/tools` | List available tools |
 | `/permissions` | Show the current permission configuration |
 | `/memory` | Show the project memory file |
-| `/fork` | Show sub-agent (fork) stats |
+| `/fork` | Show fork-agent stats |
+| `/away` | List or show stored session away-summaries |
 | `/commit` | Create a git commit |
-| `/review` | Review code / open a PR |
+| `/review` | Review code / create a PR |
 | `/doctor` | Run diagnostic checks |
 | `/copy`, `/paste` | Copy the last reply / send clipboard text as the next prompt |
 | `/exit` | Quit |
 
-**Keyboard:** `/` then Enter opens the command browser · `Tab` autocompletes a slash
-command · `Ctrl+R` searches prompt history · terminal paste / bracketed paste is
-supported for large pastes.
+**Keyboard & input:** `/` then Enter opens the command browser · `Tab`
+autocompletes a slash command · `Ctrl+R` searches prompt history · `Ctrl+V` or
+terminal paste pastes directly into the input · bracketed paste handles large
+pastes.
 
 ### Updating
 
@@ -328,8 +338,8 @@ you with a partially-installed version. Suppress the background check with
 - **Config directory:** `~/.fuxi/` (override with `FUXI_CONFIG_DIR`).
 - **Config file:** `~/.fuxi/config.yaml` — provider, model, thinking/effort,
   intelligence routing, redaction, and per-endpoint capability overrides. Changes
-  hot-reload while FuXi is running. See `config.full.example.yaml` in this repo for
-  every available field with inline documentation.
+  hot-reload while FuXi is running. See `config.full.example.yaml` in this repo
+  for every available field with inline documentation.
 - **Precedence:** environment variables > `config.yaml` > built-in defaults.
 - **Project settings:** a checked-in `.claude/settings.json` (permissions, hooks)
   is honored per-project.
@@ -341,14 +351,16 @@ Key environment variables:
 |---|---|
 | `ANTHROPIC_API_KEY` | Anthropic API key |
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI-compatible provider config |
-| `ANTHROPIC_MODEL` | Model name for the Anthropic provider |
+| `ANTHROPIC_MODEL` | Model name for the Anthropic provider (default `claude-sonnet-4-6`) |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
+| `FUXI_THINKING_STRATEGY` | `auto\|native\|prompt_inject\|two_phase` |
 | `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
-| `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice (same as `--no-update-notifier`) |
+| `FUXI_DEBUG` | Set to `1` to enable debug logging |
+| `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | Sampling controls |
 
-Run `fuxi --help` for the full environment-variable reference, including bridge/
-remote-control, sandbox limits, and MCP resource caps.
+Run `fuxi --help` for the full environment-variable reference, including
+sandbox limits and MCP resource caps.
 
 ---
 
