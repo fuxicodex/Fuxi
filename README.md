@@ -27,6 +27,8 @@ fuxi                                                        # start
 ![FuXi in action](docs/fuxi-demo.gif)
 
 ---
+<img width="1079" height="807" alt="image" src="https://github.com/user-attachments/assets/674dc8ea-b0f9-4ea2-a124-f0952548f41b" />
+<img width="1054" height="797" alt="image" src="https://github.com/user-attachments/assets/55194bac-0c64-44d8-ae29-6f609d757cf9" />
 
 ## Contents
 
