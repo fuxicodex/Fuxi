@@ -13,7 +13,7 @@
 </div>
 
 > **Bottom line:** On a real multi-file layered project (an order-management
-> system with 25+ files across 5 layers), FuXi + `deepseek-v4-flash` **ties
+> system with 25+ files across 5 layers), FuXi + `deepseek` **ties
 > Claude Code + `claude-opus-5`** across all 4 development dimensions — 100%
 > pass, zero failures, zero human intervention.
 
@@ -105,8 +105,8 @@ correctness reasoning** — not over-fitted patches.
 
 1. **Tied ability** — both models pass all 4 dimensions on a 25+ file layered project.
 2. **Real engineering** — defects span module boundaries; both models navigated and fixed them correctly.
-3. **Verifiable** — FuXi lets `deepseek-v4-flash` reach `claude-opus-5`-level ability on non-trivial codebases.
-4. **Cost advantage** — `deepseek-v4-flash` is a lightweight tier, substantially cheaper.
+3. **Verifiable** — FuXi lets `deepseek` reach `claude-opus-5`-level ability on non-trivial codebases.
+4. **Cost advantage** — `deepseek` is a lightweight tier, substantially cheaper.
 
 ---
 

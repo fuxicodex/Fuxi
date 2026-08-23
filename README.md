@@ -96,7 +96,7 @@ To keep our own claims honest, we ran FuXi against Claude Code on 15 identical
 coding tasks, each through its own native client, on the same baseline and the
 same automated scorer (pytest + coverage):
 
-| Dimension | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Dimension | FuXi + deepseek | Claude Code + claude-opus-5 |
 |---|---|---|
 | Bug fix | ✅ 4/4 | ✅ 4/4 |
 | Feature implementation | ✅ 5/5 | ✅ 5/5 |

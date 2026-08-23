@@ -8,12 +8,12 @@
 |:---:|:---:|:---:|
 | **🎯 Tasks** | **🧠 Models compared** | **✅ Pass rate** |
 | **`19`** | **`2`** | **`100%`** |
-| 15 micro: bug-fix · feature · refactor · test-gen · review · LRU · graph · thread-safety · validation · regex · multi-file · error-handling · API-design · performance · docs — plus 4 large-project: cross-file fix · feature dev · refactor · integration | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | Both models, all green |
+| 15 micro: bug-fix · feature · refactor · test-gen · review · LRU · graph · thread-safety · validation · regex · multi-file · error-handling · API-design · performance · docs — plus 4 large-project: cross-file fix · feature dev · refactor · integration | FuXi + deepseek vs Claude Code + claude-opus-5 | Both models, all green |
 
 </div>
 
 > **Bottom line:** FuXi driving the OpenAPI-compatible reasoning model
-> `deepseek-v4-flash` **ties Claude Code + `claude-opus-5`** across 15 micro
+> `deepseek` **ties Claude Code + `claude-opus-5`** across 15 micro
 > coding dimensions **and** 4 large-project dimensions (a 25+ file, 5-layer
 > order-management system) — 100% pass on both sides, zero failures, zero human
 > intervention.
@@ -66,7 +66,7 @@ claude -p --dangerously-skip-permissions "<task>"
 
 ## 📊 Key Metrics at a Glance
 
-| Metric | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Metric | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:---|---:|---:|
 | 🎯 Dimension pass rate | **15 / 15** | **15 / 15** |
 | 🐛 Bugs fixed / features implemented | **All** | **All** |
@@ -135,7 +135,7 @@ Full large-project report: [`LARGE_PROJECT_REPORT.md`](LARGE_PROJECT_REPORT.md)
 
 Both models hit **100% on all 15 micro dimensions**, with zero failures:
 
-| Dimension | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Dimension | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:--:|:--:|:--:|
 | D1 Bug fix | ✅ 100% | ✅ 100% |
 | D2 Feature impl | ✅ 100% | ✅ 100% |
@@ -208,7 +208,7 @@ flowchart LR
 
 ## 🎯 Capability Matrix
 
-| Capability | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Capability | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:---|:---:|:---:|
 | Reading comprehension (infer behavior from tests) | 🟢 | 🟢 |
 | Code generation (correct · idiomatic) | 🟢 | 🟢 |
@@ -253,8 +253,8 @@ flowchart LR
 |---|---|
 | 1 | **Tied ability**: both models pass all 19 tasks (15 micro + 4 large-project), 0 failures |
 | 2 | **Fair comparison**: each via its own native client, same baseline, objective scoring |
-| 3 | **Verifiable**: FuXi lets `deepseek-v4-flash` reach `claude-opus-5`-level ability |
-| 4 | **Cost advantage**: `deepseek-v4-flash` is a lightweight tier, substantially cheaper |
+| 3 | **Verifiable**: FuXi lets `deepseek` reach `claude-opus-5`-level ability |
+| 4 | **Cost advantage**: `deepseek` is a lightweight tier, substantially cheaper |
 
 ---
 

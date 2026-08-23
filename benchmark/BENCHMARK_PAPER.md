@@ -8,13 +8,13 @@
 |:---:|:---:|:---:|
 | **🎯 Tasks** | **🧠 Systems compared** | **✅ Overall pass** |
 | **`15 micro + 4 large-project`** | **`2`** | **`100%`** |
-| deterministic · objective scoring | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | zero failures |
+| deterministic · objective scoring | FuXi + deepseek vs Claude Code + claude-opus-5 | zero failures |
 
 </div>
 
 > **Abstract:** This report presents a controlled, reproducible evaluation of
 > two AI coding agents — **FuXi** (driving the OpenAPI-compatible reasoning
-> model `deepseek-v4-flash`) and **Claude Code** (driving `claude-opus-5`) —
+> model `deepseek`) and **Claude Code** (driving `claude-opus-5`) —
 > across 15 micro coding dimensions and 4 large-project development dimensions.
 > Under identical baselines, prompts, and objective scorers, both systems pass
 > every task with zero failures, indicating **statistically indistinguishable
@@ -49,7 +49,7 @@ its own native client, so the comparison is fair by construction.
 
 | System | Client | Version | Model |
 |---|---|---|---|
-| FuXi | `fuxi -p` | `0.15` (planned) | `deepseek-v4-flash` (OpenAPI-compatible) |
+| FuXi | `fuxi -p` | `0.15` (planned) | `deepseek` (OpenAPI-compatible) |
 | Claude Code | `claude -p` | `2.1.241` (official npm) | `claude-opus-5` |
 
 ### 2.2 Task Suite
@@ -200,7 +200,7 @@ Beyond pass/fail, both systems produced **engineering-grade code**, evidenced by
 | **Internal validity** (is the comparison fair?) | Identical baselines, prompts, and scorers; permission modes matched; single-run randomness is a residual risk |
 | **External validity** (do results generalize?) | Small, synthetic task set; not representative of 10k-file monoliths or multi-service systems |
 | **Statistical conclusion** | Single run per task; no repeated sampling or confidence intervals |
-| **Model identity** | `deepseek-v4-flash` and `claude-opus-5` are config/proxy-declared IDs, not independently verified |
+| **Model identity** | `deepseek` and `claude-opus-5` are config/proxy-declared IDs, not independently verified |
 
 ---
 
@@ -229,7 +229,7 @@ corresponding runner with the target system's credentials.
 
 ## 9. Conclusion
 
-FuXi driving `deepseek-v4-flash` matches Claude Code driving `claude-opus-5` on
+FuXi driving `deepseek` matches Claude Code driving `claude-opus-5` on
 both micro and large-project agentic coding tasks, passing all 19 tasks with
 zero failures under identical, objective conditions. This supports the claim
 that **FuXi's agentic loop lets an OpenAPI-compatible reasoning model reach

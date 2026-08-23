@@ -8,11 +8,11 @@
 |:---:|:---:|:---:|
 | **🎯 任务** | **🧠 对比模型** | **✅ 通过率** |
 | **`19`** | **`2`** | **`100%`** |
-| 15 微观：缺陷修复 · 功能实现 · 重构 · 测试生成 · 审查 · LRU · 图算法 · 线程安全 · 校验 · 正则 · 多文件 · 错误处理 · API 设计 · 性能 · 文档 —— 加 4 大型项目：跨文件修复 · 功能开发 · 重构 · 集成调试 | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | 两模型全部满分 |
+| 15 微观：缺陷修复 · 功能实现 · 重构 · 测试生成 · 审查 · LRU · 图算法 · 线程安全 · 校验 · 正则 · 多文件 · 错误处理 · API 设计 · 性能 · 文档 —— 加 4 大型项目：跨文件修复 · 功能开发 · 重构 · 集成调试 | FuXi + deepseek vs Claude Code + claude-opus-5 | 两模型全部满分 |
 
 </div>
 
-> **一句话结论：** FuXi 驱动的 OpenAPI 兼容推理模型 `deepseek-v4-flash`，在 15 个
+> **一句话结论：** FuXi 驱动的 OpenAPI 兼容推理模型 `deepseek`，在 15 个
 > 微观编码维度**以及** 4 个大型项目维度（25+ 文件、5 层架构的订单管理系统）上
 > **与 Claude Code + `claude-opus-5` 完全打平**——均为 100% 通过，零失败、零人工干预。
 
@@ -62,7 +62,7 @@ claude -p --dangerously-skip-permissions "<任务>"
 
 ## 📊 核心指标一览
 
-| 指标 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| 指标 | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:---|---:|---:|
 | 🎯 维度通过率 | **15 / 15** | **15 / 15** |
 | 🐛 修复缺陷/实现功能 | **全部** | **全部** |
@@ -129,7 +129,7 @@ claude -p --dangerously-skip-permissions "<任务>"
 
 两模型在全部 15 个微观维度上均为 **100% 通过**，无任何失败：
 
-| 维度 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| 维度 | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:--:|:--:|:--:|
 | D1 缺陷修复 | ✅ 100% | ✅ 100% |
 | D2 功能实现 | ✅ 100% | ✅ 100% |
@@ -201,7 +201,7 @@ flowchart LR
 
 ## 🎯 能力矩阵
 
-| 能力 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| 能力 | FuXi + deepseek | Claude Code + claude-opus-5 |
 |:---|:---:|:---:|
 | 阅读理解（从测试推断行为） | 🟢 | 🟢 |
 | 代码生成（正确·惯用法） | 🟢 | 🟢 |
@@ -246,8 +246,8 @@ flowchart LR
 |---|---|
 | 1 | **能力打平**：两模型 19 个任务（15 微观 + 4 大型项目）均满分，0 失败 |
 | 2 | **公平对照**：各用原生客户端，相同 baseline，客观评分 |
-| 3 | **可验证**：FuXi 让 `deepseek-v4-flash` 达到 `claude-opus-5` 同级能力 |
-| 4 | **成本优势**：`deepseek-v4-flash` 为轻量档，成本显著更低 |
+| 3 | **可验证**：FuXi 让 `deepseek` 达到 `claude-opus-5` 同级能力 |
+| 4 | **成本优势**：`deepseek` 为轻量档，成本显著更低 |
 
 ---
 

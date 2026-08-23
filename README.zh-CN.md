@@ -90,7 +90,7 @@ FuXi 是一个终端优先、设计上不绑定任何单一提供商的 AI 编�
 Claude Code 各自通过原生客户端、在相同 baseline 与相同客观评分工具
 （pytest + coverage）下进行对比：
 
-| 维度 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| 维度 | FuXi + deepseek | Claude Code + claude-opus-5 |
 |---|---|---|
 | 缺陷修复 | ✅ 4/4 | ✅ 4/4 |
 | 功能实现 | ✅ 5/5 | ✅ 5/5 |
