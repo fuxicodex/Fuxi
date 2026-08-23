@@ -9,10 +9,12 @@
 
 > **An AI coding agent that lives in your terminal.**
 
-FuXi is a fast, self-contained AI developer terminal — read code, edit files,
-run commands, and drive tools from a rich TUI, with cost-aware routing across
-LLM providers and automatic failover. Built in Go, it ships as one static binary
-with no runtime dependencies.
+FuXi is a fast, self-contained **terminal AI coding agent** — read code, edit
+files, run commands, and drive tools from a rich TUI, with cost-aware routing
+across LLM providers and automatic failover. Built in Go, it ships as one
+static binary with no runtime dependencies. Think of it as a provider-agnostic
+alternative to Claude Code: bring any OpenAI-compatible model and get an
+agentic Think → Act → Verify loop on top of it.
 
 **Terminal-first** · **Provider-agnostic** · **Bring your own key** · **MCP client** · **Self-updating**
 
