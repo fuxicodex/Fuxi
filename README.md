@@ -8,7 +8,6 @@
 [![License](https://img.shields.io/badge/license-Proprietary-0a6fe7?style=flat-square)](LICENSE)
 
 > **An AI coding agent that lives in your terminal.**
-> Codename **YiHuaKaiTian** — "one stroke opens the heavens."
 
 FuXi is a fast, self-contained AI developer terminal: read code, edit files, run
 commands, and drive tools from a rich TUI, with cost-aware routing across many

@@ -8,7 +8,6 @@
 [![License](https://img.shields.io/badge/license-Proprietary-0a6fe7?style=flat-square)](LICENSE)
 
 > **一个住在你终端里的 AI 编程智能体。**
-> 代号 **一画开天 (YiHuaKaiTian)**。
 
 FuXi 是一个快速、自包含的 AI 开发者终端：在丰富的 TUI 中读代码、改文件、
 运行命令、驱动工具，并在多个 LLM 提供商之间进行成本感知的路由与自动故障
