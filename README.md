@@ -9,16 +9,10 @@
 
 > **An AI coding agent that lives in your terminal.**
 
-FuXi is a fast, self-contained AI developer terminal: read code, edit files, run
-commands, and drive tools from a rich TUI, with cost-aware routing across many
+FuXi is a fast, self-contained AI developer terminal — read code, edit files,
+run commands, and drive tools from a rich TUI, with cost-aware routing across
 LLM providers and automatic failover. Built in Go, it ships as one static binary
 with no runtime dependencies.
-
-FuXi is built to rival the most capable Claude-class coding agents. Its agentic
-Think → Act → Verify loop and intelligent routing elevate the reasoning of any
-OpenAPI-compatible model to the level of the latest, most capable Claude — at a
-fraction of the cost: cheap models handle simple work, and every model performs
-far above its raw benchmark.
 
 **Terminal-first** · **Provider-agnostic** · **Bring your own key** · **MCP client** · **Self-updating**
 
@@ -30,6 +24,15 @@ fuxi                                                        # start
 ```
 
 ![FuXi in action](docs/fuxi-demo.gif)
+
+---
+
+### What FuXi does
+
+Its agentic **Think → Act → Verify** loop and intelligent routing let any
+OpenAPI-compatible model perform above its raw benchmark — verified against
+another coding agent on a reproducible task set (see
+[benchmark](benchmark/REPORT.md)).
 
 ---
 ## Contents
@@ -60,7 +63,7 @@ codebase, verifying results, and doing it affordably and under your control.
 
 ![Intelligent routing](docs/routing.svg)
 
-![Elevating any model to world-class](docs/elevation.svg)
+![Elevating any model's capability](docs/elevation.svg)
 
 - **50+ built-in tools** — file read/write/edit, shell (`bash` / PowerShell),
   ripgrep search, web fetch, LSP diagnostics, Jupyter, browser use, background
