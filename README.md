@@ -37,6 +37,7 @@ fuxi                                                        # start
 - [Usage guide](#usage-guide)
 - [Keyboard shortcuts](docs/keybindings.md)
 - [FAQ](docs/faq.md)
+- [Security & privacy](security-privacy/README.md)
 - [Changelog](CHANGELOG.md)
 - [Support](SUPPORT.md)
 - [Project layout](#project-layout)
@@ -358,6 +359,8 @@ License).
 - `CHANGELOG.md` — release history
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
   community and support guides
+- `security-privacy/` — the Security & Privacy Program: governance charter,
+  policies, standards, procedures, global compliance matrix, and trust center
 
 ---
 

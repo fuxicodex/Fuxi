@@ -37,6 +37,7 @@ fuxi                                                        # 启动
 - [使用指南](#使用指南)
 - [快捷键速查](docs/keybindings.md)
 - [常见问题](docs/faq.md)
+- [安全与隐私](security-privacy/README.md)
 - [更新日志](CHANGELOG.md)
 - [支持](SUPPORT.md)
 - [项目结构](#项目结构)
@@ -342,6 +343,8 @@ fuxi update 0.1.2      # 指定版本
 - `CHANGELOG.md` — 版本发布记录
 - `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`、`SUPPORT.md` —
   社区与支持指南
+- `security-privacy/` — 安全与隐私保护体系：治理章程、政策、标准、流程、
+  全球合规矩阵与信任中心
 
 ---
 
