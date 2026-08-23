@@ -92,7 +92,7 @@ as of mid-2026; details evolve quickly, so treat it as an orientation.
 
 ### Measured head-to-head
 
-To keep our own claims honest, we ran FuXi against Claude Code on 11 identical
+To keep our own claims honest, we ran FuXi against Claude Code on 15 identical
 coding tasks, each through its own native client, on the same baseline and the
 same automated scorer (pytest + coverage):
 
@@ -109,8 +109,12 @@ same automated scorer (pytest + coverage):
 | Input validation | ✅ 5/5 | ✅ 5/5 |
 | Regex text processing | ✅ 3/3 | ✅ 3/3 |
 | Multi-file app | ✅ 5/5 | ✅ 5/5 |
+| Error handling | ✅ 6/6 | ✅ 6/6 |
+| API design | ✅ 6/6 | ✅ 6/6 |
+| Performance optimization | ✅ 5/5 | ✅ 5/5 |
+| Documentation | ✅ 100% | ✅ 100% |
 
-Both sides passed all 11 dimensions with zero failures. Full methodology, raw
+Both sides passed all 15 dimensions with zero failures. Full methodology, raw
 results, environment versions, exact commands, and known limitations are in
 [`benchmark/REPORT.md`](benchmark/REPORT.md) so you can verify or re-run it.
 

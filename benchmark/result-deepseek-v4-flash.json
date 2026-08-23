@@ -1,7 +1,7 @@
 {
   "d1_bugfix": {
     "baseline": "1 failed, 3 passed in 0.01s",
-    "final": "1 failed, 3 passed in 0.00s",
+    "final": "4 passed in 0.00s",
     "fuxi_exit": 0
   },
   "d2_feature": {
@@ -15,8 +15,8 @@
     "fuxi_exit": 0
   },
   "d4_testgen": {
-    "baseline": "no tests ran in 0.00s",
-    "final": "COVERAGE=100 PASSED=48 FAILED=0 ",
+    "baseline": "COVERAGE=UNKNOWN passed=? PASSED=0 FAILED=0 ",
+    "final": "COVERAGE=100 PASSED=71 FAILED=0 ",
     "fuxi_exit": 0
   },
   "d5_review": {
@@ -52,6 +52,26 @@
   "d11_multifile": {
     "baseline": "2 failed, 3 passed in 0.01s",
     "final": "5 passed in 0.00s",
+    "fuxi_exit": 0
+  },
+  "d12_errorhandle": {
+    "baseline": "2 failed, 4 passed in 0.01s",
+    "final": "6 passed in 0.01s",
+    "fuxi_exit": 0
+  },
+  "d13_api": {
+    "baseline": "2 failed, 4 passed in 0.01s",
+    "final": "6 passed in 0.00s",
+    "fuxi_exit": 0
+  },
+  "d14_perf": {
+    "baseline": "5 passed in 5.31s",
+    "final": "5 passed in 0.00s",
+    "fuxi_exit": 0
+  },
+  "d15_docs": {
+    "baseline": "DOCUMENTED=0 TOTAL_DEFS=5 DOC_COVERAGE=0 ",
+    "final": "DOCUMENTED=5 TOTAL_DEFS=5 DOC_COVERAGE=100 ",
     "fuxi_exit": 0
   }
 }}

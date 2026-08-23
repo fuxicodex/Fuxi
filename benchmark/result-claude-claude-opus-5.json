@@ -5,7 +5,7 @@
     "claude_exit": 0
   },
   "d2_feature": {
-    "baseline": "1 error in 0.06s",
+    "baseline": "1 error in 0.05s",
     "final": "5 passed in 0.00s",
     "claude_exit": 0
   },
@@ -15,8 +15,8 @@
     "claude_exit": 0
   },
   "d4_testgen": {
-    "baseline": "no tests ran in 0.00s",
-    "final": "COVERAGE=100 PASSED=114 FAILED=0 ",
+    "baseline": "COVERAGE=UNKNOWN passed=? PASSED=0 FAILED=0 ",
+    "final": "COVERAGE=100 PASSED=102 FAILED=0 ",
     "claude_exit": 0
   },
   "d5_review": {
@@ -26,21 +26,21 @@
   },
   "d6_lru": {
     "baseline": "3 failed, 3 passed in 0.01s",
-    "final": "6 passed in 0.00s",
+    "final": "6 passed in 0.08s",
     "claude_exit": 0
   },
   "d7_graph": {
-    "baseline": "1 failed, 4 passed in 0.01s",
-    "final": "5 passed in 0.00s",
+    "baseline": "1 failed, 4 passed in 0.26s",
+    "final": "5 passed in 0.01s",
     "claude_exit": 0
   },
   "d8_threadsafe": {
-    "baseline": "1 failed, 3 passed in 0.04s",
-    "final": "4 passed in 0.04s",
+    "baseline": "1 failed, 3 passed in 0.15s",
+    "final": "4 passed in 0.15s",
     "claude_exit": 0
   },
   "d9_validation": {
-    "baseline": "3 failed, 2 passed in 0.01s",
+    "baseline": "3 failed, 2 passed in 0.02s",
     "final": "5 passed in 0.00s",
     "claude_exit": 0
   },
@@ -50,8 +50,28 @@
     "claude_exit": 0
   },
   "d11_multifile": {
-    "baseline": "2 failed, 3 passed in 0.01s",
+    "baseline": "2 failed, 3 passed in 0.02s",
     "final": "5 passed in 0.00s",
+    "claude_exit": 0
+  },
+  "d12_errorhandle": {
+    "baseline": "2 failed, 4 passed in 0.01s",
+    "final": "6 passed in 0.01s",
+    "claude_exit": 0
+  },
+  "d13_api": {
+    "baseline": "2 failed, 4 passed in 0.01s",
+    "final": "6 passed in 0.01s",
+    "claude_exit": 0
+  },
+  "d14_perf": {
+    "baseline": "5 passed in 5.30s",
+    "final": "5 passed in 0.01s",
+    "claude_exit": 0
+  },
+  "d15_docs": {
+    "baseline": "DOCUMENTED=0 TOTAL_DEFS=5 DOC_COVERAGE=0 ",
+    "final": "DOCUMENTED=5 TOTAL_DEFS=5 DOC_COVERAGE=100 ",
     "claude_exit": 0
   }
 }}
