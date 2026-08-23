@@ -52,13 +52,13 @@ fuxi                                                        # 启动
 的工人 —— 推理、在你真实的代码库上行动、验证结果，并且成本可控、尽在你
 掌握之中。
 
-![FuXi 架构](docs/architecture.svg)
+![FuXi 架构](docs/architecture.png)
 
-![思考 → 行动 → 验证循环](docs/loop.svg)
+![思考 → 行动 → 验证循环](docs/loop.png)
 
-![智能路由](docs/routing.svg)
+![智能路由](docs/routing.png)
 
-![提升任意模型的能力](docs/elevation.svg)
+![提升任意模型的能力](docs/elevation.png)
 
 - **50+ 内置工具** —— 文件读/写/改、shell（`bash` / PowerShell）、ripgrep
   搜索、网页抓取、LSP 诊断、Jupyter、浏览器控制、后台任务，以及并行子智能体
@@ -83,7 +83,7 @@ FuXi 是一个终端优先、设计上不绑定任何单一提供商的 AI 编�
 
 ### 实测对比
 
-![FuXi 与 Claude Code 实测对比](docs/headtohead.svg)
+![FuXi 与 Claude Code 实测对比](docs/headtohead.png)
 
 两个系统各自通过原生客户端、在相同 baseline 与相同客观评分工具
 （pytest + coverage）下，于 15 个微观维度与 4 个大型项目维度上进行对比。

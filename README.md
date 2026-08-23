@@ -57,13 +57,13 @@ another coding agent on a reproducible task set (see
 questions; FuXi turns it into a worker — reasoning, acting on your real
 codebase, verifying results, and doing it affordably and under your control.
 
-![FuXi architecture](docs/architecture.svg)
+![FuXi architecture](docs/architecture.png)
 
-![Think → Act → Verify loop](docs/loop.svg)
+![Think → Act → Verify loop](docs/loop.png)
 
-![Intelligent routing](docs/routing.svg)
+![Intelligent routing](docs/routing.png)
 
-![Elevating any model's capability](docs/elevation.svg)
+![Elevating any model's capability](docs/elevation.png)
 
 - **50+ built-in tools** — file read/write/edit, shell (`bash` / PowerShell),
   ripgrep search, web fetch, LSP diagnostics, Jupyter, browser use, background
@@ -93,7 +93,7 @@ as of mid-2026; details evolve quickly, so treat it as an orientation.
 
 ### Measured head-to-head
 
-![FuXi vs Claude Code head-to-head](docs/headtohead.svg)
+![FuXi vs Claude Code head-to-head](docs/headtohead.png)
 
 Both systems were driven through their own native clients, on identical
 baselines and the same objective scorer (pytest + coverage), across 15 micro
