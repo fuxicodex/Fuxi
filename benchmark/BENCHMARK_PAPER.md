@@ -218,7 +218,7 @@ Beyond pass/fail, both systems produced **engineering-grade code**, evidenced by
 | Artifact | Location |
 |---|---|
 | Task scenarios (15 micro) | `benchmark/scenarios/` |
-| Large project (orderapp) | `benchmark/scenarios/` (see `LARGE_PROJECT_REPORT.md`) |
+| Large project (orderapp) | `benchmark/scenarios/` |
 | Runner scripts | `benchmark/run_multi.sh`, `run_claude.sh` |
 | Raw results | `benchmark/result-*.json` |
 
@@ -242,7 +242,7 @@ and validity caveats above apply.
 ## 10. References & Artifacts
 
 - Full micro-dimension report: `benchmark/REPORT.md`
-- Large-project report: `benchmark/LARGE_PROJECT_REPORT.md`
+- Large-project results: see `benchmark/REPORT.md`
 - Chinese versions: `benchmark/*.zh-CN.md`
 
 ---

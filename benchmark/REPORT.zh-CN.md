@@ -121,7 +121,7 @@ claude -p --dangerously-skip-permissions "<任务>"
 | 刻意的"不改动" | 两者都避开了会改变输出的千分位格式化器 |
 | 递归序列化 | `JsonFileStore.save()` 正确处理 dataclass、枚举、datetime |
 
-完整大型项目报告：[`LARGE_PROJECT_REPORT.zh-CN.md`](LARGE_PROJECT_REPORT.zh-CN.md)
+另见方法论论文：[`BENCHMARK_PAPER.zh-CN.md`](BENCHMARK_PAPER.zh-CN.md)。
 
 ---
 

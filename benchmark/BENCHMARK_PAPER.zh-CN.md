@@ -209,7 +209,7 @@ pie showData
 | 产物 | 位置 |
 |---|---|
 | 微观任务场景（15 个） | `benchmark/scenarios/` |
-| 大型项目（orderapp） | `benchmark/scenarios/`（见 `LARGE_PROJECT_REPORT.md`） |
+| 大型项目（orderapp） | `benchmark/scenarios/` |
 | 运行脚本 | `benchmark/run_multi.sh`、`run_claude.sh` |
 | 原始结果 | `benchmark/result-*.json` |
 
@@ -230,7 +230,7 @@ FuXi 驱动 `deepseek` 在微观与大型项目智能体编码任务上，均与
 ## 10. 参考文献与产物
 
 - 完整微观维度报告：`benchmark/REPORT.md`
-- 大型项目报告：`benchmark/LARGE_PROJECT_REPORT.md`
+- 大型项目结果：见 `benchmark/REPORT.md`
 - 英文版本：`benchmark/*.md`
 
 ---

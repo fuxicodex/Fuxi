@@ -127,7 +127,7 @@ dependencies (e.g. `pricing → order_service`, `api → inventory`).
 | Deliberate non-changes | Both avoided reusing a thousands-separator formatter that would alter output |
 | Recursive serialization | `JsonFileStore.save()` handled dataclasses, enums, and datetimes correctly |
 
-Full large-project report: [`LARGE_PROJECT_REPORT.md`](LARGE_PROJECT_REPORT.md)
+See also the methodology paper: [`BENCHMARK_PAPER.md`](BENCHMARK_PAPER.md).
 
 ---
 
