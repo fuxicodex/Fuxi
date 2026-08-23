@@ -14,11 +14,11 @@ commands, and drive tools from a rich TUI, with cost-aware routing across many
 LLM providers and automatic failover. Built in Go, it ships as one static binary
 with no runtime dependencies.
 
-FuXi is built to rival Claude-class coding agents. Its agentic
-Think → Act → Verify loop and intelligent routing raise what any
-OpenAPI-compatible model can accomplish — delivering Claude-tier agent capability
-at a fraction of the cost: cheap models handle simple work, and every model
-performs well above its raw benchmark.
+FuXi is built to rival the most capable Claude-class coding agents. Its agentic
+Think → Act → Verify loop and intelligent routing elevate the reasoning of any
+OpenAPI-compatible model to the level of the latest, most capable Claude — at a
+fraction of the cost: cheap models handle simple work, and every model performs
+far above its raw benchmark.
 
 **Terminal-first** · **Provider-agnostic** · **Bring your own key** · **MCP client** · **Self-updating**
 
