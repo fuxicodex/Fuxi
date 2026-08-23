@@ -60,6 +60,8 @@ codebase, verifying results, and doing it affordably and under your control.
 
 ![Intelligent routing](docs/routing.svg)
 
+![Elevating any model to world-class](docs/elevation.svg)
+
 - **50+ built-in tools** — file read/write/edit, shell (`bash` / PowerShell),
   ripgrep search, web fetch, LSP diagnostics, Jupyter, browser use, background
   tasks, and parallel sub-agents — all in one binary.

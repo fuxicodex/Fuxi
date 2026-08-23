@@ -59,6 +59,8 @@ fuxi                                                        # 启动
 
 ![智能路由](docs/routing.svg)
 
+![将任意模型提升到世界级](docs/elevation.svg)
+
 - **50+ 内置工具** —— 文件读/写/改、shell（`bash` / PowerShell）、ripgrep
   搜索、网页抓取、LSP 诊断、Jupyter、浏览器控制、后台任务，以及并行子智能体
   —— 全部装在一个二进制里。

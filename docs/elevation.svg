@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="320" viewBox="0 0 780 320" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="elev" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#0a6fe7"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a6fe7"/>
+      <stop offset="100%" stop-color="#0b57c8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="390" y="30" font-size="18" font-weight="bold" fill="#111827" text-anchor="middle">Any OpenAPI-compatible model — elevated to world-class</text>
+
+  <!-- Left: ordinary model -->
+  <rect x="30" y="70" width="200" height="90" rx="12" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="130" y="105" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">Ordinary model</text>
+  <text x="130" y="128" font-size="11" fill="#6b7280" text-anchor="middle">raw benchmark score:</text>
+  <text x="130" y="144" font-size="11" fill="#6b7280" text-anchor="middle">modest</text>
+
+  <!-- Middle: FuXi loop -->
+  <rect x="290" y="70" width="200" height="90" rx="12" fill="url(#bgGrad)"/>
+  <text x="390" y="100" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">FuXi agentic loop</text>
+  <text x="390" y="122" font-size="11" fill="#dbeafe" text-anchor="middle">Think → Act → Verify</text>
+  <text x="390" y="138" font-size="11" fill="#dbeafe" text-anchor="middle">intelligent routing · tools</text>
+
+  <!-- Right: world-class -->
+  <rect x="550" y="70" width="200" height="90" rx="12" fill="#eef6ff" stroke="#0a6fe7" stroke-width="2"/>
+  <text x="650" y="105" font-size="15" font-weight="bold" fill="#0a6fe7" text-anchor="middle">World-class capability</text>
+  <text x="650" y="128" font-size="11" fill="#374151" text-anchor="middle">matches top-tier</text>
+  <text x="650" y="144" font-size="11" fill="#374151" text-anchor="middle">Claude-class agents</text>
+
+  <!-- Arrows -->
+  <line x1="230" y1="115" x2="286" y2="115" stroke="#0a6fe7" stroke-width="2.5" marker-end="url(#elev)"/>
+  <line x1="490" y1="115" x2="546" y2="115" stroke="#0a6fe7" stroke-width="2.5" marker-end="url(#elev)"/>
+
+  <!-- Proof panel -->
+  <rect x="130" y="210" width="520" height="88" rx="12" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="390" y="236" font-size="13" font-weight="bold" fill="#111827" text-anchor="middle">Proof — controlled benchmark, real clients, objective scoring</text>
+
+  <text x="390" y="262" font-size="12" fill="#374151" text-anchor="middle">19 tasks · 15 micro + 4 large-project (25+ file, 5-layer orderapp)</text>
+  <text x="390" y="282" font-size="12" fill="#374151" text-anchor="middle">FuXi + deepseek: 100% pass · zero failures — tied with Claude Code + claude-opus-5</text>
+</svg>
