@@ -350,4 +350,4 @@ fuxi update 0.1.2      # 指定版本
 
 ## License
 
-**闭源。** Copyright © 2026 FUXI（上海翊太科技有限公司 / Shanghai YiTai Technology Co., Ltd.）。保留所有权利。
+**闭源。** Copyright © 2026 FUXI。保留所有权利。

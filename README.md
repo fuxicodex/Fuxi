@@ -366,5 +366,5 @@ License).
 
 ## License
 
-**Proprietary.** Copyright © 2026 FUXI (Shanghai YiTai Technology Co., Ltd.). All
+**Proprietary.** Copyright © 2026 FUXI. All
 rights reserved.
