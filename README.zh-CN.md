@@ -34,9 +34,9 @@ fuxi                                                        # 启动
 - [评估与基准](#评估与基准)
 - [安装](#安装)
 - [快速开始](#快速开始)
-- [使用指南](#使用指南)
-- [快捷键速查](docs/keybindings.md)
-- [常见问题](docs/faq.md)
+- [使用指南](docs/usage.zh-CN.md)
+- [快捷键速查](docs/keybindings.zh-CN.md)
+- [常见问题](docs/faq.zh-CN.md)
 - [安全与隐私](security-privacy/README.md)
 - [更新日志](CHANGELOG.md)
 - [支持](SUPPORT.md)
@@ -210,6 +210,9 @@ fuxi
 
 ## 使用指南
 
+> 完整的、逐步的使用指南 —— 从安装到高级特性 —— 见
+> [docs/usage.zh-CN.md](docs/usage.zh-CN.md)。本节为速查参考。
+
 ### 命令行参数
 
 启动 `fuxi` 时常用参数，按用途分组。完整参考见 `fuxi --help`。
@@ -339,7 +342,7 @@ fuxi update 0.1.2      # 指定版本
 发布（见 License）。
 
 - `README.md` / `README.zh-CN.md` — 主文档（英文 / 简体中文）
-- `docs/` — 演示 GIF、对比图、快捷键速查、常见问题
+- `docs/` — 演示 GIF、对比图、使用指南、快捷键速查、常见问题
 - `CHANGELOG.md` — 版本发布记录
 - `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`、`SUPPORT.md` —
   社区与支持指南

@@ -34,7 +34,7 @@ fuxi                                                        # start
 - [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Install](#install)
 - [Getting started](#getting-started)
-- [Usage guide](#usage-guide)
+- [Usage guide](docs/usage.md)
 - [Keyboard shortcuts](docs/keybindings.md)
 - [FAQ](docs/faq.md)
 - [Security & privacy](security-privacy/README.md)
@@ -219,6 +219,9 @@ driven from inside the TUI via slash commands.
 
 ## Usage guide
 
+> For the complete, step-by-step guide — from installation to advanced features
+> — see [docs/usage.md](docs/usage.md). This section is a quick reference.
+
 ### Command-line flags
 
 Common flags when launching `fuxi`, grouped by purpose. The complete reference
@@ -355,7 +358,7 @@ tracker. The product source is proprietary and is not published here (see
 License).
 
 - `README.md` / `README.zh-CN.md` — the main documentation (English / 简体中文)
-- `docs/` — demo GIF, comparison graphics, keyboard reference, FAQ
+- `docs/` — demo GIF, comparison graphics, usage guide, keyboard reference, FAQ
 - `CHANGELOG.md` — release history
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
   community and support guides
