@@ -208,7 +208,6 @@ flowchart LR
 | D1 备注 | FuXi 侧 D1 首次运行出现一次偶发未落盘，重跑即通过 |
 | 非官方基准 | 自定义任务集，非 SWE-bench 等公认基准 |
 | 模型身份 | 均为配置/代理声明 ID，未独立核实 |
-| Claude 侧走代理 | 经第三方代理 `01us.model123.dev`，非 Anthropic 官方端点 |
 
 ---
 

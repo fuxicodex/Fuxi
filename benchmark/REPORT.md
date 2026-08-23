@@ -211,7 +211,6 @@ flowchart LR
 | D1 note | FuXi's D1 had one flaky non-persist run, passed on re-run |
 | Not an official benchmark | custom task set, not SWE-bench etc. |
 | Model identity | both are config/proxy-declared IDs, not independently verified |
-| Claude side via proxy | via third-party proxy `01us.model123.dev`, not Anthropic's official endpoint |
 
 ---
 
