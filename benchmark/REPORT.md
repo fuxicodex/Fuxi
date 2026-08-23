@@ -1,20 +1,22 @@
 # 🏆 FuXi Capability Benchmark Report
 
-**FuXi vs Claude Code · 15-Dimension Agentic Coding Ability**
+**FuXi vs Claude Code · 15 Micro Dimensions + 4 Large-Project Dimensions**
 
 <div align="center">
 
 | | | |
 |:---:|:---:|:---:|
-| **🎯 Dimensions** | **🧠 Models compared** | **✅ Pass rate** |
-| **`15`** | **`2`** | **`100%`** |
-| bug-fix · feature · refactor · test-gen · review · LRU · graph · thread-safety · validation · regex · multi-file · error-handling · API-design · performance · docs | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | Both models, all green |
+| **🎯 Tasks** | **🧠 Models compared** | **✅ Pass rate** |
+| **`19`** | **`2`** | **`100%`** |
+| 15 micro: bug-fix · feature · refactor · test-gen · review · LRU · graph · thread-safety · validation · regex · multi-file · error-handling · API-design · performance · docs — plus 4 large-project: cross-file fix · feature dev · refactor · integration | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | Both models, all green |
 
 </div>
 
 > **Bottom line:** FuXi driving the OpenAPI-compatible reasoning model
-> `deepseek-v4-flash` **ties Claude Code + `claude-opus-5`** across 15 core coding
-> dimensions — 100% pass on both sides, zero failures, zero human intervention.
+> `deepseek-v4-flash` **ties Claude Code + `claude-opus-5`** across 15 micro
+> coding dimensions **and** 4 large-project dimensions (a 25+ file, 5-layer
+> order-management system) — 100% pass on both sides, zero failures, zero human
+> intervention.
 
 ---
 
@@ -97,9 +99,41 @@ claude -p --dangerously-skip-permissions "<task>"
 
 ---
 
+## 🏗️ Large-Codebase Benchmark (orderapp)
+
+Beyond single-module tasks, we evaluated both systems on a **real multi-file
+layered project** — `orderapp`, an order-management system with **25+ files
+across 5 layers** (`models / services / api / storage / utils`). Defects span
+module boundaries, so fixing them requires understanding cross-file
+dependencies (e.g. `pricing → order_service`, `api → inventory`).
+
+### Four Large-Project Dimensions
+
+| # | Dimension | Task | FuXi result | Claude Code result |
+|:--:|---|:---:|:---:|:---:|
+| P1 | Cross-file bug fix | discount sign across `pricing→order_service` | ✅ 15 passed | ✅ 15 passed |
+| P2 | Feature development | implement `JsonFileStore.save()` persistence | ✅ 18 passed | ✅ 18 passed |
+| P3 | Cross-module refactor | dedupe `report.py` (3 duplicated fn groups) | ✅ 18 passed | ✅ 18 passed |
+| P4 | Integration debugging | `place_order()` dropped collected items | ✅ 15 passed | ✅ 15 passed |
+
+**Both systems pass all 4 large-project dimensions with zero failures.**
+
+### Qualitative highlights (real, verifiable)
+
+| Observed behavior | Detail |
+|---|---|
+| Cross-module awareness | Both traced defects across `pricing→order_service` and `api→inventory` |
+| Correctness reasoning | Claude Code ran a 500-input randomized diff during refactor to guarantee byte-identical output |
+| Deliberate non-changes | Both avoided reusing a thousands-separator formatter that would alter output |
+| Recursive serialization | `JsonFileStore.save()` handled dataclasses, enums, and datetimes correctly |
+
+Full large-project report: [`LARGE_PROJECT_REPORT.md`](LARGE_PROJECT_REPORT.md)
+
+---
+
 ## 📈 Pass Rate by Dimension
 
-Both models hit **100% on all 15 dimensions**, with zero failures:
+Both models hit **100% on all 15 micro dimensions**, with zero failures:
 
 | Dimension | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
 |:--:|:--:|:--:|
@@ -217,7 +251,7 @@ flowchart LR
 
 | # | Conclusion |
 |---|---|
-| 1 | **Tied ability**: both models pass all 15 dimensions, 0 failures |
+| 1 | **Tied ability**: both models pass all 19 tasks (15 micro + 4 large-project), 0 failures |
 | 2 | **Fair comparison**: each via its own native client, same baseline, objective scoring |
 | 3 | **Verifiable**: FuXi lets `deepseek-v4-flash` reach `claude-opus-5`-level ability |
 | 4 | **Cost advantage**: `deepseek-v4-flash` is a lightweight tier, substantially cheaper |
@@ -228,7 +262,7 @@ flowchart LR
 
 | Limitation | Note |
 |---|---|
-| Sample size | 15 scenarios; limited, not representative of any large codebase |
+| Sample size | 15 micro + 4 large-project scenarios; limited, not representative of 10k-file monoliths |
 | Single run | each scenario run once; not repeated for statistical averaging |
 | Not an official benchmark | custom task set, not SWE-bench etc. |
 | Model identity | both are config/proxy-declared IDs, not independently verified |

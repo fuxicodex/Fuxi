@@ -1,20 +1,20 @@
 # 🏆 FuXi 能力对比评测报告
 
-**FuXi vs Claude Code · 15 维度智能体编码能力**
+**FuXi vs Claude Code · 15 微观维度 + 4 大型项目维度**
 
 <div align="center">
 
 | | | |
 |:---:|:---:|:---:|
-| **🎯 测试维度** | **🧠 对比模型** | **✅ 通过率** |
-| **`15`** | **`2`** | **`100%`** |
-| 缺陷修复 · 功能实现 · 重构 · 测试生成 · 审查 · LRU · 图算法 · 线程安全 · 校验 · 正则 · 多文件 · 错误处理 · API 设计 · 性能 · 文档 | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | 两模型全部满分 |
+| **🎯 任务** | **🧠 对比模型** | **✅ 通过率** |
+| **`19`** | **`2`** | **`100%`** |
+| 15 微观：缺陷修复 · 功能实现 · 重构 · 测试生成 · 审查 · LRU · 图算法 · 线程安全 · 校验 · 正则 · 多文件 · 错误处理 · API 设计 · 性能 · 文档 —— 加 4 大型项目：跨文件修复 · 功能开发 · 重构 · 集成调试 | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | 两模型全部满分 |
 
 </div>
 
 > **一句话结论：** FuXi 驱动的 OpenAPI 兼容推理模型 `deepseek-v4-flash`，在 15 个
-> 核心编码能力维度上**与 Claude Code + `claude-opus-5` 完全打平**——均为 100% 通过，
-> 零失败、零人工干预。
+> 微观编码维度**以及** 4 个大型项目维度（25+ 文件、5 层架构的订单管理系统）上
+> **与 Claude Code + `claude-opus-5` 完全打平**——均为 100% 通过，零失败、零人工干预。
 
 ---
 
@@ -95,9 +95,39 @@ claude -p --dangerously-skip-permissions "<任务>"
 
 ---
 
+## 🏗️ 大型代码库评测（orderapp）
+
+除了单模块任务，我们还在一个**真实多文件分层项目**上评估了两个系统——`orderapp`，
+一个订单管理系统，**25+ 文件、5 层架构**（`models / services / api / storage / utils`）。
+缺陷跨越模块边界，修复需要理解跨文件依赖（如 `pricing → order_service`、`api → inventory`）。
+
+### 四个大型项目维度
+
+| # | 维度 | 任务 | FuXi 结果 | Claude Code 结果 |
+|:--:|---|:---:|:---:|:---:|
+| P1 | 跨文件缺陷修复 | 折扣符号跨 `pricing→order_service` | ✅ 15 passed | ✅ 15 passed |
+| P2 | 功能开发 | 实现 `JsonFileStore.save()` 持久化 | ✅ 18 passed | ✅ 18 passed |
+| P3 | 跨模块重构 | 去重 `report.py`（3 组重复函数） | ✅ 18 passed | ✅ 18 passed |
+| P4 | 集成调试 | `place_order()` 丢弃了收集的 items | ✅ 15 passed | ✅ 15 passed |
+
+**两系统在全部 4 个大型项目维度上通过、零失败。**
+
+### 定性亮点（真实、可核实）
+
+| 观察到的行为 | 详情 |
+|---|---|
+| 跨模块意识 | 两者都跨 `pricing→order_service` 与 `api→inventory` 边界追踪缺陷 |
+| 正确性推理 | Claude Code 在重构时跑了 500 组随机输入 diff，保证字节级一致 |
+| 刻意的"不改动" | 两者都避开了会改变输出的千分位格式化器 |
+| 递归序列化 | `JsonFileStore.save()` 正确处理 dataclass、枚举、datetime |
+
+完整大型项目报告：[`LARGE_PROJECT_REPORT.zh-CN.md`](LARGE_PROJECT_REPORT.zh-CN.md)
+
+---
+
 ## 📈 各维度通过率对比
 
-两模型在全部 15 个维度上均为 **100% 通过**，无任何失败：
+两模型在全部 15 个微观维度上均为 **100% 通过**，无任何失败：
 
 | 维度 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
 |:--:|:--:|:--:|
@@ -214,7 +244,7 @@ flowchart LR
 
 | # | 结论 |
 |---|---|
-| 1 | **能力打平**：两模型 15 维度均满分，0 失败 |
+| 1 | **能力打平**：两模型 19 个任务（15 微观 + 4 大型项目）均满分，0 失败 |
 | 2 | **公平对照**：各用原生客户端，相同 baseline，客观评分 |
 | 3 | **可验证**：FuXi 让 `deepseek-v4-flash` 达到 `claude-opus-5` 同级能力 |
 | 4 | **成本优势**：`deepseek-v4-flash` 为轻量档，成本显著更低 |
@@ -225,7 +255,7 @@ flowchart LR
 
 | 局限 | 说明 |
 |---|---|
-| 样本规模 | 15 场景，规模有限，不代表任意大型工程 |
+| 样本规模 | 15 微观 + 4 大型项目场景，规模有限，不代表上万文件的巨型单体 |
 | 单次运行 | 每场景运行一次，未做多次重复取统计均值 |
 | 非官方基准 | 自定义任务集，非 SWE-bench 等公认基准 |
 | 模型身份 | 均为配置/代理声明 ID，未独立核实 |
