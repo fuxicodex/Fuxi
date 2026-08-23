@@ -94,6 +94,23 @@ as of mid-2026; details evolve quickly, so treat it as an orientation.
 
 ![Positioning of AI coding agents](docs/positioning.svg)
 
+### A side-by-side we ran ourselves
+
+To keep our own claims honest, we also ran a controlled comparison: FuXi
+driving an OpenAPI-compatible reasoning model against Claude Code driving a top
+Claude model, each through its own native client, on 11 identical coding tasks
+(bug fixing, feature implementation, refactoring, test generation, code review,
+LRU cache, graph algorithms, thread safety, input validation, regex text
+processing, and a multi-file app). Both sides passed all 11 dimensions with
+zero failures, on the same baseline and the same automated scorer (pytest +
+coverage). Full methodology, raw results, environment versions, exact commands,
+and known limitations are in [`benchmark/REPORT.md`](benchmark/REPORT.md) so you
+can verify or re-run it yourself.
+
+One caveat worth stating plainly: this is a small, self-run task set — not a
+third-party benchmark — and it measures the *agent loop*, not raw model scores.
+Treat it as a data point, not a headline.
+
 ---
 
 ## Evaluation & benchmarks
@@ -120,24 +137,6 @@ FuXi exposes everything needed for that comparison — `/cost`, `/usage`,
 `/context`, and `/status` inside the TUI — and ships its own environment
 self-check (`fuxi doctor`). Benchmarks that are published in the future will
 be linked from this section.
-
-### A reproducible side-by-side we ran ourselves
-
-To keep our own claims honest, we ran a controlled comparison: FuXi driving an
-OpenAPI-compatible reasoning model against Claude Code driving a top Claude
-model, each through its own native client, on 11 identical coding tasks
-(bug fixing, feature implementation, refactoring, test generation, code review,
-LRU cache, graph algorithms, thread safety, input validation, regex text
-processing, and a multi-file app). Both sides passed all 11 dimensions with
-zero failures, on the same baseline and the same automated scorer (pytest +
-coverage). The full methodology and the raw results are in
-[`benchmark/REPORT.md`](benchmark/REPORT.md) — including the environment
-versions, the exact commands, and the known limitations, so you can verify or
-re-run it yourself.
-
-One caveat worth stating plainly: this is a small, self-run task set, not a
-third-party benchmark, and it measures the *agent loop* rather than raw model
-scores. Treat it as a data point, not a headline.
 
 ---
 
