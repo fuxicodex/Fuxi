@@ -17,7 +17,7 @@ with no runtime dependencies.
 
 FuXi is built to rival Claude-class coding agents. Its agentic
 Think → Act → Verify loop and intelligent routing raise what any
-OpenAI-compatible model can accomplish — delivering Claude-tier agent capability
+OpenAPI-compatible model can accomplish — delivering Claude-tier agent capability
 at a fraction of the cost: cheap models handle simple work, and every model
 performs well above its raw benchmark.
 
