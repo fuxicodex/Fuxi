@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="400" viewBox="0 0 780 400" font-family="Arial, Helvetica, sans-serif">
+
+  <!-- Title -->
+  <text x="390" y="30" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Head-to-head · 19 tasks · objective scoring (pytest + coverage)</text>
+
+  <!-- Left system card -->
+  <rect x="30" y="52" width="320" height="300" rx="14" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="30" y="52" width="320" height="52" rx="14" fill="#0a6fe7"/>
+  <rect x="30" y="88" width="320" height="16" fill="#0a6fe7"/>
+  <text x="190" y="86" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">FuXi + deepseek</text>
+
+  <!-- Right system card -->
+  <rect x="430" y="52" width="320" height="300" rx="14" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="430" y="52" width="320" height="52" rx="14" fill="#111827"/>
+  <rect x="430" y="88" width="320" height="16" fill="#111827"/>
+  <text x="590" y="86" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Claude Code + claude-opus-5</text>
+
+  <!-- Result rows -->
+  <!-- row 1: micro -->
+  <text x="48" y="128" font-size="12" fill="#6b7280">15 micro dimensions</text>
+  <text x="170" y="128" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">✓ 15/15</text>
+  <text x="448" y="128" font-size="12" fill="#6b7280">15 micro dimensions</text>
+  <text x="570" y="128" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">✓ 15/15</text>
+
+  <!-- row 2: large project -->
+  <text x="48" y="158" font-size="12" fill="#6b7280">4 large-project (25+ files)</text>
+  <text x="170" y="158" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">✓ 4/4</text>
+  <text x="448" y="158" font-size="12" fill="#6b7280">4 large-project (25+ files)</text>
+  <text x="570" y="158" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">✓ 4/4</text>
+
+  <!-- divider -->
+  <line x1="48" y1="178" x2="332" y2="178" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="448" y1="178" x2="732" y2="178" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- total -->
+  <text x="48" y="204" font-size="12" fill="#6b7280">Total tasks</text>
+  <text x="170" y="204" font-size="22" font-weight="bold" fill="#0a6fe7" text-anchor="middle">19 / 19</text>
+  <text x="448" y="204" font-size="12" fill="#6b7280">Total tasks</text>
+  <text x="570" y="204" font-size="22" font-weight="bold" fill="#0a6fe7" text-anchor="middle">19 / 19</text>
+
+  <!-- pass rate -->
+  <text x="48" y="240" font-size="12" fill="#6b7280">Pass rate</text>
+  <text x="170" y="240" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">100%</text>
+  <text x="448" y="240" font-size="12" fill="#6b7280">Pass rate</text>
+  <text x="570" y="240" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">100%</text>
+
+  <!-- failures -->
+  <text x="48" y="270" font-size="12" fill="#6b7280">Failures</text>
+  <text x="170" y="270" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">0</text>
+  <text x="448" y="270" font-size="12" fill="#6b7280">Failures</text>
+  <text x="570" y="270" font-size="14" font-weight="bold" fill="#16a34a" text-anchor="middle">0</text>
+
+  <!-- highlight bar at bottom of each card -->
+  <rect x="48" y="300" width="284" height="36" rx="8" fill="#dcfce7"/>
+  <text x="190" y="323" font-size="12" font-weight="bold" fill="#16a34a" text-anchor="middle">identical · zero failures</text>
+  <rect x="448" y="300" width="284" height="36" rx="8" fill="#dcfce7"/>
+  <text x="590" y="323" font-size="12" font-weight="bold" fill="#16a34a" text-anchor="middle">identical · zero failures</text>
+
+  <!-- center equality badge -->
+  <rect x="352" y="190" width="76" height="34" rx="17" fill="#ffffff" stroke="#0a6fe7" stroke-width="2"/>
+  <text x="390" y="212" font-size="14" font-weight="bold" fill="#0a6fe7" text-anchor="middle">=</text>
+
+  <!-- footer -->
+  <text x="390" y="380" font-size="12" fill="#6b7280" text-anchor="middle">Tied on every dimension · full methodology in benchmark/REPORT.md</text>
+</svg>
