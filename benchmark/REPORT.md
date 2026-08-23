@@ -1,215 +1,218 @@
-# 🏆 FuXi 能力对比评测报告
+# 🏆 FuXi Capability Benchmark Report
 
-**FuXi vs Claude Code · 11 维度智能体编码能力**
+**FuXi vs Claude Code · 11-Dimension Agentic Coding Ability**
 
 <div align="center">
 
 | | | |
 |:---:|:---:|:---:|
-| **🎯 测试维度** | **🧠 对比模型** | **✅ 通过率** |
+| **🎯 Dimensions** | **🧠 Models compared** | **✅ Pass rate** |
 | **`11`** | **`2`** | **`100%`** |
-| 缺陷修复 · 功能实现 · 重构 · 测试生成 · 审查 · LRU · 图算法 · 线程安全 · 校验 · 正则 · 多文件 | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | 两模型全部满分 |
+| bug-fix · feature · refactor · test-gen · review · LRU · graph · thread-safety · validation · regex · multi-file | FuXi + deepseek-v4-flash vs Claude Code + claude-opus-5 | Both models, all green |
 
 </div>
 
-> **一句话结论：** FuXi 驱动的 OpenAPI 兼容推理模型 `deepseek-v4-flash`，在 11 个
-> 核心编码能力维度上**与 Claude Code + `claude-opus-5` 完全打平**——均为 100% 通过，
-> 零失败、零人工干预。
+> **Bottom line:** FuXi driving the OpenAPI-compatible reasoning model
+> `deepseek-v4-flash` **ties Claude Code + `claude-opus-5`** across 11 core coding
+> dimensions — 100% pass on both sides, zero failures, zero human intervention.
 
 ---
 
-## 🖥️ 客户端真实环境验证
+## 🖥️ Real Client Environment Verification
 
-本次评测在**真实客户端环境**中执行，非模拟、非 Mock。以下证据均可核实：
+This benchmark ran in a **real client environment** — no simulation, no mocks.
+The following evidence is verifiable:
 
-### 客户端真实版本
+### Real client versions
 
-| 客户端 | 真实版本 | 构建信息 |
+| Client | Real version | Build info |
 |---|---|---|
 | **FuXi CLI** | `1.8.0` | `built 2026-08-22T16:07:17Z` |
-| **Claude Code** | `2.1.241` | 官方 npm 包 `@anthropic-ai/claude-code` |
+| **Claude Code** | `2.1.241` | official npm package `@anthropic-ai/claude-code` |
 
-### FuXi 运行状态（`fuxi info` 真实输出）
+### FuXi runtime status (real `fuxi info` output)
 
-| 项 | 真实值 |
+| Item | Real value |
 |---|---|
 | Provider | `openapi` |
 | MaxTokens | `393216` |
-| 已注册工具 | `51 registered` |
+| Registered tools | `51 registered` |
 
-### 执行环境（真实采集）
+### Execution environment (real capture)
 
-| 项 | 值 |
+| Item | Value |
 |---|---|
-| 操作系统 | macOS 26.3（arm64） |
+| OS | macOS 26.3 (arm64) |
 | Shell | `/bin/zsh` |
 | Python / pytest / coverage | 3.9.6 / 8.4.2 / 7.10.7 |
 | Node.js / npm | v25.9.0 / 11.12.1 |
 
-### 真实执行命令
+### Real commands used
 
 ```bash
-# FuXi 侧（真实 CLI）
-fuxi -p -d <repo> --permission-mode bypassPermissions --max-turns 25 --max-thinking-tokens 8000 "<任务>"
+# FuXi side (real CLI)
+fuxi -p -d <repo> --permission-mode bypassPermissions --max-turns 25 --max-thinking-tokens 8000 "<task>"
 
-# Claude Code 侧（真实官方 CLI）
-claude -p --dangerously-skip-permissions "<任务>"
+# Claude Code side (real official CLI)
+claude -p --dangerously-skip-permissions "<task>"
 ```
 
-> ✅ 以上版本号、环境、工具数均来自真实命令行输出，非虚构。
+> ✅ All versions, environment details, and tool counts above come from real
+> command-line output, not fabricated.
 
 ---
 
-## 📊 核心指标一览
+## 📊 Key Metrics at a Glance
 
-| 指标 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Metric | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
 |:---|---:|---:|
-| 🎯 维度通过率 | **11 / 11** | **11 / 11** |
-| 🐛 修复缺陷/实现功能 | **全部** | **全部** |
-| 📈 测试覆盖率（D4） | **100%** | **100%** |
-| ⏱️ 失败用例 | **0** | **0** |
+| 🎯 Dimension pass rate | **11 / 11** | **11 / 11** |
+| 🐛 Bugs fixed / features implemented | **All** | **All** |
+| 📈 Test coverage (D4) | **100%** | **100%** |
+| ⏱️ Failed cases | **0** | **0** |
 
 ---
 
-## 📋 十一维度逐项对比
+## 📋 Eleven Dimensions, Item by Item
 
-| # | 维度 | 能力点 | FuXi 结果 | Claude Code 结果 |
+| # | Dimension | Ability | FuXi result | Claude Code result |
 |:--:|---|:---:|:---:|:---:|
-| D1 | 缺陷修复 | 点分路径嵌套访问 | ✅ 4/4 | ✅ 4/4 |
-| D2 | 功能实现 | memoize + 统计函数 | ✅ 5/5 | ✅ 5/5 |
-| D3 | 代码重构 | 行为保持 + 去重 | ✅ 5/5 | ✅ 5/5 |
-| D4 | 测试生成 | 100% 覆盖率 | ✅ 48 passed | ✅ 114 passed |
-| D5 | 代码审查 | 3 处资金安全漏洞 | ✅ 7/7 | ✅ 7/7 |
-| D6 | LRU 缓存 | 淘汰 + 最近使用 | ✅ 6/6 | ✅ 6/6 |
-| D7 | 图算法 | BFS/最短路径/环检测 | ✅ 5/5 | ✅ 5/5 |
-| D8 | 线程安全 | 并发无丢失更新 | ✅ 4/4 | ✅ 4/4 |
-| D9 | 输入校验 | 邮箱/电话/HTML 转义 | ✅ 5/5 | ✅ 5/5 |
-| D10 | 正则文本 | URL/卡号掩码/词数 | ✅ 3/3 | ✅ 3/3 |
-| D11 | 多文件集成 | 三层 Todo 应用 | ✅ 5/5 | ✅ 5/5 |
+| D1 | Bug fix | dot-path nested access | ✅ 4/4 | ✅ 4/4 |
+| D2 | Feature impl | memoize + stats functions | ✅ 5/5 | ✅ 5/5 |
+| D3 | Refactor | behavior-preserving + dedup | ✅ 5/5 | ✅ 5/5 |
+| D4 | Test gen | 100% coverage | ✅ 48 passed | ✅ 114 passed |
+| D5 | Code review | 3 financial-safety bugs | ✅ 7/7 | ✅ 7/7 |
+| D6 | LRU cache | eviction + recency | ✅ 6/6 | ✅ 6/6 |
+| D7 | Graph | BFS / shortest path / cycle | ✅ 5/5 | ✅ 5/5 |
+| D8 | Thread safety | no lost updates | ✅ 4/4 | ✅ 4/4 |
+| D9 | Validation | email / phone / HTML escape | ✅ 5/5 | ✅ 5/5 |
+| D10 | Regex text | URL / card mask / word count | ✅ 3/3 | ✅ 3/3 |
+| D11 | Multi-file | three-layer Todo app | ✅ 5/5 | ✅ 5/5 |
 
 ---
 
-## 📈 各维度通过率对比
+## 📈 Pass Rate by Dimension
 
-两模型在全部 11 个维度上均为 **100% 通过**，无任何失败：
+Both models hit **100% on all 11 dimensions**, with zero failures:
 
-| 维度 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Dimension | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
 |:--:|:--:|:--:|
-| D1 缺陷修复 | ✅ 100% | ✅ 100% |
-| D2 功能实现 | ✅ 100% | ✅ 100% |
-| D3 代码重构 | ✅ 100% | ✅ 100% |
-| D4 测试生成 | ✅ 100% | ✅ 100% |
-| D5 代码审查 | ✅ 100% | ✅ 100% |
-| D6 LRU 缓存 | ✅ 100% | ✅ 100% |
-| D7 图算法 | ✅ 100% | ✅ 100% |
-| D8 线程安全 | ✅ 100% | ✅ 100% |
-| D9 输入校验 | ✅ 100% | ✅ 100% |
-| D10 正则文本 | ✅ 100% | ✅ 100% |
-| D11 多文件集成 | ✅ 100% | ✅ 100% |
+| D1 Bug fix | ✅ 100% | ✅ 100% |
+| D2 Feature impl | ✅ 100% | ✅ 100% |
+| D3 Refactor | ✅ 100% | ✅ 100% |
+| D4 Test gen | ✅ 100% | ✅ 100% |
+| D5 Code review | ✅ 100% | ✅ 100% |
+| D6 LRU cache | ✅ 100% | ✅ 100% |
+| D7 Graph | ✅ 100% | ✅ 100% |
+| D8 Thread safety | ✅ 100% | ✅ 100% |
+| D9 Validation | ✅ 100% | ✅ 100% |
+| D10 Regex text | ✅ 100% | ✅ 100% |
+| D11 Multi-file | ✅ 100% | ✅ 100% |
 
 ```mermaid
 xychart-beta
-    title "十一维度通过率（两模型一致 = 100%）"
+    title "Eleven-dimension pass rate (both models = 100%)"
     x-axis ["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11"]
-    y-axis "通过率 %" 0 --> 100
+    y-axis "Pass rate %" 0 --> 100
     bar [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
 ```
 
 ---
 
-## 🍩 通过率分布
+## 🍩 Pass Rate Distribution
 
 ```mermaid
 pie showData
-    title 综合通过率（两模型一致）
-    "通过" : 11
-    "失败" : 0
+    title Overall pass rate (identical for both models)
+    "Passed" : 11
+    "Failed" : 0
 ```
 
 ---
 
-## 📊 测试用例数对比（D4 测试生成）
+## 📊 Test Case Count (D4 Test Generation)
 
 ```mermaid
 xychart-beta
-    title "D4 测试生成用例数"
+    title "D4 test-generation case count"
     x-axis ["FuXi", "Claude Code"]
-    y-axis "用例数" 0 --> 120
+    y-axis "Cases" 0 --> 120
     bar [48, 114]
 ```
 
-> 两者均达到 100% 覆盖率；用例数差异源于测试拆分粒度不同，无质量差异。
+> Both reach 100% coverage; the case-count difference reflects test-splitting
+> granularity, not a quality difference.
 
 ---
 
-## 🏗️ 评测流程
+## 🏗️ Benchmark Flow
 
 ```mermaid
 flowchart LR
-    A[11 个相同场景<br/>统一 baseline] --> B[FuXi 侧<br/>fuxi -p]
-    A --> C[Claude Code 侧<br/>claude -p]
-    B --> D[pytest / coverage 客观评分]
+    A[11 identical scenarios<br/>unified baseline] --> B[FuXi side<br/>fuxi -p]
+    A --> C[Claude Code side<br/>claude -p]
+    B --> D[pytest / coverage<br/>objective scoring]
     C --> D
-    D --> E[汇总对比]
+    D --> E[aggregate comparison]
 ```
 
 ---
 
-## 🎯 能力矩阵
+## 🎯 Capability Matrix
 
-| 能力 | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
+| Capability | FuXi + deepseek-v4-flash | Claude Code + claude-opus-5 |
 |:---|:---:|:---:|
-| 阅读理解（从测试推断行为） | 🟢 | 🟢 |
-| 代码生成（正确·惯用法） | 🟢 | 🟢 |
-| 边界处理（空值/负数/透支/并发） | 🟢 | 🟢 |
-| 精准修改（不多改） | 🟢 | 🟢 |
-| 行为保持重构 | 🟢 | 🟢 |
-| 测试编写（100% 覆盖） | 🟢 | 🟢 |
-| 数据结构（LRU/图） | 🟢 | 🟢 |
-| 线程安全 | 🟢 | 🟢 |
-| 多文件工程协作 | 🟢 | 🟢 |
-| 工具使用（读写文件·跑命令） | 🟢 | 🟢 |
-| 迭代验证（跑测→修→全绿） | 🟢 | 🟢 |
+| Reading comprehension (infer behavior from tests) | 🟢 | 🟢 |
+| Code generation (correct · idiomatic) | 🟢 | 🟢 |
+| Edge handling (empty / negative / overdraw / concurrency) | 🟢 | 🟢 |
+| Precise edits (no over-editing) | 🟢 | 🟢 |
+| Behavior-preserving refactor | 🟢 | 🟢 |
+| Test authoring (100% coverage) | 🟢 | 🟢 |
+| Data structures (LRU / graph) | 🟢 | 🟢 |
+| Thread safety | 🟢 | 🟢 |
+| Multi-file engineering | 🟢 | 🟢 |
+| Tool use (read/write files, run commands) | 🟢 | 🟢 |
+| Iterative verification (run→fix→green) | 🟢 | 🟢 |
 
 ---
 
-## 💎 代码质量亮点（真实代码，可核实）
+## 💎 Code Quality Highlights (real code, verifiable)
 
-| 维度 | 质量体现 |
+| Dimension | Quality demonstrated |
 |---|---|
-| D2 | `functools.wraps` + 暴露 `cache`/`cache_clear` |
-| D3 | 提取 `EQUILATERAL` 等常量 + `_is_valid_triangle` 辅助函数 |
-| D5 | `transfer` 复用 `withdraw`/`deposit`，无重复逻辑 |
-| D6 | `OrderedDict.move_to_end` + `popitem(last=False)` 标准 LRU |
-| D7 | 三色标记法（WHITE/GRAY/BLACK）检测有向图环 |
-| D8 | `threading.Lock` + `with self._lock` 上下文管理 |
-| D9 | `html.escape(quote=True)` + 预编译正则 |
-| D10 | 正则掩码保留分隔符 + 精确末 4 位 |
+| D2 | `functools.wraps` + exposes `cache`/`cache_clear` |
+| D3 | Extracts `EQUILATERAL` etc. constants + `_is_valid_triangle` helper |
+| D5 | `transfer` reuses `withdraw`/`deposit`, no duplication |
+| D6 | `OrderedDict.move_to_end` + `popitem(last=False)` standard LRU |
+| D7 | Three-color DFS (WHITE/GRAY/BLACK) cycle detection |
+| D8 | `threading.Lock` + `with self._lock` context manager |
+| D9 | `html.escape(quote=True)` + precompiled regex |
+| D10 | Regex masking keeps separators + exact last-4 |
 
 ---
 
-## 🏁 结论
+## 🏁 Conclusion
 
-| # | 结论 |
+| # | Conclusion |
 |---|---|
-| 1 | **能力打平**：两模型 11 维度均满分，0 失败 |
-| 2 | **公平对照**：各用原生客户端，相同 baseline，客观评分 |
-| 3 | **可验证**：FuXi 让 `deepseek-v4-flash` 达到 `claude-opus-5` 同级能力 |
-| 4 | **成本优势**：`deepseek-v4-flash` 为轻量档，成本显著更低 |
+| 1 | **Tied ability**: both models pass all 11 dimensions, 0 failures |
+| 2 | **Fair comparison**: each via its own native client, same baseline, objective scoring |
+| 3 | **Verifiable**: FuXi lets `deepseek-v4-flash` reach `claude-opus-5`-level ability |
+| 4 | **Cost advantage**: `deepseek-v4-flash` is a lightweight tier, substantially cheaper |
 
 ---
 
-## ⚠️ 局限与诚实声明
+## ⚠️ Limitations & Honest Disclosures
 
-| 局限 | 说明 |
+| Limitation | Note |
 |---|---|
-| 样本规模 | 11 场景，规模有限，不代表任意大型工程 |
-| 单次运行 | 未多次重复取均值 |
-| D1 备注 | FuXi 侧 D1 首次运行出现一次偶发未落盘，重跑即通过 |
-| 非官方基准 | 自定义任务集，非 SWE-bench 等公认基准 |
-| 模型身份 | 均为配置/代理声明 ID，未独立核实 |
-| Claude 侧走代理 | 经第三方代理 `01us.model123.dev`，非 Anthropic 官方端点 |
+| Sample size | 11 scenarios; limited, not representative of any large codebase |
+| Single run | not repeated for averaging |
+| D1 note | FuXi's D1 had one flaky non-persist run, passed on re-run |
+| Not an official benchmark | custom task set, not SWE-bench etc. |
+| Model identity | both are config/proxy-declared IDs, not independently verified |
+| Claude side via proxy | via third-party proxy `01us.model123.dev`, not Anthropic's official endpoint |
 
 ---
 
-*真实端到端执行（`fuxi -p` / `claude -p`）+ pytest/coverage 客观评分 · 零人工干预*
+*Real end-to-end execution (`fuxi -p` / `claude -p`) + pytest/coverage objective scoring · zero human intervention*

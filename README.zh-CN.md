@@ -121,7 +121,7 @@ FuXi 提供了对比所需的一切手段 —— TUI 内的 `/cost`、`/usage`�
 代码审查、LRU 缓存、图算法、线程安全、输入校验、正则文本处理、多文件应用）
 进行测评。两侧在相同的 baseline、相同的客观评分工具（pytest + coverage）
 下，全部 11 个维度通过、零失败。完整方法、原始数据、环境版本、具体命令与
-已知局限都记录在 [`benchmark/REPORT.md`](benchmark/REPORT.md)，可供核实或
+已知局限都记录在 [`benchmark/REPORT.zh-CN.md`](benchmark/REPORT.zh-CN.md)，可供核实或
 自行复现。
 
 有一点需要坦率说明：这是一套自测的小规模任务集，并非第三方基准，且衡量
