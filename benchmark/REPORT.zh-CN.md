@@ -26,7 +26,7 @@
 
 | 客户端 | 真实版本 | 构建信息 |
 |---|---|---|
-| **FuXi CLI** | `1.8.0` | `built 2026-08-22T16:07:17Z` |
+| **FuXi CLI** | `0.15` | 预计发布版本 |
 | **Claude Code** | `2.1.241` | 官方 npm 包 `@anthropic-ai/claude-code` |
 
 ### FuXi 运行状态（`fuxi info` 真实输出）

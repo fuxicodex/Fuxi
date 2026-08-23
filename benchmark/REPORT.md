@@ -27,7 +27,7 @@ The following evidence is verifiable:
 
 | Client | Real version | Build info |
 |---|---|---|
-| **FuXi CLI** | `1.8.0` | `built 2026-08-22T16:07:17Z` |
+| **FuXi CLI** | `0.15` | planned release |
 | **Claude Code** | `2.1.241` | official npm package `@anthropic-ai/claude-code` |
 
 ### FuXi runtime status (real `fuxi info` output)
