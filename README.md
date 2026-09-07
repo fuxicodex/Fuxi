@@ -360,8 +360,9 @@ Key environment variables:
 | `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | Sampling controls |
 
-Run `fuxi --help` for the full environment-variable reference, including
-sandbox limits and MCP resource caps.
+See [`docs/environment.md`](docs/environment.md) for the full
+environment-variable reference — including bridge/remote control, sandbox
+limits, and MCP resource caps.
 
 ---
 
@@ -372,7 +373,8 @@ tracker. The product source is proprietary and is not published here (see
 License).
 
 - `README.md` / `README.zh-CN.md` — the main documentation (English / 简体中文)
-- `docs/` — demo GIF, comparison graphics, usage guide, keyboard reference, FAQ
+- `docs/` — demo GIF, comparison graphics, usage guide, environment-variable
+  reference, keyboard reference, FAQ
 - `CHANGELOG.md` — release history
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
   community and support guides

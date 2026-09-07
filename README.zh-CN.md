@@ -338,8 +338,8 @@ fuxi update 0.1.2      # 指定版本
 | `NO_UPDATE_NOTIFIER` | 设为 `1` 时关闭后台更新检查提示 |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | 采样控制参数 |
 
-完整的环境变量参考（包括沙箱限制、MCP 资源上限等）请运行
-`fuxi --help`。
+完整的环境变量参考（包括桥接/远程控制、沙箱限制、MCP 资源上限等）见
+[`docs/environment.zh-CN.md`](docs/environment.zh-CN.md)。
 
 ---
 
@@ -349,7 +349,7 @@ fuxi update 0.1.2      # 指定版本
 发布（见 License）。
 
 - `README.md` / `README.zh-CN.md` — 主文档（英文 / 简体中文）
-- `docs/` — 演示 GIF、对比图、使用指南、快捷键速查、常见问题
+- `docs/` — 演示 GIF、对比图、使用指南、环境变量参考、快捷键速查、常见问题
 - `CHANGELOG.md` — 版本发布记录
 - `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`、`SUPPORT.md` —
   社区与支持指南
