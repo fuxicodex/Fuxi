@@ -23,10 +23,6 @@ FuXi 是一个快速、自包含的**终端 AI 编程智能体**：在丰富的 
 
 主页：**https://fuxicode.com**
 
-```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash   # 安装
-fuxi                                                        # 启动
-```
 
 ![FuXi 实际演示](docs/fuxi-demo.gif)
 
