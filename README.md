@@ -20,10 +20,6 @@ agentic Think → Act → Verify loop on top of it.
 
 Homepage: **https://www.fuxicode.com**
 
-```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash   # install
-fuxi                                                        # start
-```
 
 ![FuXi in action](docs/fuxi-demo.gif)
 
