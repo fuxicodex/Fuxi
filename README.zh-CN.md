@@ -123,19 +123,19 @@ FuXi 提供了对比所需的一切手段 —— TUI 内的 `/cost`、`/usage`�
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://fuxicode.com/install.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 ### Windows（PowerShell）
 
 ```powershell
-irm https://fuxicode.com/install.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 ### Windows（CMD）
 
 ```bat
-curl -fsSL https://fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
 ```
 
 以上三种方式都会安装到 `~/.local/bin`（Windows 上为
