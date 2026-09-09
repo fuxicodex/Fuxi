@@ -10,13 +10,13 @@ configuration details, see the [README](../README.md).
 macOS / Linux:
 
 ```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 Windows (PowerShell):
 
 ```powershell
-irm https://releases.fuxicode.com/bootstrap.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 All installers place FuXi in `~/.local/bin` (`%USERPROFILE%\.local\bin` on
