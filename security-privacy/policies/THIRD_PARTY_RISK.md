@@ -34,7 +34,7 @@ connect (model providers, MCP servers, plugins, vendors).
 ## 3. FuXi's own supply chain controls
 
 - **Official distribution**: installs and updates only via
-  `https://releases.fuxicode.com`.
+  `https://downloads.fuxicode.com`.
 - **Update integrity**: `fuxi update` verifies SHA-256 against the manifest and
   replaces atomically.
 - **Minimal dependencies**: a single static binary with no runtime dependencies
