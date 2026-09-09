@@ -80,7 +80,7 @@ from being abused:
 - `fuxi update` downloads the target version and **verifies its SHA-256 against
   the published manifest** before **atomically** replacing the running binary —
   preventing tampered or partially-installed states.
-- Installers come from `https://releases.fuxicode.com`; install only from
+- Installers come from `https://downloads.fuxicode.com`; install only from
   official channels.
 
 ---
