@@ -47,19 +47,19 @@ FuXi 以 **思考 → 行动 → 验证** 循环工作：它推理任务、用 5
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 ### Windows（PowerShell）
 
 ```powershell
-irm https://releases.fuxicode.com/bootstrap.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 ### Windows（CMD）
 
 ```bat
-curl -fsSL https://releases.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
 ```
 
 以上安装方式都会把 FuXi 放到 `~/.local/bin`（Windows 为
