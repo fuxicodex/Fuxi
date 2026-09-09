@@ -52,19 +52,19 @@ Key properties:
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-irm https://releases.fuxicode.com/bootstrap.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 ### Windows (CMD)
 
 ```bat
-curl -fsSL https://releases.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
 ```
 
 All installers place FuXi in `~/.local/bin` (`%USERPROFILE%\.local\bin` on
