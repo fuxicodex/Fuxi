@@ -137,19 +137,19 @@ be linked from this section.
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://fuxicode.com/install.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-irm https://fuxicode.com/install.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 ### Windows (CMD)
 
 ```bat
-curl -fsSL https://fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
 ```
 
 All three install to `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) and add
