@@ -9,13 +9,13 @@
 macOS / Linux：
 
 ```bash
-curl -fsSL https://releases.fuxicode.com/bootstrap.sh | bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
 ```
 
 Windows（PowerShell）：
 
 ```powershell
-irm https://releases.fuxicode.com/bootstrap.ps1 | iex
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
 ```
 
 所有安装方式都会把 FuXi 放到 `~/.local/bin`（Windows 为
