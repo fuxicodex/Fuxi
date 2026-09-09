@@ -72,7 +72,7 @@ FuXi 可以执行 shell 命令（`bash` / PowerShell）。为保证这一能力�
 - `fuxi update` 下载目标版本后，会**对照已发布的 manifest 校验 SHA-256**，
   验证通过后才**原子性地**替换正在运行的二进制，杜绝被篡改或安装到一半的
   中间状态。
-- 安装脚本来自 `https://releases.fuxicode.com`，请只从官方渠道安装。
+- 安装脚本来自 `https://downloads.fuxicode.com`，请只从官方渠道安装。
 
 ---
 
