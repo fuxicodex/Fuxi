@@ -188,6 +188,11 @@ codebase, verifying results, and doing it affordably and under your control.
   choose.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
+- **Age-appropriate by design** — children and young people may use FuXi, with
+  guardian consent where the law requires it, no behavioural advertising or
+  profiling, and recommended adult supervision.
+- **Honest limits** — FuXi is a tool, not an adviser: it tells you what it did,
+  asks before sensitive actions, and never claims more reliability than it has.
 
 ### The proof
 

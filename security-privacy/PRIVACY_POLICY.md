@@ -123,9 +123,7 @@ does not hold your code or conversations by default, in most such cases we have
   directory pointed to by `FUXI_CONFIG_DIR`) removes the related local data.
 - Uninstalling (`rm -rf "$HOME/.fuxi"`) clears local data.
 - For your FuXi account data, contact us to request deletion; the account
-  terms applicable when it was created govern the account model used.
-
----
+  terms applicable when it was created govern the account model used.---
 
 ## 7. Your rights
 
@@ -142,15 +140,51 @@ To exercise these rights, contact us via the details below.
 
 ---
 
-## 8. Children's privacy
+## 8. Children and young users
 
-FuXi is intended for developers and professional users, is not directed at
-children, and does not knowingly collect data from individuals under 16. If we
-learn of any such collection, we will delete it promptly.
+FuXi **may be used by children and young people** — learning to code is a
+legitimate and valuable use. Because FuXi is an AI coding tool that can run
+commands, we apply **age-appropriate safeguards** rather than excluding young
+users:
+
+- **Consent from a parent or guardian where the law requires it.** Where a user
+  is below the applicable age of digital consent — generally **16 or lower**
+  under GDPR (13 for COPPA in the US, **14 in China**, **18 in India**, 14 in
+  Korea) — registration requires verifiable consent from a parent or guardian.
+  The age of consent varies by jurisdiction and we apply the stricter rule
+  where it is known.
+- **Data minimization for children.** We process the same minimal account data
+  as for any user — never more — and we do **not** use children's data for
+  behavioural advertising or profiling.
+- **No behavioural advertising.** FuXi does not serve behavioural advertising to
+  any user, and never to children.
+- **Safety by default.** The protections in the
+  [Security Whitepaper §5](SECURITY.md) (deny-by-default permissions, command
+  classification, local-only data) apply to every user, including children.
+- **Adult oversight recommended.** Because AI output can be wrong and FuXi can
+  execute commands, we recommend that a parent, guardian, or teacher supervises
+  a child's use — especially when FuXi is permitted to act autonomously.
+- **Guardian requests.** A parent or guardian may contact us to review, correct,
+  or delete a child's account data (see §7).
 
 ---
 
-## 9. Changes to this policy
+## 9. AI output and user reliance
+
+We want users — including young users and their guardians — to trust FuXi
+**accurately**, not blindly:
+
+- FuXi is a **tool**, not a professional adviser. Its output may be inaccurate,
+  incomplete, or biased, and must not be relied on as legal, medical, financial,
+  or safety advice.
+- FuXi does not make decisions on its own: sensitive actions require approval
+  and can be interrupted (see the [AI Governance Policy](policies/AI_GOVERNANCE.md)).
+- You are responsible for reviewing output and for the final decision on
+  critical operations (edits, commands, commits, releases).
+
+---
+
+## 10. Changes to this policy
 
 For material changes, we will announce on the website
 (https://www.fuxicode.com) and in this repository, and update the "last
@@ -158,7 +192,7 @@ updated" date.
 
 ---
 
-## 10. Contact us
+## 11. Contact us
 
 - Website: https://www.fuxicode.com
 - Repository: https://github.com/fuxicodex/Fuxi

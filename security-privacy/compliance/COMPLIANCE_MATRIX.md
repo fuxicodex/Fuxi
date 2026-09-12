@@ -47,7 +47,7 @@ actually applicable to FuXi.
 | Security obligation | Command classifier, permission model, update verification | [Security Whitepaper](../SECURITY.md) |
 | Breach notification | Severity tiers and notification duty | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) |
 | Cross-border transfer | None by default; BYOK is user's choice | [Transfer Assessment](TRANSFER_ASSESSMENT.md) |
-| Children protection | Not child-directed; no knowing collection under 16 | Privacy Policy §8 |
+| Children protection | May be used by minors; age-appropriate safeguards, guardian consent where required; no behavioural ads/profiling | [Privacy Policy §8](../PRIVACY_POLICY.md) |
 | AI accountability (human-in-the-loop, transparent) | Think→Act→Verify, permission model, audit | [AI Governance Policy](../policies/AI_GOVERNANCE.md) |
 
 ---
@@ -72,7 +72,7 @@ jurisdiction-by-jurisdiction view and the risk register, see the
 | Records & assessments | GDPR Art. 30, 35; DPDP (SDF) | [ROPA](ROPA.md) · [DPIA](DPIA.md) |
 | Cross-border transfer | GDPR Ch. V; PIPL Ch. 3; 152-FZ | [Transfer Assessment](TRANSFER_ASSESSMENT.md); mechanism per region |
 | Local representation | GDPR Art. 27; UK; PIPA (KR) | Appointed where required; published on the official website |
-| Children | GDPR Art. 8; COPPA; PIPL Art. 31; DPDP | Not child-directed; no knowing collection; age screening |
+| Children | GDPR Art. 8; COPPA; PIPL Art. 31; DPDP | May be used by minors; guardian consent where required; no ads/profiling; minimal data |
 | AI transparency | EU AI Act; China generative-AI rules | Human-in-the-loop, permission model, honest capability claims ([AI Governance](../policies/AI_GOVERNANCE.md)) |
 
 ---

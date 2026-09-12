@@ -119,7 +119,25 @@ Connecticut, Utah, Texas, and others) adds similar rights. At the federal level,
 the FTC Act §5 requires that our public claims be truthful (we apply this
 strictly — see §6) and COPPA governs children under 13.
 
-### 3.2 Additional jurisdictions monitored
+### 3.2 Children and AI-tool rules
+
+FuXi **may be used by children and young people**, so two bodies of law apply
+together: children's privacy rules and AI-tool rules.
+
+- **Age of digital consent varies** — GDPR 16 (or lower by member state), US
+  COPPA 13, China 14, Korea 14, India 18. We apply the stricter rule where the
+  jurisdiction is known, and require guardian consent below the threshold.
+- **Children's design codes** (UK ICO AADC; California AADC; GDPR Art. 8
+  expectations) call for the best interests of the child and high privacy by
+  default. We meet this with privacy-by-default for all users, no behavioural
+  advertising or profiling, and data minimization.
+- **AI-tool rules** — the EU AI Act's transparency expectations, China's
+  generative-AI measures, and FTC §5 truthfulness apply to how an AI agent is
+  presented. The user is always told they are working with an AI agent, and we
+  never overstate its reliability (see the
+  [AI Governance Policy §6–§8](../policies/AI_GOVERNANCE.md)).
+
+### 3.3 Additional jurisdictions monitored
 
 We also track, at principles level: Russia (152-FZ, data localization), UAE and
 Saudi Arabia (PDPL), Thailand and Malaysia (PDPA), Indonesia (PDP Law), Vietnam
@@ -141,7 +159,7 @@ risks rather than claim they do not exist.
 | R3 | **Data-localization mandates** | China (CIIO/thresholds), Russia, India | Minimal data; regional deployment options; disclosed residency |
 | R4 | **Divergent breach-notification deadlines** | GDPR 72h; Singapore 3 days; AU/ZA "ASAP" | Single strictest internal target (P0 → notify promptly) so we meet every regime |
 | R5 | **Representative / DPO requirements** | EU (Art. 27), UK, Korea, India (SDF) | Appointed where required; published on the official website |
-| R6 | **Children / age thresholds differ** | GDPR 16 (default), US 13, China 14, India 18 | Product not directed at children; no knowing collection; age screening on registration |
+| R6 | **Children / age thresholds differ** | GDPR 16 (default), US 13, China 14, Korea 14, India 18 | Minors may use FuXi, so we apply age-appropriate safeguards: guardian consent where required, no behavioural ads/profiling, minimal data, and recommended adult supervision |
 | R7 | **AI-specific obligations** | EU AI Act (transparency), China generative-AI rules | Human-in-the-loop (Think→Act→Verify), permission model, honest capability claims |
 | R8 | **Government / lawful-access requests** | All jurisdictions | We can only disclose what we actually hold (Zone B); disclosed in the Transparency Report |
 | R9 | **Marketing / consent hygiene** | EU ePrivacy, others | No unsolicited marketing; consent where required; easy withdrawal |

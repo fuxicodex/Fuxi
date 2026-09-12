@@ -59,7 +59,12 @@ in the [Security & Privacy README](../README.md). Quick links:
 1. Local by default, minimal collection, transparent disclosure;
 2. Commands and permissions are auditable, controllable, revocable;
 3. Updates are verifiable;
-4. No fabricated certifications or overstated capabilities.
+4. No fabricated certifications or overstated capabilities;
+5. Children may use FuXi with age-appropriate safeguards — guardian consent
+   where required, no behavioural ads or profiling, adult supervision
+   recommended;
+6. Honest limits — FuXi is a tool, not an adviser; output may be wrong and must
+   be reviewed before you rely on it.
 
 ---
 

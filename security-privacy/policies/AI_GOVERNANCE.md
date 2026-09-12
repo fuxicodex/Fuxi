@@ -59,7 +59,53 @@ model is the "engine". This policy governs their combination.
 
 ---
 
-## 6. Responsibility boundaries
+## 6. Children and young users of an AI tool
+
+FuXi **may be used by children and young people**, and we apply age-appropriate
+safeguards (see [Privacy Policy §8](../PRIVACY_POLICY.md)):
+
+- Consent from a parent/guardian is required where the law sets an age of
+  digital consent (16 or lower under GDPR; 13 US COPPA; 14 China; 18 India).
+- Child-appropriate defaults: no behavioural advertising or profiling, minimal
+  data, and the same deny-by-default safety as every user.
+- We recommend adult supervision, particularly when FuXi is allowed to act
+  autonomously, because AI output can be wrong and FuXi can run commands.
+
+---
+
+## 7. AI-tool usage law
+
+FuXi is used across jurisdictions with AI-specific rules, and we align to their
+common expectations:
+
+| Regime | Expectation | FuXi posture |
+|---|---|---|
+| EU AI Act | Transparency about AI involvement; risk management for higher-risk uses | The user is always told they are working with an AI agent; human-in-the-loop and audit logs; honest capability claims |
+| China — Generative AI Measures | Content safety, lawful data use, clear service identity | Service identity is explicit; safety guardrails; no content upload |
+| US FTC §5 | Truthful claims; no deceptive AI behaviour | No fabricated certifications or overstated capabilities |
+| Children's codes (e.g., UK ICO Age-Appropriate Design Code; California AADC) | Best interests of the child; high privacy by default | Privacy-by-default for all users; no profiling or behavioural ads; data minimization |
+
+Because a FuXi account is required, the applicable AI rules are those of the
+jurisdiction where the account is offered and operated; where they differ, the
+stricter expectation is our internal standard.
+
+---
+
+## 8. User reliance and honest limits
+
+Trust must be accurate, so we state our limits plainly:
+
+- FuXi is a **tool**, not a professional adviser. Output must not be relied on as
+  legal, medical, financial, or safety advice.
+- Automated output can be wrong; users (and, for minors, their guardians) should
+  review before acting, and confirm critical operations themselves.
+- FuXi does not make autonomous decisions about a user's rights or obligations:
+  sensitive actions require approval, and every action is auditable.
+- We never represent that FuXi guarantees correct or complete results.
+
+---
+
+## 9. Responsibility boundaries
 
 - **We are responsible for**: FuXi's own security mechanisms, permission model,
   routing, and update integrity.
@@ -70,7 +116,7 @@ model is the "engine". This policy governs their combination.
 
 ---
 
-## 7. Compliance alignment
+## 10. Compliance alignment
 
 - Honor widely applicable AI and data protection principles (transparency,
   fairness, accountability, human-in-the-loop).

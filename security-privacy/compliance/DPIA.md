@@ -41,6 +41,7 @@ A DPIA should be performed for:
 | Credential leak | Local-only storage, never uploaded, disk encryption recommended |
 | Malicious command execution | AST classifier + permission prompts + audit |
 | Biased/inaccurate model output | Think→Act→Verify, human-in-the-loop |
+| Children using an AI coding tool | Age-appropriate safeguards: guardian consent where required, no ads/profiling, minimal data, recommended adult supervision (see [Privacy Policy §8](../PRIVACY_POLICY.md)) |
 | Improper third-party handling | Off by default, user's choice, honest disclosure |
 
 ---
