@@ -76,7 +76,33 @@ from being abused:
 
 ---
 
-## 5. Update security
+## 5. Invisible protection by default
+
+Most of FuXi's protection is **invisible**: it is on from the moment you install,
+requires no configuration, and cannot be accidentally disabled. This section
+lists what you get automatically, so you can rely on it and audit it.
+
+| Invisible protection | How it works | User action needed |
+|---|---|---|
+| **Zero content upload** | Code, prompts, and conversations are never stored on or routed through FuXi's servers — a property of the architecture, not a setting | None |
+| **Deny-by-default permissions** | Sensitive operations require explicit approval; no implicit escalation | None (prompts appear on first use) |
+| **Pre-execution command classification** | Every shell command is parsed and classified (AST + rule set) *before* it runs | None |
+| **Credential isolation** | Keys/tokens stay in local `~/.fuxi/` and are never written to logs, errors, or uploads | None |
+| **Automatic secret redaction** | Credentials in log output are masked (`***`) | None |
+| **Path-traversal blocking** | Escaping paths are blocked before normalization | None |
+| **Sandbox resource ceilings** | `bash` and MCP subprocesses run under memory/CPU/network limits (see [environment variables](../docs/environment.md)) | None |
+| **Verified, atomic updates** | SHA-256 verification against the published manifest before an atomic replace — no half-installed state | None |
+| **No telemetry / no silent upload** | No background content collection; the only network call is the version check (disable with `--no-update-notifier`) | None |
+| **Local, user-deletable data** | Sessions, memory, and audit logs live under `~/.fuxi/`; removing the directory clears them | None |
+
+> **Why this matters:** the standard privacy ask is "configure your settings
+> carefully." FuXi's ask is "install it and keep working." The protective
+> defaults above are the reason, and they are verifiable through use, audit
+> logs, and `fuxi doctor` rather than through a promise in a document.
+
+---
+
+## 6. Update security
 
 - FuXi checks for new versions in the background (disable with
   `--no-update-notifier` or `NO_UPDATE_NOTIFIER=1`).
@@ -88,14 +114,14 @@ from being abused:
 
 ---
 
-## 6. Supported versions
+## 7. Supported versions
 
 Only the latest release is actively maintained. Keep it current and verify the
 affected version with `fuxi --version` before reporting.
 
 ---
 
-## 7. Reporting a vulnerability
+## 8. Reporting a vulnerability
 
 Please report suspected vulnerabilities **privately** through GitHub's
 [Security Advisories](https://github.com/fuxicodex/Fuxi/security/advisories/new).

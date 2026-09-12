@@ -18,12 +18,17 @@ a web service hosted on our servers. That architecture sets the privacy baseline
   `fuxi login` (`fuxi setup-token` in headless/CI). Registration processes only
   the minimal account data needed to operate your account and provision access
   to FuXi-managed models.
-- You **never have to upload your code or conversations to us** — this is our
-  **zero content upload** commitment. Your code, prompts, and conversation
-  content are not stored on, and not routed through, FuXi's servers.
-- By default, your code, conversations, configuration, and credentials stay on
-  **your own device**, or travel directly between you and the model provider you
-  choose.
+- **Zero content upload** — you never upload your code or conversations to FuXi,
+  and FuXi **never collects, stores, or retains** them. Precisely:
+  - *Bring your own key:* content travels **directly between your device and the
+    provider you choose**; FuXi is not in the path.
+  - *FuXi-managed models:* the request is transmitted to the model endpoint
+    **solely to serve that request**; it is not retained by FuXi and not used to
+    train models.
+  - In both cases, FuXi never asks you to upload your project or files to a FuXi
+    service.
+- Your code, conversations, configuration, and credentials stay on **your own
+  device** under `~/.fuxi/`.
 
 This policy describes honestly: which data stays local, which data leaves your
 device and under what circumstances, and why.
@@ -48,28 +53,29 @@ by default**:
 **We do not read, copy, or upload this data.** It belongs to you and lives on
 your own device.
 
-### 2.2 Data that leaves your device (only after you configure it)
+### 2.2 Data that leaves your device
 
-Only the following data leaves your device, and only in the described scope — in
-no case is your code or conversation content uploaded to FuXi:
+Only the following leaves your device — and in **no case** does FuXi collect,
+store, or retain your code or conversations:
 
 - **Account registration & sign-in (required)**: `fuxi login` (or
   `fuxi setup-token` in CI) authenticates you with your FuXi account. Minimal
   account data (identifier and authentication material) is processed by the
   FuXi account system to operate your account and provision FuXi-managed models.
-- **Communication with a model provider**: when you make a request, the prompt
-  and the relevant code context needed for that request are sent to the model
-  provider you configured (OpenAI-compatible, Gemini, Bedrock/Vertex, etc.).
-  This is required for the model to do its work; content travels directly
-  between you and that provider and is not relayed or stored by FuXi. That
-  provider's privacy policy applies to this transmission.
+- **Requests to a model** — the prompt and the code context needed for that
+  request are transmitted so the model can do its work:
+  - *Bring your own key:* direct between your device and the provider you chose
+    (OpenAI-compatible, Gemini, Bedrock/Vertex, etc.); that provider's privacy
+    policy applies.
+  - *FuXi-managed models:* transmitted to the model endpoint solely to serve the
+    request. FuXi does **not** retain the content and does **not** use it to
+    train models.
 
 ### 2.3 Data we do not collect
 
-- We do **not** collect your source code or project contents.
-- We do **not** collect your conversation content for training or any other
-  purpose (in "bring your own key" mode, content flows directly between you and
-  your provider).
+- We do **not** collect or store your source code or project contents.
+- We do **not** collect or retain your conversation content, and we do **not**
+  use it for training or any other purpose.
 - We do **not** sell, rent, or trade any of your personal data.
 - We do **not** silently upload telemetry in the background.
 

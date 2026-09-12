@@ -64,6 +64,10 @@ the data-protection law applicable where the account is operated. We keep that
 data minimal, honor your rights, and review this statement as laws evolve — this
 is alignment with principles, not a claim of certification.
 
+The full jurisdiction-by-jurisdiction analysis — scope triggers, the duties that
+bind us, and a disclosed risk register — is in the
+[Global Privacy & Legal Risk Map](compliance/GLOBAL_LAW_MAP.md).
+
 ---
 
 ## 4. Responsibility boundaries

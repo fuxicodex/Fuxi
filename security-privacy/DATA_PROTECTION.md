@@ -17,8 +17,10 @@ clearly stated purposes, and not for any unstated use. Specifically:
 - **A FuXi account is required to use FuXi** — minimal account data (identifier,
   authentication) is processed to operate your account; no unnecessary identity
   data is collected.
-- **Zero content upload** — user code and conversations are never uploaded to,
-  or routed through, FuXi; content goes directly to the provider you choose.
+- **Zero content upload** — FuXi never collects, stores, or retains your code or
+  conversations, and never asks you to upload them. In BYOK mode content travels
+  directly to your chosen provider; with FuXi-managed models the request is
+  transmitted only to serve it, and is not retained or used for training.
 - Local data is retained only to support session resume, memory, and audit.
 
 ---
@@ -37,12 +39,16 @@ Required account flow:
                                        (minimal account data only)
 
 Leaves the device only for the model to work:
-  Request prompt + code context ──▶  the model provider you choose
-                                       (its policy applies; not via FuXi)
+  BYOK:    Request prompt + code context ──▶  the provider you choose
+                                              (its policy applies; not via FuXi)
+  Managed: Request prompt + code context ──▶  the model endpoint
+                                              (to serve the request only;
+                                               not retained, not used for training)
 ```
 
-**Key point:** in "bring your own key" mode, your content travels directly
-between **you and your provider**; FuXi does not hold, relay, or store it.
+**Key point:** FuXi never requires you to upload your project. In "bring your own
+key" mode content travels directly between **you and your provider**; with
+managed models it is transmitted only to serve the request and is not retained.
 
 ---
 

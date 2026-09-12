@@ -17,12 +17,22 @@ actually applicable to FuXi.
 | GDPR | General Data Protection Regulation | EU/EEA |
 | UK GDPR | UK General Data Protection Regulation | UK |
 | PIPL | Personal Information Protection Law | China |
+| CSL / DSL | Cybersecurity Law / Data Security Law | China |
 | CCPA/CPRA | California Consumer Privacy Act / California Privacy Rights Act | California, USA |
+| VCDPA / CPA / CTDPA / UCPA / TDPSA | Virginia / Colorado / Connecticut / Utah / Texas consumer privacy acts | Other US states |
+| FTC Act §5 / COPPA | Federal Trade Commission Act / Children's Online Privacy Protection Act | USA (federal) |
 | LGPD | Lei Geral de Proteção de Dados | Brazil |
-| PIPEDA | Personal Information Protection and Electronic Documents Act | Canada |
-| PDPA | Personal Data Protection Act | Singapore |
-| APP | Australian Privacy Principles (Privacy Act) | Australia |
+| PIPEDA / Law 25 | Personal Information Protection and Electronic Documents Act / Quebec Law 25 | Canada |
+| DPDP Act | Digital Personal Data Protection Act 2023 | India |
+| APPI | Act on the Protection of Personal Information | Japan |
+| PIPA | Personal Information Protection Act | South Korea |
+| PDPA | Personal Data Protection Act | Singapore / Thailand |
+| Privacy Act + APPs | Privacy Act and Australian Privacy Principles | Australia |
+| POPIA | Protection of Personal Information Act | South Africa |
+| FADP | Federal Act on Data Protection | Switzerland |
+| 152-FZ | Federal Law on Personal Data | Russia |
 | EU AI Act | Artificial Intelligence Act | EU |
+| 生成式 AI 规定 | Interim Measures for Generative AI Services | China |
 
 ---
 
@@ -42,7 +52,32 @@ actually applicable to FuXi.
 
 ---
 
-## 3. Architectural advantage: meeting most requirements naturally
+## 3. Obligation-level mapping (the duties that actually bind us)
+
+Because an account is required, FuXi is a **controller** for account data. The
+table maps the concrete obligations that follow, and how each is met. For the
+jurisdiction-by-jurisdiction view and the risk register, see the
+[Global Law Map](GLOBAL_LAW_MAP.md).
+
+| Obligation | Typical source | FuXi's implementation |
+|---|---|---|
+| Lawful basis | GDPR Art. 6; PIPL Art. 13; LGPD Art. 7 | Performance of the service contract for account data; consent where required |
+| Notice / transparency | GDPR Art. 13–14; PIPL Art. 17; CCPA §1798.100 | [Privacy Policy](../PRIVACY_POLICY.md) + this document set |
+| Access / portability | GDPR Art. 15, 20; CCPA; DPDP | [DSR Procedure](../procedures/DATA_SUBJECT_REQUEST.md) |
+| Rectification | GDPR Art. 16; LGPD Art. 18 | Account settings / DSR channel |
+| Erasure | GDPR Art. 17; CCPA; PIPL Art. 47 | Local data: `rm -rf ~/.fuxi`; account data: on request |
+| Object / restrict | GDPR Art. 18, 21; LGPD | DSR channel |
+| Breach notification | GDPR Art. 33/34 (72h); PDPA (3 days); AU NDB | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md), strictest target applied |
+| Security of processing | GDPR Art. 32; PIPL Art. 51 | [Information Security Policy](../policies/INFORMATION_SECURITY_POLICY.md) |
+| Records & assessments | GDPR Art. 30, 35; DPDP (SDF) | [ROPA](ROPA.md) · [DPIA](DPIA.md) |
+| Cross-border transfer | GDPR Ch. V; PIPL Ch. 3; 152-FZ | [Transfer Assessment](TRANSFER_ASSESSMENT.md); mechanism per region |
+| Local representation | GDPR Art. 27; UK; PIPA (KR) | Appointed where required; published on the official website |
+| Children | GDPR Art. 8; COPPA; PIPL Art. 31; DPDP | Not child-directed; no knowing collection; age screening |
+| AI transparency | EU AI Act; China generative-AI rules | Human-in-the-loop, permission model, honest capability claims ([AI Governance](../policies/AI_GOVERNANCE.md)) |
+
+---
+
+## 4. Architectural advantage: meeting most requirements naturally
 
 - **Local-first + bring your own key** = by default we **do not hold** user code
   or conversations → most "collect, store, share, delete" obligations dissolve
@@ -54,15 +89,17 @@ actually applicable to FuXi.
 
 ---
 
-## 4. How we stay aligned
+## 5. How we stay aligned
 
 1. Review this matrix semiannually, adding new laws/jurisdictions.
 2. Material legal changes trigger policy and procedure revisions.
 3. Disclose via transparency report and trust center.
+4. Maintain the [Global Law Map](GLOBAL_LAW_MAP.md) risk register alongside this
+   matrix, so risks are disclosed rather than assumed away.
 
 ---
 
-## 5. Boundary statement
+## 6. Boundary statement
 
 - This matrix does **not** claim any certification or regulatory endorsement.
 - Third parties users connect (model providers/MCP/plugins) are responsible for

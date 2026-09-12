@@ -20,7 +20,7 @@ FuXi 从设计之初就把"不收集、不窥探、由你掌控"作为默认状�
 
 **最重要的一句话：** 使用 FuXi 需要注册 FuXi 账号，但注册只涉及运行账号所
 需的最少账户数据；你的代码和对话内容**绝不**会上传到 FuXi 的服务器（零内容
-上传）。
+上传）。这层保护是**默认开启、无需配置**的 —— 见[安全白皮书 §5](SECURITY.zh-CN.md)。
 
 ---
 
@@ -46,9 +46,9 @@ L5  信任 Trust            —— 面向用户的可信披露
 | 文档 | 内容 | English |
 |---|---|---|
 | [隐私政策](PRIVACY_POLICY.zh-CN.md) | 我们收集什么、不收集什么、数据如何流动 | [Privacy Policy](PRIVACY_POLICY.md) |
-| [安全白皮书](SECURITY.zh-CN.md) | 安全架构、威胁模型、命令安全、凭据处理 | [Security Whitepaper](SECURITY.md) |
-| [数据保护承诺](DATA_PROTECTION.zh-CN.md) | 数据最小化、存储位置、用户权利、数据出境 | [Data Protection](DATA_PROTECTION.md) |
-| [合规与责任声明](COMPLIANCE.zh-CN.md) | 法律框架对齐、责任边界、真实声明 | [Compliance](COMPLIANCE.md) |
+| [安全白皮书](SECURITY.zh-CN.md) | 安全架构、威胁模型、命令安全、凭据处理、**默认隐性保护** | [Security Whitepaper](SECURITY.md) |
+| [数据保护承诺](DATA_PROTECTION.zh-CN.md) | 数据最小化、存储位置、用户权利、数据出境、**零内容上传** | [Data Protection](DATA_PROTECTION.md) |
+| [合规与责任声明](COMPLIANCE.zh-CN.md) | 法律框架对齐、**主要国家法律视角**、责任边界、真实声明 | [Compliance](COMPLIANCE.md) |
 
 ### L0 · 治理 Governance
 
@@ -90,6 +90,7 @@ L5  信任 Trust            —— 面向用户的可信披露
 
 | 文档 | 内容 | English |
 |---|---|---|
+| [全球隐私与法律风险地图](compliance/GLOBAL_LAW_MAP.zh-CN.md) | 逐法域义务对照、全球法律风险登记册与缓解 | [Global Law Map](compliance/GLOBAL_LAW_MAP.md) |
 | [全球合规对照矩阵](compliance/COMPLIANCE_MATRIX.zh-CN.md) | GDPR/PIPL/CCPA/LGPD 等原则对照 | [Compliance Matrix](compliance/COMPLIANCE_MATRIX.md) |
 | [隐私影响评估 DPIA](compliance/DPIA.zh-CN.md) | 评估方法与风险缓解 | [DPIA](compliance/DPIA.md) |
 | [数据处理活动记录 ROPA](compliance/ROPA.zh-CN.md) | 处理活动清单、接收方、保留期 | [ROPA](compliance/ROPA.md) |

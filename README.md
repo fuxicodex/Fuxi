@@ -232,7 +232,7 @@ Full reference material lives under `docs/`, mirrored in 简体中文.
 | [Keyboard shortcuts](docs/keybindings.md) | Terminal-UI key reference |
 | [Environment variables](docs/environment.md) | Full environment-variable reference, including bridge/remote control, sandbox limits, and MCP resource caps |
 | [FAQ](docs/faq.md) | Answers to common questions |
-| [Security & privacy](security-privacy/README.md) | Governance charter, policies, standards, procedures, global compliance matrix, and trust center |
+| [Security & privacy](security-privacy/README.md) | Governance charter, policies, standards, procedures, the [Global Privacy & Legal Risk Map](security-privacy/compliance/GLOBAL_LAW_MAP.md), and trust center |
 | [Changelog](CHANGELOG.md) | Release history |
 | [Support](SUPPORT.md) | Where to get help and how to report problems |
 
