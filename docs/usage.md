@@ -2,8 +2,11 @@
 
 A complete guide to installing, configuring, and using FuXi — the terminal AI
 coding agent. This document covers the full workflow, from first install to
-advanced features. It is written from public, user-facing behavior only.
+advanced features, and is written with first-time users in mind.
 
+> **In a hurry?** Install, launch, and start a session in minutes with the
+> [Quickstart](../README.md#quickstart). Come back here as you go deeper.
+>
 > Companion references:
 > [Keyboard shortcuts](keybindings.md) · [Environment variables](environment.md)
 > · [FAQ](faq.md) · [Security & privacy](../security-privacy/README.md)
@@ -15,7 +18,7 @@ advanced features. It is written from public, user-facing behavior only.
 - [Overview](#overview)
 - [Installation](#installation)
 - [First run & configuration](#first-run--configuration)
-- [The TUI](#the-tui)
+- [Your first session](#your-first-session)
 - [Permissions & safety](#permissions--safety)
 - [Sessions, memory & resume](#sessions-memory--resume)
 - [Tools & MCP](#tools--mcp)
@@ -184,14 +187,29 @@ MCP resource caps — is in [environment.md](environment.md).
 
 ---
 
-## The TUI
+## Your first session
 
-Type your prompt and press Enter. FuXi reasons, acts with tools, and verifies.
+Once a model is configured, type a prompt and press Enter. FuXi reasons about
+the task, uses tools to act on it, and verifies the result. A typical first
+request:
+
+```text
+Fix the failing tests in this repository.
+```
+
+### The basics
+
+- **Send a message** — type your prompt and press `Enter`. Press `Ctrl+J` or
+  `Shift+Enter` to insert a newline.
+- **Browse commands** — type `/` at the start of an empty prompt and press
+  `Enter` (or Tab-autocomplete) to see everything FuXi can do.
+- **Switch models** — `/model` picks the active model at any time.
+- **Get help or quit** — `/help` lists all commands; `/exit` quits.
+- **Cancel** — `Esc` cancels the current operation or closes a popup.
+- **Permission prompts** — the first time a tool does something sensitive, you
+  are asked to approve it. See [Permissions & safety](#permissions--safety).
 
 ### Slash commands
-
-Type `/` at the start of an empty prompt and press Enter (or Tab-autocomplete)
-to browse all commands:
 
 | Command | What it does |
 |---|---|
@@ -226,7 +244,9 @@ into the input. The full reference is in [keybindings.md](keybindings.md).
 ## Permissions & safety
 
 FuXi can edit files and run shell commands, so it ships an explicit permission
-model and safety guardrails.
+model and safety guardrails. Expect a permission prompt the first time a tool
+touches something sensitive; you can review and adjust everything later with
+`/permissions`.
 
 ### Permission modes
 

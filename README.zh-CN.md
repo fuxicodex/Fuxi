@@ -21,18 +21,111 @@ FuXi 是一个快速、自包含的**终端 AI 编程智能体**：在丰富的 
 
 ![FuXi 实际演示](docs/fuxi-demo.gif)
 
+> **第一次接触 FuXi？** 直接看[快速开始](#快速开始) —— 大约一分钟就能跑起
+> 一个可以用的会话。完整指南见[使用指南](docs/usage.zh-CN.md)。
+
 ---
 
 ## 目录
 
+- [快速开始](#快速开始)
 - [亮点](#亮点)
 - [与同类产品的对比](#与同类产品的对比)
-- [安装](#安装)
-- [快速开始](#快速开始)
 - [文档](#文档)
 - [评估与基准](#评估与基准)
 - [项目结构](#项目结构)
 - [License](#license)
+
+## 快速开始
+
+### 1. 安装
+
+macOS / Linux：
+
+```bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
+```
+
+Windows（PowerShell）：
+
+```powershell
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
+```
+
+Windows（CMD）：
+
+```bat
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+```
+
+安装程序会把 FuXi 放到 `~/.local/bin`（Windows 上为
+`%USERPROFILE%\.local\bin`），并在尚未加入时自动加进你的**用户** `PATH`。
+以后重跑同一条命令即可升级 —— 安装和升级是同一条命令。
+
+### 2. 验证
+
+```bash
+fuxi --version
+fuxi doctor      # 环境自检（配置、API Key、git、ripgrep 等）
+```
+
+### 3. 启动
+
+```bash
+fuxi
+```
+
+首次运行时，FuXi 会在 `~/.fuxi/` 下创建配置，然后需要你提供一个可对话的
+模型 —— 两条路径任选：
+
+1. **登录** —— `fuxi login` 用你的 FuXi 账号完成认证，随后自动开通
+   FuXi 托管模型，无需任何 API Key。
+2. **自带密钥** —— 通过环境变量设置提供商 API Key，或直接编写
+   `~/.fuxi/config.yaml`（`fuxi init` 会生成一份初始模板）：
+
+   ```yaml
+   provider: openapi
+   base_url: https://your-endpoint/v1
+   api_key: <your-key>       # 或改用 export FUXI_API_KEY
+   model: your-model
+   ```
+
+   需要同时管理多个提供商/模型？使用分层 schema —— 一份 `providers:`
+   目录加一层 `model:` 选择：
+
+   ```yaml
+   providers:
+     custom:
+       type: openapi
+       base_url: https://your-endpoint/v1
+       api_key: <your-key>
+       models:
+         - id: your-model-id
+   model:
+     active: { provider: custom, id: your-model-id }
+   ```
+
+   或者运行 `fuxi wizard` 进入交互式配置流程 —— 选择提供商、输入 base URL
+   与密钥、选择模型，并测试连接。
+
+### 4. 开干
+
+输入提示词并回车，例如：
+
+```text
+修复这个仓库里失败的测试。
+```
+
+FuXi 会推理、改文件、运行命令，并验证结果。头几分钟常用的几个命令：
+
+- `/model` —— 随时切换模型 · `/help` —— 浏览全部命令 · `/exit` —— 退出
+- 工具首次运行时可能请求授权 —— 用 `/permissions` 查看
+- `fuxi -r <sessionId>` 或 `fuxi -c` 恢复过去的对话；会话会自动保存
+
+就是这么个循环。升级、卸载、快捷键、MCP 与完整的命令行参考，见
+[使用指南](docs/usage.zh-CN.md)。
+
+---
 
 ## 亮点
 
@@ -87,98 +180,13 @@ FuXi 是一个终端优先、设计上不绑定任何单一提供商的 AI 编�
 
 ---
 
-## 安装
-
-### macOS / Linux
-
-```bash
-curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
-```
-
-### Windows（PowerShell）
-
-```powershell
-irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
-```
-
-### Windows（CMD）
-
-```bat
-curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
-```
-
-以上三种方式都会安装到 `~/.local/bin`（Windows 上为
-`%USERPROFILE%\.local\bin`），并在尚未加入时自动加进你的**用户** `PATH`。
-再次运行同一条命令即可原地升级已有安装 —— 安装和升级是同一条命令。默认安装
-最新版本；也可以带参数指定具体版本，例如 `./bootstrap.sh 0.1.2` 或
-`./bootstrap.ps1 0.1.2`。
-
-### 验证安装
-
-```bash
-fuxi --version
-fuxi doctor      # 环境自检（配置、API Key、git、ripgrep 等）
-```
-
-卸载说明见[使用指南](docs/usage.zh-CN.md#安装)。
-
----
-
-## 快速开始
-
-启动 TUI：
-
-```bash
-fuxi
-```
-
-首次运行时，FuXi 会在 `~/.fuxi/` 下创建配置。你需要一个可对话的模型，有两条
-路径可选：
-
-1. **登录** —— `fuxi login` 用你的 FuXi 账号完成认证，随后自动开通
-   FuXi 托管模型，无需任何 API Key。无交互/CI 场景用 `fuxi setup-token`
-   打印一个可导出为 `FUXI_OAUTH_TOKEN` 的令牌。
-2. **自带密钥** —— 通过环境变量设置提供商 API Key，或直接编写
-   `~/.fuxi/config.yaml`（`fuxi init` 会生成一份初始模板，并根据当前
-   已设置的环境变量自动探测提供商）：
-
-   ```yaml
-   provider: openapi
-   base_url: https://your-endpoint/v1
-   api_key: <your-key>       # 或改用 export FUXI_API_KEY
-   model: your-model
-   ```
-
-   需要同时管理多个提供商/模型？使用分层 schema —— 一份 `providers:`
-   目录加一层 `model:` 选择：
-
-   ```yaml
-   providers:
-     custom:
-       type: openapi
-       base_url: https://your-endpoint/v1
-       api_key: <your-key>
-       models:
-         - id: your-model-id
-   model:
-     active: { provider: custom, id: your-model-id }
-   ```
-
-   分层 schema 支持多个提供商与按模型的设置。
-
-   或者运行 `fuxi wizard` 进入交互式配置流程 —— 选择提供商、输入 base URL
-   与密钥、选择模型，并测试连接。
-
-配置好模型后，随时可用 `/model` 切换，用 `/config` 管理其余设置 ——
-权限、hooks、skills、plugins 等一切都通过 TUI 内的斜杠命令驱动。
-
----
-
 ## 文档
+
+完整参考文档都在 `docs/` 下，中英对照。
 
 | 文档 | 内容 |
 |---|---|
-| [使用指南](docs/usage.zh-CN.md) | 完整指南：配置、TUI、权限与安全、会话与记忆、工具与 MCP、完整命令行参考、更新与排障 |
+| [使用指南](docs/usage.zh-CN.md) | 完整指南：第一次会话、权限与安全、会话与记忆、工具与 MCP、完整命令行参考、更新与排障 |
 | [键盘快捷键](docs/keybindings.zh-CN.md) | 终端 UI 按键速查 |
 | [环境变量](docs/environment.zh-CN.md) | 完整环境变量参考（含桥接/远程控制、沙箱限制、MCP 资源上限） |
 | [常见问题](docs/faq.zh-CN.md) | 常见问题解答 |

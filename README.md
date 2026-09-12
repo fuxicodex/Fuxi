@@ -22,18 +22,114 @@ Homepage: **https://www.fuxicode.com**
 
 ![FuXi in action](docs/fuxi-demo.gif)
 
+> **New to FuXi?** Jump straight to the [Quickstart](#quickstart) — it takes
+> about a minute to get a working session. The full walkthrough lives in the
+> [usage guide](docs/usage.md).
+
 ---
 
 ## Contents
 
+- [Quickstart](#quickstart)
 - [Highlights](#highlights)
 - [How FuXi compares](#how-fuxi-compares)
-- [Install](#install)
-- [Getting started](#getting-started)
 - [Documentation](#documentation)
 - [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Project layout](#project-layout)
 - [License](#license)
+
+## Quickstart
+
+### 1. Install
+
+macOS / Linux:
+
+```bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
+```
+
+Windows (PowerShell):
+
+```powershell
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
+```
+
+Windows (CMD):
+
+```bat
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+```
+
+The installers place FuXi in `~/.local/bin` (`%USERPROFILE%\.local\bin` on
+Windows) and add it to your **user** `PATH` if it isn't there already. Rerun the
+same command to upgrade later — install and upgrade are the same command.
+
+### 2. Verify
+
+```bash
+fuxi --version
+fuxi doctor      # environment sanity checks (config, API key, git, ripgrep, ...)
+```
+
+### 3. Launch
+
+```bash
+fuxi
+```
+
+On first run FuXi creates its config under `~/.fuxi/`, then asks for a model to
+talk to — pick either path:
+
+1. **Sign in** — `fuxi login` authenticates with your FuXi account and
+   provisions FuXi-managed models automatically. No API key needed.
+2. **Bring your own key** — set a provider API key via environment variable, or
+   write `~/.fuxi/config.yaml` (`fuxi init` generates a starter template):
+
+   ```yaml
+   provider: openapi
+   base_url: https://your-endpoint/v1
+   api_key: <your-key>       # or export FUXI_API_KEY instead
+   model: your-model
+   ```
+
+   Managing several providers/models instead of one? Use the layered schema — a
+   `providers:` catalog plus a `model:` selection layer:
+
+   ```yaml
+   providers:
+     custom:
+       type: openapi
+       base_url: https://your-endpoint/v1
+       api_key: <your-key>
+       models:
+         - id: your-model-id
+   model:
+     active: { provider: custom, id: your-model-id }
+   ```
+
+   Or run `fuxi wizard` for an interactive setup flow — pick a provider, enter
+   the base URL and key, choose a model, and test the connection.
+
+### 4. Go
+
+Type a prompt and press Enter, for example:
+
+```text
+Fix the failing tests in this repository.
+```
+
+FuXi reasons, edits files, runs commands, and verifies the result. A few tips
+for your first minutes:
+
+- `/model` — switch models any time · `/help` — browse all commands · `/exit` — quit
+- Tools may ask for permission the first time they run — review with `/permissions`
+- `fuxi -r <sessionId>` or `fuxi -c` resumes a past conversation; sessions are
+  saved automatically
+
+That is the whole loop. For upgrading, uninstalling, keyboard shortcuts, MCP,
+and the full command-line reference, see the [usage guide](docs/usage.md).
+
+---
 
 ## Highlights
 
@@ -96,100 +192,13 @@ environment versions, exact commands, and known limitations are in
 
 ---
 
-## Install
-
-### macOS / Linux
-
-```bash
-curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
-```
-
-### Windows (PowerShell)
-
-```powershell
-irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
-```
-
-### Windows (CMD)
-
-```bat
-curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
-```
-
-All three install to `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) and
-add it to your **user** `PATH` if it isn't there already. Rerun the same command
-to upgrade in place — install and upgrade are the same command. By default they
-install the latest version; pin a specific one with an argument, e.g.
-`./bootstrap.sh 0.1.2` or `./bootstrap.ps1 0.1.2`.
-
-### Verify the install
-
-```bash
-fuxi --version
-fuxi doctor      # environment sanity checks (config, API key, git, ripgrep, ...)
-```
-
-For uninstall instructions, see the [usage guide](docs/usage.md#installation).
-
----
-
-## Getting started
-
-Launch the TUI:
-
-```bash
-fuxi
-```
-
-On first run FuXi creates its config under `~/.fuxi/`. You need a model to talk
-to, via one of two paths:
-
-1. **Sign in** — `fuxi login` authenticates with your FuXi account, which
-   provisions FuXi-managed models automatically. No API key needed. For
-   headless/CI use, `fuxi setup-token` prints a token to export as
-   `FUXI_OAUTH_TOKEN`.
-2. **Bring your own key** — set a provider API key via environment variable, or
-   write `~/.fuxi/config.yaml` directly (`fuxi init` generates a starter
-   template, auto-detecting a provider from whatever env vars are already set):
-
-   ```yaml
-   provider: openapi
-   base_url: https://your-endpoint/v1
-   api_key: <your-key>       # or export FUXI_API_KEY instead
-   model: your-model
-   ```
-
-   Managing several providers/models instead of one? Use the layered schema — a
-   `providers:` catalog plus a `model:` selection layer:
-
-   ```yaml
-   providers:
-     custom:
-       type: openapi
-       base_url: https://your-endpoint/v1
-       api_key: <your-key>
-       models:
-         - id: your-model-id
-   model:
-     active: { provider: custom, id: your-model-id }
-   ```
-
-   The layered schema supports multiple providers and per-model settings.
-
-   Or run `fuxi wizard` for an interactive setup flow — pick a provider, enter
-   the base URL and key, choose a model, and test the connection.
-
-Once a model is configured, pick it any time with `/model`, and manage the rest
-of your settings with `/config` — everything (permissions, hooks, skills,
-plugins) is driven from inside the TUI via slash commands.
-
----
-
 ## Documentation
+
+Full reference material lives under `docs/`, mirrored in 简体中文.
 
 | Guide | What it covers |
 |---|---|
-| [Usage guide](docs/usage.md) | The complete walkthrough: configuration, the TUI, permissions & safety, sessions & memory, tools & MCP, the full command-line reference, updating, and troubleshooting |
+| [Usage guide](docs/usage.md) | The complete walkthrough: first session, permissions & safety, sessions & memory, tools & MCP, the full command-line reference, updating, and troubleshooting |
 | [Keyboard shortcuts](docs/keybindings.md) | Terminal-UI key reference |
 | [Environment variables](docs/environment.md) | Full environment-variable reference, including bridge/remote control, sandbox limits, and MCP resource caps |
 | [FAQ](docs/faq.md) | Answers to common questions |
