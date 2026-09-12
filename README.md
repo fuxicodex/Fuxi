@@ -139,34 +139,54 @@ codebase, verifying results, and doing it affordably and under your control.
 
 ![FuXi architecture](docs/architecture.png)
 
-![Think → Act → Verify loop](docs/loop.png)
+### Built around the loop
 
-![Intelligent routing](docs/routing.png)
+- **Think → Act → Verify** — FuXi reasons about a task, acts with tools, checks
+  the result, and iterates until the work is verified: a failing test fixed, a
+  suite green, a PR ready.
 
-![Elevating any model's capability](docs/elevation.png)
+  ![Think → Act → Verify loop](docs/loop.png)
 
-- **50+ built-in tools** — file read/write/edit, shell (`bash` / PowerShell),
-  ripgrep search, web fetch, LSP diagnostics, Jupyter, browser use, background
-  tasks, and parallel sub-agents — all in one binary.
-- **Safety guardrails** — shell commands pass an AST safety classifier before
-  execution; fine-grained permissions and audit logging keep autonomous work
+- **Cost-aware smart routing** — every request is scored by complexity and
+  routed to the right model tier: cheap models handle simple tasks, powerful
+  models are reserved for hard ones, with automatic failover.
+
+  ![Intelligent routing](docs/routing.png)
+
+### 50+ tools, one static binary
+
+- **Work on real codebases** — file read/write/edit, shell (`bash` /
+  PowerShell), ripgrep search, web fetch, LSP diagnostics, Jupyter, browser
+  use, background tasks, and parallel sub-agents — no runtime dependencies.
+- **Extensible by design** — MCP client, hooks, skills, plugins, and slash
+  commands, all hot-reloadable.
+- **Safe by default** — shell commands pass an AST safety classifier before
+  they run; fine-grained permissions and local audit logs keep autonomous work
   under your control.
-- **Durable sessions & memory** — transcripts persist to disk; checkpoints let
-  you resume, roll back, or fork; idle "dreaming" consolidates memory across
-  sessions; long conversations auto-compact to save tokens.
-- **Bring your own key, or log in** — any provider API key (OpenAPI-compatible,
-  Gemini, Bedrock/Vertex), or sign in with FuXi OAuth.
-- **Extensible** — MCP client, hooks, skills, plugins, and slash commands, all
-  hot-reloadable.
+- **Your work persists** — transcripts saved to disk, checkpoints to resume,
+  roll back, or fork, auto-compaction of long conversations, and "dreaming"
+  memory consolidation across sessions.
+
+### Yours: key, data, and cost
+
+- **Bring your own key, or log in** — any OpenAI-compatible, Gemini, Bedrock,
+  or Vertex API key, or sign in with FuXi OAuth (no key needed).
+- **Local-first & private** — config, credentials, sessions, and memory stay on
+  your device under `~/.fuxi/`; prompts and code go straight to the provider
+  you choose.
 - **Free forever** — one static binary, no runtime dependencies, no license
   cost for individuals, teams, or enterprises.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
 
-Its agentic **Think → Act → Verify** loop and intelligent routing let any
-OpenAPI-compatible model perform above its raw benchmark — verified against
-another coding agent on a reproducible task set (see
-[benchmark](benchmark/REPORT.md)).
+### The proof
+
+The same **Think → Act → Verify** loop and smart routing let any
+OpenAPI-compatible model perform above its raw benchmark — measured
+head-to-head against another coding agent on a reproducible task set
+([benchmark](benchmark/REPORT.md)).
+
+![Elevating any model's capability](docs/elevation.png)
 
 ---
 
