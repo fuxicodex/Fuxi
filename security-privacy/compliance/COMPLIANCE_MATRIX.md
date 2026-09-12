@@ -32,7 +32,7 @@ actually applicable to FuXi.
 | FADP | Federal Act on Data Protection | Switzerland |
 | 152-FZ | Federal Law on Personal Data | Russia |
 | EU AI Act | Artificial Intelligence Act | EU |
-| 生成式 AI 规定 | Interim Measures for Generative AI Services | China |
+| Generative AI Measures | Interim Measures for Generative AI Services | China |
 
 ---
 
@@ -79,9 +79,9 @@ jurisdiction-by-jurisdiction view and the risk register, see the
 
 ## 4. Architectural advantage: meeting most requirements naturally
 
-- **Local-first + bring your own key** = by default we **do not hold** user code
-  or conversations → most "collect, store, share, delete" obligations dissolve
-  (nothing collected, nothing to violate).
+- **Content not held** = FuXi does not collect, store, or retain user code or
+  conversations, so the "collect, store, share, delete" obligations attach to a
+  far smaller data set (account data only) — not to zero obligations.
 - **Required account, minimal data** = registration processes only the minimum
   account data needed to operate the account; no content is uploaded.
 - **Explicit permissions + audit** = satisfies "human-in-the-loop" and
