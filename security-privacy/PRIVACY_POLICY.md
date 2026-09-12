@@ -142,30 +142,23 @@ To exercise these rights, contact us via the details below.
 
 ## 8. Children and young users
 
-FuXi **may be used by children and young people** — learning to code is a
-legitimate and valuable use. Because FuXi is an AI coding tool that can run
-commands, we apply **age-appropriate safeguards** rather than excluding young
-users:
+FuXi is a developer tool **aimed at developers and professional users**, and is
+**not directed at children under 14**. We do not knowingly collect personal
+information from children under 14. If you are a parent or guardian and believe
+we have collected such information without your consent, contact us and we will
+investigate and delete it.
 
-- **Consent from a parent or guardian where the law requires it.** Where a user
-  is below the applicable age of digital consent — generally **16 or lower**
-  under GDPR (13 for COPPA in the US, **14 in China**, **18 in India**, 14 in
-  Korea) — registration requires verifiable consent from a parent or guardian.
-  The age of consent varies by jurisdiction and we apply the stricter rule
-  where it is known.
-- **Data minimization for children.** We process the same minimal account data
-  as for any user — never more — and we do **not** use children's data for
-  behavioural advertising or profiling.
-- **No behavioural advertising.** FuXi does not serve behavioural advertising to
-  any user, and never to children.
-- **Safety by default.** The protections in the
+- **Users aged 14–17** may use FuXi only with the involvement of a parent or
+  guardian, who must consent where the law requires it and is responsible for
+  the minor's use.
+- **No behavioural advertising or profiling** for any user, and never for young
+  users.
+- **Data minimization** — the same minimal account data as any user, never more.
+- **Safety by default** — the protections in the
   [Security Whitepaper §5](SECURITY.md) (deny-by-default permissions, command
-  classification, local-only data) apply to every user, including children.
-- **Adult oversight recommended.** Because AI output can be wrong and FuXi can
-  execute commands, we recommend that a parent, guardian, or teacher supervises
-  a child's use — especially when FuXi is permitted to act autonomously.
-- **Guardian requests.** A parent or guardian may contact us to review, correct,
-  or delete a child's account data (see §7).
+  classification, local-only data) apply to every user.
+- **Adult oversight recommended**, because AI output can be wrong and FuXi can
+  run commands.
 
 ---
 

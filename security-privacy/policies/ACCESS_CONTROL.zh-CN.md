@@ -33,7 +33,7 @@ FuXi 提供由用户选择的权限模式：
 > 选择 `bypassPermissions` 时跳过提示层，但命令安全分类器与审计日志仍然生效；
 > `--dangerously-skip-permissions` 则跳过全部权限检查。风险自担。
 >
-> **未成年人**：由于 FuXi 能执行命令，未成年人账号不得使用
+> **未成年人**：由于 FuXi 能执行命令，未成年人账号（14–17 岁）不得使用
 > `bypassPermissions` 或 `--dangerously-skip-permissions`；见
 > [使用政策 §3](ACCEPTABLE_USE.zh-CN.md)。
 

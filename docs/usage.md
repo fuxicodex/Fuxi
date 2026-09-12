@@ -460,8 +460,9 @@ deceive or defraud, create illegal content, circumvent the safety mechanisms to
 cause those harms, misrepresent AI output as verified professional advice, or
 abuse the service.
 
-FuXi has a **minimum age of 13**; if you are under 18, a parent or guardian must
-be involved and provide consent where required. The full requirements are in the
+FuXi is aimed at developers and professional users and is **not directed at
+children under 14**; users aged 14–17 require a parent or guardian. The full
+requirements are in the
 [Usage Policy](../security-privacy/policies/ACCEPTABLE_USE.md). If you are unsure
 whether a use is lawful, take advice before proceeding.
 

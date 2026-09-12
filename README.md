@@ -190,9 +190,9 @@ codebase, verifying results, and doing it affordably and under your control.
   FuXi-managed models it is transmitted only to serve the request.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
-- **Age-appropriate by design** — children and young people may use FuXi, with
-  guardian consent where the law requires it, no behavioural advertising or
-  profiling, and recommended adult supervision.
+- **Built for developers** — FuXi is aimed at developers and professional users
+  and is not directed at children under 14; users aged 14–17 require a parent or
+  guardian.
 - **Honest limits** — FuXi is a tool, not an adviser: it tells you what it did,
   asks before sensitive actions, and never claims more reliability than it has.
 
@@ -300,8 +300,8 @@ your country and region, data-protection law, and any sectoral rules that apply
 to your work. FuXi's technical capability is not permission: if a use is unlawful
 where you are, you must not use FuXi for it.
 
-The disallowed uses and age requirements (minimum age 13; under 18 requires a
-parent or guardian) are in the
+The disallowed uses and age requirements (aimed at developers; not directed at
+children under 14; users aged 14–17 require a parent or guardian) are in the
 [Usage Policy](security-privacy/policies/ACCEPTABLE_USE.md). If you are unsure
 whether a use is lawful, take advice before proceeding.
 

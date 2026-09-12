@@ -121,12 +121,11 @@ strictly — see §6) and COPPA governs children under 13.
 
 ### 3.2 Children and AI-tool rules
 
-FuXi **may be used by children and young people**, so two bodies of law apply
-together: children's privacy rules and AI-tool rules.
+Two bodies of law apply together: children's privacy rules and AI-tool rules.
 
 - **Age of digital consent varies** — GDPR 16 (or lower by member state), US
-  COPPA 13, China 14, Korea 14, India 18. We apply the stricter rule where the
-  jurisdiction is known, and require guardian consent below the threshold.
+  COPPA 13, China 14. FuXi is aimed at developers and is not directed at
+  children under 14; users aged 14–17 require a parent or guardian.
 - **Children's design codes** (UK ICO AADC; California AADC; GDPR Art. 8
   expectations) call for the best interests of the child and high privacy by
   default. We meet this with privacy-by-default for all users, no behavioural
@@ -159,7 +158,7 @@ risks rather than claim they do not exist.
 | R3 | **Data-localization mandates** | China (CIIO/thresholds), Russia | Minimal data; regional deployment options; disclosed residency |
 | R4 | **Divergent breach-notification deadlines** | GDPR 72h; Singapore 3 days; AU/ZA "ASAP" | Single strictest internal target (P0 → notify promptly) so we meet every regime |
 | R5 | **Representative / DPO requirements** | EU (Art. 27), UK, Korea, India (SDF) | Appointed where required; published on the official website |
-| R6 | **Children / age thresholds differ** | GDPR 16 (default), US 13, China 14, Korea 14, India 18 | Minors may use FuXi, so we apply age-appropriate safeguards: guardian consent where required, no behavioural ads/profiling, minimal data, and recommended adult supervision |
+| R6 | **Children / age thresholds differ** | GDPR 16 (default), US 13, China 14 | Product is aimed at developers, not directed at under-14s; 14–17 require a parent/guardian; no behavioural ads/profiling; minimal data |
 | R7 | **AI-specific obligations** | EU AI Act (transparency), China generative-AI rules | Human-in-the-loop (Think→Act→Verify), permission model, honest capability claims |
 | R8 | **Government / lawful-access requests** | All jurisdictions | We can only disclose what we actually hold (Zone B); disclosed in the Transparency Report |
 | R9 | **Marketing / consent hygiene** | EU ePrivacy, others | No unsolicited marketing; consent where required; easy withdrawal |

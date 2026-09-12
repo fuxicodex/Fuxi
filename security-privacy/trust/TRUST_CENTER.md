@@ -60,9 +60,8 @@ in the [Security & Privacy README](../README.md). Quick links:
 2. Commands and permissions are auditable, controllable, revocable;
 3. Updates are verifiable;
 4. No fabricated certifications or overstated capabilities;
-5. Children may use FuXi with age-appropriate safeguards — guardian consent
-   where required, no behavioural ads or profiling, adult supervision
-   recommended;
+5. Aimed at developers; not directed at children under 14 — users aged 14–17
+   require a parent or guardian; no behavioural ads or profiling;
 6. Honest limits — FuXi is a tool, not an adviser; output may be wrong and must
    be reviewed before you rely on it.
 

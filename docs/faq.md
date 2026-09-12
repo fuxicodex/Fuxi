@@ -107,9 +107,8 @@ only changes which model handles your requests, not whether you need an account.
 
 **Can children use FuXi?**
 
-Yes. Children and young people may use FuXi, with age-appropriate safeguards:
-guardian consent where the law requires it, no behavioural advertising or
-profiling, and recommended adult supervision. See the
+FuXi is aimed at developers and professional users and is **not directed at
+children under 14**; users aged 14–17 require a parent or guardian. See the
 [Privacy Policy §8](../security-privacy/PRIVACY_POLICY.md#8-children-and-young-users).
 
 **Must I comply with any laws to use FuXi?**

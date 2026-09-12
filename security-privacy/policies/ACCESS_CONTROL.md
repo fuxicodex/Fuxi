@@ -36,7 +36,7 @@ FuXi offers user-selectable permission modes:
 > still apply; `--dangerously-skip-permissions` skips all permission checks.
 > Use at your own risk.
 >
-> **Minors**: because FuXi can run commands, a minor account must not use
+> **Minors**: because FuXi can run commands, a minor account (14–17) must not use
 > `bypassPermissions` or `--dangerously-skip-permissions`; see
 > [Usage Policy §3](ACCEPTABLE_USE.md).
 

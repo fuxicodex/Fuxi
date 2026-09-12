@@ -47,7 +47,7 @@
 | 安全义务 | 命令分类器、权限模型、更新校验 | [安全白皮书](../SECURITY.zh-CN.md) |
 | 泄露通知 | 事件分级与通知义务 | [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md) |
 | 跨境传输 | 用户内容不经 FuXi 传输；账号数据可能传输至账号服务区域 | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md) |
-| 儿童保护 | 允许未成年人使用；适龄保护，法律要求时取得监护人同意；不做行为广告/画像 | [隐私政策 §8](../PRIVACY_POLICY.zh-CN.md) |
+| 儿童保护 | 不面向不满 14 周岁儿童；14–17 岁需监护人；不做行为广告/画像 | [隐私政策 §8](../PRIVACY_POLICY.zh-CN.md) |
 | AI 责任（人在环中、透明） | 思考→行动→验证、权限模型、审计 | [AI 治理政策](../policies/AI_GOVERNANCE.zh-CN.md) |
 
 ---
@@ -71,7 +71,7 @@
 | 记录与评估 | GDPR 第 30、35 条；DPDP（SDF） | [ROPA](ROPA.zh-CN.md) · [DPIA](DPIA.zh-CN.md) |
 | 跨境传输 | GDPR 第五章；PIPL 第三章；152-FZ | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md)；按区域选择机制 |
 | 本地代表 | GDPR 第 27 条；英国；韩国 PIPA | 法律要求处委任；在官网公示 |
-| 儿童 | GDPR 第 8 条；COPPA；PIPL 第 31 条；DPDP | 允许未成年人使用；法律要求时取得监护人同意；不做广告/画像；数据最小 |
+| 儿童 | GDPR 第 8 条；COPPA；PIPL 第 31 条；DPDP | 不面向不满 14 周岁；14–17 岁需监护人；不做广告/画像；数据最小 |
 | AI 透明 | 欧盟 AI 法；中国生成式 AI 规定 | 人在环中、权限模型、如实声明能力（[AI 治理政策](../policies/AI_GOVERNANCE.zh-CN.md)） |
 
 ---

@@ -58,14 +58,13 @@ You must not use FuXi to:
 
 ## 3. Age requirements
 
-- FuXi is designed to be used with appropriate safeguards by people of all
-  ages, and we set a **minimum age of 13**.
-- If you are **under 18**, you may use FuXi only with the involvement of a
-  parent or guardian, and where the law requires consent, your parent or
-  guardian must provide it.
+- FuXi is aimed at developers and professional users and is **not directed at
+  children under 14**, consistent with our [Privacy Policy §8](../PRIVACY_POLICY.md).
+- Users **aged 14–17** may use FuXi only with the involvement of a parent or
+  guardian, who must consent where the law requires it.
 - Parents and guardians are responsible for a minor's use of FuXi and for their
   compliance with this policy.
-- We do not knowingly allow use by children under 13; if we learn of such use,
+- We do not knowingly allow use by children under 14; if we learn of such use,
   we will take appropriate action.
 
 ---

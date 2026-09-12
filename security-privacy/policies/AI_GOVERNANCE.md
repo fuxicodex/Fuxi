@@ -61,16 +61,15 @@ model is the "engine". This policy governs their combination.
 
 ## 6. Children and young users of an AI tool
 
-FuXi **may be used by children and young people**, and we apply age-appropriate
-safeguards (see [Privacy Policy §8](../PRIVACY_POLICY.md)):
+FuXi is aimed at developers and professional users and is **not directed at
+children under 14**; users aged 14–17 require the involvement of a parent or
+guardian (see [Privacy Policy §8](../PRIVACY_POLICY.md)):
 
-- Consent from a parent/guardian is required where the law sets an age of
-  digital consent (16 or lower under GDPR; 13 US COPPA; 14 China; 14 Korea;
-  18 India). FuXi's minimum age is 13; under 18 requires a parent or guardian.
-- Child-appropriate defaults: no behavioural advertising or profiling, minimal
-  data, and the same deny-by-default safety as every user.
-- We recommend adult supervision, particularly when FuXi is allowed to act
-  autonomously, because AI output can be wrong and FuXi can run commands.
+- Consent from a parent/guardian where the law requires it.
+- No behavioural advertising or profiling, minimal data, and the same
+  deny-by-default safety as every user.
+- We recommend adult supervision, because AI output can be wrong and FuXi can
+  run commands.
 
 ---
 
