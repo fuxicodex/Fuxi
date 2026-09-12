@@ -52,7 +52,7 @@ For third parties FuXi itself uses (hosting, monitoring, payment, etc.):
 1. collect/transfer only the minimum data necessary for the service;
 2. assess their security and privacy practices;
 3. bind their data handling through contracts;
-4. record them in the [Subprocessors List](../../trust/SUBPROCESSORS.md) and
+4. record them in the [Subprocessors List](../trust/SUBPROCESSORS.md) and
    disclose to users.
 
 ---

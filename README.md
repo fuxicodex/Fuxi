@@ -20,32 +20,18 @@ agentic Think → Act → Verify loop on top of it.
 
 Homepage: **https://www.fuxicode.com**
 
-
 ![FuXi in action](docs/fuxi-demo.gif)
 
 ---
 
-### What FuXi does
-
-Its agentic **Think → Act → Verify** loop and intelligent routing let any
-OpenAPI-compatible model perform above its raw benchmark — verified against
-another coding agent on a reproducible task set (see
-[benchmark](benchmark/REPORT.md)).
-
----
 ## Contents
 
 - [Highlights](#highlights)
 - [How FuXi compares](#how-fuxi-compares)
-- [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Install](#install)
 - [Getting started](#getting-started)
-- [Usage guide](docs/usage.md)
-- [Keyboard shortcuts](docs/keybindings.md)
-- [FAQ](docs/faq.md)
-- [Security & privacy](security-privacy/README.md)
-- [Changelog](CHANGELOG.md)
-- [Support](SUPPORT.md)
+- [Documentation](#documentation)
+- [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Project layout](#project-layout)
 - [License](#license)
 
@@ -81,6 +67,11 @@ codebase, verifying results, and doing it affordably and under your control.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
 
+Its agentic **Think → Act → Verify** loop and intelligent routing let any
+OpenAPI-compatible model perform above its raw benchmark — verified against
+another coding agent on a reproducible task set (see
+[benchmark](benchmark/REPORT.md)).
+
 ---
 
 ## How FuXi compares
@@ -102,6 +93,112 @@ environment versions, exact commands, and known limitations are in
 > An honest caveat: this is a small, self-run task set — not a third-party
 > benchmark — and it measures the *agent loop*, not raw model scores. Treat it
 > as a data point, not a headline.
+
+---
+
+## Install
+
+### macOS / Linux
+
+```bash
+curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
+```
+
+### Windows (PowerShell)
+
+```powershell
+irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
+```
+
+### Windows (CMD)
+
+```bat
+curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
+```
+
+All three install to `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) and
+add it to your **user** `PATH` if it isn't there already. Rerun the same command
+to upgrade in place — install and upgrade are the same command. By default they
+install the latest version; pin a specific one with an argument, e.g.
+`./bootstrap.sh 0.1.2` or `./bootstrap.ps1 0.1.2`.
+
+### Verify the install
+
+```bash
+fuxi --version
+fuxi doctor      # environment sanity checks (config, API key, git, ripgrep, ...)
+```
+
+For uninstall instructions, see the [usage guide](docs/usage.md#installation).
+
+---
+
+## Getting started
+
+Launch the TUI:
+
+```bash
+fuxi
+```
+
+On first run FuXi creates its config under `~/.fuxi/`. You need a model to talk
+to, via one of two paths:
+
+1. **Sign in** — `fuxi login` authenticates with your FuXi account, which
+   provisions FuXi-managed models automatically. No API key needed. For
+   headless/CI use, `fuxi setup-token` prints a token to export as
+   `FUXI_OAUTH_TOKEN`.
+2. **Bring your own key** — set a provider API key via environment variable, or
+   write `~/.fuxi/config.yaml` directly (`fuxi init` generates a starter
+   template, auto-detecting a provider from whatever env vars are already set):
+
+   ```yaml
+   provider: openapi
+   base_url: https://your-endpoint/v1
+   api_key: <your-key>       # or export FUXI_API_KEY instead
+   model: your-model
+   ```
+
+   Managing several providers/models instead of one? Use the layered schema — a
+   `providers:` catalog plus a `model:` selection layer:
+
+   ```yaml
+   providers:
+     custom:
+       type: openapi
+       base_url: https://your-endpoint/v1
+       api_key: <your-key>
+       models:
+         - id: your-model-id
+   model:
+     active: { provider: custom, id: your-model-id }
+   ```
+
+   The layered schema supports multiple providers and per-model settings.
+
+   Or run `fuxi wizard` for an interactive setup flow — pick a provider, enter
+   the base URL and key, choose a model, and test the connection.
+
+Once a model is configured, pick it any time with `/model`, and manage the rest
+of your settings with `/config` — everything (permissions, hooks, skills,
+plugins) is driven from inside the TUI via slash commands.
+
+---
+
+## Documentation
+
+| Guide | What it covers |
+|---|---|
+| [Usage guide](docs/usage.md) | The complete walkthrough: configuration, the TUI, permissions & safety, sessions & memory, tools & MCP, the full command-line reference, updating, and troubleshooting |
+| [Keyboard shortcuts](docs/keybindings.md) | Terminal-UI key reference |
+| [Environment variables](docs/environment.md) | Full environment-variable reference, including bridge/remote control, sandbox limits, and MCP resource caps |
+| [FAQ](docs/faq.md) | Answers to common questions |
+| [Security & privacy](security-privacy/README.md) | Governance charter, policies, standards, procedures, global compliance matrix, and trust center |
+| [Changelog](CHANGELOG.md) | Release history |
+| [Support](SUPPORT.md) | Where to get help and how to report problems |
+
+> Tip: run `fuxi --help` on your installed binary for the always-authoritative
+> flag, command, and environment-variable reference.
 
 ---
 
@@ -132,240 +229,6 @@ be linked from this section.
 
 ---
 
-## Install
-
-### macOS / Linux
-
-```bash
-curl -fsSL https://downloads.fuxicode.com/bootstrap.sh | bash
-```
-
-### Windows (PowerShell)
-
-```powershell
-irm https://downloads.fuxicode.com/bootstrap.ps1 | iex
-```
-
-### Windows (CMD)
-
-```bat
-curl -fsSL https://downloads.fuxicode.com/install.cmd -o "%TEMP%\fuxi-install.cmd" && "%TEMP%\fuxi-install.cmd"
-```
-
-All three install to `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) and add
-it to your **user** `PATH` if it isn't there already. Running the same command again
-later upgrades an existing install in place — it's the same command for install and
-upgrade.
-
-By default they install the latest version; pin a specific one with an argument, e.g.
-`./bootstrap.sh 0.1.2` or `./bootstrap.ps1 0.1.2`.
-
-### Verify the install
-
-```bash
-fuxi --version
-fuxi doctor      # environment sanity checks (config, API key, git, ripgrep, ...)
-```
-
-### Uninstall
-
-```bash
-# macOS / Linux
-rm -f "$HOME/.local/bin/fuxi"
-rm -rf "$HOME/.fuxi"   # optional: also drop config/state
-
-# Windows (PowerShell)
-Remove-Item -Force "$env:USERPROFILE\.local\bin\fuxi.exe"
-Remove-Item -Recurse -Force "$env:USERPROFILE\.fuxi"   # optional
-```
-
----
-
-## Getting started
-
-Launch the TUI:
-
-```bash
-fuxi
-```
-
-On first run FuXi creates its config under `~/.fuxi/`. You need a model to talk to,
-via one of two paths:
-
-1. **Sign in** — `fuxi login` opens a browser to authenticate with your FuXi
-   account, which provisions FuXi-managed models automatically. No API key needed.
-2. **Bring your own key** — set a provider API key via environment variable, or
-   write `~/.fuxi/config.yaml` directly (`fuxi init` generates a starter template,
-   auto-detecting a provider from whatever env vars are already set):
-
-   ```yaml
-   provider: openapi
-   base_url: https://your-endpoint/v1
-   api_key: <your-key>       # or export FUXI_API_KEY instead
-   model: your-model
-   ```
-
-   Managing several providers/models instead of one? Use the layered schema — a
-   `providers:` catalog plus a `model:` selection layer:
-
-   ```yaml
-   providers:
-     custom:
-       type: openapi
-       base_url: https://your-endpoint/v1
-       api_key: <your-key>
-       models:
-         - id: your-model-id
-   model:
-     active: { provider: custom, id: your-model-id }
-   ```
-
-   The layered schema supports multiple providers and per-model settings.
-
-   Or run `fuxi wizard` for an interactive setup flow (pick a provider, enter the
-   base URL/key, choose a model, test the connection).
-
-Once a model is configured, pick it any time with `/model`, and manage the rest of
-your settings with `/config` — everything (permissions, hooks, skills, plugins) is
-driven from inside the TUI via slash commands.
-
----
-
-## Usage guide
-
-> For the complete, step-by-step guide — from installation to advanced features
-> — see [docs/usage.md](docs/usage.md). This section is a quick reference.
-
-### Command-line flags
-
-Common flags when launching `fuxi`, grouped by purpose. The complete reference
-is in `fuxi --help`.
-
-| Area | Flag | Purpose |
-|---|---|---|
-| Model | `-m, --model <name>` | Override the model for this run |
-| | `-P, --provider <type>` | Provider type: `anthropic` \| `openapi` |
-| | `-b, --base-url <url>` | Override the base URL (enables the OpenAPI provider) |
-| | `-k, --api-key <key>` | Override the API key for this run |
-| Session | `-r, --resume <sessionId>` | Resume a specific past conversation |
-| | `-c, --continue` | Continue the most recent conversation in this directory |
-| | `--session-id <uuid>` | Use a specific session ID (must be a valid UUID) |
-| | `--fork-session` | When resuming, create a new session ID instead of reusing the original |
-| | `--prefill <text>` | Pre-fill the prompt input with text without submitting it |
-| | `-d, --dir <path>` | Working directory |
-| Permissions | `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
-| | `--auto` | Auto-approve safe tool calls (classifier-gated, with a circuit breaker) |
-| | `--dangerously-skip-permissions` | Skip all permission checks (DANGEROUS) |
-| Thinking | `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
-| | `--effort <level>` | `low` \| `medium` \| `high` \| `max` |
-| | `--max-tokens <n>` | Max output tokens per API call |
-| Tools & MCP | `--tools <tools...>` | Restrict the built-in tool set (`""` = none, `default` = all, or names) |
-| | `--mcp-config <configs...>` | Load MCP servers from JSON strings or file paths |
-| | `--strict-mcp-config` | Only use MCP servers from `--mcp-config` |
-| Inspect | `--status` | Print resolved provider status and exit |
-| | `--config` | Print resolved configuration and exit |
-| Debug | `--debug [pattern]` | Enable debug logging, optionally filtered by pattern |
-| | `--verbose` | Enable verbose logging |
-| | `-v, --version` / `-h, --help` | Version / full flag & command reference |
-
-`fuxi --help` also lists system-prompt overrides, tool restrictions, sampling
-controls, and swarm/agent flags.
-
-### Subcommands
-
-| Command | What it does |
-|---|---|
-| `fuxi` (or `fuxi tui`) | Launch the interactive TUI |
-| `fuxi login` | Sign in to a FuXi account, then configure API credentials |
-| `fuxi setup-token` | Sign in and print a token to export as `FUXI_OAUTH_TOKEN` (headless/CI) |
-| `fuxi wizard` | TUI setup wizard: provider, base URL, key, model, connection test |
-| `fuxi init [--force]` | Generate a `~/.fuxi/config.yaml` template (auto-detects provider from env) |
-| `fuxi doctor` | Run diagnostic checks on your environment |
-| `fuxi verify` | Verify provider connectivity |
-| `fuxi info` | Show provider and model information |
-| `fuxi update [version]` | Download and install a release (checksum-verified, atomic) |
-| `fuxi agents` | List configured agents grouped by source |
-| `fuxi proxy` | Start the smart routing proxy (protocol bridging between providers) |
-| `fuxi launch [args]` | Launch a proxied binary via the proxy, using your FuXi config |
-| `fuxi mcp serve` | Run FuXi itself as an MCP stdio server |
-| `fuxi remote-control` | Run as a cloud remote-control worker (alias for `--remote-control`) |
-
-### In-TUI slash commands
-
-Type `/` and press Enter (or Tab-autocomplete) to browse all commands:
-
-| Command | What it does |
-|---|---|
-| `/help`, `/commands`, `/menu` | Show or search all commands |
-| `/model` | Switch the active model |
-| `/config` | Open configuration |
-| `/status` | Show provider status |
-| `/context` | Show current context-window usage |
-| `/cost`, `/usage` | Session cost / plan usage limits |
-| `/compact` | Compact conversation history to free up context |
-| `/clear` | Clear the conversation |
-| `/history`, `/resume` | Browse or resume a past session/checkpoint |
-| `/tools` | List available tools |
-| `/permissions` | Show the current permission configuration |
-| `/memory` | Show the project memory file |
-| `/fork` | Show fork-agent stats |
-| `/away` | List or show stored session away-summaries |
-| `/commit` | Create a git commit |
-| `/review` | Review code / create a PR |
-| `/doctor` | Run diagnostic checks |
-| `/copy`, `/paste` | Copy the last reply / send clipboard text as the next prompt |
-| `/exit` | Quit |
-
-**Keyboard & input:** `/` then Enter opens the command browser · `Tab`
-autocompletes a slash command · `Ctrl+R` searches prompt history · `Ctrl+V` or
-terminal paste pastes directly into the input · bracketed paste handles large
-pastes. The full shortcut reference is in
-[docs/keybindings.md](docs/keybindings.md).
-
-### Updating
-
-FuXi checks for new versions in the background and prints a one-line notice when
-one is available. Update in place with:
-
-```bash
-fuxi update            # latest
-fuxi update 0.1.2      # a specific version
-```
-
-`fuxi update` downloads the target build, verifies its SHA-256 against the
-published manifest, and atomically replaces the running binary — it never leaves
-you with a partially-installed version. Suppress the background check with
-`--no-update-notifier` or `NO_UPDATE_NOTIFIER=1`.
-
-### Configuration
-
-- **Config directory:** `~/.fuxi/` (override with `FUXI_CONFIG_DIR`).
-- **Config file:** `~/.fuxi/config.yaml` — provider, model, thinking/effort,
-  routing preferences, and per-endpoint overrides. Changes hot-reload while
-  FuXi is running. `fuxi init` generates a starter template, and `/config`
-  manages settings from inside the TUI.
-- **Precedence:** environment variables > `config.yaml` > built-in defaults.
-- **Project settings:** a checked-in project settings file (permissions, hooks)
-  is honored per-project.
-- **Plugins:** first-party marketplace at `fuxicode.com/plugins`.
-
-Key environment variables:
-
-| Variable | Purpose |
-|---|---|
-| `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI-compatible provider config |
-| `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
-| `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
-| `FUXI_DEBUG` | Set to `1` to enable debug logging |
-| `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice |
-| `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | Sampling controls |
-
-See [`docs/environment.md`](docs/environment.md) for the full
-environment-variable reference — including bridge/remote control, sandbox
-limits, and MCP resource caps.
-
----
-
 ## Project layout
 
 This repository hosts FuXi's documentation, release installers, and the issue
@@ -373,13 +236,14 @@ tracker. The product source is proprietary and is not published here (see
 License).
 
 - `README.md` / `README.zh-CN.md` — the main documentation (English / 简体中文)
-- `docs/` — demo GIF, comparison graphics, usage guide, environment-variable
-  reference, keyboard reference, FAQ
+- `docs/` — demo GIF, comparison graphics, usage guide, keyboard reference,
+  environment-variable reference, and FAQ
+- `security-privacy/` — the Security & Privacy Program: governance charter,
+  policies, standards, procedures, global compliance matrix, and trust center
+- `benchmark/` — reproducible evaluation methodology and results
 - `CHANGELOG.md` — release history
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
   community and support guides
-- `security-privacy/` — the Security & Privacy Program: governance charter,
-  policies, standards, procedures, global compliance matrix, and trust center
 
 ---
 

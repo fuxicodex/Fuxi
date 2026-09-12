@@ -30,15 +30,15 @@
 
 | 通用原则 | FuXi 实践 | 相关文档 |
 |---|---|---|
-| 数据最小化 | 只处理必要数据；本地优先 | [隐私政策](../PRIVACY_POLICY.zh-CN.md)、[数据分级](DATA_CLASSIFICATION.zh-CN.md) |
+| 数据最小化 | 只处理必要数据；本地优先 | [隐私政策](../PRIVACY_POLICY.zh-CN.md)、[数据分级](../policies/DATA_CLASSIFICATION.zh-CN.md) |
 | 目的限制 | 仅用于明确目的 | 隐私政策 |
 | 透明度 | 数据流向、责任边界如实披露 | 全部文档 |
 | 用户权利（访问/更正/删除等） | 提供行使渠道；本地数据用户自行掌控 | [DSR 流程](../procedures/DATA_SUBJECT_REQUEST.zh-CN.md) |
 | 安全义务 | 命令分类器、权限模型、更新校验 | [安全白皮书](../SECURITY.zh-CN.md) |
-| 泄露通知 | 事件分级与通知义务 | [事件响应政策](INCIDENT_RESPONSE.zh-CN.md) |
+| 泄露通知 | 事件分级与通知义务 | [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md) |
 | 跨境传输 | 默认无跨境；BYOK 由用户选择 | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md) |
 | 儿童保护 | 不针对儿童、无意收集 16 岁以下数据 | 隐私政策 §8 |
-| AI 责任（人在环中、透明） | 思考→行动→验证、权限模型、审计 | [AI 治理政策](AI_GOVERNANCE.zh-CN.md) |
+| AI 责任（人在环中、透明） | 思考→行动→验证、权限模型、审计 | [AI 治理政策](../policies/AI_GOVERNANCE.zh-CN.md) |
 
 ---
 

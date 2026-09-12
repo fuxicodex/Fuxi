@@ -5,7 +5,7 @@
 *最后更新：2026-08-23 · 版本 1.0 · 层级：L1 政策*
 
 本政策定义 FuXi 对安全与隐私事件的分类、分级、响应目标与责任。操作细节见
-[事件响应操作手册](../../procedures/INCIDENT_RESPONSE_RUNBOOK.zh-CN.md)。
+[事件响应操作手册](../procedures/INCIDENT_RESPONSE_RUNBOOK.zh-CN.md)。
 
 ---
 

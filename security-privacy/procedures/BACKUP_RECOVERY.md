@@ -4,7 +4,7 @@
 
 This procedure explains how users back up and restore local data, and how FuXi
 ensures service-side recovery. Policy in
-[Business Continuity Policy](../../policies/BUSINESS_CONTINUITY.md).
+[Business Continuity Policy](../policies/BUSINESS_CONTINUITY.md).
 
 ---
 

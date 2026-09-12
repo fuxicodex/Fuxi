@@ -3,7 +3,7 @@
 *Last updated: 2026-08-23 · Version 1.0 · Layer: L3 Procedure*
 
 This runbook provides **step-by-step** incident response. Policy in
-[Incident Response Policy](../../policies/INCIDENT_RESPONSE.md).
+[Incident Response Policy](../policies/INCIDENT_RESPONSE.md).
 
 ---
 

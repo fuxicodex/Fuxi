@@ -80,6 +80,6 @@ Remote control, image preprocessing, and built-in search tooling.
 - `deepseek-v4` output limits and API request parameters (`top_p`).
 - Attachment ordering, message boundaries, and hook completion order.
 
-[0.1.6]: https://github.com/fuxicodex/Fuxi/releases/tag/0.1.6
+[0.1.6]: https://github.com/fuxicodex/Fuxi/releases/tag/v0.1.6
 [0.1.2]: https://github.com/fuxicodex/Fuxi/releases/tag/v0.1.2
 [0.1.1]: https://github.com/fuxicodex/Fuxi/releases/tag/v0.1.1

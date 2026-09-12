@@ -5,7 +5,7 @@
 *最后更新：2026-08-23 · 版本 1.0 · 层级：L3 流程*
 
 本手册提供事件响应的**分步操作**。政策见
-[事件响应政策](../../policies/INCIDENT_RESPONSE.zh-CN.md)。
+[事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md)。
 
 ---
 

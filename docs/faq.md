@@ -90,7 +90,7 @@ classifier-gated check with a circuit breaker.
 **Where is the full list of slash commands?**
 
 Type `/` at the start of an empty prompt to open the command palette, or see
-the slash-command table in the README's usage guide.
+the slash-command table in the [usage guide](usage.md#the-tui).
 
 **Are my sessions saved?**
 

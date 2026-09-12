@@ -4,7 +4,7 @@
 
 This policy defines the classification, severity, response targets, and
 responsibilities for security and privacy incidents. Operational detail is in
-the [Incident Response Runbook](../../procedures/INCIDENT_RESPONSE_RUNBOOK.md).
+the [Incident Response Runbook](../procedures/INCIDENT_RESPONSE_RUNBOOK.md).
 
 ---
 

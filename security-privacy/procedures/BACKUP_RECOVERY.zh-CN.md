@@ -5,7 +5,7 @@
 *最后更新：2026-08-23 · 版本 1.0 · 层级：L3 流程*
 
 本流程说明用户如何备份与恢复本地数据，以及 FuXi 如何保障服务侧恢复。
-政策见 [业务连续性政策](../../policies/BUSINESS_CONTINUITY.zh-CN.md)。
+政策见 [业务连续性政策](../policies/BUSINESS_CONTINUITY.zh-CN.md)。
 
 ---
 

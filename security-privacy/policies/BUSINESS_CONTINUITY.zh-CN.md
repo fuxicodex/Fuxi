@@ -5,7 +5,7 @@
 *最后更新：2026-08-23 · 版本 1.0 · 层级：L1 政策*
 
 本政策说明 FuXi 如何保障服务可用性，以及用户如何在灾难场景下恢复自己的
-数据。操作细节见 [备份与恢复流程](../../procedures/BACKUP_RECOVERY.zh-CN.md)。
+数据。操作细节见 [备份与恢复流程](../procedures/BACKUP_RECOVERY.zh-CN.md)。
 
 ---
 
@@ -31,7 +31,7 @@
 
 - 本地数据（配置、会话、记忆、审计）由用户自行备份。
 - **建议**：定期备份 `~/.fuxi/` 与项目目录，或使用版本控制/同步工具。
-- 恢复方式见 [备份与恢复流程](../../procedures/BACKUP_RECOVERY.zh-CN.md)。
+- 恢复方式见 [备份与恢复流程](../procedures/BACKUP_RECOVERY.zh-CN.md)。
 
 ---
 

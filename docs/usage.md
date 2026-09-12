@@ -5,8 +5,8 @@ coding agent. This document covers the full workflow, from first install to
 advanced features. It is written from public, user-facing behavior only.
 
 > Companion references:
-> [Keyboard shortcuts](keybindings.md) · [FAQ](faq.md) ·
-> [Security & privacy](../security-privacy/README.md)
+> [Keyboard shortcuts](keybindings.md) · [Environment variables](environment.md)
+> · [FAQ](faq.md) · [Security & privacy](../security-privacy/README.md)
 
 ---
 
@@ -105,7 +105,7 @@ fuxi
 ```
 
 On first run FuXi creates its config under `~/.fuxi/`. You need a model to talk
-to, via one of two paths:
+to, via one of two paths.
 
 ### 1. Sign in
 
@@ -113,8 +113,9 @@ to, via one of two paths:
 fuxi login
 ```
 
-`fuxi login` opens a browser to authenticate with your FuXi account, which
-provisions FuXi-managed models automatically. No API key needed.
+`fuxi login` authenticates with your FuXi account, which provisions
+FuXi-managed models automatically. No API key needed. Sign out with
+`fuxi logout`.
 
 For headless/CI use, `fuxi setup-token` prints a token to export as
 `FUXI_OAUTH_TOKEN`.
@@ -166,19 +167,20 @@ The wizard walks through provider, base URL, key, model, and a connection test.
   is honored per-project.
 - **Plugins:** first-party marketplace at `fuxicode.com/plugins`.
 
-Common environment variables:
+The most common environment variables:
 
 | Variable | Purpose |
 |---|---|
 | `FUXI_BASE_URL` / `FUXI_API_KEY` / `FUXI_MODEL` | OpenAPI-compatible provider config |
+| `ANTHROPIC_API_KEY` / `ANTHROPIC_MODEL` | Anthropic provider config |
 | `FUXI_THINKING_MODE` / `FUXI_THINKING_EFFORT` | `auto\|enabled\|disabled` / `low\|medium\|high\|max` |
 | `FUXI_CONFIG_DIR` | Override the config directory (default `~/.fuxi`) |
 | `FUXI_DEBUG` | Set to `1` to enable debug logging |
 | `NO_UPDATE_NOTIFIER` | Set to `1` to suppress the background update-check notice |
 | `FUXI_TEMPERATURE` / `FUXI_TOP_P` / `FUXI_SEED` | Sampling controls |
 
-Run `fuxi --help` for the full environment-variable reference, including
-sandbox limits and MCP resource caps.
+The complete reference — including bridge/remote control, sandbox limits, and
+MCP resource caps — is in [environment.md](environment.md).
 
 ---
 
@@ -188,7 +190,8 @@ Type your prompt and press Enter. FuXi reasons, acts with tools, and verifies.
 
 ### Slash commands
 
-Type `/` and press Enter (or Tab-autocomplete) to browse all commands:
+Type `/` at the start of an empty prompt and press Enter (or Tab-autocomplete)
+to browse all commands:
 
 | Command | What it does |
 |---|---|
@@ -283,20 +286,26 @@ browser use via MCP, background tasks, and parallel sub-agents.
 fuxi --tools ""               # no tools
 fuxi --tools default          # all built-in tools
 fuxi --tools <name1> <name2>  # a specific subset
+fuxi --allowed-tools <list>   # comma-separated allow-list
+fuxi --disallowed-tools <list> # comma-separated block-list
 ```
 
 ### MCP servers
 
+MCP servers are only loaded when you explicitly configure them.
+
 ```bash
 fuxi --mcp-config <configs...>   # load MCP servers from JSON strings or file paths
 fuxi --strict-mcp-config         # only use servers from --mcp-config
+fuxi mcp                         # configure and manage MCP servers
 ```
-
-MCP servers are only loaded when you explicitly configure them.
 
 ---
 
 ## Command-line reference
+
+> `fuxi --help` on your installed binary is always authoritative. The tables
+> below cover the flags and commands you are most likely to use.
 
 ### Flags
 
@@ -306,10 +315,12 @@ MCP servers are only loaded when you explicitly configure them.
 | | `-P, --provider <type>` | Provider type: `anthropic` \| `openapi` |
 | | `-b, --base-url <url>` | Override the base URL (enables the OpenAPI provider) |
 | | `-k, --api-key <key>` | Override the API key for this run |
+| | `--fallback-model <model>` | Fall back to this model when the default is overloaded |
 | Session | `-r, --resume <sessionId>` | Resume a specific past conversation |
 | | `-c, --continue` | Continue the most recent conversation in this directory |
 | | `--session-id <uuid>` | Use a specific session ID (must be a valid UUID) |
 | | `--fork-session` | When resuming, create a new session ID instead of reusing the original |
+| | `--from-pr [value]` | Resume a session linked to a PR by number/URL |
 | | `--prefill <text>` | Pre-fill the prompt input without submitting it |
 | | `-d, --dir <path>` | Working directory |
 | Permissions | `--permission-mode <mode>` | `default` \| `plan` \| `bypassPermissions` |
@@ -318,36 +329,48 @@ MCP servers are only loaded when you explicitly configure them.
 | Thinking | `--thinking <mode>` | `enabled` \| `adaptive` \| `disabled` |
 | | `--effort <level>` | `low` \| `medium` \| `high` \| `max` |
 | | `--max-tokens <n>` | Max output tokens per API call |
+| | `--max-thinking-tokens <n>` | Max thinking budget tokens |
+| | `--max-budget-usd <amount>` | Maximum dollar amount to spend on API calls |
 | Tools & MCP | `--tools <tools...>` | Restrict the built-in tool set (`""` = none, `default` = all, or names) |
+| | `--allowed-tools` / `--disallowed-tools <list>` | Comma-separated tool allow / block lists |
 | | `--mcp-config <configs...>` | Load MCP servers from JSON strings or file paths |
 | | `--strict-mcp-config` | Only use MCP servers from `--mcp-config` |
+| | `--plugin-dir <path>` | Load plugins from a directory for this session |
+| Print | `-p, --print` | Print the response and exit (useful for pipes) |
+| | `--output-format` / `--input-format <format>` | `text` / `json` / `stream-json` (with `--print`) |
 | Inspect | `--status` | Print resolved provider status and exit |
 | | `--config` | Print resolved configuration and exit |
 | Debug | `--debug [pattern]` | Enable debug logging, optionally filtered by pattern |
 | | `--verbose` | Enable verbose logging |
 | | `-v, --version` / `-h, --help` | Version / full flag & command reference |
 
-`fuxi --help` also lists system-prompt overrides, tool restrictions, sampling
-controls, and swarm/agent flags.
+`fuxi --help` also lists system-prompt overrides (`--system-prompt`,
+`--append-system-prompt`, ...), hook triggers (`--init`, `--init-only`,
+`--maintenance`), swarm/agent flags (`--team`, `--agents`, `--name`, ...),
+worktree flags (`--worktree`, `--tmux`), and sampling controls.
 
 ### Subcommands
 
 | Command | What it does |
 |---|---|
 | `fuxi` (or `fuxi tui`) | Launch the interactive TUI |
-| `fuxi login` | Sign in to a FuXi account, then configure API credentials |
+| `fuxi login` / `fuxi logout` | Sign in to your FuXi account (stdin flow) / sign out |
 | `fuxi setup-token` | Sign in and print a token to export as `FUXI_OAUTH_TOKEN` (headless/CI) |
 | `fuxi wizard` | TUI setup wizard: provider, base URL, key, model, connection test |
 | `fuxi init [--force]` | Generate a `~/.fuxi/config.yaml` template (auto-detects provider from env) |
 | `fuxi doctor` | Run diagnostic checks on your environment |
 | `fuxi verify` | Verify provider connectivity |
 | `fuxi info` | Show provider and model information |
-| `fuxi update [version]` | Download and install a release (checksum-verified, atomic) |
 | `fuxi agents` | List configured agents grouped by source |
-| `fuxi proxy` | Start the smart routing proxy (protocol bridging between providers) |
+| `fuxi auto-mode <sub>` | Inspect auto-mode classifier rules (`defaults` \| `config` \| `critique`) |
+| `fuxi proxy` | Start the smart routing proxy (Anthropic ↔ OpenAI translation) |
 | `fuxi launch [args]` | Launch a proxied binary via the proxy, using your FuXi config |
-| `fuxi mcp serve` | Run FuXi itself as an MCP stdio server |
+| `fuxi mcp` | Configure and manage MCP servers |
+| `fuxi plugin` | Manage FuXi plugins |
+| `fuxi workflow` | Manage workflow definitions |
+| `fuxi relay-server` | Start the relay server (auth via `FUXI_RELAY_TOKEN`) |
 | `fuxi remote-control` | Run as a cloud remote-control worker (alias for `--remote-control`) |
+| `fuxi update [version]` | Download and install a release (checksum-verified, atomic) |
 
 ---
 
@@ -405,13 +428,16 @@ Do **not** open a public issue.
   stats.
 - **Hooks, skills & plugins** — extensible and hot-reloadable; first-party
   marketplace at `fuxicode.com/plugins`.
-- **Remote control** — run as a cloud worker with `fuxi remote-control`.
-- **Proxy** — `fuxi proxy` starts the smart routing proxy (protocol bridging
-  between providers).
+- **Remote control** — run as a cloud worker with `fuxi remote-control` or
+  `--remote-control`.
+- **Proxy** — `fuxi proxy` starts the smart routing proxy (Anthropic ↔ OpenAI
+  translation); `fuxi launch` runs a proxied binary through it.
+- **Worktrees & swarm** — `--worktree` creates a git worktree for the session;
+  `--team` joins swarm coordination with teammates.
 - **Multi-window** — switch between concurrent sessions without interrupting
   current work.
 - **Image & voice** — paste images from the clipboard, image captioning, and
-  hold-to-talk voice capture.
+  hold-to-talk voice capture (`Ctrl+V` to paste, `Alt+V` to talk).
 
 See [CHANGELOG.md](../CHANGELOG.md) for release-by-release details and
 [keybindings.md](keybindings.md) for the complete shortcut reference.

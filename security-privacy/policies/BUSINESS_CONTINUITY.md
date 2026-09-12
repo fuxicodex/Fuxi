@@ -4,7 +4,7 @@
 
 This policy describes how FuXi maintains service availability and how users can
 recover their own data in disaster scenarios. Operational detail is in
-[Backup & Recovery](../../procedures/BACKUP_RECOVERY.md).
+[Backup & Recovery](../procedures/BACKUP_RECOVERY.md).
 
 ---
 
@@ -32,7 +32,7 @@ recover their own data in disaster scenarios. Operational detail is in
 - Local data (config, sessions, memory, audit) is backed up by the user.
 - **Recommendation**: periodically back up `~/.fuxi/` and project directories, or
   use version control / sync tools.
-- Recovery steps in [Backup & Recovery](../../procedures/BACKUP_RECOVERY.md).
+- Recovery steps in [Backup & Recovery](../procedures/BACKUP_RECOVERY.md).
 
 ---
 

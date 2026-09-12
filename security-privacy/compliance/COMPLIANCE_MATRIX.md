@@ -30,15 +30,15 @@ actually applicable to FuXi.
 
 | Common principle | FuXi practice | Document |
 |---|---|---|
-| Data minimization | Process only necessary data; local-first | [Privacy Policy](../PRIVACY_POLICY.md), [Data Classification](DATA_CLASSIFICATION.md) |
+| Data minimization | Process only necessary data; local-first | [Privacy Policy](../PRIVACY_POLICY.md), [Data Classification](../policies/DATA_CLASSIFICATION.md) |
 | Purpose limitation | Use only for stated purposes | Privacy Policy |
 | Transparency | Honest disclosure of data flows and responsibility | All documents |
 | User rights (access/rectify/erase) | Exercise channels; local data user-controlled | [DSR Procedure](../procedures/DATA_SUBJECT_REQUEST.md) |
 | Security obligation | Command classifier, permission model, update verification | [Security Whitepaper](../SECURITY.md) |
-| Breach notification | Severity tiers and notification duty | [Incident Response Policy](INCIDENT_RESPONSE.md) |
+| Breach notification | Severity tiers and notification duty | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) |
 | Cross-border transfer | None by default; BYOK is user's choice | [Transfer Assessment](TRANSFER_ASSESSMENT.md) |
 | Children protection | Not child-directed; no knowing collection under 16 | Privacy Policy §8 |
-| AI accountability (human-in-the-loop, transparent) | Think→Act→Verify, permission model, audit | [AI Governance Policy](AI_GOVERNANCE.md) |
+| AI accountability (human-in-the-loop, transparent) | Think→Act→Verify, permission model, audit | [AI Governance Policy](../policies/AI_GOVERNANCE.md) |
 
 ---
 
