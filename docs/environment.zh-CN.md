@@ -50,7 +50,7 @@ FuXi 按以下优先级解析配置：环境变量 > `~/.fuxi/config.yaml` > 内
 | `FUXI_ANALYTICS_MAX_EVENTS` | 限制分析事件数量上限 |
 
 `/privacy-settings` 界面与隐私级别见
-[隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+[隐私控制](../security-privacy/DATA_PROTECTION.zh-CN.md)。
 
 ## 功能开关
 

@@ -78,7 +78,7 @@ FuXi 在你的机器上运行，你的工作留在本地。
 - **凭据存于本地 `~/.fuxi/`**，绝不上传。
 - **会话、检查点、记忆与审计日志**都在你的设备上，随时可通过删除配置目录清除。
 - FuXi 为运行服务会处理有限的账户与技术信息；存在的分析均已披露且可关闭。见
-  [隐私控制](security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+  [隐私控制](security-privacy/DATA_PROTECTION.zh-CN.md)。
 
 完整说明：[隐私政策](security-privacy/PRIVACY_POLICY.zh-CN.md) ·
 [安全白皮书](security-privacy/SECURITY.zh-CN.md) ·
@@ -103,7 +103,7 @@ FuXi 在你的机器上运行，你的工作留在本地。
 **你必须依照适用于你的法律使用 FuXi。** FuXi 面向开发者与专业用户，不面向
 不满 14 周岁的儿童；14–17 岁的用户需有父母或监护人参与。
 
-禁止用途与完整要求见[使用政策](security-privacy/policies/ACCEPTABLE_USE.zh-CN.md)。
+禁止用途与完整要求见[使用政策](security-privacy/USAGE_POLICY.zh-CN.md)。
 若不确定某用途是否合法，请先取得专业意见再行动。
 
 ## 贡献

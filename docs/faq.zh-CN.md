@@ -106,7 +106,7 @@ FuXi 面向开发者与专业用户，**并非面向不满 14 周岁的儿童**�
 **使用 FuXi 需要遵守法律吗？**
 
 需要。你必须依照适用于你的法律使用 FuXi。见
-[使用政策](../security-privacy/policies/ACCEPTABLE_USE.zh-CN.md)。
+[使用政策](../security-privacy/USAGE_POLICY.zh-CN.md)。
 
 ## 故障排查
 

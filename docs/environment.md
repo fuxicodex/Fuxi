@@ -51,7 +51,7 @@ installed binary for the always-authoritative reference.
 | `FUXI_DISABLE_NONESSENTIAL_TRAFFIC` | Disable all nonessential network traffic |
 | `FUXI_ANALYTICS_MAX_EVENTS` | Cap the number of analytics events |
 
-See [Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md) for the
+See [Privacy Controls](../security-privacy/DATA_PROTECTION.md) for the
 `/privacy-settings` interface and the privacy levels.
 
 ## Feature toggles

@@ -32,7 +32,7 @@ a web service hosted on our servers. That architecture sets the privacy baseline
 
 This policy describes honestly: which data stays local, which data leaves your
 device and under what circumstances, and why. The controls available to you are
-listed in [Privacy Controls](PRIVACY_CONTROLS.md), and the terms of use are in
+listed in [Privacy Controls](DATA_PROTECTION.md), and the terms of use are in
 the [Terms of Service](TERMS_OF_SERVICE.md).
 
 ---
@@ -173,7 +173,7 @@ We want users — including young users and their guardians — to trust FuXi
   incomplete, or biased, and must not be relied on as legal, medical, financial,
   or safety advice.
 - FuXi does not make decisions on its own: sensitive actions require approval
-  and can be interrupted (see the [AI Governance Policy](policies/AI_GOVERNANCE.md)).
+  and can be interrupted (see the [AI Governance Policy](USAGE_POLICY.md)).
 - You are responsible for reviewing output and for the final decision on
   critical operations (edits, commands, commits, releases).
 

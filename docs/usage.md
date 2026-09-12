@@ -262,7 +262,7 @@ functions talk to the network. Review and change this with:
 
 The three privacy levels (`default`, `no-telemetry`, `essential-traffic`) and the
 `telemetry` / `crash_reports` / `send_conversations` toggles are documented in
-[Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md).
+[Privacy Controls](../security-privacy/DATA_PROTECTION.md).
 
 ### Permission modes
 
@@ -480,7 +480,7 @@ abuse the service.
 FuXi is aimed at developers and professional users and is **not directed at
 children under 14**; users aged 14–17 require a parent or guardian. The full
 requirements are in the
-[Usage Policy](../security-privacy/policies/ACCEPTABLE_USE.md). If you are unsure
+[Usage Policy](../security-privacy/USAGE_POLICY.md). If you are unsure
 whether a use is lawful, take advice before proceeding.
 
 ---

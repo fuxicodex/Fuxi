@@ -114,7 +114,7 @@ children under 14**; users aged 14–17 require a parent or guardian. See the
 **Must I comply with any laws to use FuXi?**
 
 Yes. You must use FuXi in accordance with the laws applicable to you. See the
-[Usage Policy](../security-privacy/policies/ACCEPTABLE_USE.md).
+[Usage Policy](../security-privacy/USAGE_POLICY.md).
 
 ## Troubleshooting
 

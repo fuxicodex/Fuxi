@@ -67,7 +67,7 @@ from being abused:
 - **Not uploaded**: FuXi does not copy or upload your keys to any FuXi server.
 - **Account authentication**: a FuXi account is required to use FuXi; the
   account credential and OAuth token are handled with least privilege (see the
-  [Authentication Standard](standards/AUTHENTICATION.md)).
+  [Authentication Standard](GOVERNANCE.md)).
 - **Bring your own key (BYOK)**: keys are used only to make requests to the
   provider you configure, traveling directly between you and that provider.
 - **Recommendations**: set appropriate file-system permissions on the
@@ -92,7 +92,7 @@ lists what you get automatically, so you can rely on it and audit it.
 | **Path-traversal blocking** | Escaping paths are blocked before normalization | None |
 | **Sandbox resource ceilings** | `bash` and MCP subprocesses run under memory/CPU/network limits (see [environment variables](../docs/environment.md)) | None |
 | **Verified, atomic updates** | SHA-256 verification against the published manifest before an atomic replace — no half-installed state | None |
-| **No hidden telemetry** | No background collection of your content, and no undisclosed tracking; the analytics that exist are disclosed and opt-out (see [Privacy Controls](PRIVACY_CONTROLS.md)) | None |
+| **No hidden telemetry** | No background collection of your content, and no undisclosed tracking; the analytics that exist are disclosed and opt-out (see [Privacy Controls](DATA_PROTECTION.md)) | None |
 | **Local, user-deletable data** | Sessions, memory, and audit logs live under `~/.fuxi/`; removing the directory clears them | None |
 
 > **Why this matters:** the standard privacy ask is "configure your settings

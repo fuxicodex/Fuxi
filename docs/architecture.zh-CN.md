@@ -10,7 +10,7 @@
 
 > 相关文档：[使用指南](usage.zh-CN.md) ·
 > [安全白皮书](../security-privacy/SECURITY.zh-CN.md) ·
-> [隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)
+> [隐私控制](../security-privacy/DATA_PROTECTION.zh-CN.md)
 
 ---
 
@@ -118,4 +118,4 @@ FuXi 对每个请求进行复杂度评分，并路由到合适的模型分级，
 - **人在环中** —— 敏感操作需经批准且可中断；每个动作都记录在本地审计日志中。
 
 如何驱动这些功能见[使用指南](usage.zh-CN.md)；适用于它们的隐私设置见
-[隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+[隐私控制](../security-privacy/DATA_PROTECTION.zh-CN.md)。

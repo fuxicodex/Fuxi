@@ -252,7 +252,7 @@ FuXi 在本地运行，不收集你的代码与对话，但少数功能会访问
 
 三档隐私级别（`default`、`no-telemetry`、`essential-traffic`）与
 `telemetry` / `crash_reports` / `send_conversations` 开关，见
-[隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+[隐私控制](../security-privacy/DATA_PROTECTION.zh-CN.md)。
 
 ### 权限模式
 
@@ -457,7 +457,7 @@ shell，以及最小复现步骤。
 
 FuXi 面向开发者与专业用户，**并非面向不满 14 周岁的儿童**；14–17 岁的用户
 需有父母或监护人参与。完整要求见
-[使用政策](../security-privacy/policies/ACCEPTABLE_USE.zh-CN.md)。
+[使用政策](../security-privacy/USAGE_POLICY.zh-CN.md)。
 若不确定某用途是否合法，请先取得专业意见再行动。
 
 ---

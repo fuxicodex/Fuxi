@@ -8,7 +8,7 @@ models, and the multi-window and extensibility systems. It covers the product
 dimensions that the [README](../README.md) summarizes.
 
 > Related: [Usage guide](usage.md) · [Security Whitepaper](../security-privacy/SECURITY.md)
-> · [Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md)
+> · [Privacy Controls](../security-privacy/DATA_PROTECTION.md)
 
 ---
 
@@ -126,5 +126,5 @@ Four orthogonal extension mechanisms, all hot-reloadable:
   interrupted; every action is recorded in local audit logs.
 
 See the [Usage guide](usage.md) for how to drive these features, and
-[Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md) for the privacy
+[Privacy Controls](../security-privacy/DATA_PROTECTION.md) for the privacy
 settings that apply to them.

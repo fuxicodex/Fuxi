@@ -8,7 +8,7 @@ regarding your use of the FuXi software, CLI, and related services (the
 "Service"). **By using FuXi you agree to these Terms.** If you do not agree with
 any part, do not use the Service.
 
-> Related: [Usage Policy](policies/ACCEPTABLE_USE.md) ·
+> Related: [Usage Policy](USAGE_POLICY.md) ·
 > [Privacy Policy](PRIVACY_POLICY.md) ·
 > [Security Whitepaper](SECURITY.md) ·
 > [Compliance & Responsibility](COMPLIANCE.md)
@@ -41,7 +41,7 @@ FuXi is aimed at developers and professional users and is **not directed at
 children under 14**. Users aged **14–17** may use FuXi only with the involvement
 of a parent or guardian, who must consent where the law requires it and is
 responsible for the minor's use. See the
-[Usage Policy](policies/ACCEPTABLE_USE.md).
+[Usage Policy](USAGE_POLICY.md).
 
 ---
 
@@ -49,7 +49,7 @@ responsible for the minor's use. See the
 
 You agree to use FuXi only for lawful purposes and in accordance with all
 applicable laws and regulations. You must not use the Service to do any of the
-things listed in the [Usage Policy](policies/ACCEPTABLE_USE.md) — including
+things listed in the [Usage Policy](USAGE_POLICY.md) — including
 unlawful activity, harm to children, attacks, unauthorised access, privacy
 violations, fraud, or circumvention of the safety mechanisms.
 
@@ -94,7 +94,7 @@ You must not:
   authentication and update checks), and FuXi may process limited technical and
   usage information. The details, and the controls available to you, are set out
   in the [Privacy Policy](PRIVACY_POLICY.md) and
-  [Privacy Controls](PRIVACY_CONTROLS.md).
+  [Privacy Controls](DATA_PROTECTION.md).
 
 ---
 
@@ -156,7 +156,7 @@ To the maximum extent permitted by applicable law:
 
 - **By you**: you may stop using the Service at any time.
 - **By FuXi**: we may suspend or terminate your access if you breach any part of
-  these Terms or the [Usage Policy](policies/ACCEPTABLE_USE.md).
+  these Terms or the [Usage Policy](USAGE_POLICY.md).
 - **Effect**: on termination your right to use the Service ends immediately.
   Terms relating to ownership, disclaimers, limitation of liability, and dispute
   resolution survive termination.
