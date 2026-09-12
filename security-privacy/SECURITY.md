@@ -84,7 +84,7 @@ lists what you get automatically, so you can rely on it and audit it.
 
 | Invisible protection | How it works | User action needed |
 |---|---|---|
-| **Zero content upload** | Code, prompts, and conversations are never stored on or routed through FuXi's servers — a property of the architecture, not a setting | None |
+| **Zero content upload** | Code, prompts, and conversations are never collected, stored, or retained by FuXi; with BYOK they go straight to the provider you choose, and with managed models they are transmitted only to serve the request | None |
 | **Deny-by-default permissions** | Sensitive operations require explicit approval; no implicit escalation | None (prompts appear on first use) |
 | **Pre-execution command classification** | Every shell command is parsed and classified (AST + rule set) *before* it runs | None |
 | **Credential isolation** | Keys/tokens stay in local `~/.fuxi/` and are never written to logs, errors, or uploads | None |

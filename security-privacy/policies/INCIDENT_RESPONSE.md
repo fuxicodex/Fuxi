@@ -27,7 +27,7 @@ product.
 
 ---
 
-## 3. Response targets (SLA)
+## 3. Response targets (best-effort)
 
 > The windows below are **best-effort targets**, not contractual guarantees;
 > they are measured from the moment an incident is confirmed.

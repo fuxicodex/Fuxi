@@ -12,10 +12,11 @@ ensures service-side recovery. Policy in
 
 | Data | Location | Notes |
 |---|---|---|
-| Configuration & credentials | `~/.fuxi/config.yaml` | Provider, model, key |
-| Session records | `~/.fuxi/` related locations | History, checkpoints |
+| Configuration & credentials | `~/.fuxi/config.yaml` (or `$FUXI_CONFIG_DIR/config.yaml`) | Provider, model, key |
+| Session records | Under the config directory, e.g. `~/.fuxi/` | History, checkpoints |
 | Project memory | Memory files in project | Cross-session memory |
-| Audit logs | `~/.fuxi/` related locations | Operation records |
+| Audit logs | Under the config directory | Operation records |
+| Debug logs | `~/.fuxi/logs/` | Diagnostic logs |
 
 > Also back up your **project code directories** (usually already in version
 > control).

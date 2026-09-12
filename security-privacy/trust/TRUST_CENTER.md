@@ -23,7 +23,7 @@ respect for global law and user behavior.
 | Keys | Local-only, never uploaded or copied |
 | Content collection | No code/conversation collection by default |
 | Forced registration | Yes — a FuXi account is required to use FuXi |
-| Content upload | None — zero content upload (code/conversations never uploaded) |
+| Content upload | None — zero content upload (code/conversations not collected, stored, or retained; not used for training) |
 | Command safety | AST classifier + permission prompts + audit logs |
 | Invisible protection | On by default, no configuration needed (see [Security Whitepaper §5](../SECURITY.md)) |
 | Updates | SHA-256 verification + atomic replacement |

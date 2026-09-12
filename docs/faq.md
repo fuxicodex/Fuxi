@@ -47,7 +47,7 @@ Register and sign in — a FuXi account is required to use FuXi:
 
 1. **Register & sign in (required)** — `fuxi login` registers or authenticates
    your FuXi account and grants access. Registration processes only minimal
-   account data; your code and conversations are never uploaded.
+   account data; your code and conversations are never collected or retained.
 2. **Connect a model (optional)** — sign-in gives access to FuXi-managed models;
    to use your own provider, bring your own key (set a provider API key via
    environment variable or `~/.fuxi/config.yaml`, which `fuxi init` generates).
@@ -99,6 +99,23 @@ the slash-command table in the [usage guide](usage.md#your-first-session).
 Yes. Transcripts persist to disk; checkpoints let you resume, roll back, or
 fork. Long conversations auto-compact to save tokens, and an idle "dreaming"
 pass consolidates memory across sessions.
+
+**Do I still need an account if I bring my own key?**
+
+Yes. A FuXi account is required to use FuXi in all cases; bringing your own key
+only changes which model handles your requests, not whether you need an account.
+
+**Can children use FuXi?**
+
+Yes. Children and young people may use FuXi, with age-appropriate safeguards:
+guardian consent where the law requires it, no behavioural advertising or
+profiling, and recommended adult supervision. See the
+[Privacy Policy §8](../security-privacy/PRIVACY_POLICY.md#8-children-and-young-users).
+
+**Must I comply with any laws to use FuXi?**
+
+Yes. You must use FuXi in accordance with the laws applicable to you. See the
+[Usage Policy](../security-privacy/policies/ACCEPTABLE_USE.md).
 
 ## Troubleshooting
 

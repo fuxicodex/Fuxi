@@ -6,6 +6,10 @@ prompt to open the command palette, which lists many of the same actions.
 > macOS notes: `Alt` means the **Option** key. If your terminal treats Option as
 > "compose" (macOS Terminal / iTerm with "Option as Meta" off), some `Alt+`
 > shortcuts may not reach FuXi — use the `Ctrl+X` chord equivalents instead.
+>
+> Windows note: `Alt+V` pastes an image from the clipboard; to capture voice on
+> Windows use the `Ctrl+X` `Ctrl+V` chord. On macOS/Linux `Alt+V` is voice
+> capture.
 
 ## Prompt editor
 
@@ -15,7 +19,7 @@ prompt to open the command palette, which lists many of the same actions.
 | `Ctrl+J` / `Shift+Enter` | Insert a newline |
 | `↑` / `↓` | Previous / next prompt history |
 | `Ctrl+R` | Reverse-search prompt history |
-| `Ctrl+V` (macOS/Linux) · `Alt+V` (Windows) | Paste an image from the clipboard as an attachment |
+| `Ctrl+V` · `Alt+V` (Windows) | Paste an image from the clipboard as an attachment |
 | `/` | Open the command palette (at the start of an empty prompt) |
 | `Esc` | Cancel / close the current popup |
 
@@ -55,7 +59,7 @@ prompt to open the command palette, which lists many of the same actions.
 | `Alt+O` | Toggle fast mode |
 | `Alt+T` | Toggle the model's thinking generation |
 | `Alt+M` | Collapse / expand the sidebar MCP section |
-| `Alt+V` | Hold-to-talk voice capture |
+| `Alt+V` | Hold-to-talk voice capture (macOS/Linux; see Windows note above) |
 | `Ctrl+_` / `Ctrl+Shift+-` | Undo the last prompt-editor edit |
 | `Esc` `Esc` (double-tap) | Rewind the conversation to a previous point |
 

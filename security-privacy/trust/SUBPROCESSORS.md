@@ -10,19 +10,19 @@ default, so this list stays minimal.
 
 ## 1. Subprocessors
 
-By default there are **no** subprocessors: local-first operation means FuXi does
-not engage third parties to process user data. The following optional services
-may process only the minimal data described:
+FuXi is local-first: apart from the account and distribution services described
+below, we do not engage third parties to process user data, and user content is
+never processed by subprocessors. These services are limited to:
 
 | Processor | Purpose | Data handled | Location |
 |---|---|---|---|
 | Official distribution/update infrastructure | Distribute binary and updates | Version info, basic update-request info | Per official website |
-| Account authentication service (required sign-in) | Identity authentication | Account identifier | Per official website |
+| Account authentication service (required sign-in) | Identity authentication and account operation | Account identifier | Per official website |
 
 > Note: the specific processor list and locations are disclosed in real time on
 > the official website (https://www.fuxicode.com); this file provides the
-> structural framework. If a new processor is engaged, this list is updated
-> before material changes take effect.
+> structural framework. This list is updated before material changes take
+> effect.
 
 ---
 

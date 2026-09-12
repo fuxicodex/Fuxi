@@ -65,11 +65,12 @@ managed models it is transmitted only to serve the request and is not retained.
 
 ## 4. Cross-border data transfers
 
-- **No cross-border transfer by default**: local data does not leave your
-  device.
-- **When you actively configure it**: transfer to a model provider is determined
-  by your choice; providers may be located in different countries/regions, and
-  their own privacy policies apply.
+- **User content is not transferred by FuXi**: your code and conversations are
+  not collected, stored, or retained by FuXi. In BYOK mode they go directly to
+  the provider you choose, whose own policy and residency terms apply.
+- **Account data may be transferred** to the region where the FuXi account
+  service is deployed (registration is required to use FuXi), under the transfer
+  safeguards described in the [Transfer Impact Assessment](compliance/TRANSFER_ASSESSMENT.md).
 - We disclose this honestly and recommend reviewing your chosen provider's
   privacy and data-residency policies.
 

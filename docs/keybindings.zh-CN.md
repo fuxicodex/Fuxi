@@ -6,6 +6,9 @@ FuXi 终端 UI 的快捷键速查。在空提示符开头输入 `/` 可打开命
 > macOS 提示：`Alt` 指 **Option** 键。如果你的终端把 Option 当作"组合键"
 > （macOS 终端 / iTerm 关闭了"Option 作为 Meta"），部分 `Alt+` 快捷键可能
 > 无法送达 FuXi —— 请改用对应的 `Ctrl+X` 组合键。
+>
+> Windows 提示：`Alt+V` 用于从剪贴板粘贴图片；在 Windows 上要做语音捕获请用
+> `Ctrl+X` `Ctrl+V` 组合键。在 macOS/Linux 上 `Alt+V` 是语音捕获。
 
 ## 提示词编辑器
 
@@ -15,7 +18,7 @@ FuXi 终端 UI 的快捷键速查。在空提示符开头输入 `/` 可打开命
 | `Ctrl+J` / `Shift+Enter` | 插入换行 |
 | `↑` / `↓` | 上一条 / 下一条提示词历史 |
 | `Ctrl+R` | 反向搜索提示词历史 |
-| `Ctrl+V`（macOS/Linux）· `Alt+V`（Windows） | 从剪贴板粘贴图片作为附件 |
+| `Ctrl+V` · `Alt+V`（Windows） | 从剪贴板粘贴图片作为附件 |
 | `/` | 打开命令面板（在空提示符开头） |
 | `Esc` | 取消 / 关闭当前弹窗 |
 
@@ -55,7 +58,7 @@ FuXi 终端 UI 的快捷键速查。在空提示符开头输入 `/` 可打开命
 | `Alt+O` | 切换快速模式 |
 | `Alt+T` | 切换模型的思考生成 |
 | `Alt+M` | 折叠 / 展开侧边栏 MCP 区域 |
-| `Alt+V` | 按住说话的语音捕获 |
+| `Alt+V` | 按住说话的语音捕获（macOS/Linux；Windows 见上方提示） |
 | `Ctrl+_` / `Ctrl+Shift+-` | 撤销最后一次提示词编辑器编辑 |
 | `Esc` `Esc`（双击） | 回退对话到之前的节点 |
 

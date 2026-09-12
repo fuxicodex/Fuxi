@@ -40,6 +40,7 @@ L0  Governance Charter (this file) — top-level objectives & governance
 │     ├── Information Security Policy
 │     ├── Data Classification Policy
 │     ├── Access Control Policy
+│     ├── Usage Policy (lawful-use requirements)
 │     ├── AI Governance Policy
 │     ├── Incident Response Policy
 │     ├── Third-Party Risk Policy
@@ -125,7 +126,7 @@ unverifiable internal percentages:
 |---|---|
 | Vulnerability report first-response time | within a few working days |
 | Critical vulnerability remediation time | promptly; fix before disclosure |
-| Incident detection-to-response time | per the Incident Response Policy SLA |
+| Incident detection-to-response time | per the Incident Response Policy best-effort targets |
 | Data subject request turnaround | per applicable law (e.g., 30 days) |
 | Policy review currency | each document states its "last updated" date; reviewed per the cadence in §4 |
 

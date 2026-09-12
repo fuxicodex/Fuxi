@@ -35,7 +35,7 @@
 | P1 | 提供临时缓解（如关闭相关功能、权限提示强化） | 1 个工作日内开始 |
 | P2/P3 | 记录并排期修复 | 下个迭代 |
 
-时间目标遵循[事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md)的 SLA。
+时间目标遵循[事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md)的尽力而为目标。
 
 ---
 

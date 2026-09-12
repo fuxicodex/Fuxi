@@ -10,14 +10,18 @@ or conversations by default; this record reflects that minimization reality.
 
 ## 1. Processing activity list
 
-| # | Activity | Data categories | Purpose | Location | Basis |
-|---|---|---|---|---|---|
-| 1 | Local configuration storage | Provider config, model, key | Remember settings | User-local `~/.fuxi/` | Performance of usage relationship |
-| 2 | Sessions & memory | Conversation history, project memory | Resume/continue | User-local | Performance of usage relationship |
-| 3 | Audit logs | Command/tool-call records | Traceability | User-local | Legitimate interest |
-| 4 | Request sending (BYOK, user-initiated) | Prompt + code context | Enable model work | Direct user ↔ provider | User's choice |
-| 5 | Account authentication (required) | Account identifier | Operate account; provision managed models | FuXi account system | Performance of contract |
-| 6 | Update downloads | Version info | Update | Official distribution | Legitimate interest |
+**Controller**: FuXi ("FUXI"); contact via the website contact details. Where
+required by law, a local representative is appointed and published on the
+official website.
+
+| # | Activity | Data categories | Purpose | Location | Basis | Retention |
+|---|---|---|---|---|---|---|
+| 1 | Local configuration storage | Provider config, model, key | Remember settings | User-local `~/.fuxi/` | Performance of contract | Until the user deletes it |
+| 2 | Sessions & memory | Conversation history, project memory | Resume/continue | User-local | Performance of contract | Until the user deletes it |
+| 3 | Audit logs | Command/tool-call records | Traceability | User-local | Legitimate interest | Until the user deletes it |
+| 4 | Request sending (BYOK, user-initiated) | Prompt + code context | Enable model work | Direct user ↔ provider | User's choice (outside our scope) | Not retained by FuXi |
+| 5 | Account authentication (required) | Account identifier | Operate account; provision managed models | FuXi account system | Performance of contract | Account lifetime + 30 days |
+| 6 | Update downloads | Version info | Update | Official distribution | Legitimate interest | Not retained |
 
 ---
 

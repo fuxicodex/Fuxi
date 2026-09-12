@@ -26,7 +26,7 @@
 | DPDP Act | 《数字个人数据保护法》（2023） | 印度 |
 | APPI | 《个人信息保护法》 | 日本 |
 | PIPA | 《个人信息保护法》 | 韩国 |
-| PDPA | 《个人数据保护法》 | 新加坡/泰国 |
+| 新加坡 PDPA / 泰国 PDPA | 《个人数据保护法》 | 新加坡（3 天）/ 泰国（72 小时） |
 | Privacy Act + APPs | 《隐私法》与澳大利亚隐私原则 | 澳大利亚 |
 | POPIA | 《个人信息保护法》 | 南非 |
 | FADP | 《联邦数据保护法》 | 瑞士 |
@@ -46,7 +46,7 @@
 | 用户权利（访问/更正/删除等） | 提供行使渠道；本地数据用户自行掌控 | [DSR 流程](../procedures/DATA_SUBJECT_REQUEST.zh-CN.md) |
 | 安全义务 | 命令分类器、权限模型、更新校验 | [安全白皮书](../SECURITY.zh-CN.md) |
 | 泄露通知 | 事件分级与通知义务 | [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md) |
-| 跨境传输 | 默认无跨境；BYOK 由用户选择 | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md) |
+| 跨境传输 | 用户内容不经 FuXi 传输；账号数据可能传输至账号服务区域 | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md) |
 | 儿童保护 | 允许未成年人使用；适龄保护，法律要求时取得监护人同意；不做行为广告/画像 | [隐私政策 §8](../PRIVACY_POLICY.zh-CN.md) |
 | AI 责任（人在环中、透明） | 思考→行动→验证、权限模型、审计 | [AI 治理政策](../policies/AI_GOVERNANCE.zh-CN.md) |
 
@@ -66,7 +66,7 @@
 | 更正 | GDPR 第 16 条；LGPD 第 18 条 | 账户设置 / DSR 渠道 |
 | 删除 | GDPR 第 17 条；CCPA；PIPL 第 47 条 | 本地数据：`rm -rf ~/.fuxi`；账号数据：按请求删除 |
 | 反对 / 限制 | GDPR 第 18、21 条；LGPD | DSR 渠道 |
-| 泄露通知 | GDPR 第 33/34 条（72 小时）；PDPA（3 天）；澳 NDB | [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md)，内部执行最严目标 |
+| 泄露通知 | GDPR 第 33/34 条（72 小时）；新加坡 PDPA（3 天）；泰国 PDPA（72 小时）；澳 NDB | [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md)，内部执行最严目标 |
 | 处理安全 | GDPR 第 32 条；PIPL 第 51 条 | [信息安全总政策](../policies/INFORMATION_SECURITY_POLICY.zh-CN.md) |
 | 记录与评估 | GDPR 第 30、35 条；DPDP（SDF） | [ROPA](ROPA.zh-CN.md) · [DPIA](DPIA.zh-CN.md) |
 | 跨境传输 | GDPR 第五章；PIPL 第三章；152-FZ | [数据传输评估](TRANSFER_ASSESSMENT.zh-CN.md)；按区域选择机制 |

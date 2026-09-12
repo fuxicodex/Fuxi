@@ -63,8 +63,9 @@ L5  信任 Trust            —— 面向用户的可信披露
 | [信息安全总政策](policies/INFORMATION_SECURITY_POLICY.zh-CN.md) | CIA 三元组、控制域、访问与数据保护原则 | [Information Security Policy](policies/INFORMATION_SECURITY_POLICY.md) |
 | [数据分级分类政策](policies/DATA_CLASSIFICATION.zh-CN.md) | 数据分级、处理位置、生命周期 | [Data Classification](policies/DATA_CLASSIFICATION.md) |
 | [访问控制政策](policies/ACCESS_CONTROL.zh-CN.md) | 权限模式、命令执行控制、审计 | [Access Control](policies/ACCESS_CONTROL.md) |
+| [使用政策](policies/ACCEPTABLE_USE.zh-CN.md) | **必须依法使用**：合规义务、禁止用途、年龄要求 | [Usage Policy](policies/ACCEPTABLE_USE.md) |
 | [AI 治理政策](policies/AI_GOVERNANCE.zh-CN.md) | 负责任 AI、人在环中、输出安全 | [AI Governance](policies/AI_GOVERNANCE.md) |
-| [事件响应政策](policies/INCIDENT_RESPONSE.zh-CN.md) | 事件分级、响应 SLA、通知义务 | [Incident Response Policy](policies/INCIDENT_RESPONSE.md) |
+| [事件响应政策](policies/INCIDENT_RESPONSE.zh-CN.md) | 事件分级、响应目标、通知义务 | [Incident Response Policy](policies/INCIDENT_RESPONSE.md) |
 | [第三方风险政策](policies/THIRD_PARTY_RISK.zh-CN.md) | BYOK/MCP/插件、供应链控制 | [Third-Party Risk](policies/THIRD_PARTY_RISK.md) |
 | [业务连续性政策](policies/BUSINESS_CONTINUITY.zh-CN.md) | 可用性目标、灾难场景、备份 | [Business Continuity](policies/BUSINESS_CONTINUITY.md) |
 
@@ -132,7 +133,7 @@ L5  信任 Trust            —— 面向用户的可信披露
 
 ## 重要说明：关于"最安全"
 
-本体系以**对标全球最高标准、业界最完整**为目标设计与维护。我们如实披露
+本体系以对标全球主流标准、覆盖完整治理链条为目标设计与维护。我们如实披露
 能力与边界，**不声称**任何未经客观验证的绝对化结论（如"全球最安全认证"）。
 安全的可信度，来自可验证的架构与透明的披露，而非口号。
 

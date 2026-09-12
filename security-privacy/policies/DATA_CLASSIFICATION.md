@@ -14,13 +14,14 @@ and corresponding handling requirements.
 | **Public** | Publicly shareable | Docs, README, version info | No special requirements |
 | **Internal** | Operational, not for publication | Internal design, metrics | Least access |
 | **Sensitive** | Disclosure creates risk | Credentials, API keys, OAuth tokens | Encrypt, least privilege, no plaintext in logs |
-| **User Content** | User's code and conversations | Source code, prompts, sessions | Local by default, not through servers, user-controlled |
+| **User Content** | User's code and conversations | Source code, prompts, sessions | Local by default; in transit only to serve a request; user-controlled |
 
 > **Key fact**: FuXi's architecture means **user content and credentials stay on
-> the user's device by default** and never enter FuXi's servers. For the
-> "Sensitive" and "User Content" levels, FuXi **holds nothing server-side** — a
-> design that avoids most server-side data-handling obligations. This is not a
-> claim of absolute security against every local threat.
+> the user's device**; FuXi does **not** collect, store, or retain them. With
+> BYOK, requests go directly to the provider the user chooses; with FuXi-managed
+> models, the request is transmitted only to serve it. This keeps FuXi's
+> server-side data-handling obligations to a minimum — it is not a claim of
+> absolute security against every local threat.
 
 ---
 
@@ -33,6 +34,7 @@ and corresponding handling requirements.
 | Project memory file | User-local, in-project | No |
 | Audit logs | User-local | No |
 | Request content (BYOK mode) | User ↔ provider, direct | No |
+| Request content (FuXi-managed models) | User → model endpoint (to serve the request only) | Not retained |
 | Account data (required) | FuXi account system | Authentication-only |
 
 ---
@@ -45,8 +47,8 @@ and corresponding handling requirements.
    permissions.
 3. **Encryption recommendation**: enable full-disk / filesystem encryption for
    local data.
-4. **Local by default**: data does not leave the device unless the user actively
-   configures (account, third-party integration).
+4. **Minimized by default**: data leaves the device only as needed to operate the
+   account or to serve a request.
 5. **Redaction**: redact keys and personal data before sharing logs, issues, or
    PRs.
 

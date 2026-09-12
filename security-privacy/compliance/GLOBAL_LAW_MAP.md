@@ -82,7 +82,7 @@ actually reaches us). Detail follows the table.
 | Singapore | PDPA | Collecting/using data in Singapore | Consent, mandatory DPO, breach notice within 3 days | **Medium** |
 | South Africa | POPIA | Processing data of people in South Africa | 8 conditions, Information Regulator, breach notice | **Low–Medium** |
 | Switzerland | Revised FADP | Processing data of people in Switzerland | GDPR-like duties, FDPIC, breach notice | **Low–Medium** |
-| Other | See §3.2 | Varies | Listed and monitored; principles-level alignment | **Monitored** |
+| Other | See §3.3 | Varies | Listed and monitored; principles-level alignment | **Monitored** |
 
 ### 3.1 Detail for the highest-touch jurisdictions
 
@@ -143,7 +143,7 @@ We also track, at principles level: Russia (152-FZ, data localization), UAE and
 Saudi Arabia (PDPL), Thailand and Malaysia (PDPA), Indonesia (PDP Law), Vietnam
 (PDPD), the Philippines (DPA), Mexico (LFPDPPP), Argentina (PDPA), and New
 Zealand (Privacy Act). New laws are added to the matrix on the semiannual review
-cycle (see [Compliance Matrix §4](COMPLIANCE_MATRIX.md)).
+cycle (see [Compliance Matrix §5](COMPLIANCE_MATRIX.md)).
 
 ---
 
@@ -156,7 +156,7 @@ risks rather than claim they do not exist.
 |---|---|---|---|
 | R1 | **Registration creates controller duties** | Worldwide | Minimal Zone B; documented lawful basis; DSR procedure; this map |
 | R2 | **Cross-border transfer of account data** | EU/UK, China, India, Russia | Transfer mechanism chosen per region; localization where required; TIA documented |
-| R3 | **Data-localization mandates** | China (CIIO/thresholds), Russia, India | Minimal data; regional deployment options; disclosed residency |
+| R3 | **Data-localization mandates** | China (CIIO/thresholds), Russia | Minimal data; regional deployment options; disclosed residency |
 | R4 | **Divergent breach-notification deadlines** | GDPR 72h; Singapore 3 days; AU/ZA "ASAP" | Single strictest internal target (P0 → notify promptly) so we meet every regime |
 | R5 | **Representative / DPO requirements** | EU (Art. 27), UK, Korea, India (SDF) | Appointed where required; published on the official website |
 | R6 | **Children / age thresholds differ** | GDPR 16 (default), US 13, China 14, Korea 14, India 18 | Minors may use FuXi, so we apply age-appropriate safeguards: guardian consent where required, no behavioural ads/profiling, minimal data, and recommended adult supervision |

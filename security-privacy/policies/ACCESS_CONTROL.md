@@ -26,12 +26,19 @@ FuXi offers user-selectable permission modes:
 |---|---|---|
 | `default` | Sensitive operations prompt for approval one by one | Daily use (recommended) |
 | `plan` | Planning mode: read-only analysis, no changes | Review the plan first |
-| `bypassPermissions` | Auto-approve (skip prompts) | Trusted, automatable environments |
+| `bypassPermissions` | Auto-approves prompts (the classifier and audit logging still run) | Trusted, automatable environments |
 | `--auto` | Auto-approve only operations the **classifier deems safe**, with circuit-breaker | Balance speed and safety |
-| `--dangerously-skip-permissions` | Skip **all** permission checks | Fully trusted, isolated environments only |
+| `--dangerously-skip-permissions` | Skip **all** permission checks (DANGEROUS) | Fully trusted, isolated environments only |
 
-> ⚠️ `--dangerously-skip-permissions` disables all safeguards; use at your own
-> risk.
+> Deny-by-default means **no action is approved implicitly** — approving
+> everything requires an explicit mode change. If you select `bypassPermissions`
+> the prompt layer is skipped but the command-safety classifier and audit logging
+> still apply; `--dangerously-skip-permissions` skips all permission checks.
+> Use at your own risk.
+>
+> **Minors**: because FuXi can run commands, a minor account must not use
+> `bypassPermissions` or `--dangerously-skip-permissions`; see
+> [Usage Policy §3](ACCEPTABLE_USE.md).
 
 ---
 

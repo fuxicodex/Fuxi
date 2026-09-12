@@ -15,7 +15,7 @@
 
 | 路径 | 机制 | 用途 |
 |---|---|---|
-| FuXi 账号（必需） | OAuth 登录（`fuxi login` / `setup-token`） | 使用账号；开通 FuXi 托管模型 |
+| FuXi 账号（必需） | OAuth 登录（`fuxi login` / `fuxi setup-token`） | 使用账号；开通 FuXi 托管模型 |
 | 自带密钥（BYOK，可选） | API Key / 环境变量 / 本地配置 | 认证到用户选择的提供商 |
 
 > 注册本身仅处理最小账户数据，绝不涉及上传你的代码或对话。

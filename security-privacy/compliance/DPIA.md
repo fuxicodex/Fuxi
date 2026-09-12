@@ -70,7 +70,7 @@ Mitigations: permission model + AST command classifier + local audit logs;
              local-only credential storage; disk encryption recommended
 Residual risk level: low (default); raises only when the user disables
                      permission checks
-Approver: security lead  Date: 2026-09-12
+Approver: privacy lead  Date: 2026-09-12
 Review date: 2027-03-12 (semiannual)
 ```
 

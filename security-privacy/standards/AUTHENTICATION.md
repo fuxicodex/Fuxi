@@ -14,7 +14,7 @@ ways to connect models:
 
 | Path | Mechanism | Purpose |
 |---|---|---|
-| FuXi account (required) | OAuth sign-in (`fuxi login` / `setup-token`) | Operate the account; provision FuXi-managed models |
+| FuXi account (required) | OAuth sign-in (`fuxi login` / `fuxi setup-token`) | Operate the account; provision FuXi-managed models |
 | Bring your own key (BYOK, optional) | API key / env vars / local config | Authenticate to the user's chosen provider |
 
 > Registration itself only processes minimal account data; it never involves

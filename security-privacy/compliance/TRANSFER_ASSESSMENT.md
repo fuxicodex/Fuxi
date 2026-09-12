@@ -9,22 +9,24 @@ data-export reviews across jurisdictions.
 
 ## 1. Bottom line
 
-- **No cross-border transfer by default**: local data does not leave your
-  device.
-- **After active configuration**: transfer to a model provider is determined by
-  **your choice**; providers may be in different countries/regions.
+- **User content is not transferred by FuXi**: code and conversations are not
+  collected, stored, or retained by FuXi; with BYOK they go directly to the
+  provider you choose.
+- **Account data is processed to operate your account** (registration is
+  required), and may be transferred to the region where the FuXi account service
+  is deployed.
 - FuXi's servers do **not** hold or relay user code or conversations.
 
 ---
 
 ## 2. Transfer scenario analysis
 
-| Scenario | Cross-border? | Data | Decided by | Safeguards |
+| Scenario | Cross-border? | Data | Driven by | Safeguards |
 |---|---|---|---|---|
-| Local use | No | Config/sessions/memory/audit | — | Local device security |
-| BYOK request | Depends on provider | Prompt + code context | User | Provider TLS + its policy |
-| Account registration & sign-in (required) | Depends on deployment | Account identifier | User | OAuth + least privilege |
-| Updates | Yes (official channel) | Version info (metadata only) | User (runs `fuxi update`) | HTTPS + SHA-256 |
+| Local use | No | Config/sessions/memory/audit | Local only | Local device security |
+| BYOK request | Depends on provider | Prompt + code context | User's provider choice | Provider TLS + its policy |
+| Account registration & sign-in (required) | Depends on account-service region | Account identifier | Required to use FuXi | OAuth + least privilege; regional deployment where required |
+| Updates | Yes (official channel) | Version info (metadata only) | Version check | HTTPS + SHA-256 |
 
 > Note: the background update **check** retrieves version metadata only; it does
 > not transfer any user content.
@@ -35,8 +37,8 @@ data-export reviews across jurisdictions.
 
 - **Encrypted transport**: updates and provider communication over HTTPS/TLS.
 - **Minimal transfer**: only the minimal context needed is sent to the model.
-- **User choice**: whether and where to transfer is determined by the provider
-  the user selects.
+- **User choice (models)**: which provider and region handles your requests in
+  BYOK mode is your choice.
 - **Transparent**: flows are disclosed honestly; review providers' residency
   policies.
 

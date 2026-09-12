@@ -26,7 +26,7 @@ actually applicable to FuXi.
 | DPDP Act | Digital Personal Data Protection Act 2023 | India |
 | APPI | Act on the Protection of Personal Information | Japan |
 | PIPA | Personal Information Protection Act | South Korea |
-| PDPA | Personal Data Protection Act | Singapore / Thailand |
+| Singapore PDPA / Thailand PDPA | Personal Data Protection Act | Singapore (3 days) / Thailand (72 hours) |
 | Privacy Act + APPs | Privacy Act and Australian Privacy Principles | Australia |
 | POPIA | Protection of Personal Information Act | South Africa |
 | FADP | Federal Act on Data Protection | Switzerland |
@@ -46,7 +46,7 @@ actually applicable to FuXi.
 | User rights (access/rectify/erase) | Exercise channels; local data user-controlled | [DSR Procedure](../procedures/DATA_SUBJECT_REQUEST.md) |
 | Security obligation | Command classifier, permission model, update verification | [Security Whitepaper](../SECURITY.md) |
 | Breach notification | Severity tiers and notification duty | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) |
-| Cross-border transfer | None by default; BYOK is user's choice | [Transfer Assessment](TRANSFER_ASSESSMENT.md) |
+| Cross-border transfer | User content not transferred by FuXi; account data may transfer to the account-service region | [Transfer Assessment](TRANSFER_ASSESSMENT.md) |
 | Children protection | May be used by minors; age-appropriate safeguards, guardian consent where required; no behavioural ads/profiling | [Privacy Policy §8](../PRIVACY_POLICY.md) |
 | AI accountability (human-in-the-loop, transparent) | Think→Act→Verify, permission model, audit | [AI Governance Policy](../policies/AI_GOVERNANCE.md) |
 
@@ -67,7 +67,7 @@ jurisdiction-by-jurisdiction view and the risk register, see the
 | Rectification | GDPR Art. 16; LGPD Art. 18 | Account settings / DSR channel |
 | Erasure | GDPR Art. 17; CCPA; PIPL Art. 47 | Local data: `rm -rf ~/.fuxi`; account data: on request |
 | Object / restrict | GDPR Art. 18, 21; LGPD | DSR channel |
-| Breach notification | GDPR Art. 33/34 (72h); PDPA (3 days); AU NDB | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md), strictest target applied |
+| Breach notification | GDPR Art. 33/34 (72h); Singapore PDPA (3 days); Thailand PDPA (72h); AU NDB | [Incident Response Policy](../policies/INCIDENT_RESPONSE.md), strictest target applied |
 | Security of processing | GDPR Art. 32; PIPL Art. 51 | [Information Security Policy](../policies/INFORMATION_SECURITY_POLICY.md) |
 | Records & assessments | GDPR Art. 30, 35; DPDP (SDF) | [ROPA](ROPA.md) · [DPIA](DPIA.md) |
 | Cross-border transfer | GDPR Ch. V; PIPL Ch. 3; 152-FZ | [Transfer Assessment](TRANSFER_ASSESSMENT.md); mechanism per region |

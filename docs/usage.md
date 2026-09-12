@@ -25,6 +25,7 @@ advanced features, and is written with first-time users in mind.
 - [Command-line reference](#command-line-reference)
 - [Updating](#updating)
 - [Troubleshooting](#troubleshooting)
+- [Usage policy](#usage-policy)
 - [Advanced](#advanced)
 
 ---
@@ -42,9 +43,10 @@ Key properties:
 - **Provider-agnostic** — use any OpenAI-compatible endpoint, Gemini,
   Bedrock/Vertex, or other OpenAI-compatible providers, or use FuXi-managed
   models after signing in.
-- **Zero content upload** — your code, prompts, and conversations are never
-  uploaded to, or routed through, FuXi's servers; they stay on your device or go
-  straight to the model provider you choose.
+- **Zero content upload** — FuXi never collects, stores, or retains your code,
+  prompts, or conversations, and never asks you to upload them. With your own
+  key the content goes straight to your provider; with FuXi-managed models it is
+  transmitted only to serve that request — not retained, not used for training.
 - **Bring your own key** — your code and prompts go directly to the provider
   you choose; FuXi does not sit in between.
 - **Local-first** — config, credentials, sessions, and memory live on your
@@ -126,7 +128,7 @@ For headless/CI use, `fuxi setup-token` prints a token to export as
 `FUXI_OAUTH_TOKEN`.
 
 Registration processes only minimal account data — **your code and conversations
-are never uploaded to FuXi** (zero content upload).
+are never collected, stored, or retained by FuXi** (zero content upload).
 
 ### 2. Connect a model (optional)
 
@@ -442,6 +444,26 @@ your OS/shell/terminal, and a minimal reproduction.
 Report privately via
 [GitHub security advisories](https://github.com/fuxicodex/Fuxi/security/advisories/new).
 Do **not** open a public issue.
+
+---
+
+## Usage policy
+
+**You must use FuXi in accordance with the laws applicable to you** — your
+country/region's law, data-protection law, and any sectoral rules that apply to
+your work. FuXi's technical capability is not permission: if a use is unlawful
+where you are, you must not use FuXi for it.
+
+In short, you must not use FuXi to commit or facilitate unlawful activity, harm
+children, cause harm or destruction, gain unauthorised access, violate privacy,
+deceive or defraud, create illegal content, circumvent the safety mechanisms to
+cause those harms, misrepresent AI output as verified professional advice, or
+abuse the service.
+
+FuXi has a **minimum age of 13**; if you are under 18, a parent or guardian must
+be involved and provide consent where required. The full requirements are in the
+[Usage Policy](../security-privacy/policies/ACCEPTABLE_USE.md). If you are unsure
+whether a use is lawful, take advice before proceeding.
 
 ---
 

@@ -21,15 +21,23 @@ erasure, withdraw consent, object) are received and handled.
 
 ## 2. Intake channel
 
-- Submit via the repository issue tracker or the contact details on the website.
+- Submit via the contact details published on the website, or the repository
+  issue tracker for non-sensitive requests.
 - Requests should include: verifiable identity (if needed), request type, scope.
+- **Do not post identity documents or other personal data in a public issue.**
+  For anything that requires identity verification, use the private contact on
+  the website.
 
 ---
 
 ## 3. Turnaround time
 
-- Per applicable law (usually within **30 days**, extendable as permitted).
+- Per applicable law, applying the **strictest** deadline among the laws that
+  reach us: LGPD confirms access within **15 days**, GDPR within one month,
+  CCPA within 45 days. We target **15 days** or sooner.
 - When identity verification is required, the clock starts after verification.
+- If we need more time where the law allows an extension, we tell you why and
+  when to expect our answer.
 
 ---
 
@@ -46,8 +54,8 @@ erasure, withdraw consent, object) are received and handled.
 
 | Data | User action |
 |---|---|
-| Local config/sessions/memory/audit | `rm -rf "$HOME/.fuxi"` (or remove the `FUXI_CONFIG_DIR` directory) |
-| Account data (required) | Contact us, or use the account deletion option |
+| Local config/sessions/memory/audit | Delete your config directory: `rm -rf "${FUXI_CONFIG_DIR:-$HOME/.fuxi}"` |
+| Account data (required) | Contact us to request deletion |
 
 ---
 

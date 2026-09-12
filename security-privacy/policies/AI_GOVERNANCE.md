@@ -26,7 +26,7 @@ model is the "engine". This policy governs their combination.
 | **Explainable & traceable** | Every action is traceable via audit logs |
 | **Safety guardrails** | Commands filtered by AST classifier + rule set |
 | **No implicit escalation** | Permission model defaults to least privilege |
-| **Refuse misuse** | No assistance with destructive, offensive, or unlawful use |
+| **Refuse misuse** | No assistance with destructive, offensive, or unlawful use; see the [Usage Policy](ACCEPTABLE_USE.md) |
 
 ---
 
@@ -65,7 +65,8 @@ FuXi **may be used by children and young people**, and we apply age-appropriate
 safeguards (see [Privacy Policy §8](../PRIVACY_POLICY.md)):
 
 - Consent from a parent/guardian is required where the law sets an age of
-  digital consent (16 or lower under GDPR; 13 US COPPA; 14 China; 18 India).
+  digital consent (16 or lower under GDPR; 13 US COPPA; 14 China; 14 Korea;
+  18 India). FuXi's minimum age is 13; under 18 requires a parent or guardian.
 - Child-appropriate defaults: no behavioural advertising or profiling, minimal
   data, and the same deny-by-default safety as every user.
 - We recommend adult supervision, particularly when FuXi is allowed to act

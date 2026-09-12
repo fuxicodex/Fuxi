@@ -25,11 +25,17 @@ FuXi 提供由用户选择的权限模式：
 |---|---|---|
 | `default` | 敏感操作逐项提示用户批准 | 日常使用（推荐） |
 | `plan` | 规划模式：只读分析，不执行变更 | 先看方案再执行 |
-| `bypassPermissions` | 自动批准（跳过提示） | 高度可信、可自动化的环境 |
+| `bypassPermissions` | 自动批准提示（分类器与审计日志仍生效） | 高度可信、可自动化的环境 |
 | `--auto` | 仅自动批准**分类器判定安全**的操作，带熔断 | 平衡效率与安全 |
-| `--dangerously-skip-permissions` | 跳过**全部**权限检查 | 仅完全可信的隔离环境 |
+| `--dangerously-skip-permissions` | 跳过**全部**权限检查（危险） | 仅完全可信的隔离环境 |
 
-> ⚠️ `--dangerously-skip-permissions` 会关闭所有防护，风险自担。
+> 默认拒绝意味着**任何操作都不会被隐式批准** —— 全部放行需要显式切换模式。
+> 选择 `bypassPermissions` 时跳过提示层，但命令安全分类器与审计日志仍然生效；
+> `--dangerously-skip-permissions` 则跳过全部权限检查。风险自担。
+>
+> **未成年人**：由于 FuXi 能执行命令，未成年人账号不得使用
+> `bypassPermissions` 或 `--dangerously-skip-permissions`；见
+> [使用政策 §3](ACCEPTABLE_USE.zh-CN.md)。
 
 ---
 

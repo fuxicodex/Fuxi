@@ -45,9 +45,10 @@ laws (e.g., GDPR and various personal-information protection laws). Specific
 obligations follow the jurisdiction you are in and the laws actually applicable
 to us.
 
-**No jurisdiction-specific special commitments beyond the universal principles**
-— this is a global, principles-based statement and does not endorse any single
-country's law.
+The universal principles above are our **floor**, applied worldwide. The table
+below maps how they land in a few major jurisdictions; it is a non-exhaustive
+illustration, not a jurisdiction-specific legal commitment or an endorsement of
+any single country's law.
 
 **Major-jurisdiction perspective (principles alignment, not certification)**
 
@@ -70,22 +71,38 @@ bind us, and a disclosed risk register — is in the
 
 ---
 
-## 4. Responsibility boundaries
+## 4. Lawful use is a condition of use
+
+**You must use FuXi in accordance with the laws applicable to you.** This is a
+condition of using FuXi, not a suggestion:
+
+- You are responsible for complying with the laws of your country/region,
+  data-protection law, and any sectoral rules that apply to your work.
+- Disallowed uses are listed in the
+  [Usage Policy](policies/ACCEPTABLE_USE.md); among them are unlawful, harmful,
+  deceptive, or privacy-violating uses.
+- FuXi's technical capability is not permission: if a use is unlawful where you
+  are, you must not use FuXi for it.
+- If you are unsure whether a use is lawful, take advice before proceeding.
+
+---
+
+## 5. Responsibility boundaries
 
 We draw clear lines to avoid misleading you:
 
 - **We are responsible for**: the local security mechanisms of the FuXi binary
   itself, update integrity, documentation honesty, and the account
   authentication and account-data processing that are required to use FuXi.
-- **You are responsible for**: your machine's security, file-system permissions,
-  and the choice and safeguarding of providers / MCP servers / plugins you
-  configure.
+- **You are responsible for**: your lawful use of FuXi (see §4), your machine's
+  security, file-system permissions, and the choice and safeguarding of
+  providers / MCP servers / plugins you configure.
 - **Third parties are responsible for**: the privacy and data-processing
   behavior of the model providers, MCP servers, and plugins you connect to.
 
 ---
 
-## 5. Disclaimers and honest disclosure
+## 6. Disclaimers and honest disclosure
 
 - FuXi may execute commands that affect local files; we reduce risk through the
   permission model and command safety classifier, but we cannot underwrite the
@@ -97,19 +114,20 @@ We draw clear lines to avoid misleading you:
 
 ---
 
-## 6. Commitment checklist (honest, verifiable)
+## 7. Commitment checklist (honest, verifiable)
 
 | # | Commitment | How to verify |
 |---|---|---|
-| 1 | No code/conversation collection by default | BYOK mode content goes directly to your provider; local data stays on device |
+| 1 | No code/conversation collection | Content is never collected, stored, or retained; BYOK goes directly to your provider |
 | 2 | Keys are not uploaded | Credentials stored only in local `~/.fuxi/` |
 | 3 | Updates are verifiable | `fuxi update` SHA-256 check + atomic replacement |
 | 4 | Command safety | Pre-execution AST classifier + permission prompts + audit logs |
 | 5 | Transparency | Data flows and responsibility boundaries disclosed in this document set |
+| 6 | Lawful use required | Users must comply with applicable law (see [Usage Policy](policies/ACCEPTABLE_USE.md)) |
 
 ---
 
-## 7. Contact us
+## 8. Contact us
 
 - Website: https://www.fuxicode.com
 - Repository: https://github.com/fuxicodex/Fuxi

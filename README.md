@@ -36,6 +36,7 @@ Homepage: **https://www.fuxicode.com**
 - [Documentation](#documentation)
 - [Evaluation & benchmarks](#evaluation--benchmarks)
 - [Project layout](#project-layout)
+- [Usage policy](#usage-policy)
 - [License](#license)
 
 ## Quickstart
@@ -83,8 +84,8 @@ in — **a FuXi account is required to use FuXi**:
 1. **Register & sign in (required)** — `fuxi login` registers or authenticates
    your FuXi account and grants access. For headless/CI use, `fuxi setup-token`
    prints a token to export as `FUXI_OAUTH_TOKEN`. Registration processes only
-   minimal account data — **your code and conversations are never uploaded**
-   (zero content upload).
+   minimal account data — **your code and conversations are never collected,
+   stored, or retained** (zero content upload).
 
 2. **Connect a model (optional)** — sign-in alone provides access to FuXi-managed
    models. To use your own provider instead, bring your own key: set a provider
@@ -182,10 +183,11 @@ codebase, verifying results, and doing it affordably and under your control.
 - **Bring your own key, or use managed models** — a FuXi account is required to
   use FuXi; connect any OpenAI-compatible, Gemini, Bedrock, or Vertex API key, or
   use FuXi-managed models.
-- **Zero content upload & local-first** — your code, prompts, and conversations
-  are never uploaded to FuXi; config, credentials, sessions, and memory stay on
-  your device under `~/.fuxi/`, and requests go straight to the provider you
-  choose.
+- **Zero content upload & local-first** — FuXi never collects, stores, or
+  retains your code, prompts, or conversations, and never asks you to upload
+  them; config, credentials, sessions, and memory stay on your device under
+  `~/.fuxi/`. With your own key content goes straight to your provider; with
+  FuXi-managed models it is transmitted only to serve the request.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
 - **Age-appropriate by design** — children and young people may use FuXi, with
@@ -288,6 +290,20 @@ License).
 - `CHANGELOG.md` — release history
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` —
   community and support guides
+
+---
+
+## Usage policy
+
+**You must use FuXi in accordance with the laws applicable to you** — the law of
+your country and region, data-protection law, and any sectoral rules that apply
+to your work. FuXi's technical capability is not permission: if a use is unlawful
+where you are, you must not use FuXi for it.
+
+The disallowed uses and age requirements (minimum age 13; under 18 requires a
+parent or guardian) are in the
+[Usage Policy](security-privacy/policies/ACCEPTABLE_USE.md). If you are unsure
+whether a use is lawful, take advice before proceeding.
 
 ---
 

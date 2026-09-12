@@ -33,7 +33,7 @@ This runbook provides **step-by-step** incident response. Policy in
 | P1 | Provide temporary mitigation (disable feature, strengthen permission prompts) | Begin within 1 business day |
 | P2/P3 | Record and schedule a fix | Next iteration |
 
-Timing targets follow the [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) SLA.
+Timing targets follow the [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) best-effort targets.
 
 ---
 
