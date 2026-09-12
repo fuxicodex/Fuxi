@@ -80,7 +80,8 @@ managed models it is transmitted only to serve the request and is not retained.
 
 See the [Security Whitepaper](SECURITY.md). Highlights: AST command safety
 classifier, explicit permission model, audit logs, checksum-verified updates,
-and local-only credential storage.
+and local-only credential storage. The privacy and network settings you control
+are listed in [Privacy Controls](PRIVACY_CONTROLS.md).
 
 ---
 

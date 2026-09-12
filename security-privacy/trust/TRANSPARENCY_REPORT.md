@@ -20,7 +20,7 @@ relevant cells state the factual status rather than fabricated counts.
 | User code collection | **None** (local-first) |
 | Conversation content collection | **None** (BYOK direct) |
 | Credential collection | **None** (local-only) |
-| Hidden telemetry | **None** |
+| Hidden telemetry | **None** — no undisclosed tracking; available analytics are disclosed and opt-out ([Privacy Controls](../PRIVACY_CONTROLS.md)) |
 | Forced registration | **Yes** (a FuXi account is required) |
 | Content upload | **None** (zero content upload) |
 

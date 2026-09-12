@@ -43,6 +43,17 @@ installed binary for the always-authoritative reference.
 | `FUXI_MAX_SESSIONS` | Max concurrent remote sessions (default `32`) |
 | `FUXI_DISABLE_BRIDGE` | Set to `1` to disable remote-control mode |
 
+## Privacy & telemetry
+
+| Variable | Purpose |
+|---|---|
+| `FUXI_DISABLE_TELEMETRY` | Disable analytics/telemetry |
+| `FUXI_DISABLE_NONESSENTIAL_TRAFFIC` | Disable all nonessential network traffic |
+| `FUXI_ANALYTICS_MAX_EVENTS` | Cap the number of analytics events |
+
+See [Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md) for the
+`/privacy-settings` interface and the privacy levels.
+
 ## Feature toggles
 
 | Variable | Purpose |

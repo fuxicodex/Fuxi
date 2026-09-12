@@ -31,7 +31,9 @@ a web service hosted on our servers. That architecture sets the privacy baseline
   device** under `~/.fuxi/`.
 
 This policy describes honestly: which data stays local, which data leaves your
-device and under what circumstances, and why.
+device and under what circumstances, and why. The controls available to you are
+listed in [Privacy Controls](PRIVACY_CONTROLS.md), and the terms of use are in
+the [Terms of Service](TERMS_OF_SERVICE.md).
 
 ---
 

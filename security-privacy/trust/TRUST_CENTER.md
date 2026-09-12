@@ -27,7 +27,7 @@ respect for global law and user behavior.
 | Command safety | AST classifier + permission prompts + audit logs |
 | Invisible protection | On by default, no configuration needed (see [Security Whitepaper §5](../SECURITY.md)) |
 | Updates | SHA-256 verification + atomic replacement |
-| Telemetry | No hidden background upload |
+| Telemetry | No hidden background upload; disclosed analytics are opt-out ([Privacy Controls](../PRIVACY_CONTROLS.md)) |
 | Certification claims | No fabricated third-party certifications |
 | Global law | Aligned to major privacy/AI laws; risks disclosed in the [Global Law Map](../compliance/GLOBAL_LAW_MAP.md) |
 

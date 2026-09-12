@@ -218,9 +218,12 @@ FuXi 是一个终端优先、设计上不绑定任何单一提供商的 AI 编�
 | 文档 | 内容 |
 |---|---|
 | [使用指南](docs/usage.zh-CN.md) | 完整指南：第一次会话、权限与安全、会话与记忆、工具与 MCP、完整命令行参考、更新与排障 |
+| [架构](docs/architecture.zh-CN.md) | 执行底座、持久化、路由、多窗口协同与可扩展性 |
 | [键盘快捷键](docs/keybindings.zh-CN.md) | 终端 UI 按键速查 |
 | [环境变量](docs/environment.zh-CN.md) | 完整环境变量参考（含桥接/远程控制、沙箱限制、MCP 资源上限） |
 | [常见问题](docs/faq.zh-CN.md) | 常见问题解答 |
+| [服务条款](security-privacy/TERMS_OF_SERVICE.zh-CN.md) | 使用 FuXi 的协议 |
+| [隐私控制](security-privacy/PRIVACY_CONTROLS.zh-CN.md) | 哪些数据留在本地，以及如何更改网络/隐私设置 |
 | [安全与隐私](security-privacy/README.md) | 治理章程、政策、标准、流程、[全球隐私与法律风险地图](security-privacy/compliance/GLOBAL_LAW_MAP.zh-CN.md)与信任中心 |
 | [更新日志](CHANGELOG.md) | 版本发布记录 |
 | [支持](SUPPORT.md) | 获取帮助与报告问题的方式 |

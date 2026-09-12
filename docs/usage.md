@@ -251,12 +251,25 @@ into the input. The full reference is in [keybindings.md](keybindings.md).
 
 ## Permissions & safety
 
+### Privacy settings
+
+FuXi runs locally and does not collect your code or conversations, but a few
+functions talk to the network. Review and change this with:
+
+```
+/privacy-settings
+```
+
+The three privacy levels (`default`, `no-telemetry`, `essential-traffic`) and the
+`telemetry` / `crash_reports` / `send_conversations` toggles are documented in
+[Privacy Controls](../security-privacy/PRIVACY_CONTROLS.md).
+
+### Permission modes
+
 FuXi can edit files and run shell commands, so it ships an explicit permission
 model and safety guardrails. Expect a permission prompt the first time a tool
 touches something sensitive; you can review and adjust everything later with
 `/permissions`.
-
-### Permission modes
 
 | Mode | Behavior |
 |---|---|

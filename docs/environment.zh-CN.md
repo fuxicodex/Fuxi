@@ -41,6 +41,17 @@ FuXi 按以下优先级解析配置：环境变量 > `~/.fuxi/config.yaml` > 内
 | `FUXI_MAX_SESSIONS` | 最大并发远程会话数（默认 `32`） |
 | `FUXI_DISABLE_BRIDGE` | 设为 `1` 关闭远程控制模式 |
 
+## 隐私与遥测
+
+| 变量 | 作用 |
+|---|---|
+| `FUXI_DISABLE_TELEMETRY` | 关闭分析与遥测 |
+| `FUXI_DISABLE_NONESSENTIAL_TRAFFIC` | 关闭全部非必要网络流量 |
+| `FUXI_ANALYTICS_MAX_EVENTS` | 限制分析事件数量上限 |
+
+`/privacy-settings` 界面与隐私级别见
+[隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+
 ## 功能开关
 
 | 变量 | 作用 |

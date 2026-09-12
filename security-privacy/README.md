@@ -45,6 +45,8 @@ L5  信任 Trust            —— 面向用户的可信披露
 
 | 文档 | 内容 | English |
 |---|---|---|
+| [服务条款](TERMS_OF_SERVICE.zh-CN.md) | 服务说明、账户、使用限制、知识产权、免责、责任限制、争议解决 | [Terms of Service](TERMS_OF_SERVICE.md) |
+| [隐私控制](PRIVACY_CONTROLS.zh-CN.md) | 始终本地化的数据、`/privacy-settings`、三档隐私级别与开关、环境变量 | [Privacy Controls](PRIVACY_CONTROLS.md) |
 | [隐私政策](PRIVACY_POLICY.zh-CN.md) | 我们收集什么、不收集什么、数据如何流动 | [Privacy Policy](PRIVACY_POLICY.md) |
 | [安全白皮书](SECURITY.zh-CN.md) | 安全架构、威胁模型、命令安全、凭据处理、**默认隐性保护** | [Security Whitepaper](SECURITY.md) |
 | [数据保护承诺](DATA_PROTECTION.zh-CN.md) | 数据最小化、存储位置、用户权利、数据出境、**零内容上传** | [Data Protection](DATA_PROTECTION.md) |

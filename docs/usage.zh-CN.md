@@ -241,11 +241,24 @@ fuxi wizard
 
 ## 权限与安全
 
+### 隐私设置
+
+FuXi 在本地运行，不收集你的代码与对话，但少数功能会访问网络。用以下命令
+查看与更改：
+
+```
+/privacy-settings
+```
+
+三档隐私级别（`default`、`no-telemetry`、`essential-traffic`）与
+`telemetry` / `crash_reports` / `send_conversations` 开关，见
+[隐私控制](../security-privacy/PRIVACY_CONTROLS.zh-CN.md)。
+
+### 权限模式
+
 FuXi 能够改文件、运行 shell 命令，因此内置了明确的权限模型与安全护栏。
 工具首次接触到敏感操作时会弹出权限提示；之后随时可用 `/permissions`
 查看并调整所有规则。
-
-### 权限模式
 
 | 模式 | 行为 |
 |---|---|

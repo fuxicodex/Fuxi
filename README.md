@@ -236,9 +236,12 @@ Full reference material lives under `docs/`, mirrored in 简体中文.
 | Guide | What it covers |
 |---|---|
 | [Usage guide](docs/usage.md) | The complete walkthrough: first session, permissions & safety, sessions & memory, tools & MCP, the full command-line reference, updating, and troubleshooting |
+| [Architecture](docs/architecture.md) | Execution base, persistence, routing, multi-window coordination, and extensibility |
 | [Keyboard shortcuts](docs/keybindings.md) | Terminal-UI key reference |
 | [Environment variables](docs/environment.md) | Full environment-variable reference, including bridge/remote control, sandbox limits, and MCP resource caps |
 | [FAQ](docs/faq.md) | Answers to common questions |
+| [Terms of Service](security-privacy/TERMS_OF_SERVICE.md) | The agreement for using FuXi |
+| [Privacy Controls](security-privacy/PRIVACY_CONTROLS.md) | What stays local, and how to change network/privacy settings |
 | [Security & privacy](security-privacy/README.md) | Governance charter, policies, standards, procedures, the [Global Privacy & Legal Risk Map](security-privacy/compliance/GLOBAL_LAW_MAP.md), and trust center |
 | [Changelog](CHANGELOG.md) | Release history |
 | [Support](SUPPORT.md) | Where to get help and how to report problems |

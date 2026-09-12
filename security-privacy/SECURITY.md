@@ -92,7 +92,7 @@ lists what you get automatically, so you can rely on it and audit it.
 | **Path-traversal blocking** | Escaping paths are blocked before normalization | None |
 | **Sandbox resource ceilings** | `bash` and MCP subprocesses run under memory/CPU/network limits (see [environment variables](../docs/environment.md)) | None |
 | **Verified, atomic updates** | SHA-256 verification against the published manifest before an atomic replace — no half-installed state | None |
-| **No telemetry / no silent upload** | No background content collection; the only network call is the version check (disable with `--no-update-notifier`) | None |
+| **No hidden telemetry** | No background collection of your content, and no undisclosed tracking; the analytics that exist are disclosed and opt-out (see [Privacy Controls](PRIVACY_CONTROLS.md)) | None |
 | **Local, user-deletable data** | Sessions, memory, and audit logs live under `~/.fuxi/`; removing the directory clears them | None |
 
 > **Why this matters:** the standard privacy ask is "configure your settings
