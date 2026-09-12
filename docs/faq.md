@@ -70,8 +70,8 @@ driven from inside the TUI via slash commands.
 **What can FuXi do?**
 
 FuXi works in a Think → Act → Verify loop: it reasons about a task, acts with
-50+ built-in tools (file editing, shell, search, web fetch, and more), inspects
-the result, and iterates until the work is verified.
+about fifty built-in tools (file editing, shell, search, web fetch, and more),
+inspects the result, and iterates until the work is verified.
 
 **What are the permission modes?**
 

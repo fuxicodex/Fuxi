@@ -155,11 +155,12 @@ FuXi 会推理、改文件、运行命令，并验证结果。头几分钟常用
 
   ![智能路由](docs/routing.png)
 
-### 50+ 工具，单个静态二进制
+### 约五十个工具，单个静态二进制
 
-- **直接上手真实代码库** —— 文件读/写/改、shell（`bash` / PowerShell）、
-  ripgrep 搜索、网页抓取、LSP 诊断、Jupyter、浏览器控制、后台任务与并行
-  子智能体 —— 无需任何运行时依赖。
+- **直接上手真实代码库** —— `Read`、`Write`、`Edit`、`Glob`、`Grep`、
+  `Bash` / `PowerShell`、`WebFetch`（SSRF 防护）、`WebSearch`、`WebBrowser`、
+  `NotebookEdit`、`LSP`、并行子智能体（`Agent`）等 —— 无需任何运行时依赖。
+  完整清单见[架构](docs/architecture.zh-CN.md#1-执行底座模型在你的真实环境中行动)。
 - **天生可扩展** —— MCP 客户端、hooks、skills、plugins 与斜杠命令，全部
   支持热重载。
 - **默认安全** —— shell 命令在执行前经过 AST 安全分类器；细粒度权限与

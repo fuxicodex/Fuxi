@@ -33,9 +33,9 @@ advanced features, and is written with first-time users in mind.
 ## Overview
 
 FuXi works in a **Think → Act → Verify** loop: it reasons about a task, acts
-with 50+ built-in tools (file editing, shell, search, web fetch, and more),
-inspects the result, and iterates until the work is verified — a failing test
-fixed, a suite green, a PR ready.
+with about fifty built-in tools (file editing, shell, search, web fetch, and
+more), inspects the result, and iterates until the work is verified — a failing
+test fixed, a suite green, a PR ready.
 
 Key properties:
 
@@ -317,9 +317,13 @@ project memory file.
 
 ## Tools & MCP
 
-FuXi ships 50+ built-in tools — file read/write/edit, shell (`bash` /
-PowerShell), ripgrep search, web fetch, LSP-backed diagnostics, Jupyter,
-browser use via MCP, background tasks, and parallel sub-agents.
+FuXi ships about fifty built-in tools. The core names you will see in permission
+rules are: `Read`, `Write`, `Edit`, `Glob`, `Grep`, `Bash`, `PowerShell`,
+`WebFetch`, `WebSearch`, `WebBrowser`, `NotebookEdit`, `LSP`, `Agent`, `Skill`,
+`TaskCreate`/`TaskUpdate`/`TaskList`/`TaskGet`/`TaskStop`/`TaskOutput`,
+`TodoWrite`, `ToolSearch`, and the MCP tools. See
+[Architecture §1](architecture.md#1-execution-base-the-model-acts-on-your-real-environment)
+for the full grouped list.
 
 ### Restricting tools
 

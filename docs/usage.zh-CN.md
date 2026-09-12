@@ -31,7 +31,7 @@
 
 ## 概述
 
-FuXi 以 **思考 → 行动 → 验证** 循环工作：它推理任务、用 50+ 内置工具行动
+FuXi 以 **思考 → 行动 → 验证** 循环工作：它推理任务、用约五十个内置工具行动
 （文件编辑、shell、搜索、网页抓取等）、查看结果，并不断迭代直到工作完成
 且被验证 —— 失败的测试被修复、测试套件全绿、PR 就绪。
 
@@ -303,9 +303,12 @@ fuxi -c                # 继续当前目录下最近一次对话
 
 ## 工具与 MCP
 
-FuXi 内置 50+ 工具 —— 文件读/写/改、shell（`bash` / PowerShell）、ripgrep
-搜索、网页抓取、LSP 诊断、Jupyter、通过 MCP 的浏览器控制、后台任务，
-以及并行子智能体。
+FuXi 内置约五十个工具。你在权限规则中会看到的名称主要是：`Read`、`Write`、
+`Edit`、`Glob`、`Grep`、`Bash`、`PowerShell`、`WebFetch`、`WebSearch`、
+`WebBrowser`、`NotebookEdit`、`LSP`、`Agent`、`Skill`、
+`TaskCreate`/`TaskUpdate`/`TaskList`/`TaskGet`/`TaskStop`/`TaskOutput`、
+`TodoWrite`、`ToolSearch`，以及 MCP 工具。完整分组清单见
+[架构 §1](architecture.zh-CN.md#1-执行底座模型在你的真实环境中行动)。
 
 ### 限制工具
 

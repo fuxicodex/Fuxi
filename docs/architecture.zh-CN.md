@@ -21,20 +21,31 @@ FuXi 把模型从"能回答"升级为"能干活" —— 直接在你的代码库
 | 能力 | 说明 |
 |---|---|
 | **读写真实文件** | 直接在磁盘上读写代码、配置与文档 —— 模型看到并修改的是你的真实文件 |
-| **执行真实 Shell 命令** | 执行 `bash` / PowerShell 并观察输出，经 **AST 安全分类器**与**规则集**过滤；高风险命令需确认 |
-| **搜索整个代码库** | 通过 ripgrep 进行极速正则搜索，不论代码库规模 |
+| **执行真实 Shell 命令** | 执行 `Bash` / `PowerShell` 并观察输出，经 **AST 安全分类器**与**规则集**过滤；高风险命令需确认 |
+| **搜索整个代码库** | 快速模式搜索（`Glob` 找路径、`Grep` 找内容），不论代码库规模 |
 | **抓取实时网页** | 抓取 URL，具备 **SSRF 防护** —— 私有地址段被屏蔽 |
 | **实时 LSP 诊断** | 调用语言服务器获取错误、警告、悬停信息与定义跳转 |
 | **并行子智能体** | 将大型任务拆分给并行子智能体，各自独立运行并协作 |
 
-### 工具集（节选）
+### 工具集
+
+FuXi 内置约五十个工具。下表按用途分组；括号内名称即 FuXi 向模型与权限规则
+暴露的标识符。
 
 | 分类 | 工具 |
 |---|---|
-| 文件 | `read_file`、`write_file`、`edit_file`、`list_directory`、`glob_search`、`move_file` |
-| Shell | `bash`（AST 防护）、`powershell`、`background_task`、`kill_process`、`read_output` |
-| 搜索与代码 | `ripgrep_search`、`web_search`、`web_fetch`（SSRF 防护）、`lsp_diagnostics`、`lsp_hover`、`lsp_definition` |
-| MCP 支撑 | `jupyter_run`、`computer_use`、`browser_use`、`spawn_subagent`、`mcp_call`、`memory_write` |
+| 文件与代码 | `Read`、`Write`、`Edit`、`Glob`、`Grep`、`NotebookEdit`、`LSP` |
+| Shell | `Bash`（AST 防护）、`PowerShell` |
+| 网络 | `WebFetch`（SSRF 防护）、`WebSearch`、`WebBrowser` |
+| 智能体与团队 | `Agent`、`Skill`、`SendMessage`、`TeamCreate`、`TeamDelete`、`ListPeers` |
+| 任务 | `TaskCreate`、`TaskGet`、`TaskList`、`TaskUpdate`、`TaskStop`、`TaskOutput`、`TodoWrite` |
+| 交互与控制 | `AskUserQuestion`、`EnterPlanMode`、`ExitPlanMode`、`EnterWorktree`、`ExitWorktree`、`Sleep`、`VerifyPlan`、`StructuredOutput` |
+| MCP | `MCP`、`ListMcpResources`、`ReadMcpResource` |
+| 自动化 | `CronCreate`、`CronDelete`、`CronList`、`Monitor`、`RemoteTrigger`、`Workflow`、`ToolSearch`、`subscribePR`、`SuggestBackgroundPR` |
+| 会话 | `Brief`、`ctxInspect`、`pushNotification`、`sendUserFile`、`terminalCapture` |
+
+任一时刻只有一部分工具会发送给模型，其余通过 `ToolSearch` 按需发现；
+`--tools`、`--allowed-tools`、`--disallowed-tools` 用于控制哪些工具可用。
 
 ### 沙箱
 

@@ -20,20 +20,32 @@ your actual codebase, shell, and browser.
 | Capability | Detail |
 |---|---|
 | **Read and modify real files** | Read/write/edit code, config, and docs directly on disk — the model sees and changes your real files |
-| **Run real shell commands** | Executes `bash` / PowerShell and observes output, filtered by an **AST safety classifier** and a **rule set**; high-risk commands require confirmation |
-| **Search the whole codebase** | Fast regex search via ripgrep, across any repository size |
+| **Run real shell commands** | Executes `Bash` / `PowerShell` and observes output, filtered by an **AST safety classifier** and a **rule set**; high-risk commands require confirmation |
+| **Search the whole codebase** | Fast pattern search (`Glob` for paths, `Grep` for content) across any repository size |
 | **Fetch live web content** | Fetches URLs, with **SSRF protection** — private address ranges are blocked |
 | **Live LSP diagnostics** | Queries language servers for errors, warnings, hover info, and definitions |
 | **Parallel sub-agents** | Splits large tasks across parallel sub-agents that run independently and coordinate |
 
-### Tool set (selection)
+### Tool set
+
+FuXi ships roughly fifty built-in tools. They are grouped below by purpose; the
+names are the identifiers FuXi exposes to the model and to permission rules.
 
 | Group | Tools |
 |---|---|
-| Files | `read_file`, `write_file`, `edit_file`, `list_directory`, `glob_search`, `move_file` |
-| Shell | `bash` (AST guard), `powershell`, `background_task`, `kill_process`, `read_output` |
-| Search & code | `ripgrep_search`, `web_search`, `web_fetch` (SSRF guard), `lsp_diagnostics`, `lsp_hover`, `lsp_definition` |
-| MCP-backed | `jupyter_run`, `computer_use`, `browser_use`, `spawn_subagent`, `mcp_call`, `memory_write` |
+| Files & code | `Read`, `Write`, `Edit`, `Glob`, `Grep`, `NotebookEdit`, `LSP` |
+| Shell | `Bash` (AST-guarded), `PowerShell` |
+| Web | `WebFetch` (SSRF-guarded), `WebSearch`, `WebBrowser` |
+| Agents & teams | `Agent`, `Skill`, `SendMessage`, `TeamCreate`, `TeamDelete`, `ListPeers` |
+| Tasks | `TaskCreate`, `TaskGet`, `TaskList`, `TaskUpdate`, `TaskStop`, `TaskOutput`, `TodoWrite` |
+| Interaction & control | `AskUserQuestion`, `EnterPlanMode`, `ExitPlanMode`, `EnterWorktree`, `ExitWorktree`, `Sleep`, `VerifyPlan`, `StructuredOutput` |
+| MCP | `MCP`, `ListMcpResources`, `ReadMcpResource` |
+| Automation | `CronCreate`, `CronDelete`, `CronList`, `Monitor`, `RemoteTrigger`, `Workflow`, `ToolSearch`, `subscribePR`, `SuggestBackgroundPR` |
+| Session | `Brief`, `ctxInspect`, `pushNotification`, `sendUserFile`, `terminalCapture` |
+
+A subset is sent to the model at any moment and the rest are discovered on demand
+via `ToolSearch`; `--tools`, `--allowed-tools`, and `--disallowed-tools` control
+which are available.
 
 ### Sandbox
 

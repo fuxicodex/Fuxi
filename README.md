@@ -164,11 +164,13 @@ codebase, verifying results, and doing it affordably and under your control.
 
   ![Intelligent routing](docs/routing.png)
 
-### 50+ tools, one static binary
+### About fifty tools, one static binary
 
-- **Work on real codebases** — file read/write/edit, shell (`bash` /
-  PowerShell), ripgrep search, web fetch, LSP diagnostics, Jupyter, browser
-  use, background tasks, and parallel sub-agents — no runtime dependencies.
+- **Work on real codebases** — `Read`, `Write`, `Edit`, `Glob`, `Grep`, `Bash` /
+  `PowerShell`, `WebFetch` (SSRF-guarded), `WebSearch`, `WebBrowser`,
+  `NotebookEdit`, `LSP`, parallel sub-agents (`Agent`), and more — no runtime
+  dependencies. See [Architecture](docs/architecture.md#1-execution-base-the-model-acts-on-your-real-environment)
+  for the full list.
 - **Extensible by design** — MCP client, hooks, skills, plugins, and slash
   commands, all hot-reloadable.
 - **Safe by default** — shell commands pass an AST safety classifier before
