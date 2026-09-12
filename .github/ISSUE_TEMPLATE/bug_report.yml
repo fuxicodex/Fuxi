@@ -1,0 +1,84 @@
+name: Bug report
+description: Report a reproducible problem with FuXi
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. A minimal, reproducible report
+        is the fastest path to a fix.
+
+        **Do not paste API keys, tokens, or private code.** Redact secrets first.
+
+  - type: input
+    id: version
+    attributes:
+      label: FuXi version
+      description: Output of `fuxi --version`
+      placeholder: "fuxi 0.1.6"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: OS / shell / terminal
+      description: Operating system, shell, and terminal emulator
+      placeholder: "macOS 15.3, zsh 5.9, iTerm2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider in use
+      options:
+        - OpenAI-compatible
+        - Anthropic
+        - Bedrock
+        - Vertex
+        - Gemini
+        - FuXi-managed models
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the problem, and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction steps
+      description: The smallest set of steps that reliably reproduces the problem.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "Output of `fuxi doctor`"
+      description: Paste the output of `fuxi doctor`, with any secrets redacted.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have redacted any API keys, tokens, and private code.
+          required: true
+        - label: I have searched existing issues for a duplicate.
+          required: true

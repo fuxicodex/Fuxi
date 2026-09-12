@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/fuxicodex/Fuxi/security/advisories/new
+    about: Report security issues privately. Do not open a public issue.
+  - name: Documentation
+    url: https://github.com/fuxicodex/Fuxi/blob/main/docs/usage.md
+    about: Usage guide, architecture, environment variables, and FAQ
+  - name: Questions and discussion
+    url: https://github.com/fuxicodex/Fuxi/discussions
+    about: Ask questions and share what you built

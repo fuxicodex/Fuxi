@@ -1,0 +1,37 @@
+name: Documentation issue
+description: Report a documentation error, gap, or improvement
+title: "[Docs] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Which document?
+      description: File path or link
+      placeholder: "docs/usage.md#installation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing?
+      description: Describe the problem. If the documentation is incorrect, note what the correct behavior is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: Optional — how would you word it?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have checked that this is not already reported.
+          required: true

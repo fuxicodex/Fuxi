@@ -1,8 +1,12 @@
 # Changelog
 
 All notable changes to FuXi are documented in this file. The format is based on
-[Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each entry mirrors the
-corresponding GitHub Release.
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+Each entry mirrors a **published GitHub Release**
+([releases](https://github.com/fuxicodex/Fuxi/releases)). Development builds can
+be newer than the latest release listed here; run `fuxi --version` to check the
+build you have and `fuxi update` to move to the latest release.
 
 ## [0.1.6] - 2026-09-07
 

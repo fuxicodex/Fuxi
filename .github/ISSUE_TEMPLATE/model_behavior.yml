@@ -1,0 +1,83 @@
+name: Model behavior
+description: Report unexpected model output, or a routing/thinking behavior issue
+title: "[Model] "
+labels: ["model-behavior"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for issues that are about how a **model** behaves through FuXi
+        (responses, tool use, thinking, routing) rather than about FuXi itself.
+
+        If the problem is a crash, an error, or something in the UI, use the
+        **Bug report** template instead.
+
+  - type: input
+    id: version
+    attributes:
+      label: FuXi version
+      description: Output of `fuxi --version`
+      placeholder: "fuxi 0.1.6"
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      description: Which model was active? (`/model` or your config)
+      placeholder: "deepseek-v4-pro via OpenAPI"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Output quality or accuracy
+        - Tool use (wrong tool, no tool, malformed call)
+        - Thinking / reasoning depth
+        - Routing (unexpected model selected)
+        - Context, memory, or compaction
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What did the model do?
+      description: Describe what you expected vs. what happened. Include the prompt if you can share it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: transcript
+    attributes:
+      label: Relevant transcript excerpt
+      description: Optional — the smallest excerpt that shows the behavior, with secrets redacted.
+      render: text
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reproducible
+    attributes:
+      label: Is it reproducible?
+      options:
+        - Yes, every time
+        - Yes, sometimes
+        - No, happened once
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have redacted any API keys, tokens, and private code.
+          required: true
+        - label: I understand model output varies, and have included enough detail to investigate.
+          required: true
