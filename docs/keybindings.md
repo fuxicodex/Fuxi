@@ -34,7 +34,7 @@ prompt to open the command palette, which lists many of the same actions.
 | `G` / `End` | Jump to the bottom |
 | `Ctrl+T` | Cycle inline task / teammate panels |
 | `Tab` | Toggle the sidebar |
-| `Shift+Tab` | Cycle permission mode (default → plan → bypassPermissions) |
+| `Shift+Tab` | Cycle permission mode (default / plan / bypassPermissions) |
 | `c` | Copy the selected card |
 | `p` | Copy the input of the selected card |
 

@@ -8,7 +8,7 @@ installers, and issue tracker — is open to contributions.
 - **Report a bug** — open an issue using the **Bug report** template.
 - **Suggest a feature** — open an issue using the **Feature request** template.
 - **Improve the documentation** — fix typos, clarify wording, or add sections to
-  the README (English and 简体中文).
+  the README and the guides under `docs/` (English and 简体中文).
 - **Answer questions** — help other users in issues and discussions.
 
 ## Bug reports
@@ -29,10 +29,11 @@ cases help more than abstract ideas.
 
 ## Documentation fixes and improvements
 
-Pull requests for the README (English and 简体中文), typo fixes, clarifications,
-and new documentation sections are welcome. Please keep the two languages in
-lockstep: if you change a section, update both `README.md` and
-`README.zh-CN.md`.
+Pull requests for the README and the guides under `docs/` (English and
+简体中文), typo fixes, clarifications, and new documentation sections are
+welcome. Please keep the two languages in lockstep: if you change a section,
+update both the English file and its `.zh-CN.md` counterpart (for example
+`docs/usage.md` and `docs/usage.zh-CN.md`).
 
 A few documentation conventions:
 

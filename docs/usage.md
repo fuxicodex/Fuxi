@@ -168,7 +168,7 @@ The wizard walks through provider, base URL, key, model, and a connection test.
 - **Precedence:** environment variables > `config.yaml` > built-in defaults.
 - **Project settings:** a checked-in project settings file (permissions, hooks)
   is honored per-project.
-- **Plugins:** first-party marketplace at `fuxicode.com/plugins`.
+- **Plugins:** first-party plugins, hot-reloadable.
 
 The most common environment variables:
 
@@ -446,8 +446,8 @@ Do **not** open a public issue.
   reserved for hard ones, with automatic failover.
 - **Sub-agents** — parallel agents for larger tasks; `/fork` shows fork-agent
   stats.
-- **Hooks, skills & plugins** — extensible and hot-reloadable; first-party
-  marketplace at `fuxicode.com/plugins`.
+- **Hooks, skills & plugins** — extensible and hot-reloadable, with first-party
+  plugins.
 - **Remote control** — run as a cloud worker with `fuxi remote-control` or
   `--remote-control`.
 - **Proxy** — `fuxi proxy` starts the smart routing proxy (Anthropic ↔ OpenAI

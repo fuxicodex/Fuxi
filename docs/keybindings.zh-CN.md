@@ -34,7 +34,7 @@ FuXi 终端 UI 的快捷键速查。在空提示符开头输入 `/` 可打开命
 | `G` / `End` | 跳到对话底部 |
 | `Ctrl+T` | 循环切换内联任务 / 队友面板 |
 | `Tab` | 切换侧边栏 |
-| `Shift+Tab` | 循环切换权限模式（default → plan → bypassPermissions） |
+| `Shift+Tab` | 循环切换权限模式（default / plan / bypassPermissions） |
 | `c` | 复制选中的卡片 |
 | `p` | 复制选中卡片的输入 |
 
