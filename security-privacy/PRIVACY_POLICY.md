@@ -1,6 +1,6 @@
 # FuXi Privacy Policy
 
-*Last updated: 2026-08-23 · Version 1.0*
+*Last updated: 2026-09-12 · Version 1.0*
 *Entity: FUXI*
 
 This policy applies to users worldwide and explains how and why FuXi processes
@@ -14,10 +14,16 @@ your code or conversation content by default.**
 FuXi is a **terminal AI coding agent** that runs on *your own machine*. It is not
 a web service hosted on our servers. That architecture sets the privacy baseline:
 
-- You do **not** need to create an account to use FuXi.
-- You do **not** need to upload your code to us.
+- **A FuXi account is required to use FuXi** — you register and sign in via
+  `fuxi login` (`fuxi setup-token` in headless/CI). Registration processes only
+  the minimal account data needed to operate your account and provision access
+  to FuXi-managed models.
+- You **never have to upload your code or conversations to us** — this is our
+  **zero content upload** commitment. Your code, prompts, and conversation
+  content are not stored on, and not routed through, FuXi's servers.
 - By default, your code, conversations, configuration, and credentials stay on
-  **your own device**.
+  **your own device**, or travel directly between you and the model provider you
+  choose.
 
 This policy describes honestly: which data stays local, which data leaves your
 device and under what circumstances, and why.
@@ -44,17 +50,19 @@ your own device.
 
 ### 2.2 Data that leaves your device (only after you configure it)
 
-FuXi respects your choices. Only when you explicitly configure it does the
-following data leave your device:
+Only the following data leaves your device, and only in the described scope — in
+no case is your code or conversation content uploaded to FuXi:
 
+- **Account registration & sign-in (required)**: `fuxi login` (or
+  `fuxi setup-token` in CI) authenticates you with your FuXi account. Minimal
+  account data (identifier and authentication material) is processed by the
+  FuXi account system to operate your account and provision FuXi-managed models.
 - **Communication with a model provider**: when you make a request, the prompt
   and the relevant code context needed for that request are sent to the model
   provider you configured (OpenAI-compatible, Gemini, Bedrock/Vertex, etc.).
-  This is required for the model to do its work. That provider's privacy policy
-  applies to this transmission.
-- **Sign-in and account (optional)**: only if you choose `fuxi login` to sign in
-  to a FuXi account does authentication occur and FuXi-managed models get
-  provisioned. If you don't use the account feature, none of this applies.
+  This is required for the model to do its work; content travels directly
+  between you and that provider and is not relayed or stored by FuXi. That
+  provider's privacy policy applies to this transmission.
 
 ### 2.3 Data we do not collect
 
@@ -74,7 +82,7 @@ We process data only to the **strictly necessary** extent:
 | Purpose | Description | Basis |
 |---|---|---|
 | Provide product functionality | Let the agent read code, run commands, drive tools | Performance of the usage relationship |
-| Authentication (optional) | `fuxi login` / `setup-token` | Your consent + service provision |
+| Account registration & authentication (required) | `fuxi login` / `fuxi setup-token` | Performance of the usage relationship (contract) |
 | Updates and security | Checksum verification, vulnerability fixes | Legitimate interest (user safety) |
 | Compliance and legal duty | Comply with applicable law | Legal obligation |
 
@@ -108,8 +116,8 @@ does not hold your code or conversations by default, in most such cases we have
   discretion** and can be deleted at any time: removing `~/.fuxi/` (or the
   directory pointed to by `FUXI_CONFIG_DIR`) removes the related local data.
 - Uninstalling (`rm -rf "$HOME/.fuxi"`) clears local data.
-- For sign-in account data (if you use the sign-in feature), contact us to
-  request deletion.
+- For your FuXi account data, contact us to request deletion; the account
+  terms applicable when it was created govern the account model used.
 
 ---
 
@@ -120,8 +128,8 @@ Wherever you are, we honor these universal rights:
 - **Access & transparency**: learn what data about you we process;
 - **Rectification**: correct inaccurate information;
 - **Erasure**: request deletion of related data;
-- **Withdraw consent**: withdraw consent-based processing (e.g., sign-in) at any
-  time;
+- **Withdraw consent**: withdraw consent-based processing (e.g., optional
+  cross-session memory or third-party integrations) at any time;
 - **Object & restrict**: object to or restrict particular processing.
 
 To exercise these rights, contact us via the details below.

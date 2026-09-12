@@ -1,6 +1,6 @@
 # FuXi Data Classification Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy defines the types of data FuXi processes, their sensitivity levels,
 and corresponding handling requirements.
@@ -17,9 +17,10 @@ and corresponding handling requirements.
 | **User Content** | User's code and conversations | Source code, prompts, sessions | Local by default, not through servers, user-controlled |
 
 > **Key fact**: FuXi's architecture means **user content and credentials stay on
-> the user's device by default** and never enter FuXi's servers. Therefore, for
-> the "Sensitive" and "User Content" levels, FuXi **holds nothing server-side** —
-> the strongest form of data protection.
+> the user's device by default** and never enter FuXi's servers. For the
+> "Sensitive" and "User Content" levels, FuXi **holds nothing server-side** — a
+> design that avoids most server-side data-handling obligations. This is not a
+> claim of absolute security against every local threat.
 
 ---
 
@@ -32,7 +33,7 @@ and corresponding handling requirements.
 | Project memory file | User-local, in-project | No |
 | Audit logs | User-local | No |
 | Request content (BYOK mode) | User ↔ provider, direct | No |
-| Sign-in account data (optional) | FuXi account system | Authentication-only |
+| Account data (required) | FuXi account system | Authentication-only |
 
 ---
 
@@ -45,7 +46,7 @@ and corresponding handling requirements.
 3. **Encryption recommendation**: enable full-disk / filesystem encryption for
    local data.
 4. **Local by default**: data does not leave the device unless the user actively
-   configures (sign-in, third-party integration).
+   configures (account, third-party integration).
 5. **Redaction**: redact keys and personal data before sharing logs, issues, or
    PRs.
 
@@ -59,7 +60,7 @@ Create → Use → Store → Archive/Delete
 ```
 
 - Retention and deletion of local data are user-controlled (remove `~/.fuxi/`).
-- Sign-in account data can be deleted on request.
+- Account data can be deleted on request.
 
 ---
 

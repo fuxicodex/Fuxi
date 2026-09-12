@@ -1,6 +1,6 @@
 # FuXi Third-Party & Supply Chain Risk Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy manages risks from third parties FuXi depends on or that users
 connect (model providers, MCP servers, plugins, vendors).

@@ -43,18 +43,20 @@ Remove `~/.local/bin/fuxi` and, optionally, `~/.fuxi` for config and state.
 
 **What do I need on first run?**
 
-A model to talk to, via one of two paths:
+Register and sign in — a FuXi account is required to use FuXi:
 
-1. **Sign in** — `fuxi login` authenticates with your FuXi account and
-   provisions models automatically. No API key needed.
-2. **Bring your own key** — set a provider API key via environment variable or
-   write `~/.fuxi/config.yaml` (`fuxi init` generates a starter template). Or
-   run `fuxi wizard` for an interactive setup flow.
+1. **Register & sign in (required)** — `fuxi login` registers or authenticates
+   your FuXi account and grants access. Registration processes only minimal
+   account data; your code and conversations are never uploaded.
+2. **Connect a model (optional)** — sign-in gives access to FuXi-managed models;
+   to use your own provider, bring your own key (set a provider API key via
+   environment variable or `~/.fuxi/config.yaml`, which `fuxi init` generates).
+   Or run `fuxi wizard` for an interactive setup flow.
 
 **Which model providers are supported?**
 
 OpenAI-compatible endpoints, Gemini, Bedrock, Vertex, and other
-OpenAI-compatible providers — or sign in with FuXi OAuth. Use any provider API
+OpenAI-compatible providers, plus FuXi-managed models — use any provider API
 key of your choice.
 
 **How do I switch models?**

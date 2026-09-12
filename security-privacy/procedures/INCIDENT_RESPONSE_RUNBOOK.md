@@ -1,6 +1,6 @@
 # FuXi Incident Response Runbook
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L3 Procedure*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L3 Procedure*
 
 This runbook provides **step-by-step** incident response. Policy in
 [Incident Response Policy](../policies/INCIDENT_RESPONSE.md).
@@ -27,11 +27,13 @@ This runbook provides **step-by-step** incident response. Policy in
 
 ## 3. Contain
 
-| Severity | Containment action |
-|---|---|
-| P0 | Immediately assess impact; suspend affected distribution/update if needed; notify affected users |
-| P1 | Provide temporary mitigation (disable feature, strengthen permission prompts) |
-| P2/P3 | Record and schedule a fix |
+| Severity | Containment action | Target |
+|---|---|---|
+| P0 | Immediately assess impact; suspend affected distribution/update if needed; notify affected users | Begin within 2 hours |
+| P1 | Provide temporary mitigation (disable feature, strengthen permission prompts) | Begin within 1 business day |
+| P2/P3 | Record and schedule a fix | Next iteration |
+
+Timing targets follow the [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) SLA.
 
 ---
 

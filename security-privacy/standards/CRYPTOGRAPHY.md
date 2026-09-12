@@ -1,6 +1,6 @@
 # FuXi Cryptography Standard
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L2 Standard*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L2 Standard*
 
 This standard sets the principles and requirements for FuXi's use of
 cryptography in transit and at rest. **Honesty principle**: this document claims
@@ -49,8 +49,9 @@ across both transit and storage.
 
 ## 4. Hashing and verification
 
-- Update-package integrity uses **SHA-256** checksums (publicly stated in the
-  README).
+- Update-package integrity uses **SHA-256** checksums; the downloaded build is
+  verified against the published manifest before the running binary is
+  atomically replaced (publicly stated in the README).
 - Other hashing uses are subject to actual product implementation.
 
 ---

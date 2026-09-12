@@ -1,6 +1,6 @@
 # FuXi Data Protection Impact Assessment (DPIA)
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L4 Compliance*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L4 Compliance*
 
 This document is a **methodology framework** for systematically assessing and
 reducing privacy risk before introducing features/processing that may pose a
@@ -55,6 +55,22 @@ Mitigations: ________
 Residual risk level: low / medium / high
 Approver: ________  Date: ________
 Review date: ________
+```
+
+### Completed example — current default state (illustrative)
+
+```
+Processing activity: default local operation (config, sessions, memory, audit;
+                       direct BYOK requests to user-chosen providers)
+Necessity: yes — minimal and purpose-bound; minimization confirmed
+Main risks: local device compromise; unintended command execution; transfer to a
+            user-chosen third-party provider
+Mitigations: permission model + AST command classifier + local audit logs;
+             local-only credential storage; disk encryption recommended
+Residual risk level: low (default); raises only when the user disables
+                     permission checks
+Approver: security lead  Date: 2026-09-12
+Review date: 2027-03-12 (semiannual)
 ```
 
 ---

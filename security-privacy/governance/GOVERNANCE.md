@@ -1,6 +1,6 @@
 # FuXi Security & Privacy Governance Charter
 
-*Last updated: 2026-08-23 · Version 1.0 · Entity: FUXI*
+*Last updated: 2026-09-12 · Version 1.0 · Entity: FUXI*
 
 This document is the **top-level governance document** of the FuXi Security &
 Privacy Program ("the Program"). It defines the governance framework, policy
@@ -29,9 +29,15 @@ The Program uses a layered structure, from principle to execution:
 
 ```
 L0  Governance Charter (this file) — top-level objectives & governance
+│
+├── Entry documents (cross-cutting, user-facing)
+│     ├── Privacy Policy
+│     ├── Security Whitepaper
+│     ├── Data Protection Commitment
+│     └── Compliance & Responsibility Statement
+│
 ├── L1  Policies          — "what must be done" (normative)
 │     ├── Information Security Policy
-│     ├── Privacy Policy
 │     ├── Data Classification Policy
 │     ├── Access Control Policy
 │     ├── AI Governance Policy
@@ -112,16 +118,20 @@ Exceptions must not be used to avoid legal obligations or harm user rights.
 
 ## 6. Metrics
 
-The Program is measured by:
+The Program is measured by externally meaningful outcomes rather than
+unverifiable internal percentages:
 
 | Metric | Target |
 |---|---|
 | Vulnerability report first-response time | within a few working days |
 | Critical vulnerability remediation time | promptly; fix before disclosure |
-| Incident detection-to-response time | per runbook SLA |
+| Incident detection-to-response time | per the Incident Response Policy SLA |
 | Data subject request turnaround | per applicable law (e.g., 30 days) |
-| On-time policy review completion | 100% |
-| Staff/contributor security training coverage | 100% |
+| Policy review currency | each document states its "last updated" date; reviewed per the cadence in §4 |
+
+> Note: metrics that would depend on undisclosed team size (e.g., training
+> coverage percentages) are intentionally **not** claimed here, since they cannot
+> be verified by users.
 
 ---
 

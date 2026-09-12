@@ -1,6 +1,6 @@
 # FuXi Business Continuity & Disaster Recovery Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy describes how FuXi maintains service availability and how users can
 recover their own data in disaster scenarios. Operational detail is in
@@ -11,7 +11,11 @@ recover their own data in disaster scenarios. Operational detail is in
 ## 1. Key fact: resilience from being local-first
 
 - FuXi's core functionality **runs on the user's device** and does not depend on
-  FuXi servers (in BYOK mode, users connect directly to their own provider).
+  FuXi servers to process a task (in BYOK mode, users connect directly to their
+  own provider).
+- Because an account is **required** to use FuXi, an account-system outage can
+  block sign-in and therefore block use — but local data remains safe on the
+  user's device and is unaffected by any outage.
 - Therefore, the availability of user data is **largely in the user's own hands**,
   with minimal exposure to server outages.
 
@@ -22,8 +26,8 @@ recover their own data in disaster scenarios. Operational detail is in
 | Service | Target | Notes |
 |---|---|---|
 | Local usage | Independent of our services | Core local features work offline/during our outage |
-| Install & update services | High availability | Official distribution stays available |
-| Account authentication (optional) | High availability | Affects sign-in only |
+| Install & update services | Best effort | No formal uptime SLA; official distribution maintained |
+| Account authentication (required) | Best effort | Required to use FuXi |
 
 ---
 
@@ -40,17 +44,17 @@ recover their own data in disaster scenarios. Operational detail is in
 
 | Scenario | User impact | Response |
 |---|---|---|
-| FuXi server outage | Local features unaffected (BYOK) | Users continue locally |
+| FuXi server outage (distribution/update) | Local task work unaffected once signed in | Users continue locally; updates resume later |
 | User device failure | Local data lost | User restores from backup |
 | Distribution channel down | Cannot install/update | Alternate official channel + prompt restore |
-| Account system failure | Sign-in affected | Prompt restore; local mode unaffected |
+| Account system failure | Sign-in blocked → use blocked | Prompt restore; local data remains safe on device |
 
 ---
 
 ## 5. Recovery objectives
 
-- Distribution and account services: restore promptly, targeting high
-  availability.
+- Distribution and account services: restore on a best-effort basis; no formal
+  uptime SLA is published.
 - User data: recovery point (RPO) and recovery time (RTO) determined by the
   user's backup strategy.
 

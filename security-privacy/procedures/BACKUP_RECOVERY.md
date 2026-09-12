@@ -1,6 +1,6 @@
 # FuXi Backup & Recovery Procedure
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L3 Procedure*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L3 Procedure*
 
 This procedure explains how users back up and restore local data, and how FuXi
 ensures service-side recovery. Policy in
@@ -43,7 +43,7 @@ tar -czf fuxi-backup.tar.gz "$HOME/.fuxi"
 ```bash
 # Restore the whole config directory
 rm -rf "$HOME/.fuxi"
-cp -a "$HOME/.fuxi.backup.20260823" "$HOME/.fuxi"
+cp -a "$HOME/.fuxi.backup.<backup-date>" "$HOME/.fuxi"
 ```
 
 - After restoring, run `fuxi doctor` to verify environment integrity.
@@ -60,9 +60,9 @@ cp -a "$HOME/.fuxi.backup.20260823" "$HOME/.fuxi"
 
 ## 5. Service-side recovery (FuXi's responsibility)
 
-- Official install/update distribution stays highly available.
-- Account authentication (optional) is restored promptly on failure; local mode
-  is unaffected.
+- Official install/update distribution is maintained on a best-effort basis.
+- Account authentication (required) is restored promptly on failure; local data
+  remains safe on the user's device throughout.
 
 ---
 

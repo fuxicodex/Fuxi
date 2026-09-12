@@ -1,6 +1,6 @@
 # FuXi Security Whitepaper
 
-*Last updated: 2026-08-23 · Version 1.0*
+*Last updated: 2026-09-12 · Version 1.0*
 
 This whitepaper describes FuXi's security architecture and threat model, for
 users and security researchers worldwide. FuXi runs shell commands, stores
@@ -37,7 +37,7 @@ We explicitly identify and address the following threats:
 | Malicious / dangerous shell commands | Commands pass an **AST safety classifier** + rule set before execution |
 | Unauthorized access to local credentials | API keys live only in local `~/.fuxi/`, never uploaded; protected by file-system permissions |
 | Supply-chain attack (tampered binary) | `fuxi update` performs SHA-256 checksum verification and atomic replacement |
-| Provider-side leakage | You bring your own key; content flows directly to the provider you choose; without an account, nothing passes through FuXi |
+| Provider-side leakage | You bring your own key; content flows directly to the provider you choose; content is never relayed through FuXi (zero content upload) |
 | Malicious MCP / plugin | Only servers you explicitly configure are loaded; none enabled by default |
 
 ---
@@ -65,6 +65,9 @@ from being abused:
 - **Storage location**: API keys, OAuth tokens, and other credentials are stored
   locally in `~/.fuxi/config.yaml` or environment variables.
 - **Not uploaded**: FuXi does not copy or upload your keys to any FuXi server.
+- **Account authentication**: a FuXi account is required to use FuXi; the
+  account credential and OAuth token are handled with least privilege (see the
+  [Authentication Standard](standards/AUTHENTICATION.md)).
 - **Bring your own key (BYOK)**: keys are used only to make requests to the
   provider you configure, traveling directly between you and that provider.
 - **Recommendations**: set appropriate file-system permissions on the
@@ -116,4 +119,5 @@ Thank you for helping keep FuXi users safe.
 
 ---
 
-*Last updated: 2026-08-23 · Version 1.0 · Entity: FUXI*
+*This whitepaper documents FuXi's security architecture and threat model
+honestly; it is updated as the product and threat landscape change.*

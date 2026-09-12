@@ -2,7 +2,7 @@
 
 **Trust Center**
 
-*最后更新：2026-08-23 · 版本 1.0 · 层级：L5 信任*
+*最后更新：2026-09-12 · 版本 1.0 · 层级：L5 信任*
 
 本页是 FuXi 面向用户与企业的**安全与隐私可信披露**入口，集中呈现核心事实、
 承诺与资源。
@@ -23,7 +23,8 @@
 | 数据驻留 | 代码、配置、凭据、会话默认留在你的设备 |
 | 密钥 | 仅存本地，不上传、不复制 |
 | 内容收集 | 默认不收集代码与对话 |
-| 强制注册 | 否，无需账号即可使用核心功能 |
+| 强制注册 | 是 —— 使用 FuXi 需要 FuXi 账号 |
+| 内容上传 | 无 —— 零内容上传（代码/对话绝不上传） |
 | 命令安全 | AST 分类器 + 权限提示 + 审计日志 |
 | 更新 | SHA-256 校验 + 原子替换 |
 | 遥测 | 无隐藏后台上传 |
@@ -33,12 +34,13 @@
 
 ## 3. 文档入口
 
+全部文档（英文 / 简体中文成对）的完整索引见
+[安全与隐私 README](../README.md)。快捷入口：
+
+- [隐私政策](../PRIVACY_POLICY.zh-CN.md) · [安全白皮书](../SECURITY.zh-CN.md)
+- [数据保护承诺](../DATA_PROTECTION.zh-CN.md) · [合规与责任声明](../COMPLIANCE.zh-CN.md)
 - [治理章程](../governance/GOVERNANCE.zh-CN.md)
-- [政策](../policies/) · [标准](../standards/) · [流程](../procedures/) · [合规](../compliance/)
-- [隐私政策](../PRIVACY_POLICY.zh-CN.md)
-- [安全白皮书](../SECURITY.zh-CN.md)
-- [数据保护承诺](../DATA_PROTECTION.zh-CN.md)
-- [合规与责任声明](../COMPLIANCE.zh-CN.md)
+- [事件响应政策](../policies/INCIDENT_RESPONSE.zh-CN.md) · [访问控制政策](../policies/ACCESS_CONTROL.zh-CN.md)
 
 ---
 

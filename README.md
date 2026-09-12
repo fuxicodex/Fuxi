@@ -77,13 +77,19 @@ fuxi doctor      # environment sanity checks (config, API key, git, ripgrep, ...
 fuxi
 ```
 
-On first run FuXi creates its config under `~/.fuxi/`, then asks for a model to
-talk to — pick either path:
+On first run FuXi creates its config under `~/.fuxi/`, then you register and sign
+in — **a FuXi account is required to use FuXi**:
 
-1. **Sign in** — `fuxi login` authenticates with your FuXi account and
-   provisions FuXi-managed models automatically. No API key needed.
-2. **Bring your own key** — set a provider API key via environment variable, or
-   write `~/.fuxi/config.yaml` (`fuxi init` generates a starter template):
+1. **Register & sign in (required)** — `fuxi login` registers or authenticates
+   your FuXi account and grants access. For headless/CI use, `fuxi setup-token`
+   prints a token to export as `FUXI_OAUTH_TOKEN`. Registration processes only
+   minimal account data — **your code and conversations are never uploaded**
+   (zero content upload).
+
+2. **Connect a model (optional)** — sign-in alone provides access to FuXi-managed
+   models. To use your own provider instead, bring your own key: set a provider
+   API key via environment variable, or write `~/.fuxi/config.yaml`
+   (`fuxi init` generates a starter template):
 
    ```yaml
    provider: openapi
@@ -109,6 +115,10 @@ talk to — pick either path:
 
    Or run `fuxi wizard` for an interactive setup flow — pick a provider, enter
    the base URL and key, choose a model, and test the connection.
+
+> **Privacy at a glance:** the account is required, the content is not. Zero
+> content upload — see the
+> [Security & Privacy Program](security-privacy/README.md).
 
 ### 4. Go
 
@@ -169,13 +179,13 @@ codebase, verifying results, and doing it affordably and under your control.
 
 ### Yours: key, data, and cost
 
-- **Bring your own key, or log in** — any OpenAI-compatible, Gemini, Bedrock,
-  or Vertex API key, or sign in with FuXi OAuth (no key needed).
-- **Local-first & private** — config, credentials, sessions, and memory stay on
-  your device under `~/.fuxi/`; prompts and code go straight to the provider
-  you choose.
-- **Free forever** — one static binary, no runtime dependencies, no license
-  cost for individuals, teams, or enterprises.
+- **Bring your own key, or use managed models** — a FuXi account is required to
+  use FuXi; connect any OpenAI-compatible, Gemini, Bedrock, or Vertex API key, or
+  use FuXi-managed models.
+- **Zero content upload & local-first** — your code, prompts, and conversations
+  are never uploaded to FuXi; config, credentials, sessions, and memory stay on
+  your device under `~/.fuxi/`, and requests go straight to the provider you
+  choose.
 - **Self-updating** — a background version check and one-command `fuxi update`,
   with checksum verification before it replaces the running binary.
 

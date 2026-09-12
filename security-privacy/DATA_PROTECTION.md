@@ -1,6 +1,6 @@
 # FuXi Data Protection Commitment
 
-*Last updated: 2026-08-23 · Version 1.0*
+*Last updated: 2026-09-12 · Version 1.0*
 
 This commitment explains, for users worldwide, how FuXi protects data in
 practice: data flows, storage locations, your rights, and cross-border
@@ -14,9 +14,11 @@ conversations, and data processing follows minimization principles.**
 We process only the data **necessary to provide product functionality**, for
 clearly stated purposes, and not for any unstated use. Specifically:
 
-- No account is required for core functionality → no identity data collected.
-- Content flows directly to the provider you choose by default → not routed
-  through or stored by FuXi.
+- **A FuXi account is required to use FuXi** — minimal account data (identifier,
+  authentication) is processed to operate your account; no unnecessary identity
+  data is collected.
+- **Zero content upload** — user code and conversations are never uploaded to,
+  or routed through, FuXi; content goes directly to the provider you choose.
 - Local data is retained only to support session resume, memory, and audit.
 
 ---
@@ -30,10 +32,13 @@ Your machine (local — we cannot access it)
 ├── Project memory file       — cross-session memory (local)
 └── Audit logs                — operation records (local)
 
-Leaves the device only after you actively configure it:
+Required account flow:
+  fuxi login / setup-token     ──▶  FuXi account authentication
+                                       (minimal account data only)
+
+Leaves the device only for the model to work:
   Request prompt + code context ──▶  the model provider you choose
-                                       (its policy applies)
-  fuxi login (optional)        ──▶  FuXi authentication (sign-in only)
+                                       (its policy applies; not via FuXi)
 ```
 
 **Key point:** in "bring your own key" mode, your content travels directly
@@ -44,10 +49,11 @@ between **you and your provider**; FuXi does not hold, relay, or store it.
 ## 3. Storage location and isolation
 
 - All local data is stored under `~/.fuxi/` (overridable with `FUXI_CONFIG_DIR`).
-- We do not store your code, conversations, or keys on our servers.
-- Minimal sign-in account data (if you choose to sign in) is handled by the
-  FuXi account system, solely for authentication and provisioning managed
-  models.
+- We do not store your code, conversations, or keys on our servers (zero content
+  upload).
+- Minimal account data is handled by the FuXi account system, solely for
+  authentication and provisioning managed models — an account is required to
+  use FuXi.
 
 ---
 
@@ -77,7 +83,7 @@ and local-only credential storage.
 - **Rectification**: correct inaccurate information;
 - **Erasure**: delete local data (remove `~/.fuxi/`) or request account data
   deletion;
-- **Withdraw consent**: stop the sign-in / account feature at any time;
+- **Withdraw consent**: stop any optional processing at any time;
 - **Complain**: raise concerns with us or your local data protection authority.
 
 ---

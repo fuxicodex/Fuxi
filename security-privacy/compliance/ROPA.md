@@ -1,6 +1,6 @@
 # FuXi Record of Processing Activities (ROPA)
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L4 Compliance*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L4 Compliance*
 
 This record truthfully registers FuXi's data processing activities. **Core
 fact**: due to the local-first architecture, FuXi does **not** process user code
@@ -15,8 +15,8 @@ or conversations by default; this record reflects that minimization reality.
 | 1 | Local configuration storage | Provider config, model, key | Remember settings | User-local `~/.fuxi/` | Performance of usage relationship |
 | 2 | Sessions & memory | Conversation history, project memory | Resume/continue | User-local | Performance of usage relationship |
 | 3 | Audit logs | Command/tool-call records | Traceability | User-local | Legitimate interest |
-| 4 | Request sending (BYOK) | Prompt + code context | Enable model work | Direct to user's provider | User's choice |
-| 5 | Sign-in auth (optional) | Account identifier | Provision managed models | FuXi account system | Consent + service |
+| 4 | Request sending (BYOK, user-initiated) | Prompt + code context | Enable model work | Direct user ↔ provider | User's choice |
+| 5 | Account authentication (required) | Account identifier | Operate account; provision managed models | FuXi account system | Performance of contract |
 | 6 | Update downloads | Version info | Update | Official distribution | Legitimate interest |
 
 ---
@@ -24,8 +24,11 @@ or conversations by default; this record reflects that minimization reality.
 ## 2. Key notes
 
 - **Data we (FuXi server-side) actually hold** is limited to: the minimal
-  sign-in account data of item 5, and basic update-request information of item
+  account data of item 5, and basic update-request information of item
   6. **Everything else stays on the user's device.**
+- Item 4 is a **user-initiated direct transfer** between the user and their
+  chosen provider; FuXi relays no content, so it is listed here for completeness
+  and counts as **outside our processing scope**.
 - Therefore, user code, conversations, and credentials are **outside** our
   processing scope.
 
@@ -46,7 +49,7 @@ or conversations by default; this record reflects that minimization reality.
 | Data | Retention |
 |---|---|
 | Local data | User-controlled (removing `~/.fuxi/` clears it) |
-| Sign-in account data | During account lifetime; user can request deletion |
+| Account data | During account lifetime; user can request deletion |
 
 ---
 

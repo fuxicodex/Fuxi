@@ -1,6 +1,6 @@
 # FuXi Compliance & Responsibility Statement
 
-*Last updated: 2026-08-23 · Version 1.0*
+*Last updated: 2026-09-12 · Version 1.0*
 
 This statement explains, for users worldwide, FuXi's legal-framework
 alignment, responsibility boundaries, and honest commitments. **We are honest:
@@ -49,6 +49,21 @@ to us.
 — this is a global, principles-based statement and does not endorse any single
 country's law.
 
+**Major-jurisdiction perspective (principles alignment, not certification)**
+
+| Law / jurisdiction | Account-related obligations we map to | FuXi posture |
+|---|---|---|
+| EU — GDPR | Lawful basis, controller obligations, DSR (Art. 15–21), breach notification (Art. 33/34) | Account processing on a contractual basis; DSR handled via the documented procedure; zero content upload keeps breach scope minimal |
+| China — PIPL | Consent / legal basis, DSR, cross-border transfer rules | Minimal account data; user rights honored; no content upload; cross-border only via user-chosen provider |
+| USA — CCPA/CPRA | Right to know / delete / opt-out, "sale or share" restrictions | We do not sell or share personal data; zero content upload |
+| Brazil — LGPD | Legal basis, DSR, ANPD interaction | Same universal baseline |
+| Other jurisdictions | Similar minimization, rights, and security obligations | Same baseline; specific obligations follow the law applicable to us |
+
+Because a FuXi account is **required**, account-data processing is subject to
+the data-protection law applicable where the account is operated. We keep that
+data minimal, honor your rights, and review this statement as laws evolve — this
+is alignment with principles, not a claim of certification.
+
 ---
 
 ## 4. Responsibility boundaries
@@ -56,8 +71,8 @@ country's law.
 We draw clear lines to avoid misleading you:
 
 - **We are responsible for**: the local security mechanisms of the FuXi binary
-  itself, update integrity, documentation honesty, and (when you use the
-  sign-in feature) account-authentication processing.
+  itself, update integrity, documentation honesty, and the account
+  authentication and account-data processing that are required to use FuXi.
 - **You are responsible for**: your machine's security, file-system permissions,
   and the choice and safeguarding of providers / MCP servers / plugins you
   configure.

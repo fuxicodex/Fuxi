@@ -1,6 +1,6 @@
 # FuXi Information Security Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy is the **umbrella** of the FuXi information security program,
 providing the normative basis for all standards, procedures, and operations.
@@ -39,7 +39,8 @@ FuXi's security comes from **the architecture itself**, not bolt-on defenses:
 | Update integrity | SHA-256 verification + atomic replacement |
 | Session & data | Local storage; user-deletable at any time |
 | Third-party integration | Only user-configured MCP/plugins are loaded |
-| Vulnerability management | Private reporting + fix-before-disclosure (see SECURITY) |
+| Vulnerability management | Private reporting + fix-before-disclosure (see [Security Whitepaper](../SECURITY.md)) |
+| Account & registration | Required account, minimal data, least-privilege tokens (see [Authentication Standard](../standards/AUTHENTICATION.md)) |
 
 ---
 

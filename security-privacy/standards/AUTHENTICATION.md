@@ -1,6 +1,6 @@
 # FuXi Authentication Standard
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L2 Standard*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L2 Standard*
 
 This standard defines how FuXi authenticates users, protects credentials, and
 authenticates to model providers.
@@ -9,12 +9,16 @@ authenticates to model providers.
 
 ## 1. Authentication paths
 
-FuXi supports two paths:
+A FuXi account is **required** to use FuXi. Within that account, there are two
+ways to connect models:
 
 | Path | Mechanism | Purpose |
 |---|---|---|
-| Bring your own key (BYOK) | API key / env vars / local config | Authenticate to the user's chosen provider |
-| FuXi account (optional) | OAuth sign-in (`fuxi login` / `setup-token`) | Provision FuXi-managed models |
+| FuXi account (required) | OAuth sign-in (`fuxi login` / `setup-token`) | Operate the account; provision FuXi-managed models |
+| Bring your own key (BYOK, optional) | API key / env vars / local config | Authenticate to the user's chosen provider |
+
+> Registration itself only processes minimal account data; it never involves
+> uploading your code or conversations.
 
 ---
 
@@ -30,10 +34,10 @@ FuXi supports two paths:
 
 ---
 
-## 3. OAuth tokens (optional sign-in)
+## 3. OAuth tokens (account sign-in)
 
-- `fuxi login`: browser authorization; the token is used only for authentication
-  and provisioning managed models.
+- `fuxi login`: interactive sign-in to your FuXi account (stdin flow); the token
+  is used only for authentication and provisioning managed models.
 - `fuxi setup-token`: prints a token for `FUXI_OAUTH_TOKEN` in headless/CI use.
 - Tokens are issued with least privilege; users can sign out/revoke anytime.
 
@@ -49,9 +53,10 @@ FuXi supports two paths:
 
 ## 5. Sessions and local identity
 
-- Local session data is bound to the user's device account / file permissions;
-  no additional network identity is required.
-- Core functionality works without an account; no forced registration.
+- Local session data is bound to the user's account and their device account /
+  file permissions.
+- A FuXi account is required to use FuXi; registration processes only minimal
+  account data.
 
 ---
 

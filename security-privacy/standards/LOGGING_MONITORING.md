@@ -1,6 +1,6 @@
 # FuXi Logging & Monitoring Standard
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L2 Standard*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L2 Standard*
 
 This standard sets FuXi's logging, monitoring, and security-audit requirements.
 Core principle: **provide traceability for users while never leaking sensitive
@@ -12,7 +12,8 @@ information in logs.**
 
 - FuXi records the tool calls and command operations it executes, for user
   review.
-- Logs are stored **locally** (under `~/.fuxi/`), not uploaded by default.
+- Logs are stored **locally** (under `~/.fuxi/`, with debug logs under
+  `~/.fuxi/logs/`), not uploaded by default.
 - Purpose: traceability, auditability, and post-incident review.
 
 ---
@@ -59,6 +60,8 @@ information in logs.**
 ## 5. Log retention and deletion
 
 - Local log retention is user-controlled; removing `~/.fuxi/` clears them.
+- Debug logs under `~/.fuxi/logs/` can be removed at any time; they are not
+  uploaded by default.
 - Recommend periodic cleanup or archival of old logs.
 
 ---

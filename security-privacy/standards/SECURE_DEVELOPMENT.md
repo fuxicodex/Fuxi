@@ -1,6 +1,6 @@
 # FuXi Secure Development Standard (SDLC / AI Safety)
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L2 Standard*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L2 Standard*
 
 This standard defines FuXi's secure development lifecycle (SDLC) and
 AI-specific security requirements.

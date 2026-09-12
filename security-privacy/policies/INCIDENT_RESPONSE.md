@@ -1,6 +1,6 @@
 # FuXi Incident Response Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy defines the classification, severity, response targets, and
 responsibilities for security and privacy incidents. Operational detail is in
@@ -29,12 +29,15 @@ product.
 
 ## 3. Response targets (SLA)
 
+> The windows below are **best-effort targets**, not contractual guarantees;
+> they are measured from the moment an incident is confirmed.
+
 | Level | Detect→respond | Contain | Fix | Notify |
 |---|---|---|---|---|
-| P0 | Within hours | ASAP | Fix before disclosure | Promptly notify affected users |
-| P1 | 1 business day | ASAP | By priority | As impacted |
-| P2 | Within days | Per plan | Next release | As appropriate |
-| P3 | Per plan | — | With iteration | As appropriate |
+| P0 Critical | ≤ 2 hours | ≤ 1 business day | Issue fix before disclosure | Promptly notify affected users |
+| P1 High | ≤ 1 business day | ≤ 2 business days | By priority, next release window | As impacted |
+| P2 Medium | ≤ 3 business days | Per plan | Next release | As appropriate |
+| P3 Low | Next iteration | — | With iteration | As appropriate |
 
 ---
 

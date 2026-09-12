@@ -40,8 +40,11 @@ Key properties:
 
 - **Terminal-first** — a rich TUI that runs in your terminal.
 - **Provider-agnostic** — use any OpenAI-compatible endpoint, Gemini,
-  Bedrock/Vertex, or other OpenAI-compatible providers, or sign in with FuXi
-  OAuth.
+  Bedrock/Vertex, or other OpenAI-compatible providers, or use FuXi-managed
+  models after signing in.
+- **Zero content upload** — your code, prompts, and conversations are never
+  uploaded to, or routed through, FuXi's servers; they stay on your device or go
+  straight to the model provider you choose.
 - **Bring your own key** — your code and prompts go directly to the provider
   you choose; FuXi does not sit in between.
 - **Local-first** — config, credentials, sessions, and memory live on your
@@ -107,26 +110,29 @@ Launch the TUI:
 fuxi
 ```
 
-On first run FuXi creates its config under `~/.fuxi/`. You need a model to talk
-to, via one of two paths.
+On first run FuXi creates its config under `~/.fuxi/`, then you register and sign
+in. **A FuXi account is required to use FuXi.**
 
-### 1. Sign in
+### 1. Register and sign in (required)
 
 ```bash
 fuxi login
 ```
 
-`fuxi login` authenticates with your FuXi account, which provisions
-FuXi-managed models automatically. No API key needed. Sign out with
-`fuxi logout`.
+`fuxi login` registers or authenticates your FuXi account and grants access. Sign
+out with `fuxi logout`.
 
 For headless/CI use, `fuxi setup-token` prints a token to export as
 `FUXI_OAUTH_TOKEN`.
 
-### 2. Bring your own key
+Registration processes only minimal account data — **your code and conversations
+are never uploaded to FuXi** (zero content upload).
 
-Set a provider API key via environment variable, or write
-`~/.fuxi/config.yaml` directly. `fuxi init` generates a starter template,
+### 2. Connect a model (optional)
+
+Signing in already grants access to FuXi-managed models. To use your own provider
+instead, bring your own key: set a provider API key via environment variable, or
+write `~/.fuxi/config.yaml` directly. `fuxi init` generates a starter template,
 auto-detecting a provider from the environment variables already set:
 
 ```yaml

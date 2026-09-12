@@ -41,17 +41,19 @@ fuxi doctor      # 环境自检（配置、API Key、git、ripgrep 等）
 
 **首次运行需要什么？**
 
-一个可对话的模型，两条路径可选：
+注册并登录 —— 使用 FuXi 必须要有 FuXi 账号：
 
-1. **登录** —— `fuxi login` 用你的 FuXi 账号认证并自动开通模型。无需 API Key。
-2. **自带密钥** —— 通过环境变量设置提供商 API Key，或编写
-   `~/.fuxi/config.yaml`（`fuxi init` 生成初始模板）。或运行 `fuxi wizard`
-   进入交互式配置流程。
+1. **注册并登录（必需）** —— `fuxi login` 注册或认证你的 FuXi 账号并授予
+   访问权限。注册仅处理最少账户数据；你的代码与对话绝不上传。
+2. **连接模型（可选）** —— 登录后即可使用 FuXi 托管模型；若想改用自己的
+   提供商，请自带密钥（通过环境变量或 `~/.fuxi/config.yaml` 设置提供商
+   API Key，后者可由 `fuxi init` 生成）。或运行 `fuxi wizard` 进入交互式
+   配置流程。
 
 **支持哪些模型提供商？**
 
-OpenAI 兼容端点、Gemini、Bedrock、Vertex，以及其他 OpenAI 兼容提供商 ——
-或通过 FuXi OAuth 登录。使用你选择的任意提供商 API Key。
+OpenAI 兼容端点、Gemini、Bedrock、Vertex，以及其他 OpenAI 兼容提供商，
+外加 FuXi 托管模型 —— 使用你选择的任意提供商 API Key。
 
 **如何切换模型？**
 

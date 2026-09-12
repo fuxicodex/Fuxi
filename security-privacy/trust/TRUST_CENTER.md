@@ -1,6 +1,6 @@
 # FuXi Trust Center
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L5 Trust*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L5 Trust*
 
 This page is FuXi's **security and privacy trust disclosure** entry point for
 users and enterprises, presenting core facts, commitments, and resources.
@@ -22,7 +22,8 @@ respect for global law and user behavior.
 | Data residency | Code, config, credentials, sessions stay on your device by default |
 | Keys | Local-only, never uploaded or copied |
 | Content collection | No code/conversation collection by default |
-| Forced registration | No; core features work without an account |
+| Forced registration | Yes — a FuXi account is required to use FuXi |
+| Content upload | None — zero content upload (code/conversations never uploaded) |
 | Command safety | AST classifier + permission prompts + audit logs |
 | Updates | SHA-256 verification + atomic replacement |
 | Telemetry | No hidden background upload |
@@ -32,12 +33,13 @@ respect for global law and user behavior.
 
 ## 3. Document index
 
+The full program index (with English / 简体中文 versions of every document) is
+in the [Security & Privacy README](../README.md). Quick links:
+
+- [Privacy Policy](../PRIVACY_POLICY.md) · [Security Whitepaper](../SECURITY.md)
+- [Data Protection Commitment](../DATA_PROTECTION.md) · [Compliance & Responsibility](../COMPLIANCE.md)
 - [Governance Charter](../governance/GOVERNANCE.md)
-- [Policies](../policies/) · [Standards](../standards/) · [Procedures](../procedures/) · [Compliance](../compliance/)
-- [Privacy Policy](../PRIVACY_POLICY.md)
-- [Security Whitepaper](../SECURITY.md)
-- [Data Protection Commitment](../DATA_PROTECTION.md)
-- [Compliance & Responsibility](../COMPLIANCE.md)
+- [Incident Response Policy](../policies/INCIDENT_RESPONSE.md) · [Access Control Policy](../policies/ACCESS_CONTROL.md)
 
 ---
 

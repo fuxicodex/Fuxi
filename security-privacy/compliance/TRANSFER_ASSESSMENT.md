@@ -1,6 +1,6 @@
 # FuXi Transfer Impact Assessment (TIA)
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L4 Compliance*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L4 Compliance*
 
 This assessment explains cross-border data transfer involving FuXi, to support
 data-export reviews across jurisdictions.
@@ -23,8 +23,11 @@ data-export reviews across jurisdictions.
 |---|---|---|---|---|
 | Local use | No | Config/sessions/memory/audit | — | Local device security |
 | BYOK request | Depends on provider | Prompt + code context | User | Provider TLS + its policy |
-| Sign-in (optional) | Depends on deployment | Account identifier | User | OAuth + least privilege |
-| Updates | Yes (official channel) | Version info | User | HTTPS + SHA-256 |
+| Account registration & sign-in (required) | Depends on deployment | Account identifier | User | OAuth + least privilege |
+| Updates | Yes (official channel) | Version info (metadata only) | User (runs `fuxi update`) | HTTPS + SHA-256 |
+
+> Note: the background update **check** retrieves version metadata only; it does
+> not transfer any user content.
 
 ---
 

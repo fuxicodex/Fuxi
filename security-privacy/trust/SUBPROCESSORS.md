@@ -1,6 +1,6 @@
 # FuXi Subprocessors List
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L5 Trust*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L5 Trust*
 
 This list discloses third parties ("subprocessors") FuXi may use to provide its
 services. **Core fact**: FuXi does not process user code or conversations by
@@ -10,15 +10,19 @@ default, so this list stays minimal.
 
 ## 1. Subprocessors
 
+By default there are **no** subprocessors: local-first operation means FuXi does
+not engage third parties to process user data. The following optional services
+may process only the minimal data described:
+
 | Processor | Purpose | Data handled | Location |
 |---|---|---|---|
 | Official distribution/update infrastructure | Distribute binary and updates | Version info, basic update-request info | Per official website |
-| Account authentication service (optional sign-in) | Identity authentication | Account identifier | Per official website |
-| Hosting/monitoring/payment (if used) | Website and infrastructure | Minimum necessary | Per official website |
+| Account authentication service (required sign-in) | Identity authentication | Account identifier | Per official website |
 
 > Note: the specific processor list and locations are disclosed in real time on
 > the official website (https://www.fuxicode.com); this file provides the
-> structural framework.
+> structural framework. If a new processor is engaged, this list is updated
+> before material changes take effect.
 
 ---
 

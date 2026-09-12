@@ -1,6 +1,6 @@
 # FuXi Global Compliance Matrix
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L4 Compliance*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L4 Compliance*
 
 This matrix maps FuXi's privacy and security practices to the **common
 principles** of major global privacy/data/AI laws. **Honesty statement**: this
@@ -47,7 +47,8 @@ actually applicable to FuXi.
 - **Local-first + bring your own key** = by default we **do not hold** user code
   or conversations → most "collect, store, share, delete" obligations dissolve
   (nothing collected, nothing to violate).
-- **No forced registration** = no identity data processed by default.
+- **Required account, minimal data** = registration processes only the minimum
+  account data needed to operate the account; no content is uploaded.
 - **Explicit permissions + audit** = satisfies "human-in-the-loop" and
   "accountability".
 

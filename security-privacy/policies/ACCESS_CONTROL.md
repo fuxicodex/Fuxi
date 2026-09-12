@@ -1,6 +1,6 @@
 # FuXi Access Control Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy defines FuXi's permission model and access control principles,
 ensuring autonomous execution stays under the user's control.

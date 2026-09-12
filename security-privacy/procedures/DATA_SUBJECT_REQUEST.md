@@ -1,6 +1,6 @@
 # FuXi Data Subject Request (DSR) Handling
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L3 Procedure*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L3 Procedure*
 
 This procedure defines how privacy rights requests (access, rectification,
 erasure, withdraw consent, object) are received and handled.
@@ -14,7 +14,7 @@ erasure, withdraw consent, object) are received and handled.
 | Access | Learn what data about you we process | Explain data scope and flows |
 | Rectification | Correct inaccurate information | Update account info (if applicable) |
 | Erasure | Delete related data | See deletion guidance below |
-| Withdraw consent | Stop consent-based processing (sign-in) | Sign out / disable account |
+| Withdraw consent | Stop consent-based processing (optional features) | Turn the feature off |
 | Object / restrict | Object to particular processing | Assess and respond |
 
 ---
@@ -47,7 +47,7 @@ erasure, withdraw consent, object) are received and handled.
 | Data | User action |
 |---|---|
 | Local config/sessions/memory/audit | `rm -rf "$HOME/.fuxi"` (or remove the `FUXI_CONFIG_DIR` directory) |
-| Sign-in account data (if used) | Contact us, or use the account deletion option |
+| Account data (required) | Contact us, or use the account deletion option |
 
 ---
 
@@ -59,7 +59,17 @@ erasure, withdraw consent, object) are received and handled.
 
 ---
 
-## 7. Responsibility
+## 7. Escalation and disputes
+
+- If we cannot fulfill a request, we explain why in writing and suggest the
+  closest alternative.
+- If you are not satisfied with our response, you may escalate via the same
+  intake channel, or contact the supervisory authority in your jurisdiction
+  where one may hear complaints about data protection.
+
+---
+
+## 8. Responsibility
 
 - **Privacy team**: receive, verify, execute, and respond.
 - **Users**: manage local data themselves; cooperate with identity verification

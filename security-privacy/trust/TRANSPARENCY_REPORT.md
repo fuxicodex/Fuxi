@@ -1,10 +1,15 @@
 # FuXi Transparency Report
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L5 Trust*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L5 Trust*
 
 This report periodically discloses the truth about FuXi's security, privacy,
 and government requests. **Core fact**: the local-first architecture makes our
 disclosable data minimal by nature.
+
+**Reporting period**: this is the first published issue (2026-09-12). Refresh
+cadence: semi-annual (or on material change). Statistical figures are included
+when there is anything that must be publicly reported; in this issue, the
+relevant cells state the factual status rather than fabricated counts.
 
 ---
 
@@ -16,7 +21,8 @@ disclosable data minimal by nature.
 | Conversation content collection | **None** (BYOK direct) |
 | Credential collection | **None** (local-only) |
 | Hidden telemetry | **None** |
-| Forced registration | **None** |
+| Forced registration | **Yes** (a FuXi account is required) |
+| Content upload | **None** (zero content upload) |
 
 ---
 
@@ -24,12 +30,11 @@ disclosable data minimal by nature.
 
 | Request type | This period | Actually disclosed | Notes |
 |---|---|---|---|
-| User content disclosure | — | N/A | We do not hold user code/conversations |
-| Account info requests (if any) | Per law | Only as required | Only within the minimum we actually hold |
-| National security / other | — | Per law | Subject to applicable law |
+| User content disclosure | N/A | — | We do not hold user code/conversations, so there is nothing to disclose |
+| Account info requests (if any) | Per law | As required | Only within the minimum we actually hold; no such request to report in this period |
+| National security / other | Per law | Per law | Subject to applicable law; none to report in this period |
 
-> Specific figures are disclosed on the website transparency center per cycle
-> (as applicable).
+> Figures are reported when a request actually occurs; this issue reports none.
 
 ---
 

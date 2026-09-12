@@ -1,6 +1,6 @@
 # FuXi AI Governance Policy
 
-*Last updated: 2026-08-23 · Version 1.0 · Layer: L1 Policy*
+*Last updated: 2026-09-12 · Version 1.0 · Layer: L1 Policy*
 
 This policy describes how FuXi, as an AI coding agent, operates under principles
 of **responsibility, safety, and control**. FuXi itself is the "vehicle"; the
