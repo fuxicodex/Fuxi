@@ -223,16 +223,17 @@ permission prompt, and a circuit-breaker on `--auto`.
 ## 4. Trust commitments
 
 **In one line**: FuXi is local-first, bring-your-own-key, credentials are never
-uploaded, your code and conversations are never collected or retained, and we
-respect global law — realized by architecture, not slogans.
+uploaded, your code and conversations are not collected or retained by default
+(optional `send_conversations` is off unless you enable it), and we respect
+global law — realized by architecture, not slogans.
 
 | Dimension | Fact |
 |---|---|
 | Data residency | Code, config, credentials, and sessions stay on your device |
 | Keys | Local-only, never uploaded or copied |
-| Content collection | No code or conversation collection |
+| Content collection | No code or conversation collection by default |
 | Forced registration | Yes — a FuXi account is required |
-| Content upload | None — zero content upload |
+| Content upload | None by default — zero content upload; `send_conversations` is opt-in |
 | Command safety | AST classifier + permission prompts + audit logs |
 | Invisible protection | On by default, no configuration needed (see [Security Whitepaper §5](SECURITY.md)) |
 | Updates | SHA-256 verification + atomic replacement |

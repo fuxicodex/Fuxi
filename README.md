@@ -74,9 +74,11 @@ Full walkthrough: [usage guide](docs/usage.md).
 
 FuXi runs on your machine and keeps your work local.
 
-- **Your code and conversations are never collected, stored, or retained by
-  FuXi.** With your own key they go straight to the provider you choose; with
-  FuXi-managed models they are transmitted only to serve that request.
+- **By default, your code and conversations are never collected, stored, or
+  retained by FuXi.** With your own key they go straight to the provider you
+  choose; with FuXi-managed models they are transmitted only to serve that
+  request. Conversation content is sent to FuXi only if you explicitly enable
+  `send_conversations` (off by default).
 - **Credentials stay in local `~/.fuxi/`** and are never uploaded.
 - **Sessions, checkpoints, memory, and audit logs** live on your device and can
   be deleted at any time by removing the config directory.

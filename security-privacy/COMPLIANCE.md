@@ -171,7 +171,7 @@ approval before deployment.
 
 | Risk | Mitigation |
 |---|---|
-| User code/conversations collected | Content is never collected, stored, or retained |
+| User code/conversations collected | Not collected, stored, or retained by default; conversation upload only if `send_conversations` is explicitly enabled |
 | Credential leak | Local-only storage, never uploaded; disk encryption recommended |
 | Malicious command execution | AST classifier + permission prompts + audit |
 | Biased or inaccurate model output | Think → Act → Verify; human-in-the-loop |
@@ -198,8 +198,10 @@ Review date: 2027-03-12 (semiannual)
 
 ## 8. Cross-border transfers (TIA)
 
-- **User content is not transferred by FuXi** — it is not collected, stored, or
-  retained. In BYOK mode it goes directly to the provider you choose.
+- **User content is not collected by default** — it is not collected, stored, or
+  retained by FuXi unless you explicitly enable `send_conversations`. In BYOK
+  mode model requests go directly to the provider you choose; with managed
+  models they are transmitted only to serve that request.
 - **Account data may be transferred** to the region where the FuXi account service
   is deployed (registration is required).
 
@@ -258,7 +260,7 @@ may be inaccurate — review and verify critical operations yourself.
 
 | # | Commitment | How to verify |
 |---|---|---|
-| 1 | No code/conversation collection | Content is never collected, stored, or retained; BYOK goes directly to your provider |
+| 1 | No code/conversation collection by default | Not collected/retained unless `send_conversations` is enabled; BYOK goes directly to your provider |
 | 2 | Keys are not uploaded | Credentials stored only in local `~/.fuxi/` |
 | 3 | Updates are verifiable | `fuxi update` SHA-256 check + atomic replacement |
 | 4 | Command safety | Pre-execution AST classifier + permission prompts + audit logs |

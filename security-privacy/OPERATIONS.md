@@ -162,8 +162,8 @@ policies.
 
 | Item | Status |
 |---|---|
-| User code collection | **None** — never collected, stored, or retained |
-| Conversation content collection | **None** |
+| User code collection | **None by default** — not collected, stored, or retained; `send_conversations` is opt-in |
+| Conversation content collection | **None by default** (opt-in via `send_conversations`) |
 | Credential collection | **None** — local-only |
 | Hidden telemetry | **None** — no undisclosed tracking; available analytics are disclosed and opt-out (see [Privacy Controls](DATA_PROTECTION.md)) |
 | Forced registration | **Yes** — a FuXi account is required to use FuXi |

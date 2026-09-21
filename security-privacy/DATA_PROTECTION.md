@@ -19,10 +19,12 @@ purposes.
 - **A FuXi account is required to use FuXi** — minimal account data (identifier,
   authentication) is processed to operate your account; no unnecessary identity
   data is collected.
-- **Zero content upload** — FuXi never collects, stores, or retains your code or
-  conversations, and never asks you to upload them. In BYOK mode content travels
-  directly to your chosen provider; with FuXi-managed models the request is
-  transmitted only to serve it, and is not retained or used for training.
+- **Zero content upload (default)** — FuXi does not collect, store, or retain your
+  code or conversations by default, and never asks you to upload them as a
+  condition of use. In BYOK mode content travels directly to your chosen
+  provider; with FuXi-managed models the request is transmitted only to serve
+  it, and is not retained or used for training. Conversation content is sent to
+  FuXi only if you explicitly enable `send_conversations` (see §4).
 - Local data is retained only to support session resume, memory, and audit.
 
 ---
@@ -36,11 +38,12 @@ purposes.
 | **Sensitive** | Disclosure creates risk | Credentials, API keys, OAuth tokens | Encrypt, least privilege, no plaintext in logs |
 | **User Content** | Your code and conversations | Source code, prompts, sessions | Local; transmitted only to serve a request; user-controlled |
 
-> **Key fact**: FuXi does **not** collect, store, or retain user content. With
-> BYOK, requests go directly to the provider you choose; with FuXi-managed models
-> they are transmitted only to serve them. This keeps FuXi's server-side
-> data-handling obligations to a minimum — it is not a claim of absolute security
-> against every local threat.
+> **Key fact**: By default, FuXi does **not** collect, store, or retain user
+> content. With BYOK, requests go directly to the provider you choose; with
+> FuXi-managed models they are transmitted only to serve them. Conversation
+> content is sent to FuXi only if you explicitly enable `send_conversations`
+> (§4). This keeps FuXi's server-side data-handling obligations to a minimum —
+> it is not a claim of absolute security against every local threat.
 
 ---
 
@@ -110,8 +113,10 @@ FuXi runs locally, but a few functions use the network. Manage this in the TUI:
 | `crash_reports` | off | Sends crash/error summaries to help fix defects |
 | `send_conversations` | **off** | Sends conversation content for support, quality, or security investigation — must be enabled explicitly by you |
 
-FuXi never sends your conversation content for model training unless you
-explicitly enable `send_conversations` (or give separate written consent).
+By default, FuXi does not send your conversation content anywhere for collection
+or retention. Conversation content leaves your device for FuXi only if you
+explicitly enable `send_conversations`. Enabling that toggle does **not**
+authorize use for model training; training use requires separate written consent.
 
 **Environment and deployment controls**
 
@@ -130,9 +135,11 @@ authentication is required to use FuXi.
 
 ## 5. Cross-border transfers
 
-- **User content is not transferred by FuXi**: your code and conversations are not
-  collected, stored, or retained. In BYOK mode they go directly to the provider
-  you choose, whose own policy and residency terms apply.
+- **User content is not collected by default**: your code and conversations are
+  not collected, stored, or retained by FuXi unless you explicitly enable
+  `send_conversations`. In BYOK mode model requests go directly to the provider
+  you choose, whose own policy and residency terms apply. With FuXi-managed
+  models, requests are transmitted only to serve that call and are not retained.
 - **Account data may be transferred** to the region where the FuXi account service
   is deployed (registration is required), under the safeguards described below.
 - We disclose this honestly and recommend reviewing your chosen provider's privacy

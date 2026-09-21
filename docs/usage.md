@@ -43,10 +43,12 @@ Key properties:
 - **Provider-agnostic** — use any OpenAI-compatible endpoint, Gemini,
   Bedrock/Vertex, or other OpenAI-compatible providers, or use FuXi-managed
   models after signing in.
-- **Zero content upload** — FuXi never collects, stores, or retains your code,
-  prompts, or conversations, and never asks you to upload them. With your own
+- **Zero content upload (default)** — FuXi does not collect, store, or retain your code,
+  prompts, or conversations by default, and never requires you to upload them. With your own
   key the content goes straight to your provider; with FuXi-managed models it is
   transmitted only to serve that request — not retained, not used for training.
+  Conversation content is sent to FuXi only if you explicitly enable
+  `send_conversations` (off by default; see Privacy Controls).
 - **Bring your own key** — your code and prompts go directly to the provider
   you choose; FuXi does not sit in between.
 - **Local-first** — config, credentials, sessions, and memory live on your
@@ -127,8 +129,9 @@ out with `fuxi logout`.
 For headless/CI use, `fuxi setup-token` prints a token to export as
 `FUXI_OAUTH_TOKEN`.
 
-Registration processes only minimal account data — **your code and conversations
-are never collected, stored, or retained by FuXi** (zero content upload).
+Registration processes only minimal account data — **by default your code and
+conversations are never collected, stored, or retained by FuXi** (zero content
+upload; conversation content is sent only if you enable `send_conversations`).
 
 ### 2. Connect a model (optional)
 

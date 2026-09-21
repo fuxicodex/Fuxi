@@ -86,10 +86,11 @@ You must not:
 ## 7. Privacy and data
 
 - Our [Privacy Policy](PRIVACY_POLICY.md) explains what data we process and how.
-- **FuXi runs primarily on your local device.** FuXi does not collect, store, or
-  retain your code or conversations; with your own key, content goes directly to
-  the provider you choose; with FuXi-managed models it is transmitted only to
-  serve that request.
+- **FuXi runs primarily on your local device.** By default, FuXi does not collect,
+  store, or retain your code or conversations; with your own key, content goes
+  directly to the provider you choose; with FuXi-managed models it is transmitted
+  only to serve that request. Conversation content is sent to FuXi only if you
+  explicitly enable `send_conversations` (off by default).
 - Some features communicate with our servers (for example account
   authentication and update checks), and FuXi may process limited technical and
   usage information. The details, and the controls available to you, are set out

@@ -37,7 +37,7 @@ We explicitly identify and address the following threats:
 | Malicious / dangerous shell commands | Commands pass an **AST safety classifier** + rule set before execution |
 | Unauthorized access to local credentials | API keys live only in local `~/.fuxi/`, never uploaded; protected by file-system permissions |
 | Supply-chain attack (tampered binary) | `fuxi update` performs SHA-256 checksum verification and atomic replacement |
-| Provider-side leakage | You bring your own key; content flows directly to the provider you choose; content is never relayed through FuXi (zero content upload) |
+| Provider-side leakage | With BYOK, content goes directly to the provider you choose (not via FuXi servers). With FuXi-managed models, content is transmitted only to serve that request and is not retained by FuXi |
 | Malicious MCP / plugin | Only servers you explicitly configure are loaded; none enabled by default |
 
 ---
@@ -84,7 +84,7 @@ lists what you get automatically, so you can rely on it and audit it.
 
 | Invisible protection | How it works | User action needed |
 |---|---|---|
-| **Zero content upload** | Code, prompts, and conversations are never collected, stored, or retained by FuXi; with BYOK they go straight to the provider you choose, and with managed models they are transmitted only to serve the request | None |
+| **Zero content upload** | By default, code, prompts, and conversations are not collected, stored, or retained by FuXi; with BYOK they go straight to the provider you choose, and with managed models they are transmitted only to serve the request. Conversation upload requires explicitly enabling `send_conversations` | None (opt-in toggle is off) |
 | **Deny-by-default permissions** | Sensitive operations require explicit approval; no implicit escalation | None (prompts appear on first use) |
 | **Pre-execution command classification** | Every shell command is parsed and classified (AST + rule set) *before* it runs | None |
 | **Credential isolation** | Keys/tokens stay in local `~/.fuxi/` and are never written to logs, errors, or uploads | None |

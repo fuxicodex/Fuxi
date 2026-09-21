@@ -47,7 +47,8 @@ Register and sign in — a FuXi account is required to use FuXi:
 
 1. **Register & sign in (required)** — `fuxi login` registers or authenticates
    your FuXi account and grants access. Registration processes only minimal
-   account data; your code and conversations are never collected or retained.
+   account data; by default your code and conversations are never collected or
+   retained (conversation content is sent only if you enable `send_conversations`).
 2. **Connect a model (optional)** — sign-in gives access to FuXi-managed models;
    to use your own provider, bring your own key (set a provider API key via
    environment variable or `~/.fuxi/config.yaml`, which `fuxi init` generates).

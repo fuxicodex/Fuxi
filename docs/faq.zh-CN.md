@@ -44,7 +44,8 @@ fuxi doctor      # 环境自检（配置、API Key、git、ripgrep 等）
 注册并登录 —— 使用 FuXi 必须要有 FuXi 账号：
 
 1. **注册并登录（必需）** —— `fuxi login` 注册或认证你的 FuXi 账号并授予
-   访问权限。注册仅处理最少账户数据；你的代码与对话绝不被收集或保留。
+   访问权限。注册仅处理最少账户数据；默认不收集或保留你的代码与对话（仅当你启用
+   `send_conversations` 时例外）。
 2. **连接模型（可选）** —— 登录后即可使用 FuXi 托管模型；若想改用自己的
    提供商，请自带密钥（通过环境变量或 `~/.fuxi/config.yaml` 设置提供商
    API Key，后者可由 `fuxi init` 生成）。或运行 `fuxi wizard` 进入交互式
