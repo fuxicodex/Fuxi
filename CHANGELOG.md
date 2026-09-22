@@ -8,6 +8,46 @@ Each entry mirrors a **published GitHub Release**
 be newer than the latest release listed here; run `fuxi --version` to check the
 build you have and `fuxi update` to move to the latest release.
 
+
+## [0.1.8] - 2026-09-22
+
+## New Features
+
+- **Rate-limit banners**: unified rate-limit data now feeds subscription banners; usage beyond the limit is silently rolled into additional usage with clear notification.
+- **Official plugin marketplace mirror**: the plugin marketplace is now served from an official GCS mirror, making plugin installs more stable and reliable.
+
+## Performance
+
+- **Smoother long-session interactions**: estimated scroll offsets and zero render-time filesystem syscalls reduce a cold first frame from ~1.6s (1000 lines) to ~160ms; scrolling performance is now independent of line count.
+- **Faster resume & reads**: a resume reads the transcript only once (34MB: 4.6s → 0.8s); sessions larger than 5MiB are read through a precompacted fast path in 1MB sequential chunks (~4.9× on a 30MB transcript); write-side 100ms batching keeps the disk format unchanged.
+- **Streaming render fix**: the `linkify` O(n²) full-render issue is resolved (20KB single line: 278ms → 2.9ms); streaming output no longer appears non-streaming.
+
+## Sessions & Messages
+
+- **Session storage-chain optimization**: a precompact read fast path, write-side batching, and live-cache re-append are introduced (metadata such as titles and tags flush synchronously, and external SDK writes are absorbed via a 64KB tail window).
+- **Message-chain integrity**: parentUuid chains now fully link every participant, with automatic re-linking after forks; switching sessions no longer loses in-flight messages; a unified session UUID registry fixes the `/clear` cache invalidation issue.
+
+## Permissions & Security
+
+- **Dialog & rules**: the permission dialog now uses a numbered Select list; "Always Allow" clearly displays the exact rule to be persisted; low-risk file commands (mkdir/cp/mv/touch/rmdir) are relaxed to command-name prefix rules.
+- **Stability & Bash safety**: the whole-UI freeze caused by permission dialogs is resolved (approval sends are now non-blocking); the Bash read-only gate is hardened (backticks and newlines can no longer bypass auto-approval); permission suggestions are built once per request and differentiated by reason.
+
+## Windows Compatibility
+
+- **Startup & rendering**: when Git for Windows is missing, startup now provides installation guidance directly (no longer stuck behind the login flow); CJK console glyphs and borders adapt to terminal capabilities, resolving mojibake, tofu, and input-box jitter; subprocess output is decoded strictly as UTF-8.
+
+## Engine & Tools
+
+- **Non-streaming fallback**: on empty or interrupted streams, the current turn is automatically retried via a non-streaming request.
+- **Tool-execution dedup**: a tool state machine and tracker form a dedup closed loop, eliminating duplicate tool cards.
+- **Tool behavior unification**: Read, Write, Edit, Notebook, and PDF tools now share consistent behavior and error messages; non-standard error prefixes are removed.
+
+## UI / MCP / Misc
+
+- **UI**: the task list is deduplicated (the right sidebar is the single task surface); the plan-approval dialog fits exactly, with buttons remaining visible on long plans.
+- **MCP**: the command allowlist is re-seeded after configuration reloads (servers added at runtime are no longer blocked); `~/.fuxi.json` global configuration is unified.
+
+
 ## [0.1.6] - 2026-09-07
 
 Unified session and message handling, hardened login flow, and cross-platform stability improvements.
