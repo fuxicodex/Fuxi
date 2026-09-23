@@ -16,6 +16,8 @@ binary with no runtime dependencies.
 
 Homepage: **https://www.fuxicode.com**
 
+FuXi's roughly **2 million lines of code** were written entirely by FuXi itself.
+
 ![FuXi in action](docs/fuxi-demo.gif)
 
 ## Install

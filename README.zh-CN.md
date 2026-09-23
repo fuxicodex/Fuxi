@@ -15,6 +15,8 @@ FuXi 是一个快速、自包含的**终端 AI 编程智能体**。它在丰富�
 
 主页：**https://www.fuxicode.com**
 
+FuXi 约 **200 万行代码**，全部由 FuXi 自己完成。
+
 ![FuXi 实际演示](docs/fuxi-demo.gif)
 
 ## 安装
