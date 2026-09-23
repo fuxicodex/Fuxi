@@ -1,0 +1,19 @@
+{
+  "name": "fuxi-security",
+  "version": "0.11.0",
+  "description": "Deep vulnerability scanning of your own code, run entirely inside your FuXi session at a chosen effort tier, with every finding challenged before it is reported and the verification tally computed in code. Turns surviving findings into targeted patches, each verified by a panel of agents, that you apply when you choose. See the plugin README for the tiers, the report format, and the trust model.",
+  "author": {
+    "name": "FuXi"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scan",
+    "audit",
+    "appsec",
+    "code-review",
+    "remediation",
+    "autofix"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "example-server": {
+    "type": "http",
+    "url": "https://mcp.example.com/api"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "firebase",
+  "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+  "author": {
+    "name": "Google"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "description": "Shows the Claude Security banner when the /claude-security menu opens and reports usage counts after the plugin's helper scripts run.",
+  "hooks": {
+    "UserPromptExpansion": [
+      {
+        "matcher": "^claude-security:claude-security$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" banner"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
+            "if": "Bash(python3 *claude-security*scripts/*.py *)",
+            "asyncRewake": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
+            "if": "Bash(python3 *claude-security*scripts/*.py *)",
+            "asyncRewake": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

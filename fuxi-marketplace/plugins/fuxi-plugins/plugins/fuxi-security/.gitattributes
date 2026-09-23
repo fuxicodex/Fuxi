@@ -1,0 +1,3 @@
+# Text files keep LF line endings on every checkout: bash cannot run a CRLF
+# script, and a Windows clone with core.autocrlf set would otherwise convert them.
+* text=auto eol=lf

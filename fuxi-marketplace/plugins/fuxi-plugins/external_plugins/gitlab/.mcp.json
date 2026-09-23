@@ -1,0 +1,6 @@
+{
+  "gitlab": {
+    "type": "http",
+    "url": "https://gitlab.com/api/v4/mcp"
+  }
+}
