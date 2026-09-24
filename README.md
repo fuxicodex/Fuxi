@@ -72,6 +72,23 @@ Useful commands: `/model` switch models · `/help` browse all commands ·
 
 Full walkthrough: [usage guide](docs/usage.md).
 
+## Permissions
+
+Sensitive tool calls ask for approval unless you change the permission mode
+at launch.
+
+`--dangerously-skip-permissions` starts in `bypassPermissions`, so tool calls
+run without a prompt. Extreme commands such as `rm -rf /` are still blocked.
+Use it only in a container or VM; on Linux and macOS, root and `sudo` are
+rejected.
+
+`--allow-dangerously-skip-permissions` keeps the normal mode and adds
+`bypassPermissions` to the `Shift+Tab` cycle.
+
+`--permission-mode bypassPermissions` behaves like
+`--dangerously-skip-permissions`. The same flag also accepts `default` and
+`plan`.
+
 ## Data, privacy, and retention
 
 FuXi runs on your machine and keeps your work local.

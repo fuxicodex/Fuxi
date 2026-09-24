@@ -71,6 +71,20 @@ fuxi           # 启动会话
 
 完整指南见[使用指南](docs/usage.zh-CN.md)。
 
+## 权限
+
+敏感工具调用默认需要确认。下面三个启动参数用来调整这一点。
+
+`--dangerously-skip-permissions` 启动即进入 `bypassPermissions`，工具调用直接
+执行，仅熔断 `rm -rf /` 这类极端命令。只适合容器或虚拟机；Linux 和 macOS 上以
+root 或 `sudo` 启动会被拒绝。
+
+`--allow-dangerously-skip-permissions` 仍以普通模式启动，并把
+`bypassPermissions` 加入 `Shift+Tab` 循环，需要时再切换。
+
+`--permission-mode bypassPermissions` 效果与
+`--dangerously-skip-permissions` 相同，也可指定 `default` 或 `plan`。
+
 ## 数据、隐私与保留
 
 FuXi 在你的机器上运行，你的工作留在本地。
