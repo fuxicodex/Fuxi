@@ -412,10 +412,10 @@ Ensure you're authenticated to Asana before running this command.
 ### Local Testing
 
 1. **Configure MCP server** in `.mcp.json`
-2. **Install plugin locally** in `.claude-plugin/`
+2. **Install plugin locally** in `.fuxi-plugin/`
 3. **Verify tools available** with `/mcp`
 4. **Test command** that uses tools
-5. **Check debug output**: `claude --debug`
+5. **Check debug output**: `fuxi --debug`
 
 ### Test Scenarios
 
@@ -515,7 +515,7 @@ Steps:
 - Authentication is valid
 - Parameters match tool schema
 - Required parameters provided
-- Check `claude --debug` logs
+- Check `fuxi --debug` logs
 
 ### Performance Issues
 

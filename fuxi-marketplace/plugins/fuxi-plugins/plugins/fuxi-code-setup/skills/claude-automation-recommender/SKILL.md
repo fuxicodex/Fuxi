@@ -1,5 +1,5 @@
 ---
-name: claude-automation-recommender
+name: fuxi-automation-recommender
 description: Analyze a codebase and recommend FuXi automations (hooks, subagents, skills, plugins, MCP servers). Use when user asks for automation recommendations, wants to optimize their FuXi setup, mentions improving FuXi workflows, asks how to first set up FuXi for a project, or wants to know what FuXi features they should use.
 tools: Read, Glob, Grep, Bash
 ---
@@ -42,7 +42,7 @@ cat package.json 2>/dev/null | head -50
 cat package.json 2>/dev/null | grep -E '"(react|vue|angular|next|express|fastapi|django|prisma|supabase|convex|stripe)"'
 
 # Check for existing FuXi config
-ls -la .claude/ CLAUDE.md 2>/dev/null
+ls -la .fuxi/ FUXI.md 2>/dev/null
 
 # Analyze project structure
 ls -la src/ app/ lib/ tests/ components/ pages/ api/ 2>/dev/null
@@ -89,7 +89,7 @@ See [references/mcp-servers.md](references/mcp-servers.md) for detailed patterns
 
 See [references/skills-reference.md](references/skills-reference.md) for details.
 
-Create skills in `.claude/skills/<name>/SKILL.md`. Some are also available via plugins:
+Create skills in `.fuxi/skills/<name>/SKILL.md`. Some are also available via plugins:
 
 | Codebase Signal | Skill | Plugin |
 |-----------------|-------|--------|
@@ -145,7 +145,7 @@ See [references/plugins-reference.md](references/plugins-reference.md) for avail
 
 | Codebase Signal | Recommended Plugin |
 |-----------------|-------------------|
-| General productivity | **anthropic-agent-skills** - Core skills bundle |
+| General productivity | **fuxi-agent-skills** - Core skills bundle |
 | Document workflows | Install docx, xlsx, pdf skills |
 | Frontend development | **frontend-design** plugin |
 | Building AI tools | **mcp-builder** for MCP development |
@@ -170,7 +170,7 @@ I've analyzed your codebase and identified the top automations for each category
 
 #### context7
 **Why**: [specific reason based on detected libraries]
-**Install**: `claude mcp add context7`
+**Install**: `fuxi mcp add context7`
 
 ---
 
@@ -178,7 +178,7 @@ I've analyzed your codebase and identified the top automations for each category
 
 #### [skill name]
 **Why**: [specific reason]
-**Create**: `.claude/skills/[name]/SKILL.md`
+**Create**: `.fuxi/skills/[name]/SKILL.md`
 **Invocation**: User-only / Both / FuXi-only
 **Also available in**: [plugin-name] plugin (if applicable)
 ```yaml
@@ -195,7 +195,7 @@ disable-model-invocation: true  # for user-only
 
 #### [hook name]
 **Why**: [specific reason based on detected config]
-**Where**: `.claude/settings.json`
+**Where**: `.fuxi/settings.json`
 
 ---
 
@@ -203,7 +203,7 @@ disable-model-invocation: true  # for user-only
 
 #### [agent name]
 **Why**: [specific reason based on codebase patterns]
-**Where**: `.claude/agents/[name].md`
+**Where**: `.fuxi/agents/[name].md`
 
 ---
 
@@ -270,15 +270,15 @@ Recommend headless FuXi for automated pipelines:
 
 ```bash
 # Pre-commit hook example
-claude -p "fix lint errors in src/" --allowedTools Edit,Write
+fuxi -p "fix lint errors in src/" --allowedTools Edit,Write
 
 # CI pipeline with structured output
-claude -p "<prompt>" --output-format stream-json | your_command
+fuxi -p "<prompt>" --output-format stream-json | your_command
 ```
 
 ### Permissions for Hooks
 
-Configure allowed tools in `.claude/settings.json`:
+Configure allowed tools in `.fuxi/settings.json`:
 
 ```json
 {

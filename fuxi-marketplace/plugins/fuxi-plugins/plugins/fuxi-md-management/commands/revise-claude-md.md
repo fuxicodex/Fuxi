@@ -1,9 +1,9 @@
 ---
-description: Update CLAUDE.md with learnings from this session
+description: Update FUXI.md with learnings from this session
 allowed-tools: Read, Edit, Glob
 ---
 
-Review this session for learnings about working with FuXi in this codebase. Update CLAUDE.md with context that would help future FuXi sessions be more effective.
+Review this session for learnings about working with FuXi in this codebase. Update FUXI.md with context that would help future FuXi sessions be more effective.
 
 ## Step 1: Reflect
 
@@ -14,19 +14,19 @@ What context was missing that would have helped FuXi work more effectively?
 - Environment/configuration quirks
 - Warnings or gotchas encountered
 
-## Step 2: Find CLAUDE.md Files
+## Step 2: Find FUXI.md Files
 
 ```bash
-find . -name "CLAUDE.md" -o -name ".claude.local.md" 2>/dev/null | head -20
+find . -name "FUXI.md" -o -name ".fuxi.local.md" 2>/dev/null | head -20
 ```
 
 Decide where each addition belongs:
-- `CLAUDE.md` - Team-shared (checked into git)
-- `.claude.local.md` - Personal/local only (gitignored)
+- `FUXI.md` - Team-shared (checked into git)
+- `.fuxi.local.md` - Personal/local only (gitignored)
 
 ## Step 3: Draft Additions
 
-**Keep it concise** - one line per concept. CLAUDE.md is part of the prompt, so brevity matters.
+**Keep it concise** - one line per concept. FUXI.md is part of the prompt, so brevity matters.
 
 Format: `<command or pattern>` - `<brief description>`
 
@@ -40,7 +40,7 @@ Avoid:
 For each addition:
 
 ```
-### Update: ./CLAUDE.md
+### Update: ./FUXI.md
 
 **Why:** [one-line reason]
 

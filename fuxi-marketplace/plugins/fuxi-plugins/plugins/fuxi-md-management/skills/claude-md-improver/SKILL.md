@@ -1,40 +1,40 @@
 ---
-name: claude-md-improver
-description: Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files. Scans for all CLAUDE.md files, evaluates quality against templates, outputs quality report, then makes targeted updates. Also use when the user mentions "CLAUDE.md maintenance" or "project memory optimization".
+name: fuxi-md-improver
+description: Audit and improve FUXI.md files in repositories. Use when user asks to check, audit, update, improve, or fix FUXI.md files. Scans for all FUXI.md files, evaluates quality against templates, outputs quality report, then makes targeted updates. Also use when the user mentions "FUXI.md maintenance" or "project memory optimization".
 tools: Read, Glob, Grep, Bash, Edit
 ---
 
-# CLAUDE.md Improver
+# FUXI.md Improver
 
-Audit, evaluate, and improve CLAUDE.md files across a codebase to ensure FuXi has optimal project context.
+Audit, evaluate, and improve FUXI.md files across a codebase to ensure FuXi has optimal project context.
 
-**This skill can write to CLAUDE.md files.** After presenting a quality report and getting user approval, it updates CLAUDE.md files with targeted improvements.
+**This skill can write to FUXI.md files.** After presenting a quality report and getting user approval, it updates FUXI.md files with targeted improvements.
 
 ## Workflow
 
 ### Phase 1: Discovery
 
-Find all CLAUDE.md files in the repository:
+Find all FUXI.md files in the repository:
 
 ```bash
-find . -name "CLAUDE.md" -o -name ".claude.md" -o -name ".claude.local.md" 2>/dev/null | head -50
+find . -name "FUXI.md" -o -name ".fuxi.md" -o -name ".fuxi.local.md" 2>/dev/null | head -50
 ```
 
 **File Types & Locations:**
 
 | Type | Location | Purpose |
 |------|----------|---------|
-| Project root | `./CLAUDE.md` | Primary project context (checked into git, shared with team) |
-| Local overrides | `./.claude.local.md` | Personal/local settings (gitignored, not shared) |
-| Global defaults | `~/.claude/CLAUDE.md` | User-wide defaults across all projects |
-| Package-specific | `./packages/*/CLAUDE.md` | Module-level context in monorepos |
+| Project root | `./FUXI.md` | Primary project context (checked into git, shared with team) |
+| Local overrides | `./.fuxi.local.md` | Personal/local settings (gitignored, not shared) |
+| Global defaults | `~/.fuxi/FUXI.md` | User-wide defaults across all projects |
+| Package-specific | `./packages/*/FUXI.md` | Module-level context in monorepos |
 | Subdirectory | Any nested location | Feature/domain-specific context |
 
-**Note:** FuXi auto-discovers CLAUDE.md files in parent directories, making monorepo setups work automatically.
+**Note:** FuXi auto-discovers FUXI.md files in parent directories, making monorepo setups work automatically.
 
 ### Phase 2: Quality Assessment
 
-For each CLAUDE.md file, evaluate against quality criteria. See [references/quality-criteria.md](references/quality-criteria.md) for detailed rubrics.
+For each FUXI.md file, evaluate against quality criteria. See [references/quality-criteria.md](references/quality-criteria.md) for detailed rubrics.
 
 **Quick Assessment Checklist:**
 
@@ -61,7 +61,7 @@ For each CLAUDE.md file, evaluate against quality criteria. See [references/qual
 Format:
 
 ```
-## CLAUDE.md Quality Report
+## FUXI.md Quality Report
 
 ### Summary
 - Files found: X
@@ -70,7 +70,7 @@ Format:
 
 ### File-by-File Assessment
 
-#### 1. ./CLAUDE.md (Project Root)
+#### 1. ./FUXI.md (Project Root)
 **Score: XX/100 (Grade: X)**
 
 | Criterion | Score | Notes |
@@ -88,7 +88,7 @@ Format:
 **Recommended additions:**
 - [List what should be added]
 
-#### 2. ./packages/api/CLAUDE.md (Package-specific)
+#### 2. ./packages/api/FUXI.md (Package-specific)
 ...
 ```
 
@@ -112,14 +112,14 @@ After outputting the quality report, ask user for confirmation before updating.
    - Verbose explanations when a one-liner suffices
 
 3. **Show diffs** - For each change, show:
-   - Which CLAUDE.md file to update
+   - Which FUXI.md file to update
    - The specific addition (as a diff or quoted block)
    - Brief explanation of why this helps future sessions
 
 **Diff Format:**
 
 ```markdown
-### Update: ./CLAUDE.md
+### Update: ./FUXI.md
 
 **Why:** Build command was missing, causing confusion about how to run the project.
 
@@ -139,7 +139,7 @@ After user approval, apply changes using the Edit tool. Preserve existing conten
 
 ## Templates
 
-See [references/templates.md](references/templates.md) for CLAUDE.md templates by project type.
+See [references/templates.md](references/templates.md) for FUXI.md templates by project type.
 
 ## Common Issues to Flag
 
@@ -154,13 +154,13 @@ See [references/templates.md](references/templates.md) for CLAUDE.md templates b
 
 When presenting recommendations, remind users:
 
-- **`#` key shortcut**: During a FuXi session, press `#` to have FuXi auto-incorporate learnings into CLAUDE.md
-- **Keep it concise**: CLAUDE.md should be human-readable; dense is better than verbose
+- **`#` key shortcut**: During a FuXi session, press `#` to have FuXi auto-incorporate learnings into FUXI.md
+- **Keep it concise**: FUXI.md should be human-readable; dense is better than verbose
 - **Actionable commands**: All documented commands should be copy-paste ready
-- **Use `.claude.local.md`**: For personal preferences not shared with team (add to `.gitignore`)
-- **Global defaults**: Put user-wide preferences in `~/.claude/CLAUDE.md`
+- **Use `.fuxi.local.md`**: For personal preferences not shared with team (add to `.gitignore`)
+- **Global defaults**: Put user-wide preferences in `~/.fuxi/FUXI.md`
 
-## What Makes a Great CLAUDE.md
+## What Makes a Great FUXI.md
 
 **Key principles:**
 - Concise and human-readable

@@ -2,7 +2,7 @@
 
 Put a team of agents to work as security researchers on your codebase: map the architecture, build a threat model, hunt across every component, and independently verify every finding before it reaches the report. Then, if you want, turn the confirmed findings into suggested fixes delivered as targeted patch files you review and apply when you choose.
 
-This is the in-your-session version of [FuXi Security](https://claude.com/product/claude-security), FuXi’s hosted product for vulnerability detection and patching. It runs entirely inside your FuXi session — no separate process, no daemon.
+This is the in-your-session version of [FuXi Security](https://fuxi.com/product/fuxi-security), FuXi’s hosted product for vulnerability detection and patching. It runs entirely inside your FuXi session — no separate process, no daemon.
 
 ## FuXi Fable 5.1 Support
 
@@ -10,9 +10,9 @@ The FuXi Security Plugin for FuXi supports FuXi Fable 5.1, and it is the best mo
 
 ## Where it runs
 
-A scan and a fix both run in your FuXi session, under your permissions. The plugin reads the repository you have open the same way you would, and adds no isolation of its own: the directory's `.git/config`, its `.claude/` settings and hooks, and its `CLAUDE.md` all apply exactly as they would in any other session.
+A scan and a fix both run in your FuXi session, under your permissions. The plugin reads the repository you have open the same way you would, and adds no isolation of its own: the directory's `.git/config`, its `.fuxi/` settings and hooks, and its `FUXI.md` all apply exactly as they would in any other session.
 
-That makes it a natural fit for code you control — your own repositories, where the question is which bugs are in the code rather than whether the code is trying something. If you are scanning a repository that you do not trust, such as a third-party dependency or an unfamiliar repository, we suggest running the whole session inside [sandbox-runtime](https://github.com/anthropic-experimental/sandbox-runtime).
+That makes it a natural fit for code you control — your own repositories, where the question is which bugs are in the code rather than whether the code is trying something. If you are scanning a repository that you do not trust, such as a third-party dependency or an unfamiliar repository, we suggest running the whole session inside [sandbox-runtime](https://github.com/fuxi-experimental/sandbox-runtime).
 
 ## Installation
 
@@ -26,7 +26,7 @@ If FuXi reports that the marketplace is not found, run `/plugin marketplace add 
 
 ## Getting started
 
-Run `/claude-security` for the menu. It offers the three jobs the plugin does:
+Run `/fuxi-security` for the menu. It offers the three jobs the plugin does:
 
 | Job | What it scans |
 | --- | --- |
@@ -46,12 +46,12 @@ From there the scan sizes itself to the target. A small diff or a narrow scope g
 
 ## What a scan gives you
 
-Every scan writes its results into a timestamped `CLAUDE-SECURITY-<timestamp>/` directory in the repository:
+Every scan writes its results into a timestamped `FUXI-SECURITY-<timestamp>/` directory in the repository:
 
-- **`CLAUDE-SECURITY-RESULTS.md`** — the human-readable report: each finding with its impact, exploit scenario, preconditions, severity (CRITICAL, HIGH, MEDIUM or LOW, assigned from exploitability and impact along the lines of the [CVSS v4.0](https://www.first.org/cvss/v4-0/specification-document) qualitative scale), confidence, and an outcome-focused recommendation.
-- **`CLAUDE-SECURITY-RESULTS.jsonl`** — the same findings in machine-readable form, one JSON object per line. Each record carries a `claudeSecurityPluginFindingId` derived from the code at the finding (for a hard-coded credential, and any finding within a few lines of one, from its location instead, since that code holds the secret), designed to stay the same from scan to scan while that code (or, for those, its location) is unchanged so tooling can tell a known finding from a new one; the SARIF log carries the same value in each result's properties. Neither this file nor the SARIF log quotes the source line of a hard-coded credential finding, since that line is the credential; file, line and symbol locate it.
-- **`CLAUDE-SECURITY-RESULTS.sarif`** — the same findings as a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) log for GitHub code scanning, IDE SARIF viewers, and other tooling that speaks the standard.
-- **`CLAUDE-SECURITY-REVISION-<sha12>.json`** — the revision stamp: which commit was scanned, at what effort, the severity counts, and how thoroughly the run was verified. The filename carries `-dirty` when uncommitted changes were part of the scanned tree, so a report is always tied to the code it describes.
+- **`FUXI-SECURITY-RESULTS.md`** — the human-readable report: each finding with its impact, exploit scenario, preconditions, severity (CRITICAL, HIGH, MEDIUM or LOW, assigned from exploitability and impact along the lines of the [CVSS v4.0](https://www.first.org/cvss/v4-0/specification-document) qualitative scale), confidence, and an outcome-focused recommendation.
+- **`FUXI-SECURITY-RESULTS.jsonl`** — the same findings in machine-readable form, one JSON object per line. Each record carries a `claudeSecurityPluginFindingId` derived from the code at the finding (for a hard-coded credential, and any finding within a few lines of one, from its location instead, since that code holds the secret), designed to stay the same from scan to scan while that code (or, for those, its location) is unchanged so tooling can tell a known finding from a new one; the SARIF log carries the same value in each result's properties. Neither this file nor the SARIF log quotes the source line of a hard-coded credential finding, since that line is the credential; file, line and symbol locate it.
+- **`FUXI-SECURITY-RESULTS.sarif`** — the same findings as a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) log for GitHub code scanning, IDE SARIF viewers, and other tooling that speaks the standard.
+- **`FUXI-SECURITY-REVISION-<sha12>.json`** — the revision stamp: which commit was scanned, at what effort, the severity counts, and how thoroughly the run was verified. The filename carries `-dirty` when uncommitted changes were part of the scanned tree, so a report is always tied to the code it describes.
 
 That is the whole report — the run's working files are removed once it is written, so the directory holds only what you read. It carries its own `.gitignore`, so a stray `git add` never sweeps a report or a suggested patch into a commit; the report stays searchable where it sits, and if you want it in history, delete that one `.gitignore` and commit it like any other file.
 
@@ -63,7 +63,7 @@ However much effort a scan spends, a finding reaches the report only after survi
 
 A finding also cannot claim more confidence than its verification earned, nor, once two of the verifiers who confirmed it have rated it, a higher severity than they support, and the record of how thoroughly a run was verified is computed in code rather than asserted by the model that produced the findings — so the report's own account of its rigor is one you can check.
 
-Throughout, what the repository says is evidence rather than instruction. Code, comments, and any `CLAUDE.md` in the tree are read as data under review, so text addressed to the scan is noted rather than obeyed. Under the trusted-code model this keeps the work anchored to the evidence; it is not a defense against a hostile repository.
+Throughout, what the repository says is evidence rather than instruction. Code, comments, and any `FUXI.md` in the tree are read as data under review, so text addressed to the scan is noted rather than obeyed. Under the trusted-code model this keeps the work anchored to the evidence; it is not a defense against a hostile repository.
 
 Scans are nondeterministic. Two scans of the same code can surface different findings, and the same scan finds more over time as models improve; running scans regularly builds coverage. FuXi Security reasons about code the way a human security researcher does, which complements SAST, dependency scanning, and code review rather than replacing them.
 
@@ -75,7 +75,7 @@ Each fix is developed away from your working tree, in a scratch copy of the repo
 
 A patch is written only when that review can vouch for three things: the change addresses that one finding, it introduces no new vulnerability, and it leaves the code's behaviour otherwise unchanged — and a change to which inputs the code accepts counts as a behaviour change. When it cannot vouch for all three, you get a short note explaining why instead of a patch. When the patched code has no tests, the patch says so, so you know the claim rests on review rather than on a test run.
 
-The patches land in the report's `patches/` folder: one `F<n>.patch` per finding, a short note beside each explaining the change and how to apply it (`git apply CLAUDE-SECURITY-<ts>/patches/F<n>.patch`), and an index. Nothing is applied for you — the job does not apply, commit, or push anything. If you want a patch applied or turned into a pull request, ask, and FuXi does that as a separate request you can watch.
+The patches land in the report's `patches/` folder: one `F<n>.patch` per finding, a short note beside each explaining the change and how to apply it (`git apply FUXI-SECURITY-<ts>/patches/F<n>.patch`), and an index. Nothing is applied for you — the job does not apply, commit, or push anything. If you want a patch applied or turned into a pull request, ask, and FuXi does that as a separate request you can watch.
 
 ## Requirements
 
@@ -85,7 +85,7 @@ The patches land in the report's `patches/` folder: one `F<n>.patch` per finding
 
 ## Telemetry
 
-The plugin reports usage counts (scans started and finished, findings by severity, patches drafted, and which step failed when one does) through FuXi's built-in telemetry. To turn this off, use FuXi's own settings: set `DISABLE_TELEMETRY=1` (or `DO_NOT_TRACK=1`, or `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`) and these counts are not sent to FuXi. See [FuXi's data usage documentation](https://code.claude.com/docs/en/data-usage#telemetry-services).
+The plugin reports usage counts (scans started and finished, findings by severity, patches drafted, and which step failed when one does) through FuXi's built-in telemetry. To turn this off, use FuXi's own settings: set `DISABLE_TELEMETRY=1` (or `DO_NOT_TRACK=1`, or `FUXI_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`) and these counts are not sent to FuXi. See [FuXi's data usage documentation](https://code.docs.fuxicode.com/en/data-usage#telemetry-services).
 
 ## Security
 

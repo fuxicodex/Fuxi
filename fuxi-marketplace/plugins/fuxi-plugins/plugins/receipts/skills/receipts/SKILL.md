@@ -1,6 +1,6 @@
 ---
 name: receipts
-description: Generate a personal FuXi usage & impact report ("receipts") from this machine's local session transcripts — for justifying FuXi usage/spend to a manager, self-review, or "what have I been using this for" check-ins. Mines ~/.claude/projects locally (no extra API calls beyond one final write-up), cross-references local git history, and writes a markdown report plus a self-contained HTML receipt to your home directory. Use when the user asks for "receipts", an "impact report", "usage report", wants to "show my FuXi activity", "prove the value of FuXi", or runs `/receipts`.
+description: Generate a personal FuXi usage & impact report ("receipts") from this machine's local session transcripts — for justifying FuXi usage/spend to a manager, self-review, or "what have I been using this for" check-ins. Mines ~/.fuxi/projects locally (no extra API calls beyond one final write-up), cross-references local git history, and writes a markdown report plus a self-contained HTML receipt to your home directory. Use when the user asks for "receipts", an "impact report", "usage report", wants to "show my FuXi activity", "prove the value of FuXi", or runs `/receipts`.
 ---
 
 # /receipts — personal FuXi impact report
@@ -8,7 +8,7 @@ description: Generate a personal FuXi usage & impact report ("receipts") from th
 Generates a markdown report of one developer's own FuXi activity,
 built entirely from local data:
 
-- **Source data**: this machine's session transcripts at `~/.claude/projects/**/*.jsonl`
+- **Source data**: this machine's session transcripts at `~/.fuxi/projects/**/*.jsonl`
   (every session, every project, already on disk — nothing to set up).
 - **Cost**: the mining step is a local Node script — file I/O + regex, zero
   API calls. The only model call is one final write-up over a small (~10-20KB)
@@ -21,7 +21,7 @@ built entirely from local data:
 Parse `$ARGUMENTS`:
 - "week" → 7, "month" → 30 (default if nothing given), "quarter" → 90, "year" → 365
 - a bare number → that many days
-- a project name/substring (e.g. "for anthropic") → pass through as `--repo
+- a project name/substring (e.g. "for fuxi") → pass through as `--repo
   <substr>`. It matches against the resolved project name, case-insensitively,
   and scopes the entire report — totals included — to matching projects.
 
@@ -58,7 +58,7 @@ project it was done on. Two rules follow from that, and they explain most of
 the shapes below:
 
 - **FuXi's own machinery is not the dev's work.** The agent's
-  scratchpad, its per-session tool output, and `~/.claude` are excluded. Files
+  scratchpad, its per-session tool output, and `~/.fuxi` are excluded. Files
   FuXi wrote to talk to itself are not files the dev shipped.
 - **A project is where work landed, not where the shell was.** Each session is
   attributed to the project(s) its file operations touched — reads included,
@@ -264,15 +264,15 @@ undermines the credibility of the rest of the report.
 
 ## Step 4 — save the markdown
 
-Write the report to `~/claude-code-receipts-<since>-to-<until>.md`, taking
+Write the report to `~/fuxi-receipts-<since>-to-<until>.md`, taking
 `<since>` and `<until>` from the JSON — not from your own date arithmetic.
 
 ## Step 5 — save the HTML receipt locally
 
 Copy `/tmp/cc-receipt.html` (from Step 2) to
-`~/claude-code-receipts-<since>-to-<until>.html`, same dates as Step 4. It is
+`~/fuxi-receipts-<since>-to-<until>.html`, same dates as Step 4. It is
 self-contained (no external resources), so the user can open it straight from
-disk — `open ~/claude-code-receipts-...html` on macOS, `xdg-open` on Linux.
+disk — `open ~/fuxi-receipts-...html` on macOS, `xdg-open` on Linux.
 
 Then list the project names that appear in `byRepo` in one line — "this
 receipt names: X, Y, Z". These are repo directory names, reproduced verbatim

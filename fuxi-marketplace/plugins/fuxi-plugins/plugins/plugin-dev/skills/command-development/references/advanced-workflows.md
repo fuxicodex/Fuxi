@@ -78,7 +78,7 @@ Creating deployment tracking file...
 Current branch: !`git branch --show-current`
 Latest commit: !`git log -1 --format=%H`
 
-Deployment state saved to `.claude/deployment-state.local.md`:
+Deployment state saved to `.fuxi/deployment-state.local.md`:
 
 \`\`\`markdown
 ---
@@ -110,7 +110,7 @@ description: Run deployment tests
 allowed-tools: Read, Bash(npm:*)
 ---
 
-Reading deployment state from `.claude/deployment-state.local.md`...
+Reading deployment state from `.fuxi/deployment-state.local.md`...
 
 Running tests: !`npm test`
 
@@ -283,7 +283,7 @@ Details:
 Store workflow state in plugin-specific files:
 
 ```markdown
-.claude/plugin-name-workflow.local.md:
+.fuxi/plugin-name-workflow.local.md:
 
 ---
 workflow: deployment
@@ -320,9 +320,9 @@ description: Continue deployment workflow
 allowed-tools: Read, Write
 ---
 
-Reading workflow state from .claude/plugin-name-workflow.local.md...
+Reading workflow state from .fuxi/plugin-name-workflow.local.md...
 
-Current stage: @.claude/plugin-name-workflow.local.md
+Current stage: @.fuxi/plugin-name-workflow.local.md
 
 [Parse YAML frontmatter to determine next step]
 
@@ -343,7 +343,7 @@ allowed-tools: Read
 
 Checking for interrupted workflow...
 
-State file: @.claude/plugin-name-workflow.local.md
+State file: @.fuxi/plugin-name-workflow.local.md
 
 **Workflow found:**
 - Started: [timestamp]
@@ -374,7 +374,7 @@ allowed-tools: Write
 
 Writing completion marker...
 
-Creating: .claude/feature-complete.flag
+Creating: .fuxi/feature-complete.flag
 
 This signals other commands that feature is ready for:
 - Integration testing (/integration-test will auto-detect)
@@ -394,7 +394,7 @@ allowed-tools: Read, Bash(git:*)
 
 Checking for completed features...
 
-if [ -f .claude/feature-complete.flag ]; then
+if [ -f .fuxi/feature-complete.flag ]; then
   Feature ready for release notes
 fi
 
@@ -415,7 +415,7 @@ allowed-tools: Read, Write, Bash
 
 Checking for active deployments...
 
-if [ -f .claude/deployment.lock ]; then
+if [ -f .fuxi/deployment.lock ]; then
   ERROR: Deployment already in progress
   Started: [timestamp from lock file]
 
@@ -442,7 +442,7 @@ allowed-tools: Write, Bash
 Deployment complete.
 
 Removing deployment lock...
-rm .claude/deployment.lock
+rm .fuxi/deployment.lock
 
 Ready for next deployment.
 ```
@@ -587,15 +587,15 @@ description: Workflow with checkpoints
 
 ## Checkpoint 1: Validation
 !`validate.sh`
-echo "checkpoint:validation" >> .claude/deployment-checkpoints.log
+echo "checkpoint:validation" >> .fuxi/deployment-checkpoints.log
 
 ## Checkpoint 2: Build
 !`build.sh`
-echo "checkpoint:build" >> .claude/deployment-checkpoints.log
+echo "checkpoint:build" >> .fuxi/deployment-checkpoints.log
 
 ## Checkpoint 3: Deploy
 !`deploy.sh`
-echo "checkpoint:deploy" >> .claude/deployment-checkpoints.log
+echo "checkpoint:deploy" >> .fuxi/deployment-checkpoints.log
 
 If any step fails, resume with:
 /deployment-resume [last-successful-checkpoint]
@@ -660,7 +660,7 @@ timestamp: !`date -u +%Y-%m-%dT%H:%M:%SZ`
 ---
 \`\`\`
 
-Written to .claude/deployment-state.local.md
+Written to .fuxi/deployment-state.local.md
 
 Next: Run /deployment-validate
 ```
@@ -673,7 +673,7 @@ description: Validate deployment
 allowed-tools: Read, Bash
 ---
 
-Reading state: @.claude/deployment-state.local.md
+Reading state: @.fuxi/deployment-state.local.md
 
 Running validation...
 - Branch check: PASS
@@ -693,7 +693,7 @@ description: Execute deployment
 allowed-tools: Read, Bash, Write
 ---
 
-Reading state: @.claude/deployment-state.local.md
+Reading state: @.fuxi/deployment-state.local.md
 
 Executing deployment to [environment]...
 
@@ -714,7 +714,7 @@ allowed-tools: Bash
 ---
 
 Removing deployment state...
-rm .claude/deployment-state.local.md
+rm .fuxi/deployment-state.local.md
 
 Deployment workflow complete.
 ```

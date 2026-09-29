@@ -1,6 +1,6 @@
-<!-- Audience: the Security Lead assembling a report from workflow findings, which writes CLAUDE-SECURITY-RESULTS.md as the delivery step of the scan job. Load this file only when a scan reaches delivery. -->
+<!-- Audience: the Security Lead assembling a report from workflow findings, which writes FUXI-SECURITY-RESULTS.md as the delivery step of the scan job. Load this file only when a scan reaches delivery. -->
 
-# CLAUDE-SECURITY-RESULTS.md — report spec
+# FUXI-SECURITY-RESULTS.md — report spec
 
 The markdown report is the one artifact written as prose rather than generated. It is what a human actually reads, so it is written for a specific reader: an engineer who owns this code, is busy, and will decide in about ninety seconds whether to act on each finding.
 

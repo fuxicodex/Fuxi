@@ -2,7 +2,7 @@
 
 Two extensibility points, both additive only:
 
-1. ``claude-security-guidance.md`` — markdown appended to every LLM review prompt.
+1. ``fuxi-security-guidance.md`` — markdown appended to every LLM review prompt.
    The customer's equivalent of org-specific security policy: "we use Vault,
    flag hardcoded creds but Vault refs are fine"; "every tenant-scoped query
    must include WHERE org_id"; "*.corp.example.com is internal".
@@ -10,13 +10,13 @@ Two extensibility points, both additive only:
 2. ``security-patterns.{yaml,json}`` — custom regex/substring rules merged
    with the built-in PostToolUse pattern warnings. No LLM call; pure regex.
 
-Discovery, in precedence order (matching CLAUDE.md / settings.json):
-  - ``~/.claude/<name>``                  (user)
-  - ``<cwd>/.claude/<name>``              (project, committed)
-  - ``<cwd>/.claude/<name>.local.<ext>``  (project local, gitignored)
+Discovery, in precedence order (matching FUXI.md / settings.json):
+  - ``~/.fuxi/<name>``                  (user)
+  - ``<cwd>/.fuxi/<name>``              (project, committed)
+  - ``<cwd>/.fuxi/<name>.local.<ext>``  (project local, gitignored)
 
 Managed delivery via ``managed-settings.json`` is not yet supported.
-Org admins can still push files to ``~/.claude/`` via MDM/GPO.
+Org admins can still push files to ``~/.fuxi/`` via MDM/GPO.
 
 Trust model:
   - The ``.md`` is repo-controlled and goes into the USER prompt (not system),
@@ -46,7 +46,7 @@ GUIDANCE_MAX_BYTES = 8 * 1024
 PATTERN_MAX_RULES = 50
 PATTERN_REMINDER_MAX_BYTES = 1024
 
-GUIDANCE_BASENAME = "claude-security-guidance.md"
+GUIDANCE_BASENAME = "fuxi-security-guidance.md"
 PATTERNS_BASENAMES = ("security-patterns.yaml", "security-patterns.yml", "security-patterns.json")
 
 # Module-level cache, loaded once per hook invocation by load_for_session().
@@ -67,7 +67,7 @@ def load_for_session(cwd: Optional[str]) -> None:
     try:
         _guidance_block = _wrap_guidance(_load_guidance(cwd))
     except Exception as e:
-        debug_log(f"extensibility: failed to load claude-security-guidance.md: {e}")
+        debug_log(f"extensibility: failed to load fuxi-security-guidance.md: {e}")
         _guidance_block = ""
     try:
         _user_patterns = _load_user_patterns(cwd)
@@ -86,19 +86,19 @@ def user_patterns() -> List[Dict[str, Any]]:
     return _user_patterns
 
 
-# ── claude-security-guidance.md ───────────────────────────────────────────────────────
+# ── fuxi-security-guidance.md ───────────────────────────────────────────────────────
 
 
 def _config_paths(cwd: Optional[str], basename: str) -> List[Tuple[str, str]]:
     """Existing config file paths, lowest precedence first (so concat reads in
     precedence order user → project → project-local). Truncation is done on
     the concatenated string, so lowest-precedence content is dropped last."""
-    paths = [("User", os.path.expanduser(os.path.join("~", ".claude", basename)))]
+    paths = [("User", os.path.expanduser(os.path.join("~", ".fuxi", basename)))]
     if cwd:
-        paths.append(("Project", os.path.join(cwd, ".claude", basename)))
-        # claude-security-guidance.local.md / security-patterns.local.yaml
+        paths.append(("Project", os.path.join(cwd, ".fuxi", basename)))
+        # fuxi-security-guidance.local.md / security-patterns.local.yaml
         stem, ext = os.path.splitext(basename)
-        paths.append(("Project (local)", os.path.join(cwd, ".claude", f"{stem}.local{ext}")))
+        paths.append(("Project (local)", os.path.join(cwd, ".fuxi", f"{stem}.local{ext}")))
     return paths
 
 
@@ -118,7 +118,7 @@ def _load_guidance(cwd: Optional[str]) -> str:
     combined = "\n\n".join(parts)
     if len(combined) > GUIDANCE_MAX_BYTES:
         debug_log(
-            f"extensibility: claude-security-guidance.md combined size "
+            f"extensibility: fuxi-security-guidance.md combined size "
             f"{len(combined)} > {GUIDANCE_MAX_BYTES}; truncating"
         )
         combined = combined[:GUIDANCE_MAX_BYTES]
@@ -148,7 +148,7 @@ def _load_user_patterns(cwd: Optional[str]) -> List[Dict[str, Any]]:
     rules: List[Dict[str, Any]] = []
     for label, path in _config_paths(cwd, "security-patterns"):
         # _config_paths returns an extensionless stem (e.g.
-        # ".claude/security-patterns" or ".claude/security-patterns.local");
+        # ".fuxi/security-patterns" or ".fuxi/security-patterns.local");
         # try each supported extension.
         for ext in (".yaml", ".yml", ".json"):
             candidate = path + ext

@@ -8,12 +8,12 @@ MCP (Model Context Protocol) servers extend FuXi's capabilities by connecting to
 
 **Connection methods:**
 1. **Project config** (`.mcp.json`) - Available only in that directory
-2. **Global config** (`~/.claude.json`) - Available across all projects
+2. **Global config** (`~/.fuxi.json`) - Available across all projects
 3. **Checked-in `.mcp.json`** - Available to entire team (recommended!)
 
 **Tip**: Check `.mcp.json` into git so your whole team gets the same MCP servers.
 
-**Debugging**: Use `claude --mcp-debug` to identify configuration issues.
+**Debugging**: Use `fuxi --mcp-debug` to identify configuration issues.
 
 ## Documentation & Knowledge
 
@@ -273,4 +273,4 @@ MCP (Model Context Protocol) servers extend FuXi's capabilities by connecting to
 | `@sentry/*` | Sentry MCP |
 | `docker-compose.yml` | Docker MCP |
 | Slack webhook URLs | Slack MCP |
-| `@anthropic-ai/sdk` | context7 for FuXi docs |
+| `@fuxicode/sdk` | context7 for FuXi docs |

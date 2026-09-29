@@ -1,6 +1,6 @@
 ---
 name: session-report
-description: Generate an explorable HTML report of FuXi session usage (tokens, cache, subagents, skills, expensive prompts) from ~/.claude/projects transcripts.
+description: Generate an explorable HTML report of FuXi session usage (tokens, cache, subagents, skills, expensive prompts) from ~/.fuxi/projects transcripts.
 ---
 
 # Session Report

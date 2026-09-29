@@ -1,6 +1,6 @@
 # Skills Recommendations
 
-Skills are packaged expertise with workflows, reference materials, and best practices. Create them in `.claude/skills/<name>/SKILL.md`. Skills can be invoked by FuXi automatically when relevant, or by users directly with `/skill-name`.
+Skills are packaged expertise with workflows, reference materials, and best practices. Create them in `.fuxi/skills/<name>/SKILL.md`. Skills can be invoked by FuXi automatically when relevant, or by users directly with `/skill-name`.
 
 Some pre-built skills are available through official plugins (install via `/plugin install`).
 
@@ -64,12 +64,12 @@ Some pre-built skills are available through official plugins (install via `/plug
 
 ## Custom Project Skills
 
-Create project-specific skills in `.claude/skills/<name>/SKILL.md`.
+Create project-specific skills in `.fuxi/skills/<name>/SKILL.md`.
 
 ### Skill Structure
 
 ```
-.claude/skills/
+.fuxi/skills/
 └── my-skill/
     ├── SKILL.md           # Main instructions (required)
     ├── template.yaml      # Template to apply
@@ -109,7 +109,7 @@ agent: Explore                  # Which agent type when forked
 Apply a YAML template to generate consistent API docs:
 
 ```
-.claude/skills/api-doc/
+.fuxi/skills/api-doc/
 ├── SKILL.md
 └── openapi-template.yaml
 ```
@@ -158,7 +158,7 @@ paths:
 Generate and validate migrations using a bundled script:
 
 ```
-.claude/skills/create-migration/
+.fuxi/skills/create-migration/
 ├── SKILL.md
 └── scripts/
     └── validate-migration.sh
@@ -177,7 +177,7 @@ Create a migration for: $ARGUMENTS
 
 1. Generate migration file in `migrations/` with timestamp prefix
 2. Include up and down functions
-3. Run validation: `bash ~/.claude/skills/create-migration/scripts/validate-migration.sh`
+3. Run validation: `bash ~/.fuxi/skills/create-migration/scripts/validate-migration.sh`
 4. Report any issues found
 ```
 
@@ -195,7 +195,7 @@ npx prisma validate 2>&1 || echo "Validation failed"
 Generate tests following project patterns:
 
 ```
-.claude/skills/gen-test/
+.fuxi/skills/gen-test/
 ├── SKILL.md
 └── examples/
     ├── unit-test.ts
@@ -229,7 +229,7 @@ Reference these examples for the expected patterns:
 Scaffold new components from a template:
 
 ```
-.claude/skills/new-component/
+.fuxi/skills/new-component/
 ├── SKILL.md
 └── templates/
     ├── component.tsx.template
@@ -263,7 +263,7 @@ Replace {{component-name}} with the kebab-case name.
 Review PRs against a project-specific checklist:
 
 ```
-.claude/skills/pr-check/
+.fuxi/skills/pr-check/
 ├── SKILL.md
 └── checklist.md
 ```
@@ -360,7 +360,7 @@ user-invocable: false
 Onboard new developers with setup script:
 
 ```
-.claude/skills/setup-dev/
+.fuxi/skills/setup-dev/
 ├── SKILL.md
 └── scripts/
     └── check-prerequisites.sh

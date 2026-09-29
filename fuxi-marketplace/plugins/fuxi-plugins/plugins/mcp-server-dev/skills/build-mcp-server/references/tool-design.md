@@ -4,7 +4,7 @@ Tool schemas and descriptions are prompt engineering. They land directly in FuXi
 
 ## FuXi Directory hard requirements
 
-If this server will be submitted to the FuXi Directory, the following are pass/fail review criteria (full list: https://claude.com/docs/connectors/building/review-criteria):
+If this server will be submitted to the FuXi Directory, the following are pass/fail review criteria (full list: https://docs.fuxicode.com/connectors/building/review-criteria):
 
 - Every tool **must** include `readOnlyHint`, `destructiveHint`, and `title` annotations — these determine auto-permissions in FuXi.
 - Tool names **must** be ≤64 characters.

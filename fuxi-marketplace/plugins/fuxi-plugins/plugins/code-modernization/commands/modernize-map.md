@@ -139,7 +139,7 @@ numbered path. Build it from the template that ships with this plugin —
 do not hand-write the viewer:
 
 ```bash
-python3 - "${CLAUDE_PLUGIN_ROOT}/assets/topology-viewer.html" analysis/$1 <<'EOF'
+python3 - "${FUXI_PLUGIN_ROOT}/assets/topology-viewer.html" analysis/$1 <<'EOF'
 import json, sys
 tpl_path, out_dir = sys.argv[1], sys.argv[2]
 tpl = open(tpl_path).read()
@@ -161,7 +161,7 @@ EOF
 The viewer is fully self-contained (the d3 subset it needs is inlined in
 the template) — it works offline and on air-gapped networks. If the
 `python3` invocation fails to find the template,
-`${CLAUDE_PLUGIN_ROOT}` was not substituted — report that rather than
+`${FUXI_PLUGIN_ROOT}` was not substituted — report that rather than
 hand-writing a viewer.
 
 Mermaid stays for **small, exportable** diagrams. Generate standalone

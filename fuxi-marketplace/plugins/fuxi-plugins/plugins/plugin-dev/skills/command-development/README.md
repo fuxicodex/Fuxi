@@ -12,7 +12,7 @@ This skill provides knowledge about:
 - Bash execution with !` syntax
 - Command organization and namespacing
 - Best practices for command development
-- Plugin-specific features (${CLAUDE_PLUGIN_ROOT}, plugin patterns)
+- Plugin-specific features (${FUXI_PLUGIN_ROOT}, plugin patterns)
 - Integration with plugin components (agents, skills, hooks)
 - Validation patterns and error handling
 
@@ -34,7 +34,7 @@ Core skill content covering:
 - Troubleshooting
 
 **Plugin-Specific:**
-- ${CLAUDE_PLUGIN_ROOT} environment variable
+- ${FUXI_PLUGIN_ROOT} environment variable
 - Plugin command discovery and organization
 - Plugin command patterns (configuration, template, multi-script)
 - Integration with plugin components (agents, skills, hooks)
@@ -52,7 +52,7 @@ Detailed documentation:
 
 - **plugin-features-reference.md**: Plugin-specific command features
   - Plugin command discovery and organization
-  - ${CLAUDE_PLUGIN_ROOT} environment variable usage
+  - ${FUXI_PLUGIN_ROOT} environment variable usage
   - Plugin command patterns (configuration, template, multi-script)
   - Integration with plugin agents, skills, and hooks
   - Validation patterns and error handling
@@ -129,8 +129,8 @@ Command prompt content with:
 
 ### Locations
 
-- **Project**: `.claude/commands/` (shared with team)
-- **Personal**: `~/.claude/commands/` (your commands)
+- **Project**: `.fuxi/commands/` (shared with team)
+- **Personal**: `~/.fuxi/commands/` (your commands)
 - **Plugin**: `plugin-name/commands/` (plugin-specific)
 
 ### Key Features
@@ -243,7 +243,7 @@ Recent commits: !`git log --oneline -5`
 ## Status
 
 **Completed enhancements:**
-- ✓ Plugin command patterns (${CLAUDE_PLUGIN_ROOT}, discovery, organization)
+- ✓ Plugin command patterns (${FUXI_PLUGIN_ROOT}, discovery, organization)
 - ✓ Integration patterns (agents, skills, hooks coordination)
 - ✓ Validation patterns (input, file, resource validation, error handling)
 

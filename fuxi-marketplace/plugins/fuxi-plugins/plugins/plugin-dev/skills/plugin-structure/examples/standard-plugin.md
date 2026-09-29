@@ -6,7 +6,7 @@ A well-structured plugin with commands, agents, and skills.
 
 ```
 code-quality/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 ├── commands/
 │   ├── lint.md
@@ -36,7 +36,7 @@ code-quality/
 
 ## File Contents
 
-### .claude-plugin/plugin.json
+### .fuxi-plugin/plugin.json
 
 ```json
 {
@@ -78,7 +78,7 @@ Run comprehensive linting checks on the project codebase.
 Execute the linting script:
 
 \`\`\`bash
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/run-linter.sh
+bash ${FUXI_PLUGIN_ROOT}/scripts/run-linter.sh
 \`\`\`
 
 Parse the output and present issues organized by:
@@ -445,7 +445,7 @@ See language-specific guides for:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate-commit.sh",
+          "command": "bash ${FUXI_PLUGIN_ROOT}/hooks/scripts/validate-commit.sh",
           "timeout": 45
         }
       ]
@@ -508,7 +508,7 @@ exit 0
 ### Running Commands
 
 ```
-$ claude
+$ fuxi
 > /lint
 Running linter checks...
 

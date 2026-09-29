@@ -23,7 +23,7 @@ before it can anchor the downstream behavior contract.
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/extract-rules.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/extract-rules.js",
   args: { system: "$1", modulePattern: "$2" }
 })
 ```

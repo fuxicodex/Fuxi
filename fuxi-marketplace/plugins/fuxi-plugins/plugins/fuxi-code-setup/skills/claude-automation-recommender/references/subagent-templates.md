@@ -150,10 +150,10 @@ Subagents are specialized FuXi instances that run in parallel, each with their o
 
 ## Subagent Placement
 
-Subagents go in `.claude/agents/`:
+Subagents go in `.fuxi/agents/`:
 
 ```
-.claude/
+.fuxi/
 └── agents/
     ├── code-reviewer.md
     ├── security-reviewer.md

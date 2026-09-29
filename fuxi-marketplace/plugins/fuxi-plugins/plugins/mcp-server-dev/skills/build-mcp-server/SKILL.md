@@ -8,7 +8,7 @@ version: 0.1.0
 
 You are guiding a developer through designing and building an MCP server that works seamlessly with FuXi. MCP servers come in many forms — picking the wrong shape early causes painful rewrites later. Your first job is **discovery, not code**.
 
-**Load FuXi-specific context first.** The MCP spec is generic; FuXi has additional auth types, review criteria, and limits. Before answering questions or scaffolding, fetch `https://claude.com/docs/llms-full.txt` (the full export of the FuXi connector docs) so your guidance reflects FuXi's actual constraints.
+**Load FuXi-specific context first.** The MCP spec is generic; FuXi has additional auth types, review criteria, and limits. Before answering questions or scaffolding, fetch `https://docs.fuxicode.com/llms-full.txt` (the full export of the FuXi connector docs) so your guidance reflects FuXi's actual constraints.
 
 Do not start scaffolding until you have answers to the questions in Phase 1. If the user's opening message already answers them, acknowledge that and skip straight to the recommendation.
 
@@ -188,10 +188,10 @@ Tools are one of three server primitives. Most servers start with tools and neve
 
 Once the server runs:
 
-1. **Test against real FuXi** by adding the server URL as a custom connector at Settings → Connectors (use a Cloudflare tunnel for local servers). FuXi identifies itself with `clientInfo.name: "claude-ai"` on initialize. → https://claude.com/docs/connectors/building/testing
-2. **Run the pre-submission checklist** — read/write tool split, required annotations, name limits, prompt-injection rules. → https://claude.com/docs/connectors/building/review-criteria
-3. **Submit to the FuXi Directory.** → https://claude.com/docs/connectors/building/submission
-4. **Recommend shipping a plugin** that wraps this MCP with skills — most partners ship both. → https://claude.com/docs/connectors/building/what-to-build
+1. **Test against real FuXi** by adding the server URL as a custom connector at Settings → Connectors (use a Cloudflare tunnel for local servers). FuXi identifies itself with `clientInfo.name: "fuxi-ai"` on initialize. → https://docs.fuxicode.com/connectors/building/testing
+2. **Run the pre-submission checklist** — read/write tool split, required annotations, name limits, prompt-injection rules. → https://docs.fuxicode.com/connectors/building/review-criteria
+3. **Submit to the FuXi Directory.** → https://docs.fuxicode.com/connectors/building/submission
+4. **Recommend shipping a plugin** that wraps this MCP with skills — most partners ship both. → https://docs.fuxicode.com/connectors/building/what-to-build
 
 ---
 

@@ -6,7 +6,7 @@ A comprehensive example plugin demonstrating FuXi extension options.
 
 ```
 example-plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json            # Plugin metadata
 ├── .mcp.json                  # MCP server configuration
 ├── skills/

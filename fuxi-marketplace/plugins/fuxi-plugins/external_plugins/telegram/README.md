@@ -22,7 +22,7 @@ BotFather replies with a token that looks like `123456789:AAHfiqksKZ8...` — th
 
 **2. Install the plugin.**
 
-These are FuXi commands — run `claude` to start a session first.
+These are FuXi commands — run `fuxi` to start a session first.
 
 Install the plugin:
 ```
@@ -35,7 +35,7 @@ Install the plugin:
 /telegram:configure 123456789:AAHfiqksKZ8...
 ```
 
-Writes `TELEGRAM_BOT_TOKEN=...` to `~/.claude/channels/telegram/.env`. You can also write that file by hand, or set the variable in your shell environment — shell takes precedence.
+Writes `TELEGRAM_BOT_TOKEN=...` to `~/.fuxi/channels/telegram/.env`. You can also write that file by hand, or set the variable in your shell environment — shell takes precedence.
 
 > To run multiple bots on one machine (different tokens, separate allowlists), point `TELEGRAM_STATE_DIR` at a different directory per instance.
 
@@ -82,7 +82,7 @@ Inbound messages trigger a typing indicator automatically — Telegram shows
 
 ## Photos
 
-Inbound photos are downloaded to `~/.claude/channels/telegram/inbox/` and the
+Inbound photos are downloaded to `~/.fuxi/channels/telegram/inbox/` and the
 local path is included in the `<channel>` notification so the assistant can
 `Read` it. Telegram compresses photos — if you need the original file, send it
 as a document instead (long-press → Send as File).

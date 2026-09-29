@@ -2,7 +2,7 @@
 
 # Ralph Loop Stop Hook
 # Prevents session exit when a ralph-loop is active
-# Feeds Claude's output back as input to continue the loop
+# Feeds FuXi's output back as input to continue the loop
 
 set -euo pipefail
 
@@ -10,7 +10,7 @@ set -euo pipefail
 HOOK_INPUT=$(cat)
 
 # Check if ralph-loop is active
-RALPH_STATE_FILE=".claude/ralph-loop.local.md"
+RALPH_STATE_FILE=".fuxi/ralph-loop.local.md"
 
 if [[ ! -f "$RALPH_STATE_FILE" ]]; then
   # No active loop - allow exit
@@ -25,7 +25,7 @@ MAX_ITERATIONS=$(echo "$FRONTMATTER" | grep '^max_iterations:' | sed 's/max_iter
 COMPLETION_PROMISE=$(echo "$FRONTMATTER" | grep '^completion_promise:' | sed 's/completion_promise: *//' | sed 's/^"\(.*\)"$/\1/')
 
 # Session isolation: the state file is project-scoped, but the Stop hook
-# fires in every Claude Code session in that project. If another session
+# fires in every FuXi session in that project. If another session
 # started the loop, this session must not block (or touch the state file).
 # Legacy state files without session_id fall through (preserves old behavior).
 STATE_SESSION=$(echo "$FRONTMATTER" | grep '^session_id:' | sed 's/session_id: *//' || true)
@@ -70,7 +70,7 @@ TRANSCRIPT_PATH=$(echo "$HOOK_INPUT" | jq -r '.transcript_path')
 if [[ ! -f "$TRANSCRIPT_PATH" ]]; then
   echo "⚠️  Ralph loop: Transcript file not found" >&2
   echo "   Expected: $TRANSCRIPT_PATH" >&2
-  echo "   This is unusual and may indicate a Claude Code internal issue." >&2
+  echo "   This is unusual and may indicate a FuXi internal issue." >&2
   echo "   Ralph loop is stopping." >&2
   rm "$RALPH_STATE_FILE"
   exit 0
@@ -89,7 +89,7 @@ fi
 
 # Extract the most recent assistant text block.
 #
-# Claude Code writes each content block (text/tool_use/thinking) as its own
+# FuXi writes each content block (text/tool_use/thinking) as its own
 # JSONL line, all with role=assistant. So slurp the last N assistant lines,
 # flatten to text blocks only, and take the last one.
 #
@@ -177,7 +177,7 @@ else
 fi
 
 # Output JSON to block the stop and feed prompt back
-# The "reason" field contains the prompt that will be sent back to Claude
+# The "reason" field contains the prompt that will be sent back to FuXi
 jq -n \
   --arg prompt "$PROMPT_TEXT" \
   --arg msg "$SYSTEM_MSG" \

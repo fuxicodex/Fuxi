@@ -401,7 +401,7 @@ def diffstat_lines(stats: list[DiffStat] | None) -> list[str]:
 def header_comment(unit: Unit, base: str, report_ref: str) -> str:
     """The comment block prepended above the first `diff --git`; git apply ignores it."""
     lines = [
-        f"# Claude Security -- suggested patch for {unit['id']}: {unit['title']}",
+        f"# FuXi Security -- suggested patch for {unit['id']}: {unit['title']}",
         f"# Applies to revision {base[:12]} (the revision the scan report describes).",
         "#",
         "# Verified by a panel of agents: an independent verifier reviewed this",
@@ -484,7 +484,7 @@ def note_written(unit: Unit, stats: list[DiffStat] | None, check: str, report_re
         f"git apply {report_ref}/patches/{unit['id']}.patch",
         "```",
         "",
-        "Or ask Claude Security to apply it, or to open a pull request for it.",
+        "Or ask FuXi Security to apply it, or to open a pull request for it.",
         "",
     ]
     return "\n".join(lines)
@@ -553,7 +553,7 @@ def index_markdown(units: list[Unit], base: str, report_dir_name: str, report_re
         (
             "Each `F<n>.md` beside the patch explains the change and what was verified. "
             "The job that wrote these applied, committed, pushed, and opened nothing; "
-            "if you want one applied, or turned into a pull request, ask Claude "
+            "if you want one applied, or turned into a pull request, ask FuXi "
             "Security and it handles that as a separate request."
         ),
         "",
@@ -647,7 +647,7 @@ def resolve_report_dir(patches_dir: Path) -> Path:
         raise PatchError(msg)
     if not REPORT_DIR_RE.match(report_dir.name):
         msg = (
-            "patches dir must live inside a CLAUDE-SECURITY-<timestamp> report "
+            "patches dir must live inside a FUXI-SECURITY-<timestamp> report "
             f"directory; its parent is {report_dir.name!r}. Refusing rather than "
             "fence the wrong directory with a .gitignore."
         )
@@ -715,7 +715,7 @@ def run(patch_dir: Path, patches_dir: Path, scan_root: str, base: str) -> int:
 def refuse_reason(path: Path) -> str | None:
     """Why `path` may NOT be deleted as a scratch workspace, or None when it may.
 
-    Only `<report>/.claude-security-run/patch-<ts>/scratch-F<n>` holding its
+    Only `<report>/.fuxi-security-run/patch-<ts>/scratch-F<n>` holding its
     own `.git` may be deleted; every other shape is refused.
     """
     leaf = Path(os.path.abspath(path))
@@ -787,7 +787,7 @@ def remove_patch_run(patch_dir: Path) -> tuple[list[Path], list[str]]:
     """Remove a finished patch run directory, and its run directory if now empty.
 
     Returns (removed paths, warnings). Never raises; only the recipe's own
-    `<report>/.claude-security-run/patch-<ts>` layout is deleted.
+    `<report>/.fuxi-security-run/patch-<ts>` layout is deleted.
     """
     removed: list[Path] = []
     target = Path(os.path.abspath(patch_dir))

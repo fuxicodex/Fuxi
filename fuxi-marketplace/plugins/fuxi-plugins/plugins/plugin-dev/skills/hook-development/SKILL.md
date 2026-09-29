@@ -1,6 +1,6 @@
 ---
 name: hook-development
-description: This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven automation", "block dangerous commands", or mentions hook events (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification). Provides comprehensive guidance for creating and implementing FuXi plugin hooks with focus on advanced prompt-based hooks API.
+description: This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${FUXI_PLUGIN_ROOT}", "set up event-driven automation", "block dangerous commands", or mentions hook events (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification). Provides comprehensive guidance for creating and implementing FuXi plugin hooks with focus on advanced prompt-based hooks API.
 version: 0.1.0
 ---
 
@@ -46,7 +46,7 @@ Execute bash commands for deterministic checks:
 ```json
 {
   "type": "command",
-  "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh",
+  "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/validate.sh",
   "timeout": 60
 }
 ```
@@ -90,7 +90,7 @@ Execute bash commands for deterministic checks:
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/validate.sh"
+            "command": "${FUXI_PLUGIN_ROOT}/hooks/validate.sh"
           }
         ]
       }
@@ -101,7 +101,7 @@ Execute bash commands for deterministic checks:
 
 ### Settings Format (Direct)
 
-**For user settings** in `.claude/settings.json`, use direct format:
+**For user settings** in `.fuxi/settings.json`, use direct format:
 
 ```json
 {
@@ -248,7 +248,7 @@ Execute when FuXi session begins. Use to load context and set environment.
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/load-context.sh"
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/load-context.sh"
         }
       ]
     }
@@ -323,17 +323,17 @@ Access fields in prompts using `$TOOL_INPUT`, `$TOOL_RESULT`, `$USER_PROMPT`, et
 
 Available in all command hooks:
 
-- `$CLAUDE_PROJECT_DIR` - Project root path
-- `$CLAUDE_PLUGIN_ROOT` - Plugin directory (use for portable paths)
+- `$FUXI_PROJECT_DIR` - Project root path
+- `$FUXI_PLUGIN_ROOT` - Plugin directory (use for portable paths)
 - `$CLAUDE_ENV_FILE` - SessionStart only: persist env vars here
-- `$CLAUDE_CODE_REMOTE` - Set if running in remote context
+- `$FUXI_CODE_REMOTE` - Set if running in remote context
 
-**Always use ${CLAUDE_PLUGIN_ROOT} in hook commands for portability:**
+**Always use ${FUXI_PLUGIN_ROOT} in hook commands for portability:**
 
 ```json
 {
   "type": "command",
-  "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
+  "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/validate.sh"
 }
 ```
 
@@ -371,7 +371,7 @@ In plugins, define hooks in `hooks/hooks.json`:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/load-context.sh",
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/load-context.sh",
           "timeout": 10
         }
       ]
@@ -471,11 +471,11 @@ See `examples/validate-write.sh` and `examples/validate-bash.sh` for complete ex
 ```bash
 # GOOD: Quoted
 echo "$file_path"
-cd "$CLAUDE_PROJECT_DIR"
+cd "$FUXI_PROJECT_DIR"
 
 # BAD: Unquoted (injection risk)
 echo $file_path
-cd $CLAUDE_PROJECT_DIR
+cd $FUXI_PROJECT_DIR
 ```
 
 ### Set Appropriate Timeouts
@@ -531,7 +531,7 @@ Create hooks that activate conditionally by checking for a flag file or configur
 ```bash
 #!/bin/bash
 # Only active when flag file exists
-FLAG_FILE="$CLAUDE_PROJECT_DIR/.enable-strict-validation"
+FLAG_FILE="$FUXI_PROJECT_DIR/.enable-strict-validation"
 
 if [ ! -f "$FLAG_FILE" ]; then
   # Flag not present, skip validation
@@ -547,7 +547,7 @@ input=$(cat)
 ```bash
 #!/bin/bash
 # Check configuration for activation
-CONFIG_FILE="$CLAUDE_PROJECT_DIR/.claude/plugin-config.json"
+CONFIG_FILE="$FUXI_PROJECT_DIR/.fuxi/plugin-config.json"
 
 if [ -f "$CONFIG_FILE" ]; then
   enabled=$(jq -r '.strictMode // false' "$CONFIG_FILE")
@@ -579,14 +579,14 @@ input=$(cat)
 - Editing `hooks/hooks.json` won't affect current session
 - Adding new hook scripts won't be recognized
 - Changing hook commands/prompts won't update
-- Must restart FuXi: exit and run `claude` again
+- Must restart FuXi: exit and run `fuxi` again
 
 **To test hook changes:**
 1. Edit hook configuration or scripts
 2. Exit FuXi session
-3. Restart: `claude` or `cc`
+3. Restart: `fuxi` or `cc`
 4. New hook configuration loads
-5. Test hooks with `claude --debug`
+5. Test hooks with `fuxi --debug`
 
 ### Hook Validation at Startup
 
@@ -602,7 +602,7 @@ Use `/hooks` command to review loaded hooks in current session.
 ### Enable Debug Mode
 
 ```bash
-claude --debug
+fuxi --debug
 ```
 
 Look for hook registration, execution logs, input/output JSON, and timing information.
@@ -613,7 +613,7 @@ Test command hooks directly:
 
 ```bash
 echo '{"tool_name": "Write", "tool_input": {"file_path": "/test"}}' | \
-  bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh
+  bash ${FUXI_PLUGIN_ROOT}/scripts/validate.sh
 
 echo "Exit code: $?"
 ```
@@ -647,7 +647,7 @@ echo "$output" | jq .
 
 **DO:**
 - ✅ Use prompt-based hooks for complex logic
-- ✅ Use ${CLAUDE_PLUGIN_ROOT} for portability
+- ✅ Use ${FUXI_PLUGIN_ROOT} for portability
 - ✅ Validate all inputs in command hooks
 - ✅ Quote all bash variables
 - ✅ Set appropriate timeouts
@@ -690,9 +690,9 @@ Development tools in `scripts/`:
 
 ### External Resources
 
-- **Official Docs**: https://docs.claude.com/en/docs/claude-code/hooks
+- **Official Docs**: https://docs.fuxicode.com/en/docs/fuxi/hooks
 - **Examples**: See security-guidance plugin in marketplace
-- **Testing**: Use `claude --debug` for detailed logs
+- **Testing**: Use `fuxi --debug` for detailed logs
 - **Validation**: Use `jq` to validate hook JSON output
 
 ## Implementation Workflow
@@ -703,10 +703,10 @@ To implement hooks in a plugin:
 2. Decide between prompt-based (flexible) or command (deterministic) hooks
 3. Write hook configuration in `hooks/hooks.json`
 4. For command hooks, create hook scripts
-5. Use ${CLAUDE_PLUGIN_ROOT} for all file references
+5. Use ${FUXI_PLUGIN_ROOT} for all file references
 6. Validate configuration with `scripts/validate-hook-schema.sh hooks/hooks.json`
 7. Test hooks with `scripts/test-hook.sh` before deployment
-8. Test in FuXi with `claude --debug`
+8. Test in FuXi with `fuxi --debug`
 9. Document hooks in plugin README
 
 Focus on prompt-based hooks for most use cases. Reserve command hooks for performance-critical or deterministic checks.

@@ -108,8 +108,8 @@ for event in $(jq -r 'keys[]' "$HOOKS_FILE"); do
           ((error_count++))
         else
           # Check for hardcoded paths
-          if [[ "$command" == /* ]] && [[ "$command" != *'${CLAUDE_PLUGIN_ROOT}'* ]]; then
-            echo "⚠️  $event[$i].hooks[$j]: Hardcoded absolute path detected. Consider using \${CLAUDE_PLUGIN_ROOT}"
+          if [[ "$command" == /* ]] && [[ "$command" != *'${FUXI_PLUGIN_ROOT}'* ]]; then
+            echo "⚠️  $event[$i].hooks[$j]: Hardcoded absolute path detected. Consider using \${FUXI_PLUGIN_ROOT}"
             ((warning_count++))
           fi
         fi

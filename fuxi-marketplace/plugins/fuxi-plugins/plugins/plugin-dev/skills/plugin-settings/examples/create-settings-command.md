@@ -5,7 +5,7 @@ allowed-tools: ["Write", "AskUserQuestion"]
 
 # Create Plugin Settings
 
-This command helps users create a `.claude/my-plugin.local.md` settings file.
+This command helps users create a `.fuxi/my-plugin.local.md` settings file.
 
 ## Steps
 
@@ -63,7 +63,7 @@ Extract answers from AskUserQuestion result:
 
 ### Step 3: Create Settings File
 
-Use Write tool to create `.claude/my-plugin.local.md`:
+Use Write tool to create `.fuxi/my-plugin.local.md`:
 
 ```markdown
 ---
@@ -83,7 +83,7 @@ To modify settings, edit this file and restart FuXi.
 ### Step 4: Inform User
 
 Tell the user:
-- Settings file created at `.claude/my-plugin.local.md`
+- Settings file created at `.fuxi/my-plugin.local.md`
 - Current configuration summary
 - How to edit manually if needed
 - Reminder: Restart FuXi for changes to take effect

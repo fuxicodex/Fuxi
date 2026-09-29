@@ -24,8 +24,8 @@ Execute local MCP servers as child processes with communication via stdin/stdout
 ```json
 {
   "my-server": {
-    "command": "${CLAUDE_PLUGIN_ROOT}/servers/custom-server",
-    "args": ["--config", "${CLAUDE_PLUGIN_ROOT}/config.json"],
+    "command": "${FUXI_PLUGIN_ROOT}/servers/custom-server",
+    "args": ["--config", "${FUXI_PLUGIN_ROOT}/config.json"],
     "env": {
       "API_KEY": "${MY_API_KEY}",
       "LOG_LEVEL": "debug",
@@ -58,7 +58,7 @@ Execute local MCP servers as child processes with communication via stdin/stdout
 ```json
 {
   "custom": {
-    "command": "${CLAUDE_PLUGIN_ROOT}/servers/my-server.js",
+    "command": "${FUXI_PLUGIN_ROOT}/servers/my-server.js",
     "args": ["--verbose"]
   }
 }
@@ -79,7 +79,7 @@ Execute local MCP servers as child processes with communication via stdin/stdout
 
 ### Best Practices
 
-1. **Use absolute paths or ${CLAUDE_PLUGIN_ROOT}**
+1. **Use absolute paths or ${FUXI_PLUGIN_ROOT}**
 2. **Set PYTHONUNBUFFERED for Python servers**
 3. **Pass configuration via args or env, not stdin**
 4. **Handle server crashes gracefully**
@@ -91,7 +91,7 @@ Execute local MCP servers as child processes with communication via stdin/stdout
 - Check command exists and is executable
 - Verify file paths are correct
 - Check permissions
-- Review `claude --debug` logs
+- Review `fuxi --debug` logs
 
 **Communication fails:**
 - Ensure server uses stdin/stdout correctly

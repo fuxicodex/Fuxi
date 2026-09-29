@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Record a scan workflow's result in its run directory and say what to do next.
 
-Reads the JSON file the Claude Code runtime writes when a workflow task
+Reads the JSON file the FuXi runtime writes when a workflow task
 completes, folds the result's findings, votes and coverage into
 findings.json, votes.json and coverage.json in the run directory (appending
 to an earlier run's when this result continues one), writes the candidate
@@ -47,7 +47,7 @@ CHUNK = 25
 UNACCOUNTED_ECHO_CAP = 40
 CID_RE = re.compile(r"^C([1-9][0-9]*)\Z")
 WRITE_REPORT = (
-    "next: write CLAUDE-SECURITY-RESULTS.md from findings.json and coverage.json per the "
+    "next: write FUXI-SECURITY-RESULTS.md from findings.json and coverage.json per the "
     "report spec, then run render_report.py"
 )
 
@@ -406,7 +406,7 @@ def next_step(run_dir: Path, meta: JsonMap, chain: Chain) -> str:
     return (
         "next: make this Workflow call exactly as printed, wait for it with keep-waiting.sh "
         "as before, then run save_result.py on its output file\n"
-        f'Workflow({{ name: "claude-security:scan", args: {strictjson.text(args)} }})'
+        f'Workflow({{ name: "fuxi-security:scan", args: {strictjson.text(args)} }})'
     )
 
 

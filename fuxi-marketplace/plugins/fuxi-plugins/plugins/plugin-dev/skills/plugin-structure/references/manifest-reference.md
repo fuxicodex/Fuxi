@@ -4,9 +4,9 @@ Complete reference for `plugin.json` configuration.
 
 ## File Location
 
-**Required path**: `.claude-plugin/plugin.json`
+**Required path**: `.fuxi-plugin/plugin.json`
 
-The manifest MUST be in the `.claude-plugin/` directory at the plugin root. FuXi will not recognize plugins without this file in the correct location.
+The manifest MUST be in the `.fuxi-plugin/` directory at the plugin root. FuXi will not recognize plugins without this file in the correct location.
 
 ## Complete Field Reference
 
@@ -280,7 +280,7 @@ Hook configuration location or inline definition.
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh",
+            "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/validate.sh",
             "timeout": 30
           }
         ]
@@ -315,7 +315,7 @@ MCP server configuration location or inline definition.
   "mcpServers": {
     "github": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/github-mcp.js"],
+      "args": ["${FUXI_PLUGIN_ROOT}/servers/github-mcp.js"],
       "env": {
         "GITHUB_TOKEN": "${GITHUB_TOKEN}"
       }

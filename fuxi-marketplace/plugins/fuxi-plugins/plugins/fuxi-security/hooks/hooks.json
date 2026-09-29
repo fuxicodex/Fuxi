@@ -1,13 +1,13 @@
 {
-  "description": "Shows the Claude Security banner when the /claude-security menu opens and reports usage counts after the plugin's helper scripts run.",
+  "description": "Shows the FuXi Security banner when the /fuxi-security menu opens and reports usage counts after the plugin's helper scripts run.",
   "hooks": {
     "UserPromptExpansion": [
       {
-        "matcher": "^claude-security:claude-security$",
+        "matcher": "^fuxi-security:fuxi-security$",
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" banner"
+            "command": "sh \"${FUXI_PLUGIN_ROOT}/hooks/hooks.sh\" banner"
           }
         ]
       }
@@ -18,8 +18,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
-            "if": "Bash(python3 *claude-security*scripts/*.py *)",
+            "command": "sh \"${FUXI_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
+            "if": "Bash(python3 *fuxi-security*scripts/*.py *)",
             "asyncRewake": true,
             "timeout": 10
           }
@@ -32,8 +32,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
-            "if": "Bash(python3 *claude-security*scripts/*.py *)",
+            "command": "sh \"${FUXI_PLUGIN_ROOT}/hooks/hooks.sh\" metrics",
+            "if": "Bash(python3 *fuxi-security*scripts/*.py *)",
             "asyncRewake": true,
             "timeout": 10
           }

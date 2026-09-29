@@ -1,6 +1,6 @@
 ---
 name: project-artifact
-description: Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the workstream sequence, next steps, plus background, plan, risks & open questions, and decisions/FAQ when they earn a tab) — published with the built-in Artifact tool to a default-private claude.ai page the user can share with teammates. Use when a piece of work spans several workstreams and you want a shareable overview kept current. Each artifact is backed by a small per-project config in the plugin data dir, so refreshing it re-gathers live state, redeploys the same URL, and reports only the delta. For software projects whose workstreams are PRs, also read swe.md (the X.Y PR-numbering convention; pulling PR state with gh/git; a per-PR detail block). Needs the built-in Artifact tool (claude.ai login). Not for single-PR changes or public docs.
+description: Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the workstream sequence, next steps, plus background, plan, risks & open questions, and decisions/FAQ when they earn a tab) — published with the built-in Artifact tool to a default-private fuxicode.com page the user can share with teammates. Use when a piece of work spans several workstreams and you want a shareable overview kept current. Each artifact is backed by a small per-project config in the plugin data dir, so refreshing it re-gathers live state, redeploys the same URL, and reports only the delta. For software projects whose workstreams are PRs, also read swe.md (the X.Y PR-numbering convention; pulling PR state with gh/git; a per-PR detail block). Needs the built-in Artifact tool (fuxicode.com login). Not for single-PR changes or public docs.
 user-invocable: true
 ---
 
@@ -11,7 +11,7 @@ project too big for one update — a software migration, a research effort, a la
 initiative; anything with a set of parallel/dependent workstreams tracked over time. It
 generates the HTML (one file, self-contained — the Artifact CSP blocks all external hosts,
 so everything is inlined; the only `<script>` is the tab switcher) and publishes it with
-the built-in `Artifact` tool to `https://claude.ai/code/artifact/<uuid>`. The page is
+the built-in `Artifact` tool to `https://fuxicode.com/code/artifact/<uuid>`. The page is
 default-private; the viewer gives the owner a version picker and lets them share it with
 teammates. (The general "render any HTML/Markdown to a web page" capability is the built-in
 `Artifact` tool; this is the project-tracker structure on top — defining what an artifact
@@ -39,7 +39,7 @@ project-artifact structure stays domain-neutral.
    Pull whatever the domain gives you cheaply — always live, never from memory or earlier
    turns — for software that's `gh pr list` / `git log` / `gh pr view` (see `swe.md`); for
    other domains it's the project doc, a tracker, a spreadsheet, your own notes. If the
-   source is itself an existing `claude.ai/code/artifact/...` page to reshape, fetch it —
+   source is itself an existing `fuxicode.com/code/artifact/...` page to reshape, fetch it —
    see **"Reading an existing artifact page"** below. Don't ask the user to paste content or hand you a local file
    as a substitute for fetching it yourself.
 
@@ -57,11 +57,11 @@ project-artifact structure stays domain-neutral.
    (JS-toggled panes as the default; pure-CSS radio tabs as a no-JS alternative), the
    status-pill classes, and a stub `<section>` per catalog tab with fill-in comments. Fill the stubs, delete unused
    tabs, keep it one file. **Set a concise `<title>`** — the Artifact tool uses it as the
-   page's name in the browser tab and the claude.ai gallery, and falls back to the file
+   page's name in the browser tab and the fuxicode.com gallery, and falls back to the file
    basename without one; keep it stable across redeploys. **Write the file to the config's
    `html` path** — default `${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/page.html`, next to the
    config (not `/tmp`; not inside the user's repo unless they ask — if they do, use
-   `<repo>/.claude/project-artifact/<slug>.html` and record it as the config's `html` path):
+   `<repo>/.fuxi/project-artifact/<slug>.html` and record it as the config's `html` path):
    a stable path means the Artifact tool redeploys to the same URL within a session, and
    the previous render stays around for the next refresh's delta. **Embed the state
    block** (see "Refreshing an artifact") so the next run can compute what changed.
@@ -80,11 +80,11 @@ project-artifact structure stays domain-neutral.
    redeploy — viewers find their tab by it), `label` = a short version tag (e.g.
    "phase 1 cut" or the date — shows in the version picker), and — on a refresh — `url` =
    the config's recorded artifact URL so the redeploy lands on the same address. The tool
-   returns the `https://claude.ai/code/artifact/<uuid>` URL; the slug is server-minted,
+   returns the `https://fuxicode.com/code/artifact/<uuid>` URL; the slug is server-minted,
    not chosen.
 
 6. **Share it.** First publish is **private to the user** — teammates can't open it (they
-   get a 404) until the user shares it. Tell the user to open the artifact on claude.ai
+   get a 404) until the user shares it. Tell the user to open the artifact on fuxicode.com
    and share it with their teammates from the viewer; redeploys preserve the sharing
    setting.
 
@@ -101,7 +101,7 @@ project-artifact structure stays domain-neutral.
    session published a newer version), WebFetch the URL to see the current content,
    reconcile, then publish again.
 
-Headless note: the Artifact tool is not available in non-interactive (`claude -p`)
+Headless note: the Artifact tool is not available in non-interactive (`fuxi -p`)
 sessions, and writing into the plugin data dir may require a permission grant the run
 cannot answer. In that case build the page, save it where the caller asked, and report
 that publishing needs an interactive session — don't improvise another publishing path.
@@ -177,7 +177,7 @@ changed.
 
 ## Reading an existing artifact page
 
-**`claude.ai/code/artifact/...`** — use WebFetch with the URL; it returns the page HTML.
+**`fuxicode.com/code/artifact/...`** — use WebFetch with the URL; it returns the page HTML.
 This works for artifacts the user owns or that have been shared with them — anything else
 404s (unauthorized and nonexistent are indistinguishable by design). If it 404s, ask the
 owner to share it, or work from the project's underlying source (repo/PRs/design doc)

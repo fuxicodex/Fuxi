@@ -6,7 +6,7 @@ A bare-bones plugin with a single command.
 
 ```
 hello-world/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 └── commands/
     └── hello.md
@@ -14,7 +14,7 @@ hello-world/
 
 ## File Contents
 
-### .claude-plugin/plugin.json
+### .fuxi-plugin/plugin.json
 
 ```json
 {
@@ -50,7 +50,7 @@ Include the current timestamp in the greeting to show the command executed succe
 After installing the plugin:
 
 ```
-$ claude
+$ fuxi
 > /hello
 Hello! This is a simple command from the hello-world plugin.
 

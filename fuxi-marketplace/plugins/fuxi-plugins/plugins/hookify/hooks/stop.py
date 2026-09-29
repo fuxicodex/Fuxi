@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Stop hook executor for hookify plugin.
 
-This script is called by Claude Code when agent wants to stop.
-It reads .claude/hookify.*.local.md files and evaluates stop rules.
+This script is called by FuXi when agent wants to stop.
+It reads .fuxi/hookify.*.local.md files and evaluates stop rules.
 """
 
 import os
@@ -10,7 +10,7 @@ import sys
 import json
 
 # Add plugin root to Python path for imports
-PLUGIN_ROOT = os.environ.get('CLAUDE_PLUGIN_ROOT')
+PLUGIN_ROOT = os.environ.get('FUXI_PLUGIN_ROOT')
 if PLUGIN_ROOT and PLUGIN_ROOT not in sys.path:
     sys.path.insert(0, PLUGIN_ROOT)
 

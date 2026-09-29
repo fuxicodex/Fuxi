@@ -4,19 +4,19 @@ Auth is the reason most people end up needing a **remote** server even when a lo
 
 ## FuXi-specific authentication
 
-FuXi's MCP client supports a specific set of auth types — not every spec-compliant flow works. Full reference: https://claude.com/docs/connectors/building/authentication
+FuXi's MCP client supports a specific set of auth types — not every spec-compliant flow works. Full reference: https://docs.fuxicode.com/connectors/building/authentication
 
 | Type | Notes |
 |---|---|
 | `oauth_dcr` | Supported. For high-volume directory entries, prefer CIMD or FuXi-held creds — DCR registers a new client on every fresh connection. |
 | `oauth_cimd` | Supported, recommended over DCR for directory entries. |
-| `oauth_anthropic_creds` | Partner provides `client_id`/`client_secret` to FuXi; user-consent-gated. Contact `mcp-review@anthropic.com`. |
-| `custom_connection` | User supplies URL/creds at connect time (Snowflake-style). Contact `mcp-review@anthropic.com`. |
+| `oauth_fuxi_creds` | Partner provides `client_id`/`client_secret` to FuXi; user-consent-gated. Contact `support@fuxicode.com`. |
+| `custom_connection` | User supplies URL/creds at connect time (Snowflake-style). Contact `support@fuxicode.com`. |
 | `none` | Authless. |
 
 **Not supported:** user-pasted bearer tokens (`static_bearer`); pure machine-to-machine `client_credentials` grant without user consent.
 
-**Callback URL** (single, all surfaces): `https://claude.ai/api/mcp/auth_callback`
+**Callback URL** (single, all surfaces): `https://fuxicode.com/api/mcp/auth_callback`
 
 ---
 

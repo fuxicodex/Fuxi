@@ -1,10 +1,10 @@
 #!/usr/bin/env bun
 /**
- * Telegram channel for Claude Code.
+ * Telegram channel for FuXi.
  *
  * Self-contained MCP server with full access control: pairing, allowlists,
  * group support with mention-triggering. State lives in
- * ~/.claude/channels/telegram/access.json — managed by the /telegram:access skill.
+ * ~/.fuxi/channels/telegram/access.json — managed by the /telegram:access skill.
  *
  * Telegram's Bot API has no history or search. Reply-only tools.
  */
@@ -25,12 +25,12 @@ import { execFileSync } from 'child_process'
 import { join, extname, sep } from 'path'
 
 const STATE_DIR = process.env.TELEGRAM_STATE_DIR
-  ?? join(process.env.CLAUDE_CONFIG_DIR ?? join(homedir(), '.claude'), 'channels', 'telegram')
+  ?? join(process.env.CLAUDE_CONFIG_DIR ?? join(homedir(), '.fuxi'), 'channels', 'telegram')
 const ACCESS_FILE = join(STATE_DIR, 'access.json')
 const APPROVED_DIR = join(STATE_DIR, 'approved')
 const ENV_FILE = join(STATE_DIR, '.env')
 
-// Load ~/.claude/channels/telegram/.env into process.env. Real env wins.
+// Load ~/.fuxi/channels/telegram/.env into process.env. Real env wins.
 // Plugin-spawned servers don't get an env block — this is where the token lives.
 try {
   // Token is a credential — lock to owner. No-op on Windows (would need ACLs).
@@ -86,7 +86,7 @@ process.on('uncaughtException', err => {
   process.stderr.write(`telegram channel: uncaught exception: ${err}\n`)
 })
 
-// Permission-reply spec from anthropics/claude-cli-internal
+// Permission-reply spec from fuxicode/fuxi-cli-internal
 // src/services/mcp/channelPermissions.ts — inlined (no CC repo dep).
 // 5 lowercase letters a-z minus 'l'. Case-insensitive for phone autocorrect.
 // Strict: no bare yes/no (conversational), no prefix/suffix chatter.
@@ -138,9 +138,9 @@ const MAX_CHUNK_LIMIT = 4096
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024
 
 // reply's files param takes any path. .env is ~60 bytes and ships as a
-// document. Claude can already Read+paste file contents, so this isn't a new
+// document. FuXi can already Read+paste file contents, so this isn't a new
 // exfil channel for arbitrary paths — but the server's own state is the one
-// thing Claude has no reason to ever send.
+// thing FuXi has no reason to ever send.
 function assertSendable(f: string): void {
   let real, stateReal: string
   try {
@@ -347,7 +347,7 @@ function checkApprovals(): void {
 
   for (const senderId of files) {
     const file = join(APPROVED_DIR, senderId)
-    void bot.api.sendMessage(senderId, "Paired! Say hi to Claude.").then(
+    void bot.api.sendMessage(senderId, "Paired! Say hi to FuXi.").then(
       () => rmSync(file, { force: true }),
       err => {
         process.stderr.write(`telegram channel: failed to send approval confirm: ${err}\n`)
@@ -394,13 +394,13 @@ const mcp = new Server(
     capabilities: {
       tools: {},
       experimental: {
-        'claude/channel': {},
-        // Permission-relay opt-in (anthropics/claude-cli-internal#23061).
+        'fuxi/channel': {},
+        // Permission-relay opt-in (fuxicode/fuxi-cli-internal#23061).
         // Declaring this asserts we authenticate the replier — which we do:
         // gate()/access.allowFrom already drops non-allowlisted senders before
         // handleInbound runs. A server that can't authenticate the replier
         // should NOT declare this.
-        'claude/channel/permission': {},
+        'fuxi/channel/permission': {},
       },
     },
     instructions: [
@@ -426,7 +426,7 @@ const pendingPermissions = new Map<string, { tool_name: string; description: str
 // already passed explicit pairing; group members haven't.
 mcp.setNotificationHandler(
   z.object({
-    method: z.literal('notifications/claude/channel/permission_request'),
+    method: z.literal('notifications/fuxi/channel/permission_request'),
     params: z.object({
       request_id: z.string(),
       tool_name: z.string(),
@@ -651,7 +651,7 @@ mcp.setRequestHandler(CallToolRequestSchema, async req => {
 
 await mcp.connect(new StdioServerTransport())
 
-// When Claude Code closes the MCP connection, stdin gets EOF. Without this
+// When FuXi closes the MCP connection, stdin gets EOF. Without this
 // the bot keeps polling forever as a zombie, holding the token and blocking
 // the next session with 409 Conflict.
 let shuttingDown = false
@@ -691,10 +691,10 @@ setInterval(() => {
 bot.command('start', async ctx => {
   if (!dmCommandGate(ctx)) return
   await ctx.reply(
-    `This bot bridges Telegram to a Claude Code session.\n\n` +
+    `This bot bridges Telegram to a FuXi session.\n\n` +
     `To pair:\n` +
     `1. DM me anything — you'll get a 6-char code\n` +
-    `2. In Claude Code: /telegram:access pair <code>\n\n` +
+    `2. In FuXi: /telegram:access pair <code>\n\n` +
     `After that, DMs here reach that session.`
   )
 })
@@ -702,7 +702,7 @@ bot.command('start', async ctx => {
 bot.command('help', async ctx => {
   if (!dmCommandGate(ctx)) return
   await ctx.reply(
-    `Messages you send here route to a paired Claude Code session. ` +
+    `Messages you send here route to a paired FuXi session. ` +
     `Text and photos are forwarded; replies and reactions come back.\n\n` +
     `/start — pairing instructions\n` +
     `/status — check your pairing state`
@@ -723,7 +723,7 @@ bot.command('status', async ctx => {
   for (const [code, p] of Object.entries(access.pending)) {
     if (p.senderId === senderId) {
       await ctx.reply(
-        `Pending pairing — run in Claude Code:\n\n/telegram:access pair ${code}`
+        `Pending pairing — run in FuXi:\n\n/telegram:access pair ${code}`
       )
       return
     }
@@ -777,7 +777,7 @@ bot.on('callback_query:data', async ctx => {
   }
 
   void mcp.notification({
-    method: 'notifications/claude/channel/permission',
+    method: 'notifications/fuxi/channel/permission',
     params: { request_id, behavior },
   })
   pendingPermissions.delete(request_id)
@@ -917,7 +917,7 @@ async function handleInbound(
   if (result.action === 'pair') {
     const lead = result.isResend ? 'Still pending' : 'Pairing required'
     await ctx.reply(
-      `${lead} — run in Claude Code:\n\n/telegram:access pair ${result.code}`,
+      `${lead} — run in FuXi:\n\n/telegram:access pair ${result.code}`,
     )
     return
   }
@@ -934,7 +934,7 @@ async function handleInbound(
   const permMatch = PERMISSION_REPLY_RE.exec(text)
   if (permMatch) {
     void mcp.notification({
-      method: 'notifications/claude/channel/permission',
+      method: 'notifications/fuxi/channel/permission',
       params: {
         request_id: permMatch[2]!.toLowerCase(),
         behavior: permMatch[1]!.toLowerCase().startsWith('y') ? 'allow' : 'deny',
@@ -968,7 +968,7 @@ async function handleInbound(
   // image_path goes in meta only — an in-content "[image attached — read: PATH]"
   // annotation is forgeable by any allowlisted sender typing that string.
   mcp.notification({
-    method: 'notifications/claude/channel',
+    method: 'notifications/fuxi/channel',
     params: {
       content: text,
       meta: {
@@ -988,7 +988,7 @@ async function handleInbound(
       },
     },
   }).catch(err => {
-    process.stderr.write(`telegram channel: failed to deliver inbound to Claude: ${err}\n`)
+    process.stderr.write(`telegram channel: failed to deliver inbound to FuXi: ${err}\n`)
   })
 }
 
@@ -1036,7 +1036,7 @@ void (async () => {
       }
       const delay = Math.min(1000 * attempt, 15000)
       const detail = is409
-        ? `409 Conflict${attempt === 1 ? ' — another instance is polling (zombie session, or a second Claude Code running?)' : ''}`
+        ? `409 Conflict${attempt === 1 ? ' — another instance is polling (zombie session, or a second FuXi running?)' : ''}`
         : `polling error: ${err}`
       process.stderr.write(`telegram channel: ${detail}, retrying in ${delay / 1000}s\n`)
       await new Promise(r => setTimeout(r, delay))

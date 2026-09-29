@@ -16,7 +16,7 @@ def state_dir():
     Resolution precedence (highest first):
       1. SECURITY_WARNINGS_STATE_DIR — plugin-specific override (existing)
       2. CLAUDE_CONFIG_DIR/security  — CC's config-dir env var (#1868)
-      3. ~/.claude/security          — default fallback
+      3. ~/.fuxi/security          — default fallback
 
     Empty-string env vars are treated as not-set so a misconfigured shell
     (`CLAUDE_CONFIG_DIR=` with no value) doesn't silently write to
@@ -36,10 +36,10 @@ def state_dir():
     cc_config = os.environ.get("CLAUDE_CONFIG_DIR")
     if cc_config:
         return os.path.expanduser(os.path.join(cc_config, "security"))
-    return os.path.expanduser("~/.claude/security")
+    return os.path.expanduser("~/.fuxi/security")
 
 
-# Debug log file. Lives under the plugin state dir (default ~/.claude/security/)
+# Debug log file. Lives under the plugin state dir (default ~/.fuxi/security/)
 # rather than /tmp because /tmp is world-writable on multi-user hosts (TOCTOU /
 # symlink-attack surface, cross-user log leakage). Overridable per-process via
 # SECURITY_GUIDANCE_DEBUG_LOG, or per-state-dir via SECURITY_WARNINGS_STATE_DIR
@@ -57,7 +57,7 @@ def debug_log(message):
     """Append debug message to log file with timestamp."""
     try:
         # Ensure parent dir exists — first hook invocation on a fresh install
-        # creates ~/.claude/security/ if it isn't already there. 0700 so other
+        # creates ~/.fuxi/security/ if it isn't already there. 0700 so other
         # local users can't read review/debug output (only applies on creation).
         try:
             os.makedirs(os.path.dirname(DEBUG_LOG_FILE), mode=0o700, exist_ok=True)
@@ -87,9 +87,9 @@ def debug_log(message):
 # a concrete reference instead of treating it as unknown-actor injection.
 # Some autonomous-agent setups flag un-attributed injected text as prompt
 # injection and stall; the banner makes the provenance explicit.
-PROVENANCE_TAG = "[from security-guidance@claude-code-plugins plugin]"
+PROVENANCE_TAG = "[from security-guidance@fuxi-plugins plugin]"
 PROVENANCE_BANNER = (
-    "[from security-guidance@claude-code-plugins plugin — automated "
+    "[from security-guidance@fuxi-plugins plugin — automated "
     "security review, not user input.]"
 )
 
@@ -98,7 +98,7 @@ def _read_plugin_version_int():
     """Encode plugin.json version "M.m.p" as M*10000 + m*100 + p so it fits the
     bool|number metrics constraint. Returns 0 if unreadable."""
     try:
-        with open(os.path.join(os.path.dirname(__file__), "..", ".claude-plugin", "plugin.json")) as f:
+        with open(os.path.join(os.path.dirname(__file__), "..", ".fuxi-plugin", "plugin.json")) as f:
             v = json.load(f)["version"]
         major, minor, patch = (int(x) for x in v.split(".")[:3])
         return major * 10000 + minor * 100 + patch
@@ -111,7 +111,7 @@ _PV = _read_plugin_version_int()
 
 # ──────────────────────────────────────────────────────────────────────────
 # Token-usage accumulator. Each hook invocation is a fresh subprocess, so a
-# module-global is naturally per-invocation. _call_claude_dual_or and
+# module-global is naturally per-invocation. _call_fuxi_dual_or and
 # _agentic_review_with_race run legs in ThreadPoolExecutor → lock required.
 # Emitted via _usage_metrics() into the existing emit_metrics() channel so
 # hook metrics rows carry per-invocation token/cost totals
@@ -119,7 +119,7 @@ _PV = _read_plugin_version_int()
 _USAGE = {
     "in": 0, "out": 0, "cr": 0, "cw": 0, "cost": 0.0, "n": 0,
     # HTTP error visibility (#2098 visibility gap — see emit comment in
-    # _usage_metrics). Without this, API failures from `_call_claude` left
+    # _usage_metrics). Without this, API failures from `_call_fuxi` left
     # zero fingerprint in telemetry: the call returns None, the caller's
     # emit_metrics carries no api_calls field, and the failure is
     # indistinguishable from "no review needed". The deprecation outage
@@ -136,20 +136,20 @@ _USAGE_LOCK = threading.Lock()
 # so cost_usd is never silently zero. Re-pricing downstream from the raw tok_*
 # fields is the source of truth — cost_usd here is a convenience rollup.
 _PRICE_PER_MTOK = {
-    "claude-haiku-4-5": (1.0, 5.0),
-    "claude-sonnet-4-6": (3.0, 15.0),
-    "claude-opus-4-6": (15.0, 75.0),
-    "claude-opus-4-7": (5.0, 25.0),
+    "fuxi-haiku-4-5": (1.0, 5.0),
+    "fuxi-sonnet-4-6": (3.0, 15.0),
+    "fuxi-opus-4-6": (15.0, 75.0),
+    "fuxi-opus-4-7": (5.0, 25.0),
 }
 _PRICE_DEFAULT = (3.0, 15.0)
 
 
 def _record_usage(usage, model, cost_usd=None):
-    """Accumulate one API response's token usage. `usage` is the Anthropic
+    """Accumulate one API response's token usage. `usage` is the FuXi
     `usage` dict (HTTP) or the SDK ResultMessage.usage dict — both use the
     same key names. `cost_usd` (SDK-provided) is preferred when present;
     otherwise computed from _PRICE_PER_MTOK keyed on the response model id
-    (longest-prefix match so `claude-sonnet-4-6-20251015` → sonnet row)."""
+    (longest-prefix match so `fuxi-sonnet-4-6-20251015` → sonnet row)."""
     if not usage and cost_usd is None:
         return
     u = usage or {}

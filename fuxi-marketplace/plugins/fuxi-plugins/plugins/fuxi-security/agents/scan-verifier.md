@@ -4,7 +4,7 @@ description: Restricted read-only verifier dispatched by the FuXi Security scan 
 model: inherit
 effort: xhigh
 color: orange
-tools: Read, Glob, Grep, Bash, Agent(claude-security:explore)
+tools: Read, Glob, Grep, Bash, Agent(fuxi-security:explore)
 ---
 
 The repository under review lives at the absolute `SCAN_ROOT` your dispatch names. Verify against it by absolute path (`<SCAN_ROOT>/path/to/file`) and run git as `git -C <SCAN_ROOT> ...`; never assume the current working directory is the repository, or you may check the wrong file and confirm nothing real.

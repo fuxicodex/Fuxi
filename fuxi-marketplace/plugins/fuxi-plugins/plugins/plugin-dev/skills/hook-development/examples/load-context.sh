@@ -5,7 +5,7 @@
 set -euo pipefail
 
 # Navigate to project directory
-cd "$CLAUDE_PROJECT_DIR" || exit 1
+cd "$FUXI_PROJECT_DIR" || exit 1
 
 echo "Loading project context..."
 

@@ -10,10 +10,10 @@
 #     where <base> = $FUXI_DOWNLOAD_BASE_URL or https://downloads.fuxicode.com
 #   - the zip arc root is "plugins/fuxi-plugins/" (gcsArcPrefix) so the extractor
 #     strips it and the materialized dir lands at
-#     marketplaces/fuxi-plugins/ holding .claude-plugin/marketplace.json.
+#     marketplaces/fuxi-plugins/ holding .fuxi-plugin/marketplace.json.
 #
-# So this script produces dist/PLUGINS/fuxi-plugins/{latest,<sha>.zip} — the exact
-# path tree to upload to the server (upload dist/plugins / as /plugins /).
+# So this script produces dist/plugins/fuxi-plugins/{latest,<sha>.zip} — the exact
+# path tree to upload to the server (upload dist/plugins/ as /plugins/).
 #
 # Usage:
 #   ./build-fuxi-marketplace.sh          # builds into ./dist (server path tree)
@@ -25,8 +25,8 @@ OUT_DIR="${OUTPUT_DIR:-$SCRIPT_DIR/dist}"
 MKT_DIR="$OUT_DIR/plugins/fuxi-plugins"               # server path tree root (the <base>/plugins/fuxi-plugins/ subtree)
 ARC_PREFIX="plugins/fuxi-plugins"                     # gcsArcPrefix (zip arc root)
 
-if [ ! -f "$SRC_DIR/.claude-plugin/marketplace.json" ]; then
-  echo "ERROR: $SRC_DIR/.claude-plugin/marketplace.json not found" >&2
+if [ ! -f "$SRC_DIR/.fuxi-plugin/marketplace.json" ]; then
+  echo "ERROR: $SRC_DIR/.fuxi-plugin/marketplace.json not found" >&2
   exit 1
 fi
 
@@ -61,7 +61,7 @@ printf '%s' "$SHA" > "$STAGE/latest"
 #    under set -o pipefail closes the pipe early and SIGPIPEs unzip, flipping the
 #    `!` into a false failure — the same trap the release scripts warn about).
 list_out="$(unzip -l "$STAGE/$SHA.zip")"
-if ! printf '%s\n' "$list_out" | grep -q "$ARC_PREFIX/.claude-plugin/marketplace.json"; then
+if ! printf '%s\n' "$list_out" | grep -q "$ARC_PREFIX/.fuxi-plugin/marketplace.json"; then
   echo "ERROR: zip is missing the arc-prefixed marketplace manifest" >&2
   exit 1
 fi

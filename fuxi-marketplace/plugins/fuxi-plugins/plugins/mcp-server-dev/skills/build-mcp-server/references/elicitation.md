@@ -13,8 +13,8 @@ Host support is very recent:
 | Host | Status |
 |---|---|
 | FuXi | ✅ since v2.1.76 (both `form` and `url` modes) |
-| Claude Desktop | Unconfirmed — likely not yet or very recent |
-| claude.ai | Unknown |
+| FuXi Desktop | Unconfirmed — likely not yet or very recent |
+| fuxicode.com | Unknown |
 
 **The SDK throws `CapabilityNotSupported` if the client doesn't advertise elicitation.** There is no graceful degradation built in. You MUST check and have a fallback.
 
@@ -42,7 +42,7 @@ server.registerTool("delete_all", {
     }
     return { content: [{ type: "text", text: "Cancelled." }] };
   }
-  // Fallback: return text asking Claude to relay the question
+  // Fallback: return text asking FuXi to relay the question
   return { content: [{ type: "text", text: "Confirmation required. Please ask the user: 'Delete all items? This cannot be undone.' Then call this tool again with their answer." }] };
 });
 ```

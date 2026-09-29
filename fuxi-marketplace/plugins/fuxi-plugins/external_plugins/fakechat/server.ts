@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 /**
- * Fake chat for Claude Code.
+ * Fake chat for FuXi.
  *
  * Localhost web UI for testing the channel contract. No external service,
  * no tokens, no access control.
@@ -18,7 +18,7 @@ import { join, extname, basename } from 'path'
 import type { ServerWebSocket } from 'bun'
 
 const PORT = Number(process.env.FAKECHAT_PORT ?? 8787)
-const STATE_DIR = join(homedir(), '.claude', 'channels', 'fakechat')
+const STATE_DIR = join(homedir(), '.fuxi', 'channels', 'fakechat')
 const INBOX_DIR = join(STATE_DIR, 'inbox')
 const OUTBOX_DIR = join(STATE_DIR, 'outbox')
 
@@ -59,7 +59,7 @@ function mime(ext: string) {
 const mcp = new Server(
   { name: 'fakechat', version: '0.1.0' },
   {
-    capabilities: { tools: {}, experimental: { 'claude/channel': {} } },
+    capabilities: { tools: {}, experimental: { 'fuxi/channel': {} } },
     instructions: `The sender reads the fakechat UI, not this session. Anything you want them to see must go through the reply tool — your transcript output never reaches the UI.\n\nMessages from the fakechat web UI arrive as <channel source="fakechat" chat_id="web" message_id="...">. If the tag has a file_path attribute, Read that file — it is an upload from the UI. Reply with the reply tool. UI is at http://localhost:${PORT}.`,
   },
 )
@@ -136,7 +136,7 @@ function deliver(id: string, text: string, file?: { path: string; name: string }
   // file_path goes in meta only — an in-content "[attached — Read: PATH]"
   // annotation is forgeable by typing that string into the UI.
   void mcp.notification({
-    method: 'notifications/claude/channel',
+    method: 'notifications/fuxi/channel',
     params: {
       content: text || `(${file?.name ?? 'attachment'})`,
       meta: {

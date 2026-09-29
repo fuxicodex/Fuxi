@@ -19,16 +19,16 @@ Testing commands ensures they work correctly, handle edge cases, and provide goo
 
 ```bash
 # Validate YAML frontmatter
-head -n 20 .claude/commands/my-command.md | grep -A 10 "^---"
+head -n 20 .fuxi/commands/my-command.md | grep -A 10 "^---"
 
 # Check for closing frontmatter marker
-head -n 20 .claude/commands/my-command.md | grep -c "^---" # Should be 2
+head -n 20 .fuxi/commands/my-command.md | grep -c "^---" # Should be 2
 
 # Verify file has .md extension
-ls .claude/commands/*.md
+ls .fuxi/commands/*.md
 
 # Check file is in correct location
-test -f .claude/commands/my-command.md && echo "Found" || echo "Missing"
+test -f .fuxi/commands/my-command.md && echo "Found" || echo "Missing"
 ```
 
 **Automated validation script:**
@@ -134,7 +134,7 @@ echo "✓ Frontmatter fields valid"
 
 ```bash
 # 1. Start FuXi
-claude --debug
+fuxi --debug
 
 # 2. Check command appears in help
 > /help
@@ -149,7 +149,7 @@ claude --debug
 # Verify expected behavior
 
 # 5. Check debug logs
-tail -f ~/.claude/debug-logs/latest
+tail -f ~/.fuxi/debug-logs/latest
 # Look for errors or warnings
 ```
 
@@ -255,7 +255,7 @@ rm /tmp/test-file*.txt /tmp/large-file.bin
 
 ```bash
 # Create test command with bash execution
-cat > .claude/commands/test-bash.md << 'EOF'
+cat > .fuxi/commands/test-bash.md << 'EOF'
 ---
 description: Test bash execution
 allowed-tools: Bash(echo:*), Bash(date:*)
@@ -275,7 +275,7 @@ EOF
 # 3. No errors in debug logs
 
 # Test with disallowed command (should fail or be blocked)
-cat > .claude/commands/test-forbidden.md << 'EOF'
+cat > .fuxi/commands/test-forbidden.md << 'EOF'
 ---
 description: Test forbidden command
 allowed-tools: Bash(echo:*)
@@ -304,7 +304,7 @@ EOF
 # Setup: Command that triggers a hook
 # Test: Invoke command, verify hook executes
 
-# Command: .claude/commands/risky-operation.md
+# Command: .fuxi/commands/risky-operation.md
 # Hook: PreToolUse that validates the operation
 
 > /risky-operation
@@ -348,7 +348,7 @@ Create a test suite script:
 #!/bin/bash
 # test-commands.sh - Command test suite
 
-TEST_DIR=".claude/commands"
+TEST_DIR=".fuxi/commands"
 FAILED_TESTS=0
 
 echo "Command Test Suite"
@@ -395,7 +395,7 @@ Validate commands before committing:
 
 echo "Validating commands..."
 
-COMMANDS_CHANGED=$(git diff --cached --name-only | grep "\.claude/commands/.*\.md")
+COMMANDS_CHANGED=$(git diff --cached --name-only | grep "\.fuxi/commands/.*\.md")
 
 if [ -z "$COMMANDS_CHANGED" ]; then
   echo "No commands changed"
@@ -432,20 +432,20 @@ jobs:
 
       - name: Validate command structure
         run: |
-          for cmd in .claude/commands/*.md; do
+          for cmd in .fuxi/commands/*.md; do
             echo "Testing: $cmd"
             ./scripts/validate-command.sh "$cmd"
           done
 
       - name: Validate frontmatter
         run: |
-          for cmd in .claude/commands/*.md; do
+          for cmd in .fuxi/commands/*.md; do
             ./scripts/validate-frontmatter.sh "$cmd"
           done
 
       - name: Check for TODOs
         run: |
-          if grep -r "TODO" .claude/commands/; then
+          if grep -r "TODO" .fuxi/commands/; then
             echo "ERROR: TODOs found in commands"
             exit 1
           fi
@@ -531,10 +531,10 @@ echo "  - Acceptable threshold: < 3 seconds for fast commands"
 ```bash
 # Monitor FuXi during command execution
 # In terminal 1:
-claude --debug
+fuxi --debug
 
 # In terminal 2:
-watch -n 1 'ps aux | grep claude'
+watch -n 1 'ps aux | grep fuxi'
 
 # Execute command and observe:
 # - Memory usage
@@ -641,37 +641,37 @@ Before releasing a command:
 
 ```bash
 # Check file location
-ls -la .claude/commands/my-command.md
+ls -la .fuxi/commands/my-command.md
 
 # Check permissions
-chmod 644 .claude/commands/my-command.md
+chmod 644 .fuxi/commands/my-command.md
 
 # Check syntax
-head -n 20 .claude/commands/my-command.md
+head -n 20 .fuxi/commands/my-command.md
 
 # Restart FuXi
-claude --debug
+fuxi --debug
 ```
 
 **Issue: Arguments not substituting**
 
 ```bash
 # Verify syntax
-grep '\$1' .claude/commands/my-command.md
-grep '\$ARGUMENTS' .claude/commands/my-command.md
+grep '\$1' .fuxi/commands/my-command.md
+grep '\$ARGUMENTS' .fuxi/commands/my-command.md
 
 # Test with simple command first
-echo "Test: \$1 and \$2" > .claude/commands/test-args.md
+echo "Test: \$1 and \$2" > .fuxi/commands/test-args.md
 ```
 
 **Issue: Bash commands not executing**
 
 ```bash
 # Check allowed-tools
-grep "allowed-tools" .claude/commands/my-command.md
+grep "allowed-tools" .fuxi/commands/my-command.md
 
 # Verify command syntax
-grep '!\`' .claude/commands/my-command.md
+grep '!\`' .fuxi/commands/my-command.md
 
 # Test command manually
 date
@@ -682,7 +682,7 @@ echo "test"
 
 ```bash
 # Check @ syntax
-grep '@' .claude/commands/my-command.md
+grep '@' .fuxi/commands/my-command.md
 
 # Verify file exists
 ls -la /path/to/referenced/file

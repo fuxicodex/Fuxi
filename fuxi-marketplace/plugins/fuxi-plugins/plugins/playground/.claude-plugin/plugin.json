@@ -1,8 +1,0 @@
-{
-  "name": "playground",
-  "description": "Creates interactive HTML playgrounds 鈥?self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
-  "author": {
-    "name": "FuXi",
-    "email": "fuxicodex@gmail.com"
-  }
-}

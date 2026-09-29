@@ -1,6 +1,6 @@
 ---
 name: plugin-structure
-description: This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", or needs guidance on plugin directory layout, manifest configuration, component organization, file naming conventions, or FuXi plugin architecture best practices.
+description: This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${FUXI_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", or needs guidance on plugin directory layout, manifest configuration, component organization, file naming conventions, or FuXi plugin architecture best practices.
 version: 0.1.0
 ---
 
@@ -12,9 +12,9 @@ FuXi plugins follow a standardized directory structure with automatic component 
 
 **Key concepts:**
 - Conventional directory layout for automatic discovery
-- Manifest-driven configuration in `.claude-plugin/plugin.json`
+- Manifest-driven configuration in `.fuxi-plugin/plugin.json`
 - Component-based organization (commands, agents, skills, hooks)
-- Portable path references using `${CLAUDE_PLUGIN_ROOT}`
+- Portable path references using `${FUXI_PLUGIN_ROOT}`
 - Explicit vs. auto-discovered component loading
 
 ## Directory Structure
@@ -23,7 +23,7 @@ Every FuXi plugin follows this organizational pattern:
 
 ```
 plugin-name/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json          # Required: Plugin manifest
 ├── commands/                 # Slash commands (.md files)
 ├── agents/                   # Subagent definitions (.md files)
@@ -38,14 +38,14 @@ plugin-name/
 
 **Critical rules:**
 
-1. **Manifest location**: The `plugin.json` manifest MUST be in `.claude-plugin/` directory
-2. **Component locations**: All component directories (commands, agents, skills, hooks) MUST be at plugin root level, NOT nested inside `.claude-plugin/`
+1. **Manifest location**: The `plugin.json` manifest MUST be in `.fuxi-plugin/` directory
+2. **Component locations**: All component directories (commands, agents, skills, hooks) MUST be at plugin root level, NOT nested inside `.fuxi-plugin/`
 3. **Optional components**: Only create directories for components the plugin actually uses
 4. **Naming convention**: Use kebab-case for all directory and file names
 
 ## Plugin Manifest (plugin.json)
 
-The manifest defines plugin metadata and configuration. Located at `.claude-plugin/plugin.json`:
+The manifest defines plugin metadata and configuration. Located at `.fuxi-plugin/plugin.json`:
 
 ### Required Fields
 
@@ -219,7 +219,7 @@ hooks/
     "matcher": "Write|Edit",
     "hooks": [{
       "type": "command",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate.sh",
+      "command": "bash ${FUXI_PLUGIN_ROOT}/hooks/scripts/validate.sh",
       "timeout": 30
     }]
   }]
@@ -242,7 +242,7 @@ hooks/
   "mcpServers": {
     "server-name": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/server.js"],
+      "args": ["${FUXI_PLUGIN_ROOT}/servers/server.js"],
       "env": {
         "API_KEY": "${API_KEY}"
       }
@@ -255,13 +255,13 @@ hooks/
 
 ## Portable Path References
 
-### ${CLAUDE_PLUGIN_ROOT}
+### ${FUXI_PLUGIN_ROOT}
 
-Use `${CLAUDE_PLUGIN_ROOT}` environment variable for all intra-plugin path references:
+Use `${FUXI_PLUGIN_ROOT}` environment variable for all intra-plugin path references:
 
 ```json
 {
-  "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/run.sh"
+  "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/run.sh"
 }
 ```
 
@@ -285,19 +285,19 @@ Use `${CLAUDE_PLUGIN_ROOT}` environment variable for all intra-plugin path refer
 
 **In manifest JSON fields** (hooks, MCP servers):
 ```json
-"command": "${CLAUDE_PLUGIN_ROOT}/scripts/tool.sh"
+"command": "${FUXI_PLUGIN_ROOT}/scripts/tool.sh"
 ```
 
 **In component files** (commands, agents, skills):
 ```markdown
-Reference scripts at: ${CLAUDE_PLUGIN_ROOT}/scripts/helper.py
+Reference scripts at: ${FUXI_PLUGIN_ROOT}/scripts/helper.py
 ```
 
 **In executed scripts**:
 ```bash
 #!/bin/bash
-# ${CLAUDE_PLUGIN_ROOT} available as environment variable
-source "${CLAUDE_PLUGIN_ROOT}/lib/common.sh"
+# ${FUXI_PLUGIN_ROOT} available as environment variable
+source "${FUXI_PLUGIN_ROOT}/lib/common.sh"
 ```
 
 ## File Naming Conventions
@@ -340,7 +340,7 @@ source "${CLAUDE_PLUGIN_ROOT}/lib/common.sh"
 
 FuXi automatically discovers and loads components:
 
-1. **Plugin manifest**: Reads `.claude-plugin/plugin.json` when plugin enables
+1. **Plugin manifest**: Reads `.fuxi-plugin/plugin.json` when plugin enables
 2. **Commands**: Scans `commands/` directory for `.md` files
 3. **Agents**: Scans `agents/` directory for `.md` files
 4. **Skills**: Scans `skills/` for subdirectories containing `SKILL.md`
@@ -389,7 +389,7 @@ FuXi automatically discovers and loads components:
 
 ### Portability
 
-1. **Always use ${CLAUDE_PLUGIN_ROOT}**: Never hardcode paths
+1. **Always use ${FUXI_PLUGIN_ROOT}**: Never hardcode paths
 2. **Test on multiple systems**: Verify on macOS, Linux, Windows
 3. **Document dependencies**: List required tools and versions
 4. **Avoid system-specific features**: Use portable bash/Python constructs
@@ -408,7 +408,7 @@ FuXi automatically discovers and loads components:
 Single command with no dependencies:
 ```
 my-plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json    # Just name field
 └── commands/
     └── hello.md       # Single command
@@ -419,7 +419,7 @@ my-plugin/
 Complete plugin with all component types:
 ```
 my-plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 ├── commands/          # User-facing commands
 ├── agents/            # Specialized subagents
@@ -436,7 +436,7 @@ my-plugin/
 Plugin providing only skills:
 ```
 my-plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 └── skills/
     ├── skill-one/
@@ -454,13 +454,13 @@ my-plugin/
 - Confirm plugin is enabled in FuXi settings
 
 **Path resolution errors**:
-- Replace all hardcoded paths with `${CLAUDE_PLUGIN_ROOT}`
+- Replace all hardcoded paths with `${FUXI_PLUGIN_ROOT}`
 - Verify paths are relative and start with `./` in manifest
 - Check that referenced files exist at specified paths
-- Test with `echo $CLAUDE_PLUGIN_ROOT` in hook scripts
+- Test with `echo $FUXI_PLUGIN_ROOT` in hook scripts
 
 **Auto-discovery not working**:
-- Confirm directories are at plugin root (not in `.claude-plugin/`)
+- Confirm directories are at plugin root (not in `.fuxi-plugin/`)
 - Check file naming follows conventions (kebab-case, correct extensions)
 - Verify custom paths in manifest are correct
 - Restart FuXi to reload plugin configuration

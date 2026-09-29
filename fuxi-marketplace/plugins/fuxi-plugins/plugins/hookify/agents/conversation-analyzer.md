@@ -182,4 +182,4 @@ Provide your analysis in the structured format above. The /hookify command will 
 1. Present findings to user
 2. Ask which rules to create
 3. Generate .local.md configuration files
-4. Save rules to .claude directory
+4. Save rules to .fuxi directory

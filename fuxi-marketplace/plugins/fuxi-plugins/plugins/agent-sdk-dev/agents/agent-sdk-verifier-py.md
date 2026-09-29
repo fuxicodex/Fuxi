@@ -12,7 +12,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 1. **SDK Installation and Configuration**:
 
-   - Verify `claude-agent-sdk` is installed (check requirements.txt, pyproject.toml, or pip list)
+   - Verify `fuxi-agent-sdk` is installed (check requirements.txt, pyproject.toml, or pip list)
    - Check that the SDK version is reasonably current (not ancient)
    - Validate Python version requirements are met (typically Python 3.8+)
    - Confirm virtual environment is recommended/documented if applicable
@@ -26,7 +26,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 3. **SDK Usage and Patterns**:
 
-   - Verify correct imports from `claude_agent_sdk` (or appropriate SDK module)
+   - Verify correct imports from `fuxi_agent_sdk` (or appropriate SDK module)
    - Check that agents are properly initialized according to SDK docs
    - Validate that agent configuration follows SDK patterns (system prompts, models, etc.)
    - Ensure SDK methods are called correctly with proper parameters
@@ -43,7 +43,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 5. **Environment and Security**:
 
-   - Check that `.env.example` exists with `ANTHROPIC_API_KEY`
+   - Check that `.env.example` exists with `FUXI_API_KEY`
    - Verify `.env` is in `.gitignore`
    - Ensure API keys are not hardcoded in source files
    - Validate proper error handling around API calls
@@ -88,7 +88,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 2. **Check SDK Documentation Adherence**:
 
-   - Use WebFetch to reference the official Python SDK docs: https://docs.claude.com/en/api/agent-sdk/python
+   - Use WebFetch to reference the official Python SDK docs: https://docs.fuxicode.com/en/api/agent-sdk/python
    - Compare the implementation against official patterns and recommendations
    - Note any deviations from documented best practices
 

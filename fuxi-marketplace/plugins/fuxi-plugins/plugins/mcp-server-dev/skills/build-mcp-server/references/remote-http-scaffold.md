@@ -183,8 +183,8 @@ Once deployed, users add the URL directly — no install step.
 
 | Surface | How |
 |---|---|
-| **FuXi** | `claude mcp add --transport http <name> <url>` (add `--scope user` for global, `--header "Authorization: Bearer ..."` for auth) |
-| **Claude Desktop / Claude.ai** | Settings → Connectors → Add custom connector. **Not** `claude_desktop_config.json` — remote servers configured there are ignored. |
+| **FuXi** | `fuxi mcp add --transport http <name> <url>` (add `--scope user` for global, `--header "Authorization: Bearer ..."` for auth) |
+| **FuXi Desktop / FuXi.ai** | Settings → Connectors → Add custom connector. **Not** `claude_desktop_config.json` — remote servers configured there are ignored. |
 | **Connector directory** | FuXi maintains a submission guide for listing in the public connector directory. |
 
 ---

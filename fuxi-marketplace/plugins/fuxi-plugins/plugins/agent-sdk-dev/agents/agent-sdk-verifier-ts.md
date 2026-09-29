@@ -12,7 +12,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 1. **SDK Installation and Configuration**:
 
-   - Verify `@anthropic-ai/claude-agent-sdk` is installed
+   - Verify `@fuxicode/fuxi-agent-sdk` is installed
    - Check that the SDK version is reasonably current (not ancient)
    - Confirm package.json has `"type": "module"` for ES modules support
    - Validate that Node.js version requirements are met (check package.json engines field if present)
@@ -26,7 +26,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 3. **SDK Usage and Patterns**:
 
-   - Verify correct imports from `@anthropic-ai/claude-agent-sdk`
+   - Verify correct imports from `@fuxicode/fuxi-agent-sdk`
    - Check that agents are properly initialized according to SDK docs
    - Validate that agent configuration follows SDK patterns (system prompts, models, etc.)
    - Ensure SDK methods are called correctly with proper parameters
@@ -49,7 +49,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 6. **Environment and Security**:
 
-   - Check that `.env.example` exists with `ANTHROPIC_API_KEY`
+   - Check that `.env.example` exists with `FUXI_API_KEY`
    - Verify `.env` is in `.gitignore`
    - Ensure API keys are not hardcoded in source files
    - Validate proper error handling around API calls
@@ -94,7 +94,7 @@ Your verification should prioritize SDK functionality and best practices over ge
 
 2. **Check SDK Documentation Adherence**:
 
-   - Use WebFetch to reference the official TypeScript SDK docs: https://docs.claude.com/en/api/agent-sdk/typescript
+   - Use WebFetch to reference the official TypeScript SDK docs: https://docs.fuxicode.com/en/api/agent-sdk/typescript
    - Compare the implementation against official patterns and recommendations
    - Note any deviations from documented best practices
 

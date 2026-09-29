@@ -7,7 +7,7 @@ your tools consume, and egress bandwidth for large `callServerTool` payloads.
 ## You don't get a per-user identity
 
 In authless mode there is no token and stateless transport gives no session
-ID. Traffic from claude.ai is proxied through FuXi's egress — every web
+ID. Traffic from fuxicode.com is proxied through FuXi's egress — every web
 user arrives from the same small set of IPs:
 
 ```
@@ -15,11 +15,11 @@ user arrives from the same small set of IPs:
 2607:6bc0::/48
 ```
 
-(See https://platform.claude.com/docs/en/api/ip-addresses.)
+(See https://platform.docs.fuxicode.com/en/api/ip-addresses.)
 
-Claude Desktop, FuXi, and other hosts connect **directly from the
+FuXi Desktop, FuXi, and other hosts connect **directly from the
 user's machine**, so those *do* have distinct per-user IPs. Per-IP limiting
-therefore works for direct-connect clients; for claude.ai you can only limit
+therefore works for direct-connect clients; for fuxicode.com you can only limit
 the aggregate FuXi pool. If true per-user limits matter, that's the
 trigger to add OAuth.
 
@@ -28,12 +28,12 @@ trigger to add OAuth.
 ```ts
 const ANTHROPIC_CIDRS = ["160.79.104.0/21", "2607:6bc0::/48"];
 const TIERS = {
-  anthropic: { capacity: 600, refillPerSec: 100 }, // shared pool
+  fuxi: { capacity: 600, refillPerSec: 100 }, // shared pool
   other:     { capacity: 30,  refillPerSec: 2   }, // per-IP
 };
 ```
 
-Match `req.ip` against the CIDRs, pick a bucket (`"anthropic"` or
+Match `req.ip` against the CIDRs, pick a bucket (`"fuxi"` or
 `"ip:<addr>"`), 429 + `Retry-After` on exhaust. This is a per-replica
 backstop — cross-replica enforcement belongs at the edge (Cloudflare, Cloud
 Armor), which keeps the containers stateless.
@@ -50,7 +50,7 @@ Cloudflare → origin LB) and **never `true` in production**.
 
 Blocking everything outside `160.79.104.0/21` locks out Desktop, FuXi,
 and every other MCP host. Use the CIDRs to **tier** rate limits, not to gate
-access, unless claude.ai-only is an explicit goal.
+access, unless fuxicode.com-only is an explicit goal.
 
 ## Cache upstream responses
 

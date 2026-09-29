@@ -58,7 +58,7 @@ Load project-specific context at session start:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/load-context.sh"
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/load-context.sh"
         }
       ]
     }
@@ -69,7 +69,7 @@ Load project-specific context at session start:
 **Example script (load-context.sh):**
 ```bash
 #!/bin/bash
-cd "$CLAUDE_PROJECT_DIR" || exit 1
+cd "$FUXI_PROJECT_DIR" || exit 1
 
 # Detect project type
 if [ -f "package.json" ]; then
@@ -95,7 +95,7 @@ Log all notifications for audit or analysis:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/log-notification.sh"
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/log-notification.sh"
         }
       ]
     }
@@ -183,7 +183,7 @@ Run linters or formatters on file edits:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/check-quality.sh"
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/check-quality.sh"
         }
       ]
     }
@@ -248,7 +248,7 @@ Combine multiple patterns for comprehensive protection:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/load-context.sh"
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/load-context.sh"
         }
       ]
     }
@@ -265,7 +265,7 @@ Create hooks that only run when explicitly enabled via flag files:
 ```bash
 #!/bin/bash
 # Hook only active when flag file exists
-FLAG_FILE="$CLAUDE_PROJECT_DIR/.enable-security-scan"
+FLAG_FILE="$FUXI_PROJECT_DIR/.enable-security-scan"
 
 if [ ! -f "$FLAG_FILE" ]; then
   # Quick exit when disabled
@@ -303,7 +303,7 @@ Use JSON configuration to control hook behavior:
 
 ```bash
 #!/bin/bash
-CONFIG_FILE="$CLAUDE_PROJECT_DIR/.claude/my-plugin.local.json"
+CONFIG_FILE="$FUXI_PROJECT_DIR/.fuxi/my-plugin.local.json"
 
 # Read configuration
 if [ -f "$CONFIG_FILE" ]; then
@@ -330,7 +330,7 @@ if [ "$file_size" -gt "$max_file_size" ]; then
 fi
 ```
 
-**Configuration file (.claude/my-plugin.local.json):**
+**Configuration file (.fuxi/my-plugin.local.json):**
 ```json
 {
   "strictMode": true,

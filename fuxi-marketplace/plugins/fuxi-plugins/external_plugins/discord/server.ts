@@ -1,10 +1,10 @@
 #!/usr/bin/env bun
 /**
- * Discord channel for Claude Code.
+ * Discord channel for FuXi.
  *
  * Self-contained MCP server with full access control: pairing, allowlists,
  * guild-channel support with mention-triggering. State lives in
- * ~/.claude/channels/discord/access.json — managed by the /discord:access skill.
+ * ~/.fuxi/channels/discord/access.json — managed by the /discord:access skill.
  *
  * Discord's search API isn't exposed to bots — fetch_messages is the only
  * lookback, and the instructions tell the model this.
@@ -34,12 +34,12 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, statSync, 
 import { homedir } from 'os'
 import { join, sep } from 'path'
 
-const STATE_DIR = process.env.DISCORD_STATE_DIR ?? join(homedir(), '.claude', 'channels', 'discord')
+const STATE_DIR = process.env.DISCORD_STATE_DIR ?? join(homedir(), '.fuxi', 'channels', 'discord')
 const ACCESS_FILE = join(STATE_DIR, 'access.json')
 const APPROVED_DIR = join(STATE_DIR, 'approved')
 const ENV_FILE = join(STATE_DIR, '.env')
 
-// Load ~/.claude/channels/discord/.env into process.env. Real env wins.
+// Load ~/.fuxi/channels/discord/.env into process.env. Real env wins.
 // Plugin-spawned servers don't get an env block — this is where the token lives.
 try {
   // Token is a credential — lock to owner. No-op on Windows (would need ACLs).
@@ -72,7 +72,7 @@ process.on('uncaughtException', err => {
   process.stderr.write(`discord channel: uncaught exception: ${err}\n`)
 })
 
-// Permission-reply spec from anthropics/claude-cli-internal
+// Permission-reply spec from fuxicode/fuxi-cli-internal
 // src/services/mcp/channelPermissions.ts — inlined (no CC repo dep).
 // 5 lowercase letters a-z minus 'l'. Case-insensitive for phone autocorrect.
 // Strict: no bare yes/no (conversational), no prefix/suffix chatter.
@@ -133,9 +133,9 @@ const MAX_CHUNK_LIMIT = 2000
 const MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024
 
 // reply's files param takes any path. .env is ~60 bytes and ships as an
-// upload. Claude can already Read+paste file contents, so this isn't a new
+// upload. FuXi can already Read+paste file contents, so this isn't a new
 // exfil channel for arbitrary paths — but the server's own state is the one
-// thing Claude has no reason to ever send.
+// thing FuXi has no reason to ever send.
 function assertSendable(f: string): void {
   let real, stateReal: string
   try {
@@ -352,7 +352,7 @@ function checkApprovals(): void {
       try {
         const ch = await fetchTextChannel(dmChannelId)
         if ('send' in ch) {
-          await ch.send("Paired! Say hi to Claude.")
+          await ch.send("Paired! Say hi to FuXi.")
         }
         rmSync(file, { force: true })
       } catch (err) {
@@ -443,13 +443,13 @@ const mcp = new Server(
     capabilities: {
       tools: {},
       experimental: {
-        'claude/channel': {},
-        // Permission-relay opt-in (anthropics/claude-cli-internal#23061).
+        'fuxi/channel': {},
+        // Permission-relay opt-in (fuxicode/fuxi-cli-internal#23061).
         // Declaring this asserts we authenticate the replier — which we do:
         // gate()/access.allowFrom already drops non-allowlisted senders before
         // handleInbound runs. A server that can't authenticate the replier
         // should NOT declare this.
-        'claude/channel/permission': {},
+        'fuxi/channel/permission': {},
       },
     },
     instructions: [
@@ -475,7 +475,7 @@ const pendingPermissions = new Map<string, { tool_name: string; description: str
 // already passed explicit pairing; group members haven't.
 mcp.setNotificationHandler(
   z.object({
-    method: z.literal('notifications/claude/channel/permission_request'),
+    method: z.literal('notifications/fuxi/channel/permission_request'),
     params: z.object({
       request_id: z.string(),
       tool_name: z.string(),
@@ -722,7 +722,7 @@ mcp.setRequestHandler(CallToolRequestSchema, async req => {
 
 await mcp.connect(new StdioServerTransport())
 
-// When Claude Code closes the MCP connection, stdin gets EOF. Without this
+// When FuXi closes the MCP connection, stdin gets EOF. Without this
 // the gateway stays connected as a zombie holding resources.
 let shuttingDown = false
 function shutdown(): void {
@@ -790,7 +790,7 @@ client.on('interactionCreate', async (interaction: Interaction) => {
   }
 
   void mcp.notification({
-    method: 'notifications/claude/channel/permission',
+    method: 'notifications/fuxi/channel/permission',
     params: { request_id, behavior },
   })
   pendingPermissions.delete(request_id)
@@ -816,7 +816,7 @@ async function handleInbound(msg: Message): Promise<void> {
     const lead = result.isResend ? 'Still pending' : 'Pairing required'
     try {
       await msg.reply(
-        `${lead} — run in Claude Code:\n\n/discord:access pair ${result.code}`,
+        `${lead} — run in FuXi:\n\n/discord:access pair ${result.code}`,
       )
     } catch (err) {
       process.stderr.write(`discord channel: failed to send pairing code: ${err}\n`)
@@ -837,7 +837,7 @@ async function handleInbound(msg: Message): Promise<void> {
   const permMatch = PERMISSION_REPLY_RE.exec(msg.content)
   if (permMatch) {
     void mcp.notification({
-      method: 'notifications/claude/channel/permission',
+      method: 'notifications/fuxi/channel/permission',
       params: {
         request_id: permMatch[2]!.toLowerCase(),
         behavior: permMatch[1]!.toLowerCase().startsWith('y') ? 'allow' : 'deny',
@@ -873,7 +873,7 @@ async function handleInbound(msg: Message): Promise<void> {
   const content = msg.content || (atts.length > 0 ? '(attachment)' : '')
 
   mcp.notification({
-    method: 'notifications/claude/channel',
+    method: 'notifications/fuxi/channel',
     params: {
       content,
       meta: {
@@ -886,7 +886,7 @@ async function handleInbound(msg: Message): Promise<void> {
       },
     },
   }).catch(err => {
-    process.stderr.write(`discord channel: failed to deliver inbound to Claude: ${err}\n`)
+    process.stderr.write(`discord channel: failed to deliver inbound to FuXi: ${err}\n`)
   })
 }
 

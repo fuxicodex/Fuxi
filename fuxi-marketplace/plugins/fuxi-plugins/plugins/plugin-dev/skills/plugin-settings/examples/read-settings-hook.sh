@@ -1,11 +1,11 @@
 #!/bin/bash
-# Example hook that reads plugin settings from .claude/my-plugin.local.md
+# Example hook that reads plugin settings from .fuxi/my-plugin.local.md
 # Demonstrates the complete pattern for settings-driven hook behavior
 
 set -euo pipefail
 
 # Define settings file path
-SETTINGS_FILE=".claude/my-plugin.local.md"
+SETTINGS_FILE=".fuxi/my-plugin.local.md"
 
 # Quick exit if settings file doesn't exist
 if [[ ! -f "$SETTINGS_FILE" ]]; then

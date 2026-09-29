@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The Claude Security plugin's hooks.
+"""The FuXi Security plugin's hooks.
 
 A usage error exits 2. Python 3.9-compatible, stdlib only.
 """
@@ -42,7 +42,7 @@ REASONS = {
 }
 UNKNOWN_REASON = 99
 COLLAPSED = ("small-diff", "small-scope")
-STAMP_PREFIX = "CLAUDE-SECURITY-REVISION-"
+STAMP_PREFIX = "FUXI-SECURITY-REVISION-"
 OPERATORS = frozenset("();<>|&")
 
 
@@ -79,7 +79,7 @@ def read(path: Path) -> bytes | None:
 
 def manifest_version() -> str:
     """The version in the plugin's manifest; "" when there is not one."""
-    manifest = parse(read(PLUGIN_ROOT / ".claude-plugin" / "plugin.json") or b"")
+    manifest = parse(read(PLUGIN_ROOT / ".fuxi-plugin" / "plugin.json") or b"")
     version = manifest.get("version")
     return version if isinstance(version, str) else ""
 
@@ -100,7 +100,7 @@ def banner() -> None:
         "  │" + "Find and fix vulnerabilities in source code".center(width) + "│",
         "  └" + version.rjust(width - 3, "─") + "───┘",
     ]
-    message = "\nLaunching Claude Security...\n\n\n" + "\n".join(box) + "\n"
+    message = "\nLaunching FuXi Security...\n\n\n" + "\n".join(box) + "\n"
     sys.stdout.write(json.dumps({"systemMessage": message}))
 
 
@@ -207,7 +207,7 @@ def patches_written(patches_dir: Path) -> dict[str, int | bool] | None:
 
 
 def step_failed(script: str, data: dict[str, object]) -> dict[str, int | bool]:
-    """The event for a helper run that failed, from Claude Code's error text."""
+    """The event for a helper run that failed, from FuXi's error text."""
     status = re.match(r"Exit code (\d+)", str(data.get("error", "")))
     return {
         "step": STEPS[script],

@@ -4,9 +4,9 @@ This plugin is a security tool, so it is held to the standard it applies to othe
 
 ## Reporting a vulnerability
 
-Report security issues **privately** through FuXi's responsible disclosure program. See <https://www.anthropic.com/responsible-disclosure-policy> for the current reporting channel and safe-harbor terms.
+Report security issues **privately** through FuXi's responsible disclosure program. See <https://www.fuxi.com/responsible-disclosure-policy> for the current reporting channel and safe-harbor terms.
 
-Do **not** open a public GitHub issue for a security report. Include what you can of: the plugin version from `.claude-plugin/plugin.json`, your platform and FuXi version, reproduction steps, and the impact you believe it has.
+Do **not** open a public GitHub issue for a security report. Include what you can of: the plugin version from `.fuxi-plugin/plugin.json`, your platform and FuXi version, reproduction steps, and the impact you believe it has.
 
 In scope: a vulnerability in the plugin's own code — its scripts, workflow, skills, agent definitions, and hooks.
 
@@ -14,9 +14,9 @@ Out of scope: findings the scan produces about *your* code (best-effort by desig
 
 ## Trust model
 
-**The code you scan is trusted.** A scan and a fix run in your FuXi session, under your permissions, with no isolation layer of the plugin's own — so the repository's `.git/config`, its `.claude/` settings and hooks, and everything else your session loads from that directory apply as usual. The plugin does not attempt to stop a hostile repository from influencing a scan.
+**The code you scan is trusted.** A scan and a fix run in your FuXi session, under your permissions, with no isolation layer of the plugin's own — so the repository's `.git/config`, its `.fuxi/` settings and hooks, and everything else your session loads from that directory apply as usual. The plugin does not attempt to stop a hostile repository from influencing a scan.
 
-To work with code you do not fully trust, sandbox the whole session first. We suggest [sandbox-runtime](https://github.com/anthropic-experimental/sandbox-runtime), which enforces filesystem and network restrictions at the OS level without a container; its own README covers how to run FuXi inside it.
+To work with code you do not fully trust, sandbox the whole session first. We suggest [sandbox-runtime](https://github.com/fuxi-experimental/sandbox-runtime), which enforces filesystem and network restrictions at the OS level without a container; its own README covers how to run FuXi inside it.
 
 ## Supported versions
 

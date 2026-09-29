@@ -1,0 +1,8 @@
+{
+  "name": "mcp-tunnels",
+  "description": "Connect FuXi to a private MCP server through an FuXi MCP tunnel. Drives the Docker Compose quickstart end to end: certificates, proxy config, cloudflared, and a verifiable sample server.",
+  "author": {
+    "name": "FuXi",
+    "email": "support@fuxicode.com"
+  }
+}

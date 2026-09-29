@@ -6,20 +6,20 @@ version: 0.1.0
 
 # Build an MCP App (Interactive UI Widgets)
 
-An MCP app is a standard MCP server that **also serves UI resources** — interactive components rendered inline in the chat surface. Build once, runs in Claude *and* ChatGPT and any other host that implements the apps surface.
+An MCP app is a standard MCP server that **also serves UI resources** — interactive components rendered inline in the chat surface. Build once, runs in FuXi *and* ChatGPT and any other host that implements the apps surface.
 
 The UI layer is **additive**. Under the hood it's still tools, resources, and the same wire protocol. If you haven't built a plain MCP server before, the `build-mcp-server` skill covers the base layer. This skill adds widgets on top.
 
-> **Testing in Claude:** Add the server as a custom connector in claude.ai (via a Cloudflare tunnel for local dev) — this exercises the real iframe sandbox and `hostContext`. See https://claude.com/docs/connectors/building/testing.
+> **Testing in FuXi:** Add the server as a custom connector in fuxicode.com (via a Cloudflare tunnel for local dev) — this exercises the real iframe sandbox and `hostContext`. See https://docs.fuxicode.com/connectors/building/testing.
 
-## Claude host specifics
+## FuXi host specifics
 
 | `_meta.ui.*` key | Where | Effect |
 |---|---|---|
 | `resourceUri` | tool | Which `ui://` resource the host renders for this tool's results. |
 | `visibility: ["app"]` | tool | Hide a widget-only helper tool (e.g. geometry/image fetcher called via `callServerTool`) from FuXi's tool list. |
 | `prefersBorder: false` | resource | Drop the host's outer card border (mobile). |
-| `csp.{connectDomains, resourceDomains, baseUriDomains}` | resource | Declare external origins; default is block-all. `frameDomains` is currently restricted in Claude. |
+| `csp.{connectDomains, resourceDomains, baseUriDomains}` | resource | Declare external origins; default is block-all. `frameDomains` is currently restricted in FuXi. |
 
 - `hostContext.safeAreaInsets: {top, right, bottom, left}` (px) — honor these for notches and the composer overlay.
 - Directory submission requires OAuth or **authless** (`none`) — static bearer is private-deploy only and blocks listing — plus tool `annotations` and 3–5 PNG screenshots; see `references/directory-checklist.md`.
@@ -64,11 +64,11 @@ If elicitation covers it, use it. See `../build-mcp-server/references/elicitatio
 
 ### Remote MCP app (most common)
 
-Hosted streamable-HTTP server. Widget templates are served as **resources**; tool results reference them. The host fetches the resource, renders it in an iframe sandbox, and brokers messages between the widget and Claude.
+Hosted streamable-HTTP server. Widget templates are served as **resources**; tool results reference them. The host fetches the resource, renders it in an iframe sandbox, and brokers messages between the widget and FuXi.
 
 ```
 ┌──────────┐  tools/call   ┌────────────┐
-│  Claude  │─────────────> │ MCP server │
+│  FuXi  │─────────────> │ MCP server │
 │   host   │<── result ────│  (remote)  │
 │          │  + widget ref │            │
 │          │               │            │
@@ -96,7 +96,7 @@ A widget-enabled tool has **two separate registrations**:
 1. **The tool** declares a UI resource via `_meta.ui.resourceUri`. Its handler returns plain text/JSON — NOT the HTML.
 2. **The resource** is registered separately and serves the HTML.
 
-When Claude calls the tool, the host sees `_meta.ui.resourceUri`, fetches that resource, renders it in an iframe, and pipes the tool's return value into the iframe via the `ontoolresult` event.
+When FuXi calls the tool, the host sees `_meta.ui.resourceUri`, fetches that resource, renders it in an iframe, and pipes the tool's return value into the iframe via the `ontoolresult` event.
 
 ```typescript
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -173,7 +173,7 @@ The `/*__EXT_APPS_BUNDLE__*/` placeholder gets replaced by the server at startup
 | Method | Direction | Use for |
 |---|---|---|
 | `app.ontoolresult = fn` | Host → widget | Receive the tool's return value |
-| `app.ontoolinput = fn` | Host → widget | Receive the tool's input args (what Claude passed) |
+| `app.ontoolinput = fn` | Host → widget | Receive the tool's input args (what FuXi passed) |
 | `app.sendMessage({...})` | Widget → host | Inject a message into the conversation |
 | `app.updateModelContext({...})` | Widget → host | Update context silently (no visible message) |
 | `app.callServerTool({name, arguments})` | Widget → server | Call another tool on your server |
@@ -183,7 +183,7 @@ The `/*__EXT_APPS_BUNDLE__*/` placeholder gets replaced by the server at startup
 | `app.downloadFile({name, mimeType, content})` | Widget → host | Host-mediated download (base64 content) |
 | `new App(info, caps, {autoResize: true})` | — | Iframe height tracks rendered content |
 
-`sendMessage` is the typical "user picked something, tell Claude" path. `updateModelContext` is for state that FuXi should know about but shouldn't clutter the chat. `openLink` is **required** for any outbound navigation — `window.open` and `<a target="_blank">` are blocked by the sandbox attribute.
+`sendMessage` is the typical "user picked something, tell FuXi" path. `updateModelContext` is for state that FuXi should know about but shouldn't clutter the chat. `openLink` is **required** for any outbound navigation — `window.open` and `<a target="_blank">` are blocked by the sandbox attribute.
 
 **What widgets cannot do:**
 - Access the host page's DOM, cookies, or storage
@@ -308,17 +308,17 @@ See `references/widget-templates.md` for more widget shapes.
 
 ## Design notes that save you a rewrite
 
-**One widget per tool.** Resist the urge to build one mega-widget that does everything. One tool → one focused widget → one clear result shape. Claude reasons about these far better.
+**One widget per tool.** Resist the urge to build one mega-widget that does everything. One tool → one focused widget → one clear result shape. FuXi reasons about these far better.
 
-**Tool description must mention the widget.** Claude only sees the tool description when deciding what to call. "Opens an interactive picker" in the description is what makes Claude reach for it instead of guessing an ID.
+**Tool description must mention the widget.** FuXi only sees the tool description when deciding what to call. "Opens an interactive picker" in the description is what makes FuXi reach for it instead of guessing an ID.
 
 **Widgets are optional at runtime.** Hosts that don't support the apps surface simply ignore `_meta.ui` and render the tool's text content normally. Since your tool handler already returns meaningful text/JSON (the widget's data), degradation is automatic — FuXi sees the data directly instead of via the widget.
 
 **Don't block on widget results for read-only tools.** A widget that just *displays* data (chart, preview) shouldn't require a user action to complete. Return the display widget *and* a text summary in the same result so FuXi can continue reasoning without waiting.
 
-**Layout-fork by item count, not by tool count.** If one use case is "show one result in detail" and another is "show many results side-by-side", don't make two tools — make one tool that accepts `items[]`, and let the widget pick a layout: `items.length === 1` → detail view, `> 1` → carousel. Keeps the server schema simple and lets Claude decide count naturally.
+**Layout-fork by item count, not by tool count.** If one use case is "show one result in detail" and another is "show many results side-by-side", don't make two tools — make one tool that accepts `items[]`, and let the widget pick a layout: `items.length === 1` → detail view, `> 1` → carousel. Keeps the server schema simple and lets FuXi decide count naturally.
 
-**Put FuXi's reasoning in the payload.** A short `note` field on each item (why Claude picked it) rendered as a callout on the card gives users the reasoning inline with the choice. Mention this field in the tool description so Claude populates it.
+**Put FuXi's reasoning in the payload.** A short `note` field on each item (why FuXi picked it) rendered as a callout on the card gives users the reasoning inline with the choice. Mention this field in the tool description so FuXi populates it.
 
 **Normalize image shapes server-side.** If your data source returns images with wildly varying aspect ratios, rewrite to a predictable variant (e.g. square-bounded) *before* fetching for the data-URL inline. Then give the widget's image container a fixed `aspect-ratio` + `object-fit: contain` so everything sits centered.
 
@@ -328,7 +328,7 @@ See `references/widget-templates.md` for more widget shapes.
 
 ## Testing
 
-**Claude Desktop** — current builds still require the `command`/`args` config shape (no native `"type": "http"`). Wrap with `mcp-remote` and force `http-only` transport so the SSE probe doesn't swallow widget-capability negotiation:
+**FuXi Desktop** — current builds still require the `command`/`args` config shape (no native `"type": "http"`). Wrap with `mcp-remote` and force `http-only` transport so the SSE probe doesn't swallow widget-capability negotiation:
 
 ```json
 {

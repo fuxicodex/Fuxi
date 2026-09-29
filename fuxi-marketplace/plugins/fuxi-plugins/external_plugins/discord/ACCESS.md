@@ -6,7 +6,7 @@ The **Public Bot** toggle in the Developer Portal (Bot tab, on by default) contr
 
 For DMs that do get through, the default policy is **pairing**. An unknown sender gets a 6-character code in reply and their message is dropped. You run `/discord:access pair <code>` from your assistant session to approve them. Once approved, their messages pass through.
 
-All state lives in `~/.claude/channels/discord/access.json`. The `/discord:access` skill commands edit this file; the server re-reads it on every inbound message, so changes take effect without a restart. Set `DISCORD_ACCESS_MODE=static` to pin config to what was on disk at boot (pairing is unavailable in static mode since it requires runtime writes).
+All state lives in `~/.fuxi/channels/discord/access.json`. The `/discord:access` skill commands edit this file; the server re-reads it on every inbound message, so changes take effect without a restart. Set `DISCORD_ACCESS_MODE=static` to pin config to what was on disk at boot (pairing is unavailable in static mode since it requires runtime writes).
 
 ## At a glance
 
@@ -15,7 +15,7 @@ All state lives in `~/.claude/channels/discord/access.json`. The `/discord:acces
 | Default policy | `pairing` |
 | Sender ID | User snowflake (numeric, e.g. `184695080709324800`) |
 | Group key | Channel snowflake — not guild ID |
-| Config file | `~/.claude/channels/discord/access.json` |
+| Config file | `~/.fuxi/channels/discord/access.json` |
 
 ## DM policies
 
@@ -69,7 +69,7 @@ In channels with `requireMention: true`, any of the following triggers the bot:
 Example regex setup for a nickname trigger:
 
 ```
-/discord:access set mentionPatterns '["^hey claude\\b", "\\bassistant\\b"]'
+/discord:access set mentionPatterns '["^hey fuxi\\b", "\\bassistant\\b"]'
 ```
 
 ## Delivery
@@ -105,7 +105,7 @@ Configure outbound behavior with `/discord:access set <key> <value>`.
 
 ## Config file
 
-`~/.claude/channels/discord/access.json`. Absent file is equivalent to `pairing` policy with empty lists, so the first DM triggers pairing.
+`~/.fuxi/channels/discord/access.json`. Absent file is equivalent to `pairing` policy with empty lists, so the first DM triggers pairing.
 
 ```jsonc
 {
@@ -126,7 +126,7 @@ Configure outbound behavior with `/discord:access set <key> <value>`.
   },
 
   // Case-insensitive regexes that count as a mention.
-  "mentionPatterns": ["^hey claude\\b"],
+  "mentionPatterns": ["^hey fuxi\\b"],
 
   // Reaction on receipt. Empty string disables.
   "ackReaction": "👀",

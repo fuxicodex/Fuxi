@@ -4,7 +4,7 @@ This channel reads your Messages database (`~/Library/Messages/chat.db`) directl
 
 Texting yourself always works. **Self-chat bypasses the gate** with no setup: the server learns your own addresses at boot and lets them through unconditionally. For other senders, the default policy is **`allowlist`**: nothing passes until you add the handle with `/imessage:access allow <address>`.
 
-All state lives in `~/.claude/channels/imessage/access.json`. The `/imessage:access` skill commands edit this file; the server re-reads it on every inbound message, so changes take effect without a restart. Set `IMESSAGE_ACCESS_MODE=static` to pin config to what was on disk at boot.
+All state lives in `~/.fuxi/channels/imessage/access.json`. The `/imessage:access` skill commands edit this file; the server re-reads it on every inbound message, so changes take effect without a restart. Set `IMESSAGE_ACCESS_MODE=static` to pin config to what was on disk at boot.
 
 ## At a glance
 
@@ -15,7 +15,7 @@ All state lives in `~/.claude/channels/imessage/access.json`. The `/imessage:acc
 | Sender ID | Handle address: `+15551234567` or `someone@icloud.com` |
 | Group key | Chat GUID: `iMessage;+;chat…` |
 | Mention quirk | Regex only; iMessage has no structured @mentions |
-| Config file | `~/.claude/channels/imessage/access.json` |
+| Config file | `~/.fuxi/channels/imessage/access.json` |
 
 ## Self-chat
 
@@ -69,7 +69,7 @@ Quote the GUID; the semicolons are shell metacharacters.
 iMessage has **no structured @mentions**. The `@Name` highlight in group chats is presentational styling — nothing in `chat.db` marks it as a mention. With the default `requireMention: true`, the only trigger is a `mentionPatterns` regex match. Set at least one pattern before opting a group in, or no message will ever match.
 
 ```
-/imessage:access set mentionPatterns '["^claude\\b", "@assistant"]'
+/imessage:access set mentionPatterns '["^fuxi\\b", "@assistant"]'
 ```
 
 Pass `--no-mention` to process every message in the group, or `--allow addr1,addr2` to restrict which members can trigger it.
@@ -106,7 +106,7 @@ There is no `ackReaction` or `replyToMode` on this channel.
 
 ## Config file
 
-`~/.claude/channels/imessage/access.json`. Absent file is equivalent to `allowlist` policy with empty lists: only self-chat passes.
+`~/.fuxi/channels/imessage/access.json`. Absent file is equivalent to `allowlist` policy with empty lists: only self-chat passes.
 
 ```jsonc
 {
@@ -131,7 +131,7 @@ There is no `ackReaction` or `replyToMode` on this channel.
 
   // Case-insensitive regexes that count as a mention.
   // Required for groups with requireMention, since there are no structured mentions.
-  "mentionPatterns": ["^claude\\b", "@assistant"],
+  "mentionPatterns": ["^fuxi\\b", "@assistant"],
 
   // Split threshold. No length cap; this is about readability.
   "textChunkLimit": 10000,

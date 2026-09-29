@@ -112,7 +112,7 @@ You are an expert [domain] engineer specializing in creating high-quality [outpu
 6. **Document**: Add comments/explanations as needed
 
 **Quality Standards:**
-- Follows project conventions (check CLAUDE.md)
+- Follows project conventions (check FUXI.md)
 - [Specific quality metric 1]
 - [Specific quality metric 2]
 - Includes error handling

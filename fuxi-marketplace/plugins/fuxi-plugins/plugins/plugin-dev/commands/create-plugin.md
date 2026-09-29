@@ -141,7 +141,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
    - Offer options: current directory, ../new-plugin-name, custom path
 3. Create directory structure using bash:
    ```bash
-   mkdir -p plugin-name/.claude-plugin
+   mkdir -p plugin-name/.fuxi-plugin
    mkdir -p plugin-name/skills/<skill-name>   # one dir per skill, each with a SKILL.md
    mkdir -p plugin-name/agents                # if needed
    mkdir -p plugin-name/hooks                 # if needed
@@ -160,7 +160,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
    }
    ```
 5. Create README.md template
-6. Create .gitignore if needed (for .claude/\*.local.md, etc.)
+6. Create .gitignore if needed (for .fuxi/\*.local.md, etc.)
 7. Initialize git repo if creating new directory
 
 **Output**: Plugin directory structure created and ready for components
@@ -228,7 +228,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
 2. For each hook:
    - Create hooks/hooks.json with hook configuration
    - Prefer prompt-based hooks for complex logic
-   - Use ${CLAUDE_PLUGIN_ROOT} for portability
+   - Use ${FUXI_PLUGIN_ROOT} for portability
    - Create hook scripts if needed (in examples/ not scripts/)
    - Test with validate-hook-schema.sh and test-hook.sh utilities
 
@@ -237,7 +237,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
 1. Load mcp-integration skill using Skill tool
 2. Create .mcp.json configuration with:
    - Server type (stdio for local, SSE for hosted)
-   - Command and args (with ${CLAUDE_PLUGIN_ROOT})
+   - Command and args (with ${FUXI_PLUGIN_ROOT})
    - extensionToLanguage mapping if LSP
    - Environment variables as needed
 3. Document required env vars in README
@@ -247,9 +247,9 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
 
 1. Load plugin-settings skill using Skill tool
 2. Create settings template in README
-3. Create example .claude/plugin-name.local.md file (as documentation)
+3. Create example .fuxi/plugin-name.local.md file (as documentation)
 4. Implement settings reading in hooks/commands as needed
-5. Add to .gitignore: `.claude/*.local.md`
+5. Add to .gitignore: `.fuxi/*.local.md`
 
 **Progress tracking**: Update todos as each component is completed
 
@@ -285,7 +285,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
 5. **Test hook configuration** (if plugin has hooks):
    - Run validate-hook-schema.sh on hooks/hooks.json
    - Test hook scripts with test-hook.sh
-   - Verify ${CLAUDE_PLUGIN_ROOT} usage
+   - Verify ${FUXI_PLUGIN_ROOT} usage
 
 6. **Present findings**:
    - Summary of validation results
@@ -307,9 +307,9 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
 1. **Installation instructions**:
    - Show user how to test locally:
      ```bash
-     cc --plugin-dir /path/to/plugin-name
+     fuxi --plugin-dir /path/to/plugin-name
      ```
-   - Or copy to `.claude-plugin/` for project testing
+   - Or copy to `.fuxi-plugin/` for project testing
 
 2. **Verification checklist** for user to perform:
    - [ ] Skills load when triggered (ask questions with trigger phrases)
@@ -323,7 +323,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
    - For skills: Ask questions using trigger phrases from descriptions
    - For user-invoked skills: Run `/plugin-name:skill-name` with various arguments
    - For agents: Create scenarios matching agent examples
-   - For hooks: Use `claude --debug` to see hook execution
+   - For hooks: Use `fuxi --debug` to see hook execution
    - For MCP: Use `/mcp` to verify servers and tools
 
 4. **Ask user**: "I've prepared the plugin for testing. Would you like me to guide you through testing each component, or do you want to test it yourself?"
@@ -386,7 +386,7 @@ Guide the user through creating a complete, high-quality FuXi plugin from initia
   - Imperative form in skill bodies
   - Skill instructions written FOR FuXi (not TO user)
   - Strong trigger phrases
-  - ${CLAUDE_PLUGIN_ROOT} for portability
+  - ${FUXI_PLUGIN_ROOT} for portability
   - Progressive disclosure
   - Security-first (HTTPS, no hardcoded credentials)
 

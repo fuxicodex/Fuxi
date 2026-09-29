@@ -14,7 +14,7 @@
     "url": "https://api.example.com/mcp",
     "headers": {
       "Authorization": "Bearer ${API_TOKEN}",
-      "X-Service-Name": "claude-plugin"
+      "X-Service-Name": "fuxi-plugin"
     }
   }
 }

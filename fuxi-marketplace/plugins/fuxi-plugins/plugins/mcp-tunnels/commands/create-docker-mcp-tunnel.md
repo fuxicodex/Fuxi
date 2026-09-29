@@ -7,7 +7,7 @@ allowed-tools: [Bash, Read, Write, Edit, AskUserQuestion]
 # Create a Docker MCP tunnel
 
 Drive the
-[**MCP tunnels quickstart**](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/quickstart)
+[**MCP tunnels quickstart**](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/quickstart)
 end to end: from zero to FuXi calling a private MCP server through an
 FuXi-operated tunnel, using Docker Compose with manually supplied
 credentials (the shortest path for local testing).
@@ -15,7 +15,7 @@ credentials (the shortest path for local testing).
 > MCP tunnels is in **research preview**. It is provided "as-is" with no uptime
 > or support commitment and depends on a third-party transport (Cloudflare).
 > Do not put production traffic through this without reading the
-> [security model](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security).
+> [security model](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/security).
 
 You are guiding the user through a mix of **local commands you run** and
 **Console actions only they can do** (creating the tunnel, uploading the CA).
@@ -50,7 +50,7 @@ docker --version && docker compose version && openssl version
 
 - Docker + Docker Compose are required. `openssl` 1.1.1+ is required (the
   commands below use `-addext`, available in 1.1.1+).
-- Confirm the host has **outbound** access to `api.anthropic.com:443` and the
+- Confirm the host has **outbound** access to `api.fuxicode.com:443` and the
   tunnel edge (`198.41.192.0/19`, `2606:4700:a0::/44`) on **7844 TCP and UDP**.
   No inbound ports are opened.
 
@@ -59,14 +59,14 @@ that and tell the user; the compose file is v2-compatible.
 
 ## Step 1 — Create the tunnel (Console — user action)
 
-Tell the user to do this in the [FuXi Console](https://console.anthropic.com)
-(see [Create a tunnel](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/console#create-a-tunnel)):
+Tell the user to do this in the [FuXi Console](https://console.fuxicode.com)
+(see [Create a tunnel](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/console#create-a-tunnel)):
 
 1. Sidebar → **Manage → MCP tunnels** → **New tunnel**. Give it a name.
 2. Leave **Set up programmatic access** **off** — this quickstart uses manual
    credentials.
 3. Open the tunnel. From the **Connection** section copy two values:
-   - **Domain** — looks like `abcd1234.tunnel.anthropic.com`
+   - **Domain** — looks like `abcd1234.tunnel.fuxi.com`
    - **Token** — click the eye icon, then copy
 
 Then ask the user, via AskUserQuestion or a direct prompt, for the **Domain**.
@@ -120,7 +120,7 @@ cd "$DIR" && set -a && . ./.env && set +a && echo "domain: $TUNNEL_DOMAIN"
 
 The proxy terminates an inner TLS handshake using a certificate signed by a CA
 the user controls. Generate both (Linux/macOS shown; the
-[quickstart](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/quickstart)
+[quickstart](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/quickstart)
 also has a Windows PowerShell variant — offer it if the user is on Windows):
 
 ```bash
@@ -150,7 +150,7 @@ chmod 644 data/tls.key
 ```
 
 Why these flags: the explicit `-addext` extensions make the CA satisfy the
-tunnel's [certificate requirements](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/reference#certificate-requirements)
+tunnel's [certificate requirements](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/reference#certificate-requirements)
 regardless of distro `openssl.cnf` defaults;
 `-extfile` (not `-copy_extensions`, which is OpenSSL 3.0+ only) keeps this
 working on OpenSSL 1.1.x and adds the `AuthorityKeyIdentifier` the proxy
@@ -164,7 +164,7 @@ which the `.gitignore` from Step 3 already excludes.
 
 Have the user, on the tunnel detail page, scroll to **Certificates** →
 **Add certificate**
-(see [Add a CA certificate](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/console#add-a-ca-certificate)),
+(see [Add a CA certificate](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/console#add-a-ca-certificate)),
 and upload `$DIR/data/ca.crt` (or paste its contents —
 print it with `cat data/ca.crt` so they can copy it). The tunnel status flips
 to **Active** once a certificate is registered. The tunnel will not appear in
@@ -235,7 +235,7 @@ Write `$DIR/docker-compose.yaml`. Images are pinned by digest:
 ```yaml
 services:
   mcp-proxy:
-    image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:6b9adedbf2763143ec72f106ecaf0ce7fd3294e89b208f54a1db97a33d14c5ba
+    image: us-docker.pkg.dev/fuxicodex/images/mcp-proxy@sha256:6b9adedbf2763143ec72f106ecaf0ce7fd3294e89b208f54a1db97a33d14c5ba
     command: ["-config", "/etc/mcp-proxy/config.yaml"]
     volumes:
       - ./config/mcp-proxy.yaml:/etc/mcp-proxy/config.yaml:ro
@@ -274,7 +274,7 @@ here too so it shares the Compose network with the proxy.
 
 (For a hardened single-host deployment — non-root user, read-only rootfs,
 `cap_drop: ALL`, `no-new-privileges` — point the user at
-[Deploy with Docker Compose](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/deploy-compose);
+[Deploy with Docker Compose](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/deploy-compose);
 this quickstart keeps it minimal for fast local testing.)
 
 ## Step 9 — Start and verify
@@ -306,13 +306,13 @@ whatever the upstream serves (`/mcp` for FastMCP). Use an API key for the
 workspace the tunnel was created in.
 
 ```bash
-curl https://api.anthropic.com/v1/messages \
+curl https://api.fuxicode.com/v1/messages \
   -H "Content-Type: application/json" \
-  -H "x-api-key: $ANTHROPIC_API_KEY" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "anthropic-beta: mcp-client-2025-11-20" \
+  -H "x-api-key: $FUXI_API_KEY" \
+  -H "fuxi-version: 2023-06-01" \
+  -H "fuxi-beta: mcp-client-2025-11-20" \
   -d "{
-    \"model\": \"claude-opus-4-7\",
+    \"model\": \"fuxi-opus-4-7\",
     \"max_tokens\": 1024,
     \"mcp_servers\": [{\"type\": \"url\", \"name\": \"echo\", \"url\": \"https://echo.${TUNNEL_DOMAIN}/mcp\"}],
     \"tools\": [{\"type\": \"mcp_toolset\", \"mcp_server_name\": \"echo\"}],
@@ -345,7 +345,7 @@ it the same as for any other MCP server.
 `docker compose logs mcp-proxy` (config/cert/routing) are the two primary
 diagnostics. Check the outbound connection first, then the inner TLS handshake,
 then upstream routing. See
-[Troubleshooting](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/troubleshooting)
+[Troubleshooting](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/troubleshooting)
 for additional cases.
 
 ## Operational notes (mention briefly, don't run unprompted)
@@ -364,6 +364,6 @@ Summarize: deployment dir, route(s) configured, tunnel domain, and the exact
 URL FuXi reaches the server at. Remind the user the token is a live secret in
 `$DIR/.env` (chmod 600, gitignored) and that this is a research-preview,
 local-testing setup — point them at
-[Deploy with Docker Compose](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/deploy-compose) /
-[Deploy with Helm](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/deploy-helm)
+[Deploy with Docker Compose](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/deploy-compose) /
+[Deploy with Helm](https://platform.docs.fuxicode.com/en/agents-and-tools/mcp-tunnels/deploy-helm)
 for a hardened or programmatic-access deployment.

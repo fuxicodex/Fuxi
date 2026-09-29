@@ -180,7 +180,7 @@ The stop hook uses a bash script that requires Git for Windows to run properly.
 **Workaround**: Edit the cached plugin's `hooks/hooks.json` to use Git Bash explicitly:
 
 ```json
-"command": "\"C:/Program Files/Git/bin/bash.exe\" ${CLAUDE_PLUGIN_ROOT}/hooks/stop-hook.sh"
+"command": "\"C:/Program Files/Git/bin/bash.exe\" ${FUXI_PLUGIN_ROOT}/hooks/stop-hook.sh"
 ```
 
 **Location**: `~/.fuxi/plugins/marketplaces/fuxi-plugins/ralph-wiggum/<hash>/hooks/hooks.json`

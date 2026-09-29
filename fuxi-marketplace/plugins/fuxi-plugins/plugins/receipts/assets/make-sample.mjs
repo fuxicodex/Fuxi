@@ -59,7 +59,7 @@ for (const [repo, files] of Object.entries(REPOS)) {
 }
 
 // --- invented transcripts ----------------------------------------------------
-const PROJ = path.join(HOME, '.claude', 'projects', 'sample');
+const PROJ = path.join(HOME, '.fuxi', 'projects', 'sample');
 fs.mkdirSync(PROJ, { recursive: true });
 
 let uid = 0;
@@ -86,7 +86,7 @@ const user = (sid, ts, cwd, text) => ({
 });
 const tool = (name, input) => ({ type: 'tool_use', id: `t${++uid}`, name, input });
 
-// One .jsonl per session, the way Claude Code actually lays them out.
+// One .jsonl per session, the way FuXi actually lays them out.
 const bySession = new Map();
 const emit = (o) => {
   const k = o.sessionId;

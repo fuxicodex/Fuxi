@@ -13,7 +13,7 @@ Show all configured hookify rules in the project.
 
 1. Use Glob tool to find all hookify rule files:
    ```
-   pattern: ".claude/hookify.*.local.md"
+   pattern: ".fuxi/hookify.*.local.md"
    ```
 
 2. For each file found:
@@ -43,7 +43,7 @@ Show all configured hookify rules in the project.
 **Message**: "⚠️ **Dangerous rm command detected!** This command could delete..."
 
 **Status**: ✅ Active
-**File**: .claude/hookify.dangerous-rm.local.md
+**File**: .fuxi/hookify.dangerous-rm.local.md
 ```
 
 5. Add helpful footer:
@@ -70,7 +70,7 @@ You haven't created any hookify rules yet.
 
 To get started:
 1. Use `/hookify` to analyze conversation and create rules
-2. Or manually create `.claude/hookify.my-rule.local.md` files
+2. Or manually create `.fuxi/hookify.my-rule.local.md` files
 3. See `/hookify:help` for documentation
 
 Example:
@@ -78,5 +78,5 @@ Example:
 /hookify Warn me when I use console.log
 ```
 
-Check `${CLAUDE_PLUGIN_ROOT}/examples/` for example rule files.
+Check `${FUXI_PLUGIN_ROOT}/examples/` for example rule files.
 ```

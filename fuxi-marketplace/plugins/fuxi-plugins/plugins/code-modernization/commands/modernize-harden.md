@@ -44,7 +44,7 @@ in this session, use it (this command invocation is your authorization):
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/harden-scan.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/harden-scan.js",
   args: { system: "$1" }
 })
 ```

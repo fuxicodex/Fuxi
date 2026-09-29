@@ -1,6 +1,6 @@
 ---
 name: mcp-integration
-description: This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external service", mentions "${CLAUDE_PLUGIN_ROOT} with MCP", or discusses MCP server types (SSE, stdio, HTTP, WebSocket). Provides comprehensive guidance for integrating Model Context Protocol servers into FuXi plugins for external tool and service integration.
+description: This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external service", mentions "${FUXI_PLUGIN_ROOT} with MCP", or discusses MCP server types (SSE, stdio, HTTP, WebSocket). Provides comprehensive guidance for integrating Model Context Protocol servers into FuXi plugins for external tool and service integration.
 version: 0.1.0
 ---
 
@@ -27,8 +27,8 @@ Create `.mcp.json` at plugin root:
 ```json
 {
   "database-tools": {
-    "command": "${CLAUDE_PLUGIN_ROOT}/servers/db-server",
-    "args": ["--config", "${CLAUDE_PLUGIN_ROOT}/config.json"],
+    "command": "${FUXI_PLUGIN_ROOT}/servers/db-server",
+    "args": ["--config", "${FUXI_PLUGIN_ROOT}/config.json"],
     "env": {
       "DB_URL": "${DB_URL}"
     }
@@ -51,7 +51,7 @@ Add `mcpServers` field to plugin.json:
   "version": "1.0.0",
   "mcpServers": {
     "plugin-api": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/servers/api-server",
+      "command": "${FUXI_PLUGIN_ROOT}/servers/api-server",
       "args": ["--port", "8080"]
     }
   }
@@ -168,10 +168,10 @@ Connect to WebSocket MCP servers for real-time bidirectional communication.
 
 All MCP configurations support environment variable substitution:
 
-**${CLAUDE_PLUGIN_ROOT}** - Plugin directory (always use for portability):
+**${FUXI_PLUGIN_ROOT}** - Plugin directory (always use for portability):
 ```json
 {
-  "command": "${CLAUDE_PLUGIN_ROOT}/servers/my-server"
+  "command": "${FUXI_PLUGIN_ROOT}/servers/my-server"
 }
 ```
 
@@ -425,10 +425,10 @@ for id in task_ids:
 ### Local Testing
 
 1. Configure MCP server in `.mcp.json`
-2. Install plugin locally (`.claude-plugin/`)
+2. Install plugin locally (`.fuxi-plugin/`)
 3. Run `/mcp` to verify server appears
 4. Test tool calls in commands
-5. Check `claude --debug` logs for connection issues
+5. Check `fuxi --debug` logs for connection issues
 
 ### Validation Checklist
 
@@ -445,7 +445,7 @@ for id in task_ids:
 ### Enable Debug Logging
 
 ```bash
-claude --debug
+fuxi --debug
 ```
 
 Look for:
@@ -492,12 +492,12 @@ Look for:
 - [ ] Authentication configured
 - [ ] Environment variables documented
 - [ ] HTTPS/WSS used (not HTTP/WS)
-- [ ] ${CLAUDE_PLUGIN_ROOT} used for paths
+- [ ] ${FUXI_PLUGIN_ROOT} used for paths
 
 ### Best Practices
 
 **DO:**
-- ✅ Use ${CLAUDE_PLUGIN_ROOT} for portable paths
+- ✅ Use ${FUXI_PLUGIN_ROOT} for portable paths
 - ✅ Document required environment variables
 - ✅ Use secure connections (HTTPS/WSS)
 - ✅ Pre-allow specific MCP tools in commands
@@ -533,9 +533,9 @@ Working examples in `examples/`:
 ### External Resources
 
 - **Official MCP Docs**: https://modelcontextprotocol.io/
-- **FuXi MCP Docs**: https://docs.claude.com/en/docs/claude-code/mcp
+- **FuXi MCP Docs**: https://docs.fuxicode.com/en/docs/fuxi/mcp
 - **MCP SDK**: @modelcontextprotocol/sdk
-- **Testing**: Use `claude --debug` and `/mcp` command
+- **Testing**: Use `fuxi --debug` and `/mcp` command
 
 ## Implementation Workflow
 
@@ -543,7 +543,7 @@ To add MCP integration to a plugin:
 
 1. Choose MCP server type (stdio, SSE, HTTP, ws)
 2. Create `.mcp.json` at plugin root with configuration
-3. Use ${CLAUDE_PLUGIN_ROOT} for all file references
+3. Use ${FUXI_PLUGIN_ROOT} for all file references
 4. Document required environment variables in README
 5. Test locally with `/mcp` command
 6. Pre-allow MCP tools in relevant commands

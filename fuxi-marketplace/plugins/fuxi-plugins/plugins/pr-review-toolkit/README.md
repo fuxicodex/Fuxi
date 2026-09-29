@@ -96,7 +96,7 @@ This plugin bundles 6 expert review agents that each focus on a specific aspect 
 **Focus**: General code review for project guidelines
 
 **Analyzes:**
-- CLAUDE.md compliance
+- FUXI.md compliance
 - Style violations
 - Bug detection
 - Code quality issues
@@ -297,8 +297,8 @@ This plugin works great with:
 ## Contributing
 
 Found issues or have suggestions? These agents are maintained in:
-- User agents: `~/.claude/agents/`
-- Project agents: `.claude/agents/` in claude-cli-internal
+- User agents: `~/.fuxi/agents/`
+- Project agents: `.fuxi/agents/` in fuxi-cli-internal
 
 ## License
 
@@ -306,7 +306,7 @@ MIT
 
 ## Author
 
-Daisy (daisy@anthropic.com)
+Daisy (support@fuxicode.com)
 
 ---
 

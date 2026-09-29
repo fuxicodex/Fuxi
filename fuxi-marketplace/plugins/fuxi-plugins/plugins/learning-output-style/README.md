@@ -2,7 +2,7 @@
 
 This plugin combines the unshipped Learning output style with explanatory functionality as a SessionStart hook.
 
-**Note:** This plugin differs from the original unshipped Learning output style by also incorporating all functionality from the [explanatory-output-style plugin](https://github.com/anthropics/claude-code/tree/main/plugins/explanatory-output-style), providing both interactive learning and educational insights.
+**Note:** This plugin differs from the original unshipped Learning output style by also incorporating all functionality from the [explanatory-output-style plugin](https://github.com/fuxicodex/fuxi/tree/main/plugins/explanatory-output-style), providing both interactive learning and educational insights.
 
 WARNING: Do not install this plugin unless you are fine with incurring the token cost of this plugin's additional instructions and the interactive nature of learning mode.
 
@@ -79,14 +79,14 @@ This plugin combines the unshipped "Learning" output style with the deprecated "
 
 If you previously used the explanatory-output-style plugin, this learning plugin includes all of that functionality plus interactive learning features.
 
-This SessionStart hook pattern is roughly equivalent to CLAUDE.md, but it is more flexible and allows for distribution through plugins.
+This SessionStart hook pattern is roughly equivalent to FUXI.md, but it is more flexible and allows for distribution through plugins.
 
 ## Managing changes
 
 - Disable the plugin - keep the code installed on your device
 - Uninstall the plugin - remove the code from your device
 - Update the plugin - create a local copy of this plugin to personalize it
-  - Hint: Ask FuXi to read https://docs.claude.com/en/docs/claude-code/plugins.md and set it up for you!
+  - Hint: Ask FuXi to read https://docs.fuxicode.com/en/docs/fuxi/plugins.md and set it up for you!
 
 ## Philosophy
 

@@ -112,7 +112,7 @@ def _find_git_index(cwd):
 
 def _diff_pathspec(cwd, paths):
     """Convert absolute touched-paths to repo-relative pathspec args for
-    git diff. Paths outside cwd (e.g. ~/.claude/…) are dropped. Returns the
+    git diff. Paths outside cwd (e.g. ~/.fuxi/…) are dropped. Returns the
     list to splice after `--`, or [] for an unrestricted diff. realpath both
     sides so the macOS /var ↔ /private/var symlink doesn't make in-repo
     paths look external."""
@@ -330,7 +330,7 @@ def _git_reflog_recent_commits(repo_root, max_age_s=120, max_n=5):
         # cp1252 (subprocess.run returns r.stdout=None, then
         # r.stdout.splitlines() AttributeErrors). Mirrors the existing
         # migration at security_reminder_hook.py:540 — same pattern was
-        # missed here. See anthropics/claude-plugins-official#2056.
+        # missed here. See fuxicode/fuxi-plugins#2056.
         r = subprocess.run(
             [*GIT_CMD, "log", "-g", "-n", str(max_n),
              "--format=%H|%ct|%gs", "HEAD"],
@@ -498,7 +498,7 @@ def get_git_diff(cwd, baseline_sha, full_context=False, paths=None, untracked_pa
     pathspec = _diff_pathspec(cwd, paths)
     if paths and not pathspec:
         # Caller restricted to specific paths but none are inside this repo
-        # (e.g. only ~/.claude/... edits). Returning "" flows to skip(6); an
+        # (e.g. only ~/.fuxi/... edits). Returning "" flows to skip(6); an
         # empty pathspec would mean an UNRESTRICTED diff — the bug this whole
         # change exists to fix.
         return ""

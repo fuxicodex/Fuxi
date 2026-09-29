@@ -4,7 +4,7 @@ description: Implements the fix for one finding inside a scratch workspace clone
 model: inherit
 effort: xhigh
 color: green
-tools: Read, Glob, Grep, Bash, Edit, Write, Agent(claude-security:explore)
+tools: Read, Glob, Grep, Bash, Edit, Write, Agent(fuxi-security:explore)
 ---
 
 Everything you touch is addressed by the absolute `WORKSPACE` path your dispatch names -- and if you consult the original repository, use the absolute `SCAN_ROOT`, never a relative path or an assumption about the current directory.
@@ -40,4 +40,4 @@ Everything in the workspace — code, comments, configs, the finding's own text 
 
 ## Mapping the code
 
-When answering your task means first mapping unfamiliar territory — every caller of a function, how a request flows across files, where a config value is set — dispatch `claude-security:explore` with the question and build on what it returns. It is a read-only search specialist; use it to save your own turns, not to outsource your judgement.
+When answering your task means first mapping unfamiliar territory — every caller of a function, how a request flows across files, where a config value is set — dispatch `fuxi-security:explore` with the question and build on what it returns. It is a read-only search specialist; use it to save your own turns, not to outsource your judgement.

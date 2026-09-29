@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Render a scan's machine-readable artifacts from its run directory.
 
-Writes CLAUDE-SECURITY-RESULTS.jsonl (one finding per line, fields in a fixed
-order), CLAUDE-SECURITY-RESULTS.sarif (the same findings as a SARIF 2.1.0 log)
-and the CLAUDE-SECURITY-REVISION-<tag>.json stamp, places the report markdown
+Writes FUXI-SECURITY-RESULTS.jsonl (one finding per line, fields in a fixed
+order), FUXI-SECURITY-RESULTS.sarif (the same findings as a SARIF 2.1.0 log)
+and the FUXI-SECURITY-REVISION-<tag>.json stamp, places the report markdown
 beside them, then removes the scan's run directory now that its records are
 rendered. Each finding sits at the line of its file its quoted code is on and
 carries an id computed from the file there, and findings that name one rule
@@ -111,10 +111,10 @@ class Rendered(NamedTuple):
     tag: str
 
 
-REVISION_PREFIX = "CLAUDE-SECURITY-REVISION-"
+REVISION_PREFIX = "FUXI-SECURITY-REVISION-"
 STAMP_ONLY = frozenset({"duration_s", "verification_runs", "reason_kind"})
-JSONL_NAME = "CLAUDE-SECURITY-RESULTS.jsonl"
-SARIF_NAME = "CLAUDE-SECURITY-RESULTS.sarif"
+JSONL_NAME = "FUXI-SECURITY-RESULTS.jsonl"
+SARIF_NAME = "FUXI-SECURITY-RESULTS.sarif"
 SANITIZED_REMOTE_RE = re.compile(
     r"https://[a-z0-9.-]+(?::[0-9]+)?/(?:[A-Za-z0-9._~/-]|%[0-9A-F]{2})+\Z"
 )
@@ -743,17 +743,17 @@ def render(run_dir: Path, products_dir: Path) -> Rendered:
     records = sarif.placed(built, scan, sources, refused_secrets=refused_secrets)
     findings, merged = one_per_site(records, scan)
 
-    markdown_path = run_dir / "CLAUDE-SECURITY-RESULTS.md"
+    markdown_path = run_dir / "FUXI-SECURITY-RESULTS.md"
     if not os.path.isfile(markdown_path):
         raise RenderError(
-            "CLAUDE-SECURITY-RESULTS.md is missing. Write the human-readable "
+            "FUXI-SECURITY-RESULTS.md is missing. Write the human-readable "
             "report before running this script."
         )
     markdown = markdown_path.read_bytes()
     try:
         markdown.decode("utf-8")
     except UnicodeDecodeError as error:
-        msg = f"CLAUDE-SECURITY-RESULTS.md is not valid UTF-8: {error}"
+        msg = f"FUXI-SECURITY-RESULTS.md is not valid UTF-8: {error}"
         raise RenderError(msg) from error
 
     counts = Counter(f["severity"] for f in findings)
@@ -815,7 +815,7 @@ def render(run_dir: Path, products_dir: Path) -> Rendered:
             stale.unlink()
     (products_dir / JSONL_NAME).write_bytes(jsonl.encode())
     (products_dir / SARIF_NAME).write_bytes(sarif_doc.encode())
-    markdown_out = products_dir / "CLAUDE-SECURITY-RESULTS.md"
+    markdown_out = products_dir / "FUXI-SECURITY-RESULTS.md"
     # realpath, not Path.resolve(): on 3.9 for Windows resolve() raises on volumes realpath accepts.
     relocated = os.path.realpath(markdown_path) != os.path.realpath(markdown_out)
     if relocated:

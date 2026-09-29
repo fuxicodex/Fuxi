@@ -74,13 +74,13 @@ check_script() {
   # Check 7: Hardcoded paths
   if grep -E '^[^#]*/home/|^[^#]*/usr/|^[^#]*/opt/' "$script" | grep -q .; then
     echo "⚠️  Hardcoded absolute paths detected"
-    echo "   Use \$CLAUDE_PROJECT_DIR or \$CLAUDE_PLUGIN_ROOT"
+    echo "   Use \$FUXI_PROJECT_DIR or \$FUXI_PLUGIN_ROOT"
     ((warnings++))
   fi
 
-  # Check 8: Uses CLAUDE_PLUGIN_ROOT
-  if ! grep -q "CLAUDE_PLUGIN_ROOT\|CLAUDE_PROJECT_DIR" "$script"; then
-    echo "💡 Tip: Use \$CLAUDE_PLUGIN_ROOT for plugin-relative paths"
+  # Check 8: Uses FUXI_PLUGIN_ROOT
+  if ! grep -q "FUXI_PLUGIN_ROOT\|FUXI_PROJECT_DIR" "$script"; then
+    echo "💡 Tip: Use \$FUXI_PLUGIN_ROOT for plugin-relative paths"
   fi
 
   # Check 9: Exit codes

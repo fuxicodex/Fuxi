@@ -254,7 +254,7 @@ Plugin skills live in the plugin's `skills/` directory:
 
 ```
 my-plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 ├── commands/
 ├── agents/
@@ -285,7 +285,7 @@ Test skills by installing plugin locally:
 
 ```bash
 # Test with --plugin-dir
-cc --plugin-dir /path/to/plugin
+fuxi --plugin-dir /path/to/plugin
 
 # Ask questions that should trigger the skill
 # Verify skill loads correctly

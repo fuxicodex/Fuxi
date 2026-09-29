@@ -3,7 +3,7 @@ Per-session state-file plumbing for the security-guidance plugin.
 
 Holds the JSON state file location, fcntl-locked read-modify-write helper,
 and old-file GC. Side-effect-free at import time (no env-var reads beyond
-``CLAUDE_CODE_REMOTE_SESSION_ID`` inside the helpers).
+``FUXI_CODE_REMOTE_SESSION_ID`` inside the helpers).
 
 The ``atomic_check_*`` helpers that build on ``with_locked_state`` deliberately
 remain in ``security_reminder_hook.py`` so that tests which monkeypatch
@@ -26,7 +26,7 @@ def _state_key(session_id):
     # In CCR each user turn is a new CC process with a fresh session_id; the
     # remote session ID is stable across those restarts. Prefer it so the
     # pending-warnings sweep and any unprocessed touched_paths survive.
-    key = os.environ.get("CLAUDE_CODE_REMOTE_SESSION_ID") or session_id
+    key = os.environ.get("FUXI_CODE_REMOTE_SESSION_ID") or session_id
     # The key becomes a filename component under the state dir. CC session ids
     # are UUIDs (sanitization is a no-op for them), but nothing in the hook
     # protocol guarantees that, so strip path separators and anything else
@@ -68,11 +68,11 @@ def cleanup_old_state_files():
                 except (OSError, IOError):
                     pass
 
-        # Sweep legacy lock files left at ~/.claude/ root by versions
+        # Sweep legacy lock files left at ~/.fuxi/ root by versions
         # <1.1.66, where get_lock_file() didn't honor state_dir. Same
         # 30-day mtime gate as above so we don't race an older
         # concurrent peer that may still hold an active lock.
-        legacy_dir = os.path.expanduser("~/.claude")
+        legacy_dir = os.path.expanduser("~/.fuxi")
         for filename in os.listdir(legacy_dir):
             if filename.startswith("security_warnings_state_") and filename.endswith(".lock"):
                 file_path = os.path.join(legacy_dir, filename)

@@ -89,7 +89,7 @@ services are as tractable as 3:
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/reimagine-scaffold.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/reimagine-scaffold.js",
   args: { system: "$1", services: [
     { name: "<service-name>", responsibilities: "<one-line summary from the architecture>" },
     ...
@@ -125,7 +125,7 @@ awaiting implementation).
 
 ## Phase F — Knowledge graph handoff
 
-Write `modernized/$1-reimagined/CLAUDE.md` — the persistent context file for
+Write `modernized/$1-reimagined/FUXI.md` — the persistent context file for
 the new system, containing: architecture summary, service responsibilities,
 where the spec lives, how to run tests, and the legacy→modern traceability
 map. This file IS the knowledge graph that future agents and engineers will

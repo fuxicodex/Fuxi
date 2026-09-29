@@ -314,7 +314,7 @@ class TestCommitReview:
         sha, out = commit_file(repo, "app.py", VULN_PY)
         elsewhere = tmp_path / "elsewhere"
         elsewhere.mkdir()
-        env = {**hook_env, "CLAUDE_PROJECT_DIR": str(ws)}
+        env = {**hook_env, "FUXI_PROJECT_DIR": str(ws)}
         rc, so, se = run_hook(bash_payload(elsewhere, "git commit -m change", out), env)
         m = metrics_of(so)
         assert m.get("skip_reason") is None, m
@@ -355,7 +355,7 @@ class TestCommitReview:
     def test_no_credentials_gate_precedes_repo_resolution(self, workspace, hook_env):
         ws, repo = workspace
         sha, out = commit_file(repo, "app.py", VULN_PY)
-        env = {k: v for k, v in hook_env.items() if k != "ANTHROPIC_API_KEY"}
+        env = {k: v for k, v in hook_env.items() if k != "FUXI_API_KEY"}
         rc, so, se = run_hook(bash_payload(ws, "cd sub && git commit -m change", out), env)
         m = metrics_of(so)
         assert m["skip_reason"] == 22 and m["repo_resolution"] == rr.RES_COMMAND
@@ -526,7 +526,7 @@ class TestStop:
         before = _read_state(hook_env)
         (wt / "new.py").write_text("import pickle\npickle.loads(b)\n")
         run_hook(edit_payload(wt, wt / "new.py", "x"), hook_env)
-        env = {**hook_env, "CLAUDE_PROJECT_DIR": str(repo)}
+        env = {**hook_env, "FUXI_PROJECT_DIR": str(repo)}
         rc, so, se = run_hook(stop_payload(wt, event="SubagentStop"), env)
         m = metrics_of(so)
         assert m["skip_reason"] == 11, m
@@ -545,7 +545,7 @@ class TestStop:
         run_hook(ups_payload(ws), hook_env)
         (wt / "new.py").write_text("import pickle\npickle.loads(b)\n")
         run_hook(edit_payload(ws, wt / "new.py", "x"), hook_env)
-        env = {**hook_env, "CLAUDE_PROJECT_DIR": str(repo)}
+        env = {**hook_env, "FUXI_PROJECT_DIR": str(repo)}
         rc, so, se = run_hook(stop_payload(ws, event="SubagentStop"), env)
         m = metrics_of(so)
         assert m["skip_reason"] == 11 and m["repo_resolution"] == rr.RES_TOUCHED_PATHS, m
@@ -591,11 +591,11 @@ class TestStop:
         (repo / "pkg").mkdir()
         run_hook(ups_payload(repo), hook_env)
         self._touch(repo, repo, hook_env)
-        env = {**hook_env, "CLAUDE_PROJECT_DIR": str(repo)}
+        env = {**hook_env, "FUXI_PROJECT_DIR": str(repo)}
         rc, so, se = run_hook(stop_payload(repo / "pkg", event="SubagentStop"), env)
         m = metrics_of(so)
         assert m.get("skip_reason") is None and m["files_reviewed"] == 1, m
-        env_ws = {**hook_env, "CLAUDE_PROJECT_DIR": str(ws)}
+        env_ws = {**hook_env, "FUXI_PROJECT_DIR": str(ws)}
         (repo / "app.py").write_text(VULN_PY + "y = 2\n")
         rc, so, se = run_hook(stop_payload(repo, event="SubagentStop"), env_ws)
         assert metrics_of(so).get("skip_reason") is None

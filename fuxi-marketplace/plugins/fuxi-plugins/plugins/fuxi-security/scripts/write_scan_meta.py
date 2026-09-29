@@ -112,7 +112,7 @@ def tree_extent(scan_root: str) -> Extent | None:
     the immediate subdirectories do. Entries are classified without following
     symbolic links, so nothing outside the checkout is read: a root-level
     symbolic link is never one of the directories, and is named in `symlinks`
-    so the report can say it was not followed. `.git` and `CLAUDE-SECURITY-*`
+    so the report can say it was not followed. `.git` and `FUXI-SECURITY-*`
     report directories are excluded. None when the tree could not be listed.
     """
     names: set[str] = set()

@@ -26,4 +26,4 @@ This skill is **read-only** - it analyzes but doesn't modify files.
 
 ## Author
 
-Isabella He (isabella@anthropic.com)
+Isabella He (support@fuxicode.com)

@@ -3,7 +3,7 @@
 /**
  * analyze-sessions.js
  *
- * Scans ~/.claude/projects/**.jsonl transcript files and reports token usage,
+ * Scans ~/.fuxi/projects/**.jsonl transcript files and reports token usage,
  * message counts, runtime, cache breaks, subagent and skill activity.
  *
  * Output is human-readable text by default; pass --json for machine-readable.
@@ -42,7 +42,7 @@ function flag(name, dflt) {
   const v = argv[i + 1]
   return v === undefined || v.startsWith('--') ? true : v
 }
-const ROOT = flag('--dir', path.join(os.homedir(), '.claude', 'projects'))
+const ROOT = flag('--dir', path.join(os.homedir(), '.fuxi', 'projects'))
 const AS_JSON = argv.includes('--json')
 const TOP_N = parseInt(flag('--top', '15'), 10)
 const SINCE = parseSince(flag('--since', null))
@@ -753,7 +753,7 @@ function printText({ overall, perProject, perSubagent, perSkill }) {
   const hr = () => line('─'.repeat(78))
 
   line()
-  line(`Claude Code session analysis — ${ROOT}`)
+  line(`FuXi session analysis — ${ROOT}`)
   if (SINCE) line(`(since ${SINCE.toISOString()})`)
   hr()
   printBlock('OVERALL', overall)

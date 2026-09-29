@@ -14,10 +14,10 @@ Performs automated code review on a pull request using multiple specialized agen
 
 **What it does:**
 1. Checks if review is needed (skips closed, draft, trivial, or already-reviewed PRs)
-2. Gathers relevant CLAUDE.md guideline files from the repository
+2. Gathers relevant FUXI.md guideline files from the repository
 3. Summarizes the pull request changes
 4. Launches 4 parallel agents to independently review:
-   - **Agents #1 & #2**: Audit for CLAUDE.md compliance
+   - **Agents #1 & #2**: Audit for FUXI.md compliance
    - **Agent #3**: Scan for obvious bugs in changes
    - **Agent #4**: Analyze git blame/history for context-based issues
 5. Scores each issue 0-100 for confidence level
@@ -44,7 +44,7 @@ Performs automated code review on a pull request using multiple specialized agen
 **Features:**
 - Multiple independent agents for comprehensive review
 - Confidence-based scoring reduces false positives (threshold: 80)
-- CLAUDE.md compliance checking with explicit guideline verification
+- FUXI.md compliance checking with explicit guideline verification
 - Bug detection focused on changes (not pre-existing issues)
 - Historical context analysis via git blame
 - Automatic skipping of closed, draft, or already-reviewed PRs
@@ -56,7 +56,7 @@ Performs automated code review on a pull request using multiple specialized agen
 
 Found 3 issues:
 
-1. Missing error handling for OAuth callback (CLAUDE.md says "Always handle OAuth errors")
+1. Missing error handling for OAuth callback (FUXI.md says "Always handle OAuth errors")
 
 https://github.com/owner/repo/blob/abc123.../src/auth.ts#L67-L72
 
@@ -64,7 +64,7 @@ https://github.com/owner/repo/blob/abc123.../src/auth.ts#L67-L72
 
 https://github.com/owner/repo/blob/abc123.../src/auth.ts#L88-L95
 
-3. Inconsistent naming pattern (src/conventions/CLAUDE.md says "Use camelCase for functions")
+3. Inconsistent naming pattern (src/conventions/FUXI.md says "Use camelCase for functions")
 
 https://github.com/owner/repo/blob/abc123.../src/utils.ts#L23-L28
 ```
@@ -81,7 +81,7 @@ https://github.com/owner/repo/blob/abc123.../src/utils.ts#L23-L28
 - Code that looks like a bug but isn't
 - Pedantic nitpicks
 - Issues linters will catch
-- General quality issues (unless in CLAUDE.md)
+- General quality issues (unless in FUXI.md)
 - Issues with lint ignore comments
 
 ## Installation
@@ -91,11 +91,11 @@ This plugin is included in the FuXi repository. The command is automatically ava
 ## Best Practices
 
 ### Using `/code-review`
-- Maintain clear CLAUDE.md files for better compliance checking
+- Maintain clear FUXI.md files for better compliance checking
 - Trust the 80+ confidence threshold - false positives are filtered
 - Run on all non-trivial pull requests
 - Review agent findings as a starting point for human review
-- Update CLAUDE.md based on recurring review patterns
+- Update FUXI.md based on recurring review patterns
 
 ### When to use
 - All pull requests with meaningful changes
@@ -132,7 +132,7 @@ This plugin is included in the FuXi repository. The command is automatically ava
 
 - Git repository with GitHub integration
 - GitHub CLI (`gh`) installed and authenticated
-- CLAUDE.md files (optional but recommended for guideline checking)
+- FUXI.md files (optional but recommended for guideline checking)
 
 ## Troubleshooting
 
@@ -151,7 +151,7 @@ This plugin is included in the FuXi repository. The command is automatically ava
 
 **Solution**:
 - Default threshold is 80 (already filters most false positives)
-- Make CLAUDE.md more specific about what matters
+- Make FUXI.md more specific about what matters
 - Consider if the flagged issue is actually valid
 
 ### No review comment posted
@@ -190,10 +190,10 @@ https://github.com/owner/repo/blob/[full-sha]/path/file.ext#L[start]-L[end]
 
 ## Tips
 
-- **Write specific CLAUDE.md files**: Clear guidelines = better reviews
+- **Write specific FUXI.md files**: Clear guidelines = better reviews
 - **Include context in PRs**: Helps agents understand intent
 - **Use confidence scores**: Issues ≥80 are usually correct
-- **Iterate on guidelines**: Update CLAUDE.md based on patterns
+- **Iterate on guidelines**: Update FUXI.md based on patterns
 - **Review automatically**: Set up as part of PR workflow
 - **Trust the filtering**: Threshold prevents noise
 
@@ -219,7 +219,7 @@ Edit `commands/code-review.md` to add or modify agent tasks:
 ## Technical Details
 
 ### Agent architecture
-- **2x CLAUDE.md compliance agents**: Redundancy for guideline checks
+- **2x FUXI.md compliance agents**: Redundancy for guideline checks
 - **1x bug detector**: Focused on obvious bugs in changes only
 - **1x history analyzer**: Context from git blame and history
 - **Nx confidence scorers**: One per issue for independent scoring
@@ -228,7 +228,7 @@ Edit `commands/code-review.md` to add or modify agent tasks:
 - Each issue independently scored 0-100
 - Scoring considers evidence strength and verification
 - Threshold (default 80) filters low-confidence issues
-- For CLAUDE.md issues: verifies guideline explicitly mentions it
+- For FUXI.md issues: verifies guideline explicitly mentions it
 
 ### GitHub integration
 Uses `gh` CLI for:
@@ -239,7 +239,7 @@ Uses `gh` CLI for:
 
 ## Author
 
-Boris Cherny (boris@anthropic.com)
+Boris Cherny (support@fuxicode.com)
 
 ## Version
 

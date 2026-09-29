@@ -15,7 +15,7 @@ If you click Don't Allow, or the prompt never appears, grant it manually: **Syst
 
 **2. Install the plugin.**
 
-These are FuXi commands — run `claude` to start a session first.
+These are FuXi commands — run `fuxi` to start a session first.
 
 Install the plugin. No env vars required.
 ```
@@ -64,7 +64,7 @@ Handles are phone numbers (`+15551234567`) or Apple ID emails (`them@icloud.com`
 | `IMESSAGE_APPEND_SIGNATURE` | `true` | Appends `\nSent by FuXi` to outbound messages. Set to `false` to disable. |
 | `IMESSAGE_ALLOW_SMS` | `false` | Accept inbound SMS/RCS in addition to iMessage. **Off by default because SMS sender IDs are spoofable** — a forged SMS from your own number would otherwise bypass access control. Only enable if you understand the risk. |
 | `IMESSAGE_ACCESS_MODE` | — | Set to `static` to disable runtime pairing and read `access.json` only. |
-| `IMESSAGE_STATE_DIR` | `~/.claude/channels/imessage` | Override where `access.json` and pairing state live. |
+| `IMESSAGE_STATE_DIR` | `~/.fuxi/channels/imessage` | Override where `access.json` and pairing state live. |
 
 ## Access control
 

@@ -1,6 +1,6 @@
 # MCPB Manifest Schema (v0.4)
 
-Validated against `github.com/anthropics/mcpb/schemas/mcpb-manifest-v0.4.schema.json`. The schema uses `additionalProperties: false` — unknown keys are rejected. Add `"$schema"` to your manifest for editor validation.
+Validated against `github.com/fuxicodex/mcpb/schemas/mcpb-manifest-v0.4.schema.json`. The schema uses `additionalProperties: false` — unknown keys are rejected. Add `"$schema"` to your manifest for editor validation.
 
 ---
 

@@ -1,18 +1,18 @@
 ---
-description: Create and setup a new Claude Agent SDK application
+description: Create and setup a new FuXi Agent SDK application
 argument-hint: [project-name]
 ---
 
-You are tasked with helping the user create a new Claude Agent SDK application. Follow these steps carefully:
+You are tasked with helping the user create a new FuXi Agent SDK application. Follow these steps carefully:
 
 ## Reference Documentation
 
 Before starting, review the official documentation to ensure you provide accurate and up-to-date guidance. Use WebFetch to read these pages:
 
-1. **Start with the overview**: https://docs.claude.com/en/api/agent-sdk/overview
+1. **Start with the overview**: https://docs.fuxicode.com/en/api/agent-sdk/overview
 2. **Based on the user's language choice, read the appropriate SDK reference**:
-   - TypeScript: https://docs.claude.com/en/api/agent-sdk/typescript
-   - Python: https://docs.claude.com/en/api/agent-sdk/python
+   - TypeScript: https://docs.fuxicode.com/en/api/agent-sdk/typescript
+   - Python: https://docs.fuxicode.com/en/api/agent-sdk/python
 3. **Read relevant guides mentioned in the overview** such as:
    - Streaming vs Single Mode
    - Permissions
@@ -74,17 +74,17 @@ Based on the user's answers, create a plan that includes:
 2. **Check for Latest Versions**:
 
    - BEFORE installing, use WebSearch or check npm/PyPI to find the latest version
-   - For TypeScript: Check https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk
-   - For Python: Check https://pypi.org/project/claude-agent-sdk/
+   - For TypeScript: Check https://www.npmjs.com/package/@fuxicode/fuxi-agent-sdk
+   - For Python: Check https://pypi.org/project/fuxi-agent-sdk/
    - Inform the user which version you're installing
 
 3. **SDK Installation**:
 
-   - TypeScript: `npm install @anthropic-ai/claude-agent-sdk@latest` (or specify latest version)
-   - Python: `pip install claude-agent-sdk` (pip installs latest by default)
+   - TypeScript: `npm install @fuxicode/fuxi-agent-sdk@latest` (or specify latest version)
+   - Python: `pip install fuxi-agent-sdk` (pip installs latest by default)
    - After installation, verify the installed version:
-     - TypeScript: Check package.json or run `npm list @anthropic-ai/claude-agent-sdk`
-     - Python: Run `pip show claude-agent-sdk`
+     - TypeScript: Check package.json or run `npm list @fuxicode/fuxi-agent-sdk`
+     - Python: Run `pip show fuxi-agent-sdk`
 
 4. **Create starter files**:
 
@@ -95,12 +95,12 @@ Based on the user's answers, create a plan that includes:
 
 5. **Environment setup**:
 
-   - Create a `.env.example` file with `ANTHROPIC_API_KEY=your_api_key_here`
+   - Create a `.env.example` file with `FUXI_API_KEY=your_api_key_here`
    - Add `.env` to `.gitignore`
-   - Explain how to get an API key from https://console.anthropic.com/
+   - Explain how to get an API key from https://console.fuxicode.com/
 
-6. **Optional: Create .claude directory structure**:
-   - Offer to create `.claude/` directory for agents, commands, and settings
+6. **Optional: Create .fuxi directory structure**:
+   - Offer to create `.fuxi/` directory for agents, commands, and settings
    - Ask if they want any example subagents or slash commands
 
 ## Implementation
@@ -147,8 +147,8 @@ Once setup is complete and verified, provide the user with:
 
 2. **Useful resources**:
 
-   - Link to TypeScript SDK reference: https://docs.claude.com/en/api/agent-sdk/typescript
-   - Link to Python SDK reference: https://docs.claude.com/en/api/agent-sdk/python
+   - Link to TypeScript SDK reference: https://docs.fuxicode.com/en/api/agent-sdk/typescript
+   - Link to Python SDK reference: https://docs.fuxicode.com/en/api/agent-sdk/python
    - Explain key concepts: system prompts, permissions, tools, MCP servers
 
 3. **Common next steps**:

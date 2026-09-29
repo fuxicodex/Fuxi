@@ -53,7 +53,7 @@ the page. What's left is meant to survive someone pushing back on it.
 
 Everything is read locally — file I/O and read-only `git`, no network calls.
 
-It reads `~/.claude/projects/**/*.jsonl`, your own session history, already on
+It reads `~/.fuxi/projects/**/*.jsonl`, your own session history, already on
 disk. To work out which of the directories mentioned there are git repos, it
 runs `git rev-parse` in each of them, and in the ones that are, reads
 `user.email` and runs `git log`.

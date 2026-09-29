@@ -18,8 +18,8 @@
 #
 # Args after the shim path are passed straight through to the chosen
 # interpreter, so the hooks.json invocation is:
-#   bash "${CLAUDE_PLUGIN_ROOT}/hooks/sg-python.sh" \
-#        "${CLAUDE_PLUGIN_ROOT}/hooks/security_reminder_hook.py"
+#   bash "${FUXI_PLUGIN_ROOT}/hooks/sg-python.sh" \
+#        "${FUXI_PLUGIN_ROOT}/hooks/security_reminder_hook.py"
 set -e
 
 # Force UTF-8 for ALL Python filesystem + IO operations (PEP 540).
@@ -39,7 +39,7 @@ export PYTHONUTF8=1
 # leading `/` as the root of the current drive — e.g. `/c/Users/...` becomes
 # `C:\c\Users\...` or `D:\c\Users\...` (whichever drive the shell is on),
 # fails with ENOENT, and every Edit/Write/MultiEdit tool use blocks until the
-# session restarts. See anthropics/claude-plugins-official#2043.
+# session restarts. See fuxicode/fuxi-plugins#2043.
 #
 # Fix: convert absolute path args to native Windows form via `cygpath -w`
 # before exec. `cygpath` is a Git Bash builtin; it's absent on macOS/Linux,
@@ -62,12 +62,12 @@ probe() {
     "$@" -c 'import sys; print(f"{sys.version_info[0]}.{sys.version_info[1]}")' 2>/dev/null
 }
 
-# True iff arg is a "M.m" version string >= 3.10. claude_agent_sdk requires
+# True iff arg is a "M.m" version string >= 3.10. fuxi_agent_sdk requires
 # Python >= 3.10; below that, pip install fails ("No matching distribution")
 # and the LLM-powered review (Stop / commit / push) silently no-ops while
 # pattern checks (PostToolUse regex) keep working. macOS ships 3.9.6 as the
 # default `python3` on current versions, so this guard matters in practice.
-# See anthropics/claude-plugins-official#2071.
+# See fuxicode/fuxi-plugins#2071.
 is_sdk_compatible() {
     case "$1" in
         3.1[0-9]|3.[2-9][0-9]|[4-9].*|[1-9][0-9].*) return 0 ;;

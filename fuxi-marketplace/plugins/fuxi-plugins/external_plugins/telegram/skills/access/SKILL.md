@@ -26,11 +26,11 @@ you just edit JSON; the channel server re-reads it.
 per-project setups):
 
 ```bash
-echo "${TELEGRAM_STATE_DIR:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/channels/telegram}"
+echo "${TELEGRAM_STATE_DIR:-${CLAUDE_CONFIG_DIR:-$HOME/.fuxi}/channels/telegram}"
 ```
 
 Use the printed path everywhere below in place of `<state-dir>`. The default
-is `~/.claude/channels/telegram`.
+is `~/.fuxi/channels/telegram`.
 
 Arguments passed: `$ARGUMENTS`
 

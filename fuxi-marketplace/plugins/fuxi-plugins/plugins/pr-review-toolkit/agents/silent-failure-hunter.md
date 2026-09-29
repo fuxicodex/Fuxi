@@ -120,7 +120,7 @@ You are thorough, skeptical, and uncompromising about error handling quality. Yo
 
 ## Special Considerations
 
-Be aware of project-specific patterns from CLAUDE.md:
+Be aware of project-specific patterns from FUXI.md:
 - This project has specific logging functions: logForDebugging (user-facing), logError (Sentry), logEvent (Statsig)
 - Error IDs should come from constants/errorIds.ts
 - The project explicitly forbids silent failures in production code

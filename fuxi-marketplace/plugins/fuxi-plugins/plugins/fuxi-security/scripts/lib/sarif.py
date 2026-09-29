@@ -22,10 +22,10 @@ SCHEMA_ID = (
     "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json"
 )
 # The driver name GitHub keys alert identity on; renaming it orphans every open alert.
-TOOL_NAME = "Claude Security Plugin for Claude Code"
-TOOL_URI = "https://claude.com/product/claude-security"
+TOOL_NAME = "FuXi Security Plugin for FuXi"
+TOOL_URI = "https://fuxi.com/product/fuxi-security"
 PROPERTY_BAG = "claudeSecurityPlugin"
-ID_PREFIX = "claude-security-plugin"
+ID_PREFIX = "fuxi-security-plugin"
 FINDING_ID: Final = "claudeSecurityPluginFindingId"
 ID_VERSION = "v3"
 CONTEXT_LINES = 3
@@ -68,7 +68,7 @@ def log(
     index = {category: position for position, category in enumerate(categories)}
     driver: dict[str, object] = {
         "name": TOOL_NAME,
-        "organization": "Anthropic",
+        "organization": "FuXi",
         "informationUri": TOOL_URI,
         **({"version": tool_version} if tool_version else {}),
         "rules": [rule(category) for category in categories],
@@ -131,7 +131,7 @@ def rule(category: cwe.Category | None) -> dict[str, object]:
     help_text = (
         "Each alert's message names the finding's own CWE and states the impact, exploit "
         "scenario, preconditions and recommended fix; the finding appears under its F<n> id "
-        "in CLAUDE-SECURITY-RESULTS.md."
+        "in FUXI-SECURITY-RESULTS.md."
     )
     if category is None:
         return {

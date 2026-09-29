@@ -1,9 +1,9 @@
 ---
-description: Set up the Asana V2 MCP server connection (one-time OAuth app + claude mcp add)
+description: Set up the Asana V2 MCP server connection (one-time OAuth app + fuxi mcp add)
 argument-hint: "[client_id]"
 ---
 
-The user wants to connect FuXi to Asana's V2 MCP server. Guide them through the one-time setup below. Do NOT run `claude mcp add` yourself — the `--client-secret` prompt needs a real terminal (a hidden TTY prompt), so the user must run it in their own terminal.
+The user wants to connect FuXi to Asana's V2 MCP server. Guide them through the one-time setup below. Do NOT run `fuxi mcp add` yourself — the `--client-secret` prompt needs a real terminal (a hidden TTY prompt), so the user must run it in their own terminal.
 
 Their Asana OAuth Client ID (if provided): `$1`
 
@@ -24,7 +24,7 @@ Note: `localhost` is correct — FuXi is a local client and catches the OAuth ca
 ## Step 2 — Add the server (run this in YOUR terminal)
 
 ```bash
-claude mcp add --transport http \
+fuxi mcp add --transport http \
   --client-id YOUR_CLIENT_ID --client-secret \
   --callback-port 8080 \
   asana https://mcp.asana.com/v2/mcp

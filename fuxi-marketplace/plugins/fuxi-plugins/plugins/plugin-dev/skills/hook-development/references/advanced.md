@@ -14,7 +14,7 @@ Combine command and prompt hooks for layered validation:
       "hooks": [
         {
           "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/quick-check.sh",
+          "command": "bash ${FUXI_PLUGIN_ROOT}/scripts/quick-check.sh",
           "timeout": 5
         },
         {
@@ -118,11 +118,11 @@ Modify hook behavior based on project configuration:
 
 ```bash
 #!/bin/bash
-cd "$CLAUDE_PROJECT_DIR" || exit 1
+cd "$FUXI_PROJECT_DIR" || exit 1
 
 # Read project-specific config
-if [ -f ".claude-hooks-config.json" ]; then
-  strict_mode=$(jq -r '.strict_mode' .claude-hooks-config.json)
+if [ -f ".fuxi-hooks-config.json" ]; then
+  strict_mode=$(jq -r '.strict_mode' .fuxi-hooks-config.json)
 
   if [ "$strict_mode" = "true" ]; then
     # Apply strict validation
@@ -134,7 +134,7 @@ if [ -f ".claude-hooks-config.json" ]; then
 fi
 ```
 
-**Example .claude-hooks-config.json:**
+**Example .fuxi-hooks-config.json:**
 ```json
 {
   "strict_mode": true,
@@ -355,7 +355,7 @@ tool_name=$(echo "$input" | jq -r '.tool_name')
 timestamp=$(date -Iseconds)
 
 # Append to audit log
-echo "$timestamp | $USER | $tool_name | $input" >> ~/.claude/audit.log
+echo "$timestamp | $USER | $tool_name | $input" >> ~/.fuxi/audit.log
 
 exit 0
 ```
@@ -410,9 +410,9 @@ Create test scenarios that exercise the full hook workflow:
 #!/bin/bash
 
 # Set up test environment
-export CLAUDE_PROJECT_DIR="/tmp/test-project"
-export CLAUDE_PLUGIN_ROOT="$(pwd)"
-mkdir -p "$CLAUDE_PROJECT_DIR"
+export FUXI_PROJECT_DIR="/tmp/test-project"
+export FUXI_PLUGIN_ROOT="$(pwd)"
+mkdir -p "$FUXI_PROJECT_DIR"
 
 # Test SessionStart hook
 echo '{}' | bash hooks/session-start.sh
@@ -423,7 +423,7 @@ else
 fi
 
 # Clean up
-rm -rf "$CLAUDE_PROJECT_DIR"
+rm -rf "$FUXI_PROJECT_DIR"
 ```
 
 ## Best Practices for Advanced Hooks

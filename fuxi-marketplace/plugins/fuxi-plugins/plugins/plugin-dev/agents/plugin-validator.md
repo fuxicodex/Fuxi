@@ -49,11 +49,11 @@ You are an expert plugin validator specializing in comprehensive validation of F
 **Validation Process:**
 
 1. **Locate Plugin Root**:
-   - Check for `.claude-plugin/plugin.json`
+   - Check for `.fuxi-plugin/plugin.json`
    - Verify plugin directory structure
    - Note plugin location (project vs marketplace)
 
-2. **Validate Manifest** (`.claude-plugin/plugin.json`):
+2. **Validate Manifest** (`.fuxi-plugin/plugin.json`):
    - Check JSON syntax (use Bash with `jq` or Read + manual parsing)
    - Verify required field: `name`
    - Check name format (kebab-case, no spaces)
@@ -111,7 +111,7 @@ You are an expert plugin validator specializing in comprehensive validation of F
      - Valid event names (PreToolUse, PostToolUse, Stop, etc.)
      - Each hook has `matcher` and `hooks` array
      - Hook type is `command` or `prompt`
-     - Commands reference existing scripts with ${CLAUDE_PLUGIN_ROOT}
+     - Commands reference existing scripts with ${FUXI_PLUGIN_ROOT}
 
 8. **Validate MCP Configuration** (if `.mcp.json` or `mcpServers` in manifest):
    - Check JSON syntax
@@ -119,7 +119,7 @@ You are an expert plugin validator specializing in comprehensive validation of F
      - stdio: has `command` field
      - sse/http/ws: has `url` field
      - Type-specific fields present
-   - Check ${CLAUDE_PLUGIN_ROOT} usage for portability
+   - Check ${FUXI_PLUGIN_ROOT} usage for portability
 
 9. **Check File Organization**:
    - README.md exists and is comprehensive

@@ -83,7 +83,7 @@ Specialist subagents invoked by the commands (or directly):
 
 ## Recommended workspace setup
 
-A `.claude/settings.json` in the project you're modernizing enforces the core invariant — never touch `legacy/`, freely edit `analysis/` and `modernized/`:
+A `.fuxi/settings.json` in the project you're modernizing enforces the core invariant — never touch `legacy/`, freely edit `analysis/` and `modernized/`:
 
 ```json
 {

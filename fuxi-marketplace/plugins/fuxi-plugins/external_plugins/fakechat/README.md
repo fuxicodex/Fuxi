@@ -7,7 +7,7 @@ session, replies come back.
 
 ## Setup
 
-These are FuXi commands — run `claude` to start a session first.
+These are FuXi commands — run `fuxi` to start a session first.
 
 Install the plugin:
 ```
@@ -37,7 +37,7 @@ Set `FAKECHAT_PORT` to change the port.
 | `reply` | Send to the UI. Takes `text`, optionally `reply_to` (message ID) and `files` (absolute path, 50MB). Attachment shows as `[filename]` under the text. |
 | `edit_message` | Edit a previously-sent message in place. |
 
-Inbound images/files save to `~/.claude/channels/fakechat/inbox/` and the path
+Inbound images/files save to `~/.fuxi/channels/fakechat/inbox/` and the path
 is included in the notification. Outbound files are copied to `outbox/` and
 served over HTTP.
 

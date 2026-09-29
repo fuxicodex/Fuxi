@@ -27,7 +27,7 @@ Read state and give the user a complete picture:
    Settings → Privacy & Security → Full Disk Access. The server can't read
    chat.db without it."*
 
-2. **Access** — read `~/.claude/channels/imessage/access.json` (missing file
+2. **Access** — read `~/.fuxi/channels/imessage/access.json` (missing file
    = defaults: `dmPolicy: "allowlist"`, empty allowlist). Show:
    - DM policy and what it means in one line
    - Allowed senders: count, and list the handles

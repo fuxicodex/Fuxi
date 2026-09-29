@@ -27,7 +27,7 @@ ls -d <parent-dir>/*/ | xargs -n1 basename   # bare subdir names, not paths
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/portfolio-assess.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/portfolio-assess.js",
   args: { parentDir: "<parent-dir>", systems: ["<sub1>", "<sub2>", ...] }
 })
 ```

@@ -6,7 +6,7 @@ version: 0.2.0
 
 # Command Development for FuXi
 
-> **Note:** The `.claude/commands/` directory is a legacy format. For new skills, use the `.claude/skills/<name>/SKILL.md` directory format. Both are loaded identically — the only difference is file layout. See the `skill-development` skill for the preferred format.
+> **Note:** The `.fuxi/commands/` directory is a legacy format. For new skills, use the `.fuxi/skills/<name>/SKILL.md` directory format. Both are loaded identically — the only difference is file layout. See the `skill-development` skill for the preferred format.
 
 ## Overview
 
@@ -62,14 +62,14 @@ The first example tells FuXi what to do. The second tells the user what will hap
 
 **Project commands** (shared with team):
 
-- Location: `.claude/commands/`
+- Location: `.fuxi/commands/`
 - Scope: Available in specific project
 - Label: Shown as "(project)" in `/help`
 - Use for: Team workflows, project-specific tasks
 
 **Personal commands** (available everywhere):
 
-- Location: `~/.claude/commands/`
+- Location: `~/.fuxi/commands/`
 - Scope: Available in all projects
 - Label: Shown as "(user)" in `/help`
 - Use for: Personal workflows, cross-project utilities
@@ -88,7 +88,7 @@ The first example tells FuXi what to do. The second tells the user what will hap
 Commands are Markdown files with `.md` extension:
 
 ```
-.claude/commands/
+.fuxi/commands/
 ├── review.md           # /review command
 ├── test.md             # /test command
 └── deploy.md           # /deploy command
@@ -358,7 +358,7 @@ For complete syntax, examples, and best practices, see `references/plugin-featur
 Simple organization for small command sets:
 
 ```
-.claude/commands/
+.fuxi/commands/
 ├── build.md
 ├── test.md
 ├── deploy.md
@@ -373,7 +373,7 @@ Simple organization for small command sets:
 Organize commands in subdirectories:
 
 ```
-.claude/commands/
+.fuxi/commands/
 ├── ci/
 │   ├── build.md        # /build (project:ci)
 │   ├── test.md         # /test (project:ci)
@@ -559,9 +559,9 @@ PR #$1 Workflow:
 
 ## Plugin-Specific Features
 
-### CLAUDE_PLUGIN_ROOT Variable
+### FUXI_PLUGIN_ROOT Variable
 
-Plugin commands have access to `${CLAUDE_PLUGIN_ROOT}`, an environment variable that resolves to the plugin's absolute path.
+Plugin commands have access to `${FUXI_PLUGIN_ROOT}`, an environment variable that resolves to the plugin's absolute path.
 
 **Purpose:**
 
@@ -578,7 +578,7 @@ description: Analyze using plugin script
 allowed-tools: Bash(node:*)
 ---
 
-Run analysis: !`node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js $1`
+Run analysis: !`node ${FUXI_PLUGIN_ROOT}/scripts/analyze.js $1`
 
 Review results and report findings.
 ```
@@ -588,19 +588,19 @@ Review results and report findings.
 ```markdown
 # Execute plugin script
 
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/script.sh`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/script.sh`
 
 # Load plugin configuration
 
-@${CLAUDE_PLUGIN_ROOT}/config/settings.json
+@${FUXI_PLUGIN_ROOT}/config/settings.json
 
 # Use plugin template
 
-@${CLAUDE_PLUGIN_ROOT}/templates/report.md
+@${FUXI_PLUGIN_ROOT}/templates/report.md
 
 # Access plugin resources
 
-@${CLAUDE_PLUGIN_ROOT}/docs/reference.md
+@${FUXI_PLUGIN_ROOT}/docs/reference.md
 ```
 
 **Why use it:**
@@ -649,7 +649,7 @@ argument-hint: [environment]
 allowed-tools: Read, Bash(*)
 ---
 
-Load configuration: @${CLAUDE_PLUGIN_ROOT}/config/$1-deploy.json
+Load configuration: @${FUXI_PLUGIN_ROOT}/config/$1-deploy.json
 
 Deploy to $1 using configuration settings.
 Monitor deployment and report status.
@@ -663,7 +663,7 @@ description: Generate docs from template
 argument-hint: [component]
 ---
 
-Template: @${CLAUDE_PLUGIN_ROOT}/templates/docs.md
+Template: @${FUXI_PLUGIN_ROOT}/templates/docs.md
 
 Generate documentation for $1 following template structure.
 ```
@@ -676,9 +676,9 @@ description: Complete build workflow
 allowed-tools: Bash(*)
 ---
 
-Build: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh`
-Test: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/test.sh`
-Package: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/package.sh`
+Build: !`bash ${FUXI_PLUGIN_ROOT}/scripts/build.sh`
+Test: !`bash ${FUXI_PLUGIN_ROOT}/scripts/test.sh`
+Package: !`bash ${FUXI_PLUGIN_ROOT}/scripts/package.sh`
 
 Review outputs and report workflow status.
 ```
@@ -710,8 +710,8 @@ The agent will analyze:
 
 Agent uses plugin resources:
 
-- ${CLAUDE_PLUGIN_ROOT}/config/rules.json
-- ${CLAUDE_PLUGIN_ROOT}/checklists/review.md
+- ${FUXI_PLUGIN_ROOT}/config/rules.json
+- ${FUXI_PLUGIN_ROOT}/checklists/review.md
 ```
 
 **Key points:**
@@ -775,7 +775,7 @@ allowed-tools: Bash(node:*), Read
 Target: @$1
 
 Phase 1 - Static Analysis:
-!`node ${CLAUDE_PLUGIN_ROOT}/scripts/lint.js $1`
+!`node ${FUXI_PLUGIN_ROOT}/scripts/lint.js $1`
 
 Phase 2 - Deep Review:
 Launch code-reviewer agent for detailed analysis.
@@ -784,7 +784,7 @@ Phase 3 - Standards Check:
 Use coding-standards skill for validation.
 
 Phase 4 - Report:
-Template: @${CLAUDE_PLUGIN_ROOT}/templates/review.md
+Template: @${FUXI_PLUGIN_ROOT}/templates/review.md
 
 Compile findings into report following template.
 ```
@@ -845,8 +845,8 @@ allowed-tools: Bash(test:*)
 
 Validate plugin setup:
 
-- Script: !`test -x ${CLAUDE_PLUGIN_ROOT}/bin/analyze && echo "✓" || echo "✗"`
-- Config: !`test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "✓" || echo "✗"`
+- Script: !`test -x ${FUXI_PLUGIN_ROOT}/bin/analyze && echo "✓" || echo "✗"`
+- Config: !`test -f ${FUXI_PLUGIN_ROOT}/config.json && echo "✓" || echo "✗"`
 
 If all checks pass, run analysis.
 Otherwise, report missing components.
@@ -860,7 +860,7 @@ description: Build with error handling
 allowed-tools: Bash(*)
 ---
 
-Execute build: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh 2>&1 || echo "BUILD_FAILED"`
+Execute build: !`bash ${FUXI_PLUGIN_ROOT}/scripts/build.sh 2>&1 || echo "BUILD_FAILED"`
 
 If build succeeded:
 Report success and output location

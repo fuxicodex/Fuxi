@@ -8,7 +8,7 @@ Advanced patterns for organizing plugin components effectively.
 
 When FuXi starts:
 
-1. **Scan enabled plugins**: Read `.claude-plugin/plugin.json` for each
+1. **Scan enabled plugins**: Read `.fuxi-plugin/plugin.json` for each
 2. **Discover components**: Look in default and custom paths
 3. **Parse definitions**: Read YAML frontmatter and configurations
 4. **Register components**: Make available to FuXi
@@ -469,7 +469,7 @@ plugin/
 **Usage in components**:
 ```bash
 #!/bin/bash
-source "${CLAUDE_PLUGIN_ROOT}/lib/test-utils.sh"
+source "${FUXI_PLUGIN_ROOT}/lib/test-utils.sh"
 run_tests
 ```
 
@@ -504,7 +504,7 @@ Nested plugin structure:
 
 ```
 plugin/
-├── .claude-plugin/
+├── .fuxi-plugin/
 │   └── plugin.json
 ├── core/              # Core functionality
 │   ├── commands/

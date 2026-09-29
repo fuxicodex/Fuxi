@@ -41,7 +41,7 @@ confident match goes in a catch-all row with its basis noted, not into a guessed
 workstream.
 
 A design doc / spec: summarize + link it, don't replace it; if it's a
-`claude.ai/code/artifact/...` page use WebFetch (SKILL.md "Reading an existing artifact
+`fuxicode.com/code/artifact/...` page use WebFetch (SKILL.md "Reading an existing artifact
 page"). A build flag, if the change ships behind one: find it in the repo's feature-flag
 system — it goes in the status banner.
 

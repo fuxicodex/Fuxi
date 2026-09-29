@@ -173,7 +173,7 @@ re-derive the identical artifact. Regenerate only if it is missing or stale.
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/uplift-deltas.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/uplift-deltas.js",
   args: { system: "$1", source: "$2", target: "$3", projectPattern: "$4" }
 })
 ```
@@ -314,7 +314,7 @@ invocation authorizes it):
 
 ```
 Workflow({
-  scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/uplift-migrate.js",
+  scriptPath: "${FUXI_PLUGIN_ROOT}/workflows/uplift-migrate.js",
   args: { system: "$1", source: "$2", target: "$3",
           units: [ { name: "<unit>", path: "<dir relative to modernized/$1-uplifted/>",
                      deps: ["<name of a sibling unit this one depends on>", ...] },

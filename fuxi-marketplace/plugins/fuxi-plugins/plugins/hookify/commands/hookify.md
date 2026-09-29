@@ -81,7 +81,7 @@ After gathering behaviors (from arguments or agent), present to user using AskUs
 
 ### Step 3: Generate Rule Files
 
-For each confirmed behavior, create a `.claude/hookify.{rule-name}.local.md` file:
+For each confirmed behavior, create a `.fuxi/hookify.{rule-name}.local.md` file:
 
 **Rule naming convention:**
 - Use kebab-case
@@ -125,23 +125,23 @@ conditions:
 
 ### Step 4: Create Files and Confirm
 
-**IMPORTANT**: Rule files must be created in the current working directory's `.claude/` folder, NOT the plugin directory.
+**IMPORTANT**: Rule files must be created in the current working directory's `.fuxi/` folder, NOT the plugin directory.
 
 Use the current working directory (where FuXi was started) as the base path.
 
-1. Check if `.claude/` directory exists in current working directory
-   - If not, create it first with: `mkdir -p .claude`
+1. Check if `.fuxi/` directory exists in current working directory
+   - If not, create it first with: `mkdir -p .fuxi`
 
-2. Use Write tool to create each `.claude/hookify.{name}.local.md` file
-   - Use relative path from current working directory: `.claude/hookify.{name}.local.md`
-   - The path should resolve to the project's .claude directory, not the plugin's
+2. Use Write tool to create each `.fuxi/hookify.{name}.local.md` file
+   - Use relative path from current working directory: `.fuxi/hookify.{name}.local.md`
+   - The path should resolve to the project's .fuxi directory, not the plugin's
 
 3. Show user what was created:
    ```
    Created 3 hookify rules:
-   - .claude/hookify.dangerous-rm.local.md
-   - .claude/hookify.console-log.local.md
-   - .claude/hookify.sensitive-files.local.md
+   - .fuxi/hookify.dangerous-rm.local.md
+   - .fuxi/hookify.console-log.local.md
+   - .fuxi/hookify.sensitive-files.local.md
 
    These rules will trigger on:
    - dangerous-rm: Bash commands matching "rm -rf"
@@ -184,7 +184,7 @@ Use the current working directory (where FuXi was started) as the base path.
 1. Analyze: User wants to prevent rm -rf commands
 2. Ask: "Should I block this command or just warn you?"
 3. User selects: "Just warn"
-4. Create `.claude/hookify.dangerous-rm.local.md`:
+4. Create `.fuxi/hookify.dangerous-rm.local.md`:
    ```markdown
    ---
    name: warn-dangerous-rm
@@ -203,7 +203,7 @@ Use the current working directory (where FuXi was started) as the base path.
 ## Important Notes
 
 - **No restart needed**: Rules take effect immediately on the next tool use
-- **File location**: Create files in project's `.claude/` directory (current working directory), NOT the plugin's .claude/
+- **File location**: Create files in project's `.fuxi/` directory (current working directory), NOT the plugin's .fuxi/
 - **Regex syntax**: Use Python regex syntax (raw strings, no need to escape in YAML)
 - **Action types**: Rules can `warn` (default) or `block` operations
 - **Testing**: Test rules immediately after creating them
@@ -212,12 +212,12 @@ Use the current working directory (where FuXi was started) as the base path.
 
 **If rule file creation fails:**
 1. Check current working directory with pwd
-2. Ensure `.claude/` directory exists (create with mkdir if needed)
-3. Use absolute path if needed: `{cwd}/.claude/hookify.{name}.local.md`
+2. Ensure `.fuxi/` directory exists (create with mkdir if needed)
+3. Use absolute path if needed: `{cwd}/.fuxi/hookify.{name}.local.md`
 4. Verify file was created with Glob or ls
 
 **If rule doesn't trigger after creation:**
-1. Verify file is in project `.claude/` not plugin `.claude/`
+1. Verify file is in project `.fuxi/` not plugin `.fuxi/`
 2. Check file with Read tool to ensure pattern is correct
 3. Test pattern with: `python3 -c "import re; print(re.search(r'pattern', 'test text'))"`
 4. Verify `enabled: true` in frontmatter

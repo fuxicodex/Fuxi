@@ -1,0 +1,8 @@
+{
+  "name": "agent-sdk-dev",
+  "description": "FuXi Agent SDK Development Plugin",
+  "author": {
+    "name": "FuXi",
+    "email": "support@fuxicode.com"
+  }
+}

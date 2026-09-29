@@ -297,7 +297,7 @@ Suggested next steps:
 **Purpose**: Reviews code for bugs, quality issues, and project conventions
 
 **Focus areas:**
-- Project guideline compliance (CLAUDE.md)
+- Project guideline compliance (FUXI.md)
 - Bug detection
 - Code quality issues
 - Confidence-based filtering (only reports high-confidence issues ≥80)
@@ -405,7 +405,7 @@ Let the workflow guide you through all 7 phases.
 
 ## Author
 
-Sid Bidasaria (sbidasaria@anthropic.com)
+Sid Bidasaria (support@fuxicode.com)
 
 ## Version
 

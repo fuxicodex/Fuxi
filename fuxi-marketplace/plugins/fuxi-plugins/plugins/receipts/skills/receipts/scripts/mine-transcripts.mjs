@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// mine-transcripts.mjs — local, offline aggregation of Claude Code session
+// mine-transcripts.mjs — local, offline aggregation of FuXi session
 // transcripts into a small JSON summary (and optionally a self-contained
 // HTML "receipt") for a personal impact report.
 //
-// Reads only ~/.claude/projects/**/*.jsonl (this machine's own session logs)
+// Reads only ~/.fuxi/projects/**/*.jsonl (this machine's own session logs)
 // and optionally cross-references local `git log`. No network calls, no API
 // calls — pure local file + git parsing. Safe to run often.
 //
@@ -85,7 +85,7 @@ if (isNaN(cutoff)) {
   process.exit(2);
 }
 
-const projectsDir = path.join(os.homedir(), '.claude', 'projects');
+const projectsDir = path.join(os.homedir(), '.fuxi', 'projects');
 
 function findJsonlFiles(dir) {
   const out = [];
@@ -236,9 +236,9 @@ const byRepo = {}; // projectName -> { ...freshAgg(), cwd: Set }
 // a file lives in when it's outside a repo. Work outside a repo is still work —
 // it just gets named for its directory rather than dropped.
 //
-// Claude Code's own machinery is not work. The agent's scratchpad, its
-// per-session tool-results, and ~/.claude internals are the tool's bookkeeping;
-// counting them credits the dev with files Claude wrote to talk to itself.
+// FuXi's own machinery is not work. The agent's scratchpad, its
+// per-session tool-results, and ~/.fuxi internals are the tool's bookkeeping;
+// counting them credits the dev with files FuXi wrote to talk to itself.
 const HOME = os.homedir();
 
 // Work that isn't in a project and isn't pretending to be. Sessions that
@@ -252,7 +252,7 @@ const NO_PROJECT = 'Research & investigation (no project)';
 // Windows mixes separators — transcripts carry `C:\Users\...` while
 // `git rev-parse --show-toplevel` answers `C:/Users/...` — and its filesystem
 // is case-insensitive. Comparing raw strings means every check below silently
-// returns false there, which does not fail loudly: it means Claude's own
+// returns false there, which does not fail loudly: it means FuXi's own
 // scratchpad stops being excluded and starts counting as the dev's work, and
 // `tool-results` shows up as their biggest project. A receipt that credits the
 // agent's temp files and drops the real commits is worse than no receipt.
@@ -275,19 +275,19 @@ function isAgentMachinery(p) {
   const n = norm(p);
   return (
     // Agent scratchpad, under whichever temp root the platform uses:
-    // /tmp/claude-501/..., /private/tmp/claude-501/..., and on Windows
-    // C:/Users/me/AppData/Local/Temp/claude-501/...
-    /\/(?:private\/)?tmp\/claude-[^/]*\//.test(n) ||
-    /\/temp\/claude-[^/]*\//.test(n) ||
+    // /tmp/fuxi-501/..., /private/tmp/fuxi-501/..., and on Windows
+    // C:/Users/me/AppData/Local/Temp/fuxi-501/...
+    /\/(?:private\/)?tmp\/fuxi-[^/]*\//.test(n) ||
+    /\/temp\/fuxi-[^/]*\//.test(n) ||
     /\/var\/folders\/.*\/t\//i.test(n) || // macOS per-user temp
     n.includes('/tool-results/') || // per-session tool output
-    // Trailing separator matters: without it this also swallows `~/.claude-foo`
-    // and `~/.claude.json`, which are somebody's actual projects and config.
-    n.startsWith(HOME_N + '/.claude/') || // memory, projects, config
+    // Trailing separator matters: without it this also swallows `~/.fuxi-foo`
+    // and `~/.fuxi.json`, which are somebody's actual projects and config.
+    n.startsWith(HOME_N + '/.fuxi/') || // memory, projects, config
     // This report's own output. Left in, every run counts the last run's
     // receipt as work and the dev's home directory grows a project made
     // entirely of receipts about itself.
-    /\/claude-code-receipts-\d{4}-\d{2}-\d{2}-to-\d{4}-\d{2}-\d{2}\.(md|html)$/.test(n)
+    /\/fuxi-receipts-\d{4}-\d{2}-\d{2}-to-\d{4}-\d{2}-\d{2}\.(md|html)$/.test(n)
   );
 }
 
@@ -749,7 +749,7 @@ function gitUserName() {
   }
 }
 
-// Commits in this repo that contain work Claude Code did.
+// Commits in this repo that contain work FuXi did.
 //
 // NOT "commits by my git identity" — that asks a different question and gets a
 // different answer. It counts anything committed under the dev's email,
@@ -867,7 +867,7 @@ function gitCommitsWithOurWork(dir, ourFiles) {
 //
 // A shared or bot identity configured in some repo is not a hazard here: the
 // file intersection is the real guard, and a release bot's commits don't touch
-// the files Claude Code edited.
+// the files FuXi edited.
 const _emailCache = new Map();
 function gitUserEmailFor(dir) {
   const key = dir || '';
@@ -1205,13 +1205,13 @@ function renderHTML(s) {
   const repoFootnotes = [
     'Sessions and active days count a project each time work touched it, so a session spanning two projects appears in both rows. Commits can repeat too: worktrees of one repo share history, and the total above de-duplicates by commit. None of those three columns sum to the totals. Files and lines belong to one project each and do.',
     anyNotRepo && '* not a git repository — work done in a plain directory, named for it.',
-    '– no commits containing this project’s Claude Code work, or not a git repository.',
+    '– no commits containing this project’s FuXi work, or not a git repository.',
     anyGitUnavailable && '? git couldn’t be read for this project, so its commits are unknown — not zero.',
   ].filter(Boolean).map(t => `<div class="note">${escapeHtml(t)}</div>`).join('');
 
 
   // The hero number. It is computed here, in code, from figures that are
-  // already scoped to work Claude Code did — commits carrying CC's own changes,
+  // already scoped to work FuXi did — commits carrying CC's own changes,
   // PRs CC opened. It must never be assembled from a raw identity-wide count:
   // this box is the largest type on a page designed to be handed to someone,
   // and it is generated before any model sees the data, so no instruction
@@ -1254,7 +1254,7 @@ function renderHTML(s) {
       : null;
   const overlapNote =
     t.gitActiveDayOverlap != null
-      ? `${fmt(t.gitActiveDayOverlap)} of your ${fmt(t.activeDays)} active days ended with work Claude Code did being committed.`
+      ? `${fmt(t.gitActiveDayOverlap)} of your ${fmt(t.activeDays)} active days ended with work FuXi did being committed.`
       : null;
 
   return `<!doctype html>
@@ -1262,7 +1262,7 @@ function renderHTML(s) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Code Receipt — ${escapeHtml(s.since)} to ${escapeHtml(s.until)}</title>
+<title>FuXi Receipt — ${escapeHtml(s.since)} to ${escapeHtml(s.until)}</title>
 <style>
   :root { --ink:#1f1d1a; --paper:#fdfcf7; --muted:#8a8478; --accent:#d97757; --line:#d8d3c8; }
   * { box-sizing: border-box; }
@@ -1379,7 +1379,7 @@ function renderHTML(s) {
 <body>
   <div class="receipt-wrap">
   <div class="receipt">
-    <h1>Claude Code</h1>
+    <h1>FuXi</h1>
     <div class="stars">★ ★ ★ ★ ★</div>
     <div class="sub">USAGE RECEIPT${s.userName ? ` — ${escapeHtml(s.userName)}` : ''}</div>
     <div class="sub">${escapeHtml(s.since)} — ${escapeHtml(s.until)} (${fmt(t.activeDays)} of ${fmt(t.calendarDays)} days active)</div>
@@ -1391,7 +1391,7 @@ function renderHTML(s) {
     ${t.commitsWithOurWork != null ? `<div class="row"><span class="label">Commits carrying that work</span><span class="value">${fmt(t.commitsWithOurWork)}</span></div>` : ''}
     ${t.prCreateCmds ? `<div class="row"><span class="label">PRs opened</span><span class="value">${fmt(t.prCreateCmds)}</span></div>` : ''}
     <div class="total"><span>${escapeHtml(shippedLabel)}</span><span class="value">${fmt(shipped)}</span></div>
-    <div class="note">${shippedNote ? `${escapeHtml(shippedNote)} ` : 'Commits whose changed files include work Claude Code did, plus PRs it opened. Commits made by anyone else, or by automation running under your name, are not counted. '}${overlapNote ? escapeHtml(overlapNote) : ''}</div>
+    <div class="note">${shippedNote ? `${escapeHtml(shippedNote)} ` : 'Commits whose changed files include work FuXi did, plus PRs it opened. Commits made by anyone else, or by automation running under your name, are not counted. '}${overlapNote ? escapeHtml(overlapNote) : ''}</div>
 
     <h2>By project</h2>
     <table>
@@ -1422,7 +1422,7 @@ function renderHTML(s) {
 // here by scraping the DOM would be a second implementation to keep in step.
 (function () {
   var csv = ${jsonForScript(buildCsv(s))};
-  var name = ${jsonForScript(`claude-code-receipt-${s.since}-to-${s.until}.csv`)};
+  var name = ${jsonForScript(`fuxi-receipt-${s.since}-to-${s.until}.csv`)};
   var btn = document.getElementById('export-csv');
   if (!btn) return;
   btn.addEventListener('click', function () {

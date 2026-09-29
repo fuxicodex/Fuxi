@@ -26,7 +26,7 @@ You only need to do this once. The fastest path is to run **`/asana-setup`** ins
 Run this in your terminal (not inside a FuXi prompt — the secret is entered at a hidden prompt):
 
 ```bash
-claude mcp add --transport http \
+fuxi mcp add --transport http \
   --client-id YOUR_CLIENT_ID --client-secret \
   --callback-port 8080 \
   asana https://mcp.asana.com/v2/mcp
@@ -59,7 +59,7 @@ Ask FuXi to:
 ## Troubleshooting
 
 - **`invalid_redirect_uri`** — the redirect URL in your Asana app must be exactly `http://localhost:8080/callback`, and the `--callback-port` must be `8080`. If you use a different port, register `http://localhost:<PORT>/callback` to match.
-- **`invalid_client`** — double-check the Client ID and re-enter the Client Secret (`claude mcp remove asana`, then re-run the add command).
+- **`invalid_client`** — double-check the Client ID and re-enter the Client Secret (`fuxi mcp remove asana`, then re-run the add command).
 - **Auth server / DCR errors** — V2 does not support Dynamic Client Registration; you must supply a pre-registered `--client-id` and `--client-secret` as shown above.
 
 ## Documentation

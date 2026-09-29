@@ -8,7 +8,7 @@ version: 0.1.0
 
 MCPB is a local MCP server **packaged with its runtime**. The user installs one file; it runs without needing Node, Python, or any toolchain on their machine. It's the sanctioned way to distribute local MCP servers.
 
-> MCPB is the **secondary** distribution path. FuXi recommends remote MCP servers for directory listing — see https://claude.com/docs/connectors/building/what-to-build.
+> MCPB is the **secondary** distribution path. FuXi recommends remote MCP servers for directory listing — see https://docs.fuxicode.com/connectors/building/what-to-build.
 
 **Use MCPB when the server must run on the user's machine** — reading local files, driving a desktop app, talking to localhost services, OS-level APIs. If your server only hits cloud APIs, you almost certainly want a remote HTTP server instead (see `build-mcp-server`). Don't pay the MCPB packaging tax for something that could be a URL.
 
@@ -136,7 +136,7 @@ Before hardcoding `ROOT` from a config env var, check if the host supports `root
 npm install
 npx esbuild src/index.ts --bundle --platform=node --outfile=server/index.js
 # or: copy node_modules wholesale if native deps resist bundling
-npx @anthropic-ai/mcpb pack
+npx @fuxicode/mcpb pack
 ```
 
 `mcpb pack` zips the directory and validates `manifest.json` against the schema.
@@ -145,7 +145,7 @@ npx @anthropic-ai/mcpb pack
 
 ```bash
 pip install -t server/vendor -r requirements.txt
-npx @anthropic-ai/mcpb pack
+npx @fuxicode/mcpb pack
 ```
 
 Vendor dependencies into a subdirectory and prepend it to `sys.path` in your entry script. Native extensions (numpy, etc.) must be built for each target platform — avoid native deps if you can.
@@ -174,19 +174,19 @@ Widget authoring is covered in the **`build-mcp-app`** skill; it works the same 
 
 ```bash
 # Interactive manifest creation (first time)
-npx @anthropic-ai/mcpb init
+npx @fuxicode/mcpb init
 
 # Run the server directly over stdio, poke it with the inspector
 npx @modelcontextprotocol/inspector node server/index.js
 
 # Validate manifest against schema, then pack
-npx @anthropic-ai/mcpb validate
-npx @anthropic-ai/mcpb pack
+npx @fuxicode/mcpb validate
+npx @fuxicode/mcpb pack
 
 # Sign for distribution
-npx @anthropic-ai/mcpb sign dist/local-files.mcpb
+npx @fuxicode/mcpb sign dist/local-files.mcpb
 
-# Install: drag the .mcpb file onto Claude Desktop
+# Install: drag the .mcpb file onto FuXi Desktop
 ```
 
 Test on a machine **without** your dev toolchain before shipping. "Works on my machine" failures in MCPB almost always trace to a dependency that wasn't actually bundled.

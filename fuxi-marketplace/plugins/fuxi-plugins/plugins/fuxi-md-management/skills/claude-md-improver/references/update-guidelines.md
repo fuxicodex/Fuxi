@@ -1,4 +1,4 @@
-# CLAUDE.md Update Guidelines
+# FUXI.md Update Guidelines
 
 ## Core Principle
 
@@ -113,7 +113,7 @@ For each suggested change:
 ### 1. Identify the File
 
 ```
-File: ./CLAUDE.md
+File: ./FUXI.md
 Section: Commands (new section after ## Architecture)
 ```
 

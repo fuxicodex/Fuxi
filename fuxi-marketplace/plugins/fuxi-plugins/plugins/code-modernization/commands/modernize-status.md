@@ -21,7 +21,7 @@ workflow stage, with the artifact's presence and modification time:
 | harden | `SECURITY_FINDINGS.md`, `security_remediation.patch` |
 | uplift | `DELTA_CATALOG.md`, `BASELINE.md`, `PLAYBOOK.md` (no playbook = the pilot hasn't happened yet — the fan-out must not); `modernized/$1-uplifted/UPLIFT_NOTES.md` (note per-unit: builds on target? baseline reproduced?) |
 | transform | each `modernized/$1/<module>/` dir — note test presence and whether `TRANSFORMATION_NOTES.md` exists |
-| reimagine | `modernized/$1-reimagined/` — note per-service acceptance tests and the `CLAUDE.md` handoff (reimagine's completion markers; it does NOT write `TRANSFORMATION_NOTES.md`) |
+| reimagine | `modernized/$1-reimagined/` — note per-service acceptance tests and the `FUXI.md` handoff (reimagine's completion markers; it does NOT write `TRANSFORMATION_NOTES.md`) |
 
 ## 2 — Staleness
 

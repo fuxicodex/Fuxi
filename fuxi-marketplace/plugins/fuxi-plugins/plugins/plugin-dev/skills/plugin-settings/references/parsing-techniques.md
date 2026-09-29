@@ -1,6 +1,6 @@
 # Settings File Parsing Techniques
 
-Complete guide to parsing `.claude/plugin-name.local.md` files in bash scripts.
+Complete guide to parsing `.fuxi/plugin-name.local.md` files in bash scripts.
 
 ## File Structure
 
@@ -27,7 +27,7 @@ It's useful for prompts, documentation, or additional context.
 
 ```bash
 #!/bin/bash
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 
 # Extract everything between --- markers (excluding the markers themselves)
 FRONTMATTER=$(sed -n '/^---$/,/^---$/{ /^---$/d; p; }' "$FILE")
@@ -104,7 +104,7 @@ done
 
 ```bash
 #!/bin/bash
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 
 # Extract everything after the closing ---
 # Counts --- markers: first is opening, second is closing, everything after is body
@@ -195,7 +195,7 @@ Always use temp file + atomic move to prevent corruption:
 
 ```bash
 #!/bin/bash
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 NEW_VALUE="updated_value"
 
 # Create temp file
@@ -240,7 +240,7 @@ mv "$TEMP_FILE" "$FILE"
 ### Validate File Exists and Is Readable
 
 ```bash
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 
 if [[ ! -f "$FILE" ]]; then
   echo "Settings file not found" >&2
@@ -407,7 +407,7 @@ if [[ "$tool_name" != "Write" ]]; then
 fi
 
 # Only now check settings file
-if [[ -f ".claude/my-plugin.local.md" ]]; then
+if [[ -f ".fuxi/my-plugin.local.md" ]]; then
   # Parse settings
   # ...
 fi
@@ -421,7 +421,7 @@ fi
 #!/bin/bash
 set -x  # Enable debug tracing
 
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 
 if [[ -f "$FILE" ]]; then
   echo "Settings file found" >&2
@@ -490,7 +490,7 @@ done
 set -euo pipefail
 
 # Configuration
-SETTINGS_FILE=".claude/my-plugin.local.md"
+SETTINGS_FILE=".fuxi/my-plugin.local.md"
 
 # Quick exit if not configured
 if [[ ! -f "$SETTINGS_FILE" ]]; then

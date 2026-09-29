@@ -42,7 +42,7 @@ Integration type: **Guild Install**. Copy the **Generated URL**, open it, and ad
 
 **4. Install the plugin.**
 
-These are FuXi commands — run `claude` to start a session first.
+These are FuXi commands — run `fuxi` to start a session first.
 
 Install the plugin:
 ```
@@ -55,7 +55,7 @@ Install the plugin:
 /discord:configure MTIz...
 ```
 
-Writes `DISCORD_BOT_TOKEN=...` to `~/.claude/channels/discord/.env`. You can also write that file by hand, or set the variable in your shell environment — shell takes precedence.
+Writes `DISCORD_BOT_TOKEN=...` to `~/.fuxi/channels/discord/.env`. You can also write that file by hand, or set the variable in your shell environment — shell takes precedence.
 
 > To run multiple bots on one machine (different tokens, separate allowlists), point `DISCORD_STATE_DIR` at a different directory per instance.
 
@@ -95,7 +95,7 @@ Quick reference: IDs are Discord **snowflakes** (numeric — enable Developer Mo
 | `react` | Add an emoji reaction to any message by ID. Unicode emoji work directly; custom emoji need `<:name:id>` form. |
 | `edit_message` | Edit a message the bot previously sent. Useful for "working…" → result progress updates. Only works on the bot's own messages. |
 | `fetch_messages` | Pull recent history from a channel (oldest-first). Capped at 100 per call. Each line includes the message ID so the model can `reply_to` it; messages with attachments are marked `+Natt`. Discord's search API isn't exposed to bots, so this is the only lookback. |
-| `download_attachment` | Download all attachments from a specific message by ID to `~/.claude/channels/discord/inbox/`. Returns file paths + metadata. Use when `fetch_messages` shows a message has attachments. |
+| `download_attachment` | Download all attachments from a specific message by ID to `~/.fuxi/channels/discord/inbox/`. Returns file paths + metadata. Use when `fetch_messages` shows a message has attachments. |
 
 Inbound messages trigger a typing indicator automatically — Discord shows
 "botname is typing…" while the assistant works on a response.
@@ -105,7 +105,7 @@ Inbound messages trigger a typing indicator automatically — Discord shows
 Attachments are **not** auto-downloaded. The `<channel>` notification lists
 each attachment's name, type, and size — the assistant calls
 `download_attachment(chat_id, message_id)` when it actually wants the file.
-Downloads land in `~/.claude/channels/discord/inbox/`.
+Downloads land in `~/.fuxi/channels/discord/inbox/`.
 
 Same path for attachments on historical messages found via `fetch_messages`
 (messages with attachments are marked `+Natt`).

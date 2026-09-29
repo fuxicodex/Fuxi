@@ -43,7 +43,7 @@ const result = await extra.sendRequest({
 response = await ctx.sample("Summarize this document", context=doc)
 ```
 
-**Requires client support** — check `clientCapabilities.sampling` first. Model preference hints are substring-matched (`"claude-3-5"` matches any FuXi 3.5 variant).
+**Requires client support** — check `clientCapabilities.sampling` first. Model preference hints are substring-matched (`"fuxi-3-5"` matches any FuXi 3.5 variant).
 
 ---
 

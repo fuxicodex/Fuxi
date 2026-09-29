@@ -32,7 +32,7 @@ allowed-tools: Bash(node:*), Read
 
 Analyze @$1 using plugin's quality checker:
 
-!`node ${CLAUDE_PLUGIN_ROOT}/scripts/quality-check.js $1`
+!`node ${FUXI_PLUGIN_ROOT}/scripts/quality-check.js $1`
 
 Review the analysis output and provide:
 1. Summary of findings
@@ -42,7 +42,7 @@ Review the analysis output and provide:
 ```
 
 **Key features:**
-- Uses `${CLAUDE_PLUGIN_ROOT}` for portable path
+- Uses `${FUXI_PLUGIN_ROOT}` for portable path
 - Combines file reference with script execution
 - Simple single-purpose command
 
@@ -65,13 +65,13 @@ model: sonnet
 Running complete audit on $1:
 
 **Security scan:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/security-scan.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/security-scan.sh $1`
 
 **Performance analysis:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/perf-analyze.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/perf-analyze.sh $1`
 
 **Best practices check:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/best-practices.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/best-practices.sh $1`
 
 Analyze all results and create comprehensive report including:
 - Critical issues requiring immediate attention
@@ -100,7 +100,7 @@ description: Generate API documentation from template
 argument-hint: [api-file]
 ---
 
-Template structure: @${CLAUDE_PLUGIN_ROOT}/templates/api-documentation.md
+Template structure: @${FUXI_PLUGIN_ROOT}/templates/api-documentation.md
 
 API implementation: @$1
 
@@ -141,16 +141,16 @@ allowed-tools: Bash(*), Read
 Executing release workflow for version $1:
 
 **Step 1 - Pre-release validation:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/pre-release-check.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/pre-release-check.sh $1`
 
 **Step 2 - Build artifacts:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build-release.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/build-release.sh $1`
 
 **Step 3 - Run test suite:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/run-tests.sh`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/run-tests.sh`
 
 **Step 4 - Package release:**
-!`bash ${CLAUDE_PLUGIN_ROOT}/scripts/package.sh $1`
+!`bash ${FUXI_PLUGIN_ROOT}/scripts/package.sh $1`
 
 Review all step outputs and report:
 1. Any failures or warnings
@@ -181,7 +181,7 @@ argument-hint: [environment]
 allowed-tools: Read, Bash(*)
 ---
 
-Deployment configuration for $1: @${CLAUDE_PLUGIN_ROOT}/config/$1-deploy.json
+Deployment configuration for $1: @${FUXI_PLUGIN_ROOT}/config/$1-deploy.json
 
 Current git state: !`git rev-parse --short HEAD`
 
@@ -231,9 +231,9 @@ The agent will perform:
 5. **Documentation check** - Verify adequate documentation
 
 The agent has access to:
-- Plugin's linting rules: ${CLAUDE_PLUGIN_ROOT}/config/lint-rules.json
-- Security checklist: ${CLAUDE_PLUGIN_ROOT}/checklists/security.md
-- Performance guidelines: ${CLAUDE_PLUGIN_ROOT}/docs/performance.md
+- Plugin's linting rules: ${FUXI_PLUGIN_ROOT}/config/lint-rules.json
+- Security checklist: ${FUXI_PLUGIN_ROOT}/checklists/security.md
+- Performance guidelines: ${FUXI_PLUGIN_ROOT}/docs/performance.md
 
 Note: This uses the Task tool to launch the plugin's code-reviewer agent for thorough analysis.
 ```
@@ -304,7 +304,7 @@ Target file: @$1
 Execute comprehensive review workflow:
 
 **Phase 1: Automated Analysis**
-Run plugin analyzer: !`node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js $1`
+Run plugin analyzer: !`node ${FUXI_PLUGIN_ROOT}/scripts/analyze.js $1`
 
 **Phase 2: Deep Review (Agent)**
 Launch the code-quality-reviewer agent for detailed analysis.
@@ -322,7 +322,7 @@ Use the coding-standards skill to validate:
 - Framework-specific patterns
 
 **Phase 4: Report Generation**
-Template: @${CLAUDE_PLUGIN_ROOT}/templates/review-report.md
+Template: @${FUXI_PLUGIN_ROOT}/templates/review-report.md
 
 Compile all findings into comprehensive report following template.
 
@@ -358,17 +358,17 @@ allowed-tools: Bash(*)
 
 Validate environment argument: !`echo "$1" | grep -E "^(dev|staging|prod)$" && echo "VALID" || echo "INVALID"`
 
-Check build script exists: !`test -x ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh && echo "EXISTS" || echo "MISSING"`
+Check build script exists: !`test -x ${FUXI_PLUGIN_ROOT}/scripts/build.sh && echo "EXISTS" || echo "MISSING"`
 
-Verify configuration available: !`test -f ${CLAUDE_PLUGIN_ROOT}/config/$1.json && echo "FOUND" || echo "NOT_FOUND"`
+Verify configuration available: !`test -f ${FUXI_PLUGIN_ROOT}/config/$1.json && echo "FOUND" || echo "NOT_FOUND"`
 
 If all validations pass:
 
-**Configuration:** @${CLAUDE_PLUGIN_ROOT}/config/$1.json
+**Configuration:** @${FUXI_PLUGIN_ROOT}/config/$1.json
 
-**Execute build:** !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh $1 2>&1`
+**Execute build:** !`bash ${FUXI_PLUGIN_ROOT}/scripts/build.sh $1 2>&1`
 
-**Validation results:** !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate-build.sh $1 2>&1`
+**Validation results:** !`bash ${FUXI_PLUGIN_ROOT}/scripts/validate-build.sh $1 2>&1`
 
 Report build status and any issues.
 
@@ -403,19 +403,19 @@ allowed-tools: Bash(*), Read
 
 Environment: $1
 
-Load environment configuration: @${CLAUDE_PLUGIN_ROOT}/config/$1-checks.json
+Load environment configuration: @${FUXI_PLUGIN_ROOT}/config/$1-checks.json
 
 Determine check level: !`echo "$1" | grep -E "^prod$" && echo "FULL" || echo "BASIC"`
 
 **For production environment:**
-- Full test suite: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/test-full.sh`
-- Security scan: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/security-scan.sh`
-- Performance audit: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/perf-check.sh`
-- Compliance check: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/compliance.sh`
+- Full test suite: !`bash ${FUXI_PLUGIN_ROOT}/scripts/test-full.sh`
+- Security scan: !`bash ${FUXI_PLUGIN_ROOT}/scripts/security-scan.sh`
+- Performance audit: !`bash ${FUXI_PLUGIN_ROOT}/scripts/perf-check.sh`
+- Compliance check: !`bash ${FUXI_PLUGIN_ROOT}/scripts/compliance.sh`
 
 **For non-production environments:**
-- Basic tests: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/test-basic.sh`
-- Quick lint: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/lint.sh`
+- Basic tests: !`bash ${FUXI_PLUGIN_ROOT}/scripts/test-basic.sh`
+- Quick lint: !`bash ${FUXI_PLUGIN_ROOT}/scripts/lint.sh`
 
 Analyze results based on environment requirements:
 
@@ -438,19 +438,19 @@ Report status and recommend proceed/block decision.
 
 ### Pattern: Plugin Script Execution
 ```markdown
-!`node ${CLAUDE_PLUGIN_ROOT}/scripts/script-name.js $1`
+!`node ${FUXI_PLUGIN_ROOT}/scripts/script-name.js $1`
 ```
 Use for: Running plugin-provided Node.js scripts
 
 ### Pattern: Plugin Configuration Loading
 ```markdown
-@${CLAUDE_PLUGIN_ROOT}/config/config-name.json
+@${FUXI_PLUGIN_ROOT}/config/config-name.json
 ```
 Use for: Loading plugin configuration files
 
 ### Pattern: Plugin Template Usage
 ```markdown
-@${CLAUDE_PLUGIN_ROOT}/templates/template-name.md
+@${FUXI_PLUGIN_ROOT}/templates/template-name.md
 ```
 Use for: Using plugin templates for generation
 
@@ -474,7 +474,7 @@ Use for: Validating command arguments
 
 ### Pattern: Resource Validation
 ```markdown
-Check exists: !`test -f ${CLAUDE_PLUGIN_ROOT}/path/file && echo "YES" || echo "NO"`
+Check exists: !`test -f ${FUXI_PLUGIN_ROOT}/path/file && echo "YES" || echo "NO"`
 ```
 Use for: Verifying required plugin files exist
 
@@ -487,37 +487,37 @@ Use for: Verifying required plugin files exist
 1. **Test with plugin installed:**
    ```bash
    cd /path/to/plugin
-   claude /command-name args
+   fuxi /command-name args
    ```
 
-2. **Verify ${CLAUDE_PLUGIN_ROOT} expansion:**
+2. **Verify ${FUXI_PLUGIN_ROOT} expansion:**
    ```bash
    # Add debug output to command
-   !`echo "Plugin root: ${CLAUDE_PLUGIN_ROOT}"`
+   !`echo "Plugin root: ${FUXI_PLUGIN_ROOT}"`
    ```
 
 3. **Test across different working directories:**
    ```bash
-   cd /tmp && claude /command-name
-   cd /other/project && claude /command-name
+   cd /tmp && fuxi /command-name
+   cd /other/project && fuxi /command-name
    ```
 
 4. **Validate resource availability:**
    ```bash
    # Check all plugin resources exist
-   !`ls -la ${CLAUDE_PLUGIN_ROOT}/scripts/`
-   !`ls -la ${CLAUDE_PLUGIN_ROOT}/config/`
+   !`ls -la ${FUXI_PLUGIN_ROOT}/scripts/`
+   !`ls -la ${FUXI_PLUGIN_ROOT}/config/`
    ```
 
 ### Common Mistakes to Avoid
 
-1. **Using relative paths instead of ${CLAUDE_PLUGIN_ROOT}:**
+1. **Using relative paths instead of ${FUXI_PLUGIN_ROOT}:**
    ```markdown
    # Wrong
    !`node ./scripts/analyze.js`
 
    # Correct
-   !`node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js`
+   !`node ${FUXI_PLUGIN_ROOT}/scripts/analyze.js`
    ```
 
 2. **Forgetting to allow required tools:**
@@ -529,7 +529,7 @@ Use for: Verifying required plugin files exist
    ---
    allowed-tools: Bash(*)
    ---
-   !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/script.sh`
+   !`bash ${FUXI_PLUGIN_ROOT}/scripts/script.sh`
    ```
 
 3. **Not validating inputs:**
@@ -545,10 +545,10 @@ Use for: Verifying required plugin files exist
 4. **Hardcoding plugin paths:**
    ```markdown
    # Wrong - breaks on different installations
-   @/home/user/.claude/plugins/my-plugin/config.json
+   @/home/user/.fuxi/plugins/my-plugin/config.json
 
    # Correct - works everywhere
-   @${CLAUDE_PLUGIN_ROOT}/config.json
+   @${FUXI_PLUGIN_ROOT}/config.json
    ```
 
 ---

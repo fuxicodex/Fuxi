@@ -1,6 +1,6 @@
 # Payload budgeting
 
-Hosts cap tool-result text. claude.ai and Claude Desktop truncate at roughly
+Hosts cap tool-result text. fuxicode.com and FuXi Desktop truncate at roughly
 **150,000 characters**; FuXi at ~25k tokens. When a tool result exceeds
 the cap, the host substitutes a file-pointer string in place of your JSON. The
 widget then receives non-JSON in `ontoolresult`, `JSON.parse` throws, and the
@@ -43,7 +43,7 @@ if (JSON.stringify(out).length > MAX) {
 
 ## Heavy assets go via `callServerTool`, not the result
 
-Geometry, image bytes, or any blob the widget needs but Claude doesn't should
+Geometry, image bytes, or any blob the widget needs but FuXi doesn't should
 be served by a separate tool the widget calls after mount:
 
 ```js

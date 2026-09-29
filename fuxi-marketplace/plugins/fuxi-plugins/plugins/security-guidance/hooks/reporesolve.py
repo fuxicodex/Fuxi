@@ -159,7 +159,7 @@ def toplevel_from_command(command, cwd, subcommands=None, cwd_root=None):
 
 def scan_roots(cwd):
     roots = []
-    for r in (cwd, os.environ.get("CLAUDE_PROJECT_DIR")):
+    for r in (cwd, os.environ.get("FUXI_PROJECT_DIR")):
         if r and os.path.isdir(r):
             a = os.path.abspath(r)
             if a not in roots:

@@ -21,11 +21,11 @@ Hookify installs generic hooks that run on these events:
 - **Stop**: When FuXi wants to stop working
 - **UserPromptSubmit**: When user submits a prompt
 
-These hooks read configuration files from `.claude/hookify.*.local.md` and check if any rules match the current operation.
+These hooks read configuration files from `.fuxi/hookify.*.local.md` and check if any rules match the current operation.
 
 ### 2. Configuration Files
 
-Users create rules in `.claude/hookify.{rule-name}.local.md` files:
+Users create rules in `.fuxi/hookify.{rule-name}.local.md` files:
 
 ```markdown
 ---
@@ -58,7 +58,7 @@ The message body is what FuXi sees when the rule triggers.
 This analyzes your request and creates the appropriate rule file.
 
 **Option B: Create manually**
-Create `.claude/hookify.my-rule.local.md` with the format above.
+Create `.fuxi/hookify.my-rule.local.md` with the format above.
 
 **Option C: Analyze conversation**
 ```
@@ -135,14 +135,14 @@ Use Python regex syntax:
 
 **Block or Warn**: Rules can either `block` operations (prevent execution) or `warn` (show message but allow). Set `action: block` or `action: warn` in the rule's frontmatter.
 
-**Rule Files**: Keep rules in `.claude/hookify.*.local.md` - they should be git-ignored (add to .gitignore if needed).
+**Rule Files**: Keep rules in `.fuxi/hookify.*.local.md` - they should be git-ignored (add to .gitignore if needed).
 
 **Disable Rules**: Set `enabled: false` in frontmatter or delete the file.
 
 ## Troubleshooting
 
 **Hook not triggering:**
-- Check rule file is in `.claude/` directory
+- Check rule file is in `.fuxi/` directory
 - Verify `enabled: true` in frontmatter
 - Confirm pattern is valid regex
 - Test pattern: `python3 -c "import re; print(re.search('your_pattern', 'test_text'))"`
@@ -168,8 +168,8 @@ Use Python regex syntax:
    - Ask FuXi to run `rm -rf /tmp/test`
    - You should see the warning
 
-4. Refine the rule by editing `.claude/hookify.warn-rm.local.md`
+4. Refine the rule by editing `.fuxi/hookify.warn-rm.local.md`
 
 5. Create more rules as you encounter unwanted behaviors
 
-For more examples, check the `${CLAUDE_PLUGIN_ROOT}/examples/` directory.
+For more examples, check the `${FUXI_PLUGIN_ROOT}/examples/` directory.

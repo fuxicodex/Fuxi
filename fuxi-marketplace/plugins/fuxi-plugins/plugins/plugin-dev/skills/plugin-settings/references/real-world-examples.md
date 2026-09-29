@@ -1,12 +1,12 @@
 # Real-World Plugin Settings Examples
 
-Detailed analysis of how production plugins use the `.claude/plugin-name.local.md` pattern.
+Detailed analysis of how production plugins use the `.fuxi/plugin-name.local.md` pattern.
 
 ## multi-agent-swarm Plugin
 
 ### Settings File Structure
 
-**.claude/multi-agent-swarm.local.md:**
+**.fuxi/multi-agent-swarm.local.md:**
 
 ```markdown
 ---
@@ -51,7 +51,7 @@ Report status to 'team-leader' session.
 #!/bin/bash
 set -euo pipefail
 
-SWARM_STATE_FILE=".claude/multi-agent-swarm.local.md"
+SWARM_STATE_FILE=".fuxi/multi-agent-swarm.local.md"
 
 # Quick exit if no swarm active
 if [[ ! -f "$SWARM_STATE_FILE" ]]; then
@@ -98,7 +98,7 @@ exit 0
 Settings files are created during swarm launch with:
 
 ```bash
-cat > "$WORKTREE_PATH/.claude/multi-agent-swarm.local.md" <<EOF
+cat > "$WORKTREE_PATH/.fuxi/multi-agent-swarm.local.md" <<EOF
 ---
 agent_name: $AGENT_NAME
 task_number: $TASK_ID
@@ -122,15 +122,15 @@ PR number updated after PR creation:
 ```bash
 # Update pr_number field
 sed "s/^pr_number: .*/pr_number: $PR_NUM/" \
-  ".claude/multi-agent-swarm.local.md" > temp.md
-mv temp.md ".claude/multi-agent-swarm.local.md"
+  ".fuxi/multi-agent-swarm.local.md" > temp.md
+mv temp.md ".fuxi/multi-agent-swarm.local.md"
 ```
 
 ## ralph-loop Plugin
 
 ### Settings File Structure
 
-**.claude/ralph-loop.local.md:**
+**.fuxi/ralph-loop.local.md:**
 
 ```markdown
 ---
@@ -142,7 +142,7 @@ started_at: "2025-01-15T14:30:00Z"
 
 Fix all the linting errors in the project.
 Make sure tests pass after each fix.
-Document any changes needed in CLAUDE.md.
+Document any changes needed in FUXI.md.
 ```
 
 ### How It's Used
@@ -157,7 +157,7 @@ Document any changes needed in CLAUDE.md.
 #!/bin/bash
 set -euo pipefail
 
-RALPH_STATE_FILE=".claude/ralph-loop.local.md"
+RALPH_STATE_FILE=".fuxi/ralph-loop.local.md"
 
 # Quick exit if no active loop
 if [[ ! -f "$RALPH_STATE_FILE" ]]; then
@@ -237,7 +237,7 @@ MAX_ITERATIONS="${2:-0}"
 COMPLETION_PROMISE="${3:-}"
 
 # Create state file
-cat > ".claude/ralph-loop.local.md" <<EOF
+cat > ".fuxi/ralph-loop.local.md" <<EOF
 ---
 iteration: 1
 max_iterations: $MAX_ITERATIONS
@@ -248,14 +248,14 @@ started_at: "$(date -Iseconds)"
 $PROMPT
 EOF
 
-echo "Ralph loop initialized: .claude/ralph-loop.local.md"
+echo "Ralph loop initialized: .fuxi/ralph-loop.local.md"
 ```
 
 ## Pattern Comparison
 
 | Feature | multi-agent-swarm | ralph-loop |
 |---------|-------------------|--------------|
-| **File** | `.claude/multi-agent-swarm.local.md` | `.claude/ralph-loop.local.md` |
+| **File** | `.fuxi/multi-agent-swarm.local.md` | `.fuxi/ralph-loop.local.md` |
 | **Purpose** | Agent coordination state | Loop iteration state |
 | **Frontmatter** | Agent metadata | Loop configuration |
 | **Body** | Task assignment | Prompt to loop |
@@ -333,10 +333,10 @@ fi
 
 ```bash
 # BAD
-FILE="/Users/alice/.claude/my-plugin.local.md"
+FILE="/Users/alice/.fuxi/my-plugin.local.md"
 
 # GOOD
-FILE=".claude/my-plugin.local.md"
+FILE=".fuxi/my-plugin.local.md"
 ```
 
 ### ❌ Unquoted Variables
@@ -385,7 +385,7 @@ awk '/^---$/{i++; next} i>=2'  # For body
 
 ## Conclusion
 
-The `.claude/plugin-name.local.md` pattern provides:
+The `.fuxi/plugin-name.local.md` pattern provides:
 - Simple, human-readable configuration
 - Version-control friendly (gitignored)
 - Per-project settings

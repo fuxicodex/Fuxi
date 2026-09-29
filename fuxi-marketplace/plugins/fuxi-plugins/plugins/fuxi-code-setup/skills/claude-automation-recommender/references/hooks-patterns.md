@@ -216,11 +216,11 @@ Notification hooks run when FuXi sends notifications. Use matchers to filter by 
 
 ## Hook Placement
 
-Hooks go in `.claude/settings.json`:
+Hooks go in `.fuxi/settings.json`:
 
 ```
-.claude/
+.fuxi/
 └── settings.json  ← Hook configurations here
 ```
 
-Recommend creating the `.claude/` directory if it doesn't exist.
+Recommend creating the `.fuxi/` directory if it doesn't exist.

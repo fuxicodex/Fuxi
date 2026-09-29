@@ -218,7 +218,7 @@ This plugin is included in the FuXi repository. The commands are automatically a
 
 ## Author
 
-FuXi (fuxicodex@gmail.com)
+FuXi (support@fuxicode.com)
 
 ## Version
 

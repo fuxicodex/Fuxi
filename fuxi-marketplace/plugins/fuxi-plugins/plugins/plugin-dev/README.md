@@ -9,7 +9,7 @@ The plugin-dev toolkit provides seven specialized skills to help you build high-
 1. **hook-development** - Advanced hooks API and event-driven automation
 2. **mcp-integration** - Model Context Protocol server integration
 3. **plugin-structure** - Plugin organization and manifest configuration
-4. **plugin-settings** - Configuration patterns using .claude/plugin-name.local.md files
+4. **plugin-settings** - Configuration patterns using .fuxi/plugin-name.local.md files
 5. **command-development** - Creating slash commands with frontmatter and arguments
 6. **agent-development** - Creating autonomous agents with AI-assisted generation
 7. **skill-development** - Creating skills with progressive disclosure and strong triggers
@@ -55,7 +55,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 
 ### 1. hook-development
 
-**Trigger phrases:** "create a hook", "add a PreToolUse hook", "validate tool use", "implement prompt-based hooks", "${CLAUDE_PLUGIN_ROOT}", "block dangerous commands"
+**Trigger phrases:** "create a hook", "add a PreToolUse hook", "validate tool use", "implement prompt-based hooks", "${FUXI_PLUGIN_ROOT}", "block dangerous commands"
 
 **What it covers:**
 - Prompt-based hooks (recommended) with LLM decision-making
@@ -63,7 +63,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - All hook events: PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification
 - Hook output formats and JSON schemas
 - Security best practices and input validation
-- ${CLAUDE_PLUGIN_ROOT} for portable paths
+- ${FUXI_PLUGIN_ROOT} for portable paths
 
 **Resources:**
 - Core SKILL.md (1,619 words)
@@ -80,7 +80,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 **What it covers:**
 - MCP server configuration (.mcp.json vs plugin.json)
 - All server types: stdio (local), SSE (hosted/OAuth), HTTP (REST), WebSocket (real-time)
-- Environment variable expansion (${CLAUDE_PLUGIN_ROOT}, user vars)
+- Environment variable expansion (${FUXI_PLUGIN_ROOT}, user vars)
 - MCP tool naming and usage in commands/agents
 - Authentication patterns: OAuth, tokens, env vars
 - Integration patterns and performance optimization
@@ -100,7 +100,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Standard plugin directory structure and auto-discovery
 - plugin.json manifest format and all fields
 - Component organization (commands, agents, skills, hooks)
-- ${CLAUDE_PLUGIN_ROOT} usage throughout
+- ${FUXI_PLUGIN_ROOT} usage throughout
 - File naming conventions and best practices
 - Minimal, standard, and advanced plugin patterns
 
@@ -116,7 +116,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 **Trigger phrases:** "plugin settings", "store plugin configuration", ".local.md files", "plugin state files", "read YAML frontmatter", "per-project plugin settings"
 
 **What it covers:**
-- .claude/plugin-name.local.md pattern for configuration
+- .fuxi/plugin-name.local.md pattern for configuration
 - YAML frontmatter + markdown body structure
 - Parsing techniques for bash scripts (sed, awk, grep patterns)
 - Temporarily active hooks (flag files and quick-exit)
@@ -195,7 +195,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 
 ## Installation
 
-Install from claude-code-marketplace:
+Install from fuxi-marketplace:
 
 ```bash
 /plugin install plugin-dev@fuxi-plugins
@@ -204,7 +204,7 @@ Install from claude-code-marketplace:
 Or for development, use directly:
 
 ```bash
-cc --plugin-dir /path/to/plugin-dev
+fuxi --plugin-dir /path/to/plugin-dev
 ```
 
 ## Quick Start
@@ -362,14 +362,14 @@ All skills emphasize:
 - Principle of least privilege
 
 ✅ **Portability**
-- Use ${CLAUDE_PLUGIN_ROOT} everywhere
+- Use ${FUXI_PLUGIN_ROOT} everywhere
 - Relative paths only
 - Environment variable substitution
 
 ✅ **Testing**
 - Validate configurations before deployment
 - Test hooks with sample inputs
-- Use debug mode (`claude --debug`)
+- Use debug mode (`fuxi --debug`)
 
 ✅ **Documentation**
 - Clear README files
@@ -378,11 +378,11 @@ All skills emphasize:
 
 ## Contributing
 
-This plugin is part of the claude-code-marketplace. To contribute improvements:
+This plugin is part of the fuxi-marketplace. To contribute improvements:
 
 1. Fork the marketplace repository
 2. Make changes to plugin-dev/
-3. Test locally with `cc --plugin-dir`
+3. Test locally with `fuxi --plugin-dir`
 4. Create PR following marketplace-publishing guidelines
 
 ## Version
@@ -391,7 +391,7 @@ This plugin is part of the claude-code-marketplace. To contribute improvements:
 
 ## Author
 
-Daisy Hollman (daisy@anthropic.com)
+Daisy Hollman (support@fuxicode.com)
 
 ## License
 

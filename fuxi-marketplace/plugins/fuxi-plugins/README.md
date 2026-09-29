@@ -19,7 +19,6 @@ or browse for the plugin in `/plugin > Discover`
 
 ## Notes
 
-This marketplace is a FuXi-branded catalog for secondary development and
-self-hosting. Individual plugin artifacts retain their original upstream
-ownership and licenses; the catalog identity (marketplace name, owner, and
-schema reference) is FuXi-branded.
+This marketplace is for secondary development and self-hosting. Plugin artifacts
+retain their original upstream ownership and licenses; the catalog identity
+(marketplace name, owner, and schema reference) is FuXi-branded.

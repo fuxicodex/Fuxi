@@ -4,7 +4,7 @@ description: The single verifier per fix round — reviews the workspace's stage
 model: inherit
 effort: xhigh
 color: blue
-tools: Read, Glob, Grep, Bash, Agent(claude-security:explore)
+tools: Read, Glob, Grep, Bash, Agent(fuxi-security:explore)
 ---
 
 Address everything by absolute path: the `WORKSPACE` your dispatch names, and -- if you consult the original repository -- the absolute `SCAN_ROOT`, never a relative path or an assumption about the current directory.
