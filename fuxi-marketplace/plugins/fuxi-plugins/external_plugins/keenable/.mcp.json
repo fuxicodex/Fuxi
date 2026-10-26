@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "keenable": {
+      "type": "http",
+      "url": "https://api.keenable.ai/mcp",
+      "headers": {
+        "X-Keenable-Title": "fuxi",
+        "X-API-Key": "${KEENABLE_API_KEY:-}"
+      }
+    }
+  }
+}

@@ -2004,6 +2004,16 @@
       "homepage": "https://jfrog.com"
     },
     {
+      "name": "keenable",
+      "description": "Keenable web search MCP server. Connects to Keenable's hosted remote MCP server (https://api.keenable.ai/mcp), no local Node.js or npx required, to search the web and read web pages as clean markdown. Works anonymously out of the box; set KEENABLE_API_KEY for higher rate limits.",
+      "author": {
+        "name": "Keenable"
+      },
+      "category": "development",
+      "source": "./external_plugins/keenable",
+      "homepage": "https://docs.keenable.ai/mcp-server"
+    },
+    {
       "name": "knowledge-catalog",
       "description": "Connect to Knowledge Catalog to discover, manage, monitor, and govern data and AI artifacts across your data platform",
       "author": {
